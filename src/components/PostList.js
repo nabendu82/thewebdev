@@ -1,12 +1,16 @@
 import React from 'react';
 import PostCard from './PostCard';
+import styles from "../css/postlist.module.css"
 
-const PostList = () => {
+const PostList = ({ posts }) => {
     return (
-        <>
-            PostList Component
-            <PostCard />
-        </>
+        <section className={styles.posts}>
+            <div className={styles.center}>
+                {posts.map(({ node }, index) => {
+                    return <PostCard key={index} post={node} />
+                })}
+            </div>
+        </section>
     )
 }
 

@@ -40,7 +40,7 @@ export default () => {
             <div className={styles.home}>
                 <section className={styles.right__sec}></section>
                 <section className={styles.blog__sec}>
-                    <PostList post={posts} />
+                    <PostList posts={posts} />
                 </section>
                 <section className={styles.left__sec}></section>
             </div>
