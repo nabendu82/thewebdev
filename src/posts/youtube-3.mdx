@@ -1,7 +1,7 @@
 ---
 title: Create Youtube Player in ReactJs — Part 3
 slug: create-youtube-player-in-reactjs-part-3
-image: ../images/youtube-3.jpeg
+image: ./youtube-3.jpeg
 date: 2018-04-23
 author: Nabendu Biswas
 twitter: https://twitter.com/nabendu82
@@ -20,10 +20,12 @@ First to add a Video Player, goto **App.js** and change as below
 ![App.js changes](https://cdn-images-1.medium.com/max/2000/1*Q0EFZKZJkKsaGP4kv2VG9w.png)*App.js changes*
 
 The code for VideoDetails is these two lines
-**import VideoDetail from ‘./components/video_detail’;
-<VideoDetail video={this.state.selectedVideo}/>**
+```
+import VideoDetail from ‘./components/video_detail’;
+<VideoDetail video={this.state.selectedVideo}/>
+```
 
-Notice, we created a new key-value pair **selectedVideo **in state which will be used later to select video. It defaults to the first video when the search is done in YTSearch by **selectedVideo: data[0]** and this gets passed to **VideoDetail** as **props**
+Notice, we created a new key-value pair **selectedVideo** in state which will be used later to select video. It defaults to the first video when the search is done in YTSearch by **selectedVideo: data[0]** and this gets passed to **VideoDetail** as **props**
 
 Lets update **video_detail.js** next and understand the logic.
 
@@ -32,9 +34,11 @@ Lets update **video_detail.js** next and understand the logic.
 In it we are receiving the single *video object as prop* and extracting **videoId**, **title** and **description** from it. Then displaying in an iframe and showing title and description below it. Also, using a little bootstrap magic for styling.
 
 Notice the below statements, they are very important
-> if(!video){
- return <div>Loading…</div>;
- }
+```
+if(!video){
+    return <div>Loading…</div>;
+}
+```
 
 Comment them out and you will get the below error
 
@@ -46,35 +50,40 @@ It occurs because in our **App.js**, we have **selectedVideo: null** initially s
 
 **Click to change video**
 To do this, we have added *onVideoSelect* in *VideoList* in *App.js*
-> <VideoList
- onVideoSelect={userSelected => this.setState({selectedVideo: userSelected})}
- videos={this.state.videos}
- />
+```
+<VideoList
+    onVideoSelect={userSelected => this.setState({selectedVideo: userSelected})}
+    videos={this.state.videos}
+/>
+```
 
 This is a special way to props from parent to children and then back to them. This is known as **callback. **It can be used to pass props to more then 1 level deep and receive data back.
 
 Now let’s move to **video_list.js** and receive this props
-> const videoItems = props.videos.map((video) => {
- return (
- <VideoListItem
-** *onUserSelected={props.onVideoSelect}** *
- key={video.etag}
- video={video} />
- );
- });
+```
+const videoItems = props.videos.map((video) => {
+    return (
+    <VideoListItem
+    onUserSelected={props.onVideoSelect}
+    key={video.etag}
+    video={video} />
+    );
+    });
+```
 
 We are not doing anything here and passing the props to it’s child **VideoListItem**. So, let’s move to **video_list_item.js** and update it.
-> <li **onClick={() => onUserSelected(video)}** className=”list-group-item”>
- <div className=”video-list media”>
- <div className=”media-left”>
- <img className=”media-object” src={imageUrl} />
- </div>
- <div className=”media-body”>
- <div className=”media-heading”>{video.snippet.title}</div>
- </div>
- </div>
- </li>
-
+```
+<li **onClick={() => onUserSelected(video)}** className=”list-group-item”>
+    <div className=”video-list media”>
+    <div className=”media-left”>
+    <img className=”media-object” src={imageUrl} />
+    </div>
+    <div className=”media-body”>
+    <div className=”media-heading”>{video.snippet.title}</div>
+    </div>
+    </div>
+</li>
+```
 We have added an **onClick** event handler on **li** element. So, when the user clicks on it, it passes the **video** to **onUserSelected.
 **The ***onUserSelected ***in **video_list.js, **passed it back to ***onVideoSelect **in **App.js***
 
@@ -84,14 +93,17 @@ This run the render() again and the new video is passed to **VideoDetail** compo
 
 **Search capabilities**
 To do this, we added onSearchTermChange in *SearchBar* in *App.js*
-> <SearchBar **onSearchTermChange={searchTerm => this.videoSearch(searchTerm)}**/>
+```
+<SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm)}/>
+```
 
 We are again using callback here. So, let’s move to **search_bar.js** . Here we will add this to **onInputChange()** method.
-> onInputChange(event) {
- this.setState({ term: event.target.value });
- **this.props.onSearchTermChange(event.target.value);**
- }
-
+```
+onInputChange(event) {
+    this.setState({ term: event.target.value });
+    this.props.onSearchTermChange(event.target.value);
+}
+```
 So, we are passing the event.target.value, which is nothing but the updated text in the input box.
 
 Back in **App.js** we are using this new text value to run the **videoSearch()** function again.
@@ -105,13 +117,14 @@ These are minor styles to make our app look better. All of them are self-explain
 
 The **index.css** file is called from our **index.js**, which we never changed. So, the styles will be reflected. Only a minor thing need to be added in **search_bar.js**
 Add **className=”search-bar”** to the top level div as shown below
-> <div **className=”search-bar”**>
- <input
- value={this.state.term}
- onChange={this.onInputChange}
- />
- </div>
-
+```
+<div className=”search-bar”>
+    <input
+    value={this.state.term}
+    onChange={this.onInputChange}
+    />
+</div>
+```
 This completes this tutorial and we get this amazing youtube search app.
 
 ![Deployment in Heroku](https://cdn-images-1.medium.com/max/5752/1*q_TlDwZKykQ2Ixh4DuONLA.png)*Deployment in Heroku*
