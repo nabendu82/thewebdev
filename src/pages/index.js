@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import styles from "../css/home.module.css";
 import PostList from "../components/PostList";
+import TagList from "../components/TagList";
 import { graphql, useStaticQuery } from "gatsby";
 
 const getPosts = graphql`
@@ -15,6 +16,7 @@ const getPosts = graphql`
                 slug
                 date(formatString: "MMMM Do, YYYY")
                 author
+                tags
                 image {
                 childImageSharp {
                     fluid {
@@ -33,12 +35,13 @@ const getPosts = graphql`
 export default () => {
     const response = useStaticQuery(getPosts);
     const posts = response.allMdx.edges;
-    console.log(response);
 
     return (
         <Layout>
             <div className={styles.home}>
-                <section className={styles.right__sec}></section>
+                <section className={styles.right__sec}>
+                    <TagList tags={posts} />
+                </section>
                 <section className={styles.blog__sec}>
                     <PostList posts={posts} />
                 </section>
