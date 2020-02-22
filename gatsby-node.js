@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions
     const {
@@ -9,9 +11,10 @@ exports.createPages = async ({ actions, graphql }) => {
             allMdx {
             edges {
                 node {
-                frontmatter {
-                    slug
-                }
+                    frontmatter {
+                        slug
+                        tags
+                    }
                 }
             }
             }
@@ -24,6 +27,24 @@ exports.createPages = async ({ actions, graphql }) => {
             component: require.resolve("./src/templates/post-template.js"),
             context: {
                 slug: slug,
+            },
+        })
+    })
+
+    let tmpArr = [];
+
+    posts.forEach(({ node }) => {
+        const { tags } = node.frontmatter;
+        tmpArr = [...tmpArr, ...tags];
+    })
+    tmpArr = [...new Set(tmpArr)];
+
+    tmpArr.forEach(tag => {
+        createPage({
+            path: `/tags/${_.kebabCase(tag)}/`,
+            component: require.resolve("./src/templates/tags-template.js"),
+            context: {
+                tag,
             },
         })
     })

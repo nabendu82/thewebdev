@@ -12,7 +12,7 @@
     text-transform: capitalize;
     margin-bottom: 10px;
 }
-.info h6 {
+.info h5 {
     color: var(--darkGrey);
     text-transform: capitalize;
 }
@@ -32,6 +32,14 @@
 .link:hover {
     background: var(--mainBlack);
     color: var(--mainWhite);
+}
+.tagLink {
+    color: var(--mainBlack);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+.tagLink:hover {
+    color: var(--darkGrey);
 }
 @media screen and (min-width: 776px) {
     .card {

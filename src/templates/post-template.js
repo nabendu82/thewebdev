@@ -5,9 +5,10 @@ import Image from "gatsby-image"
 import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { FaGithub, FaTwitterSquare, FaDev } from "react-icons/fa"
+import { kebabCase } from 'lodash'
 
 const postTemplate = ({ data }) => {
-    const { title, date, author, twitter, github, dev, image } = data.mdx.frontmatter;
+    const { title, date, author, twitter, github, dev, image, tags } = data.mdx.frontmatter;
     const { body } = data.mdx;
     const img = image.childImageSharp.fluid;
 
@@ -22,6 +23,11 @@ const postTemplate = ({ data }) => {
                     <h4>
                         <span>by {author}</span> / <span>{date}</span>
                     </h4>
+                    <h5>
+                    {tags.map((tag, index) => <Link to={`/tags/${kebabCase(tag)}`}
+                                                    key={index} className={styles.tagLink}>#{tag} </Link>)
+                        }
+                    </h5>
                 </div>
                 <Image fluid={img} />
                 <div className={styles.content}>
@@ -50,6 +56,7 @@ query getPost($slug: String!) {
             twitter
             github
             dev
+            tags
             image {
             childImageSharp {
                     fluid {
