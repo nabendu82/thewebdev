@@ -34,7 +34,35 @@ const getPosts = graphql`
 
 export default () => {
     const response = useStaticQuery(getPosts);
-    const posts = response.allMdx.edges;
+    const allPosts = response.allMdx.edges;
+    const emptyQuery = ""
+    const [state, setState] = React.useState({
+        filteredData: [],
+        query: emptyQuery,
+    });
+
+    const handleInputChange = event => {
+        const query = event.target.value
+        const posts = response.allMdx.edges || []
+        const filteredData = posts.filter(post => {
+            const { title, tags, author } = post.node.frontmatter;
+            const { excerpt } = post.node;
+            return (
+                author.toLowerCase().includes(query.toLowerCase()) ||
+                excerpt.toLowerCase().includes(query.toLowerCase()) ||
+                title.toLowerCase().includes(query.toLowerCase()) ||
+                tags.join("").toLowerCase().includes(query.toLowerCase())
+            )
+        })
+        setState({
+          query, // with current query string from the `Input` event
+          filteredData, // with filtered data from posts.filter(post => (//filteredData)) above
+        })
+    }
+
+    const { filteredData, query } = state;
+    const hasSearchResults = filteredData && query !== emptyQuery;
+    const posts = hasSearchResults ? filteredData : allPosts;
 
     return (
         <Layout>
@@ -43,6 +71,15 @@ export default () => {
                     <TagList tags={posts} />
                 </section>
                 <section className={styles.blog__sec}>
+                    <div className={styles.searchBox}>
+                        <input
+                        className={styles.searchInput}
+                        type="text"
+                        id="filter"
+                        placeholder="Type to filter posts..."
+                        onChange={handleInputChange}
+                        />
+                    </div>
                     <PostList posts={posts} />
                 </section>
                 <section className={styles.left__sec}></section>
