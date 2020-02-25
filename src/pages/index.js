@@ -4,6 +4,8 @@ import styles from "../css/home.module.css";
 import PostList from "../components/PostList";
 import TagList from "../components/TagList";
 import { graphql, useStaticQuery } from "gatsby";
+import cover from "../images/cover.png";
+import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
 
 const getPosts = graphql`
 {
@@ -66,6 +68,15 @@ export default () => {
 
     return (
         <Layout>
+            <div className={styles.mobileMenu}>
+                <button type="button" className={styles.logoBtn} >
+                    <FaSortAmountDown className={styles.logoIcon} />
+                </button>
+                <h2 className={styles.mobileHeader}>My TWD</h2>
+                <button type="button" className={styles.logoBtn} >
+                    <FaSortAmountUp className={styles.logoIcon} />
+                </button>
+            </div>
             <div className={styles.home}>
                 <section className={styles.right__sec}>
                     <TagList tags={posts} />
@@ -82,7 +93,13 @@ export default () => {
                     </div>
                     <PostList posts={posts} />
                 </section>
-                <section className={styles.left__sec}></section>
+                <section className={styles.left__sec}>
+                    <section className={styles.sponserAds}>
+                        <div className={styles.advert1}>
+                            <img src={cover} className={styles.coverImg} alt="the book cover" />
+                        </div>
+                    </section>
+                </section>
             </div>
         </Layout>
     )
