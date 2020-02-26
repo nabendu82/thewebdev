@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout";
 import styles from "../css/home.module.css";
 import PostList from "../components/PostList";
 import TagList from "../components/TagList";
 import { graphql, useStaticQuery } from "gatsby";
 import cover from "../images/cover.png";
-import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
+import { FaSortAmountUp } from "react-icons/fa";
+import Menu from "../components/Menu/Menu";
+import Burger from "../components/Burger/Burger";
 
 const getPosts = graphql`
 {
@@ -42,7 +44,7 @@ export default () => {
         filteredData: [],
         query: emptyQuery,
     });
-
+    const [open, setOpen] = useState(false);
     const handleInputChange = event => {
         const query = event.target.value
         const posts = response.allMdx.edges || []
@@ -69,9 +71,10 @@ export default () => {
     return (
         <Layout>
             <div className={styles.mobileMenu}>
-                <button type="button" className={styles.logoBtn} >
-                    <FaSortAmountDown className={styles.logoIcon} />
-                </button>
+                <div>
+                    <Burger open={open} setOpen={setOpen} />
+                    <Menu open={open} setOpen={setOpen} />
+                </div>
                 <h2 className={styles.mobileHeader}>My TWD</h2>
                 <button type="button" className={styles.logoBtn} >
                     <FaSortAmountUp className={styles.logoIcon} />
