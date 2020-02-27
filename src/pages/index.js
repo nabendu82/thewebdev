@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import styles from "../css/home.module.css";
 import PostList from "../components/PostList";
@@ -8,6 +8,7 @@ import cover from "../images/cover.png";
 import { FaSortAmountUp } from "react-icons/fa";
 import Menu from "../components/Menu/Menu";
 import Burger from "../components/Burger/Burger";
+import { useOnClickOutside } from "../constants/hooks";
 
 const getPosts = graphql`
 {
@@ -45,6 +46,8 @@ export default () => {
         query: emptyQuery,
     });
     const [open, setOpen] = useState(false);
+    const node = useRef();
+    useOnClickOutside(node, () => setOpen(false));
     const handleInputChange = event => {
         const query = event.target.value
         const posts = response.allMdx.edges || []
@@ -71,7 +74,7 @@ export default () => {
     return (
         <Layout>
             <div className={styles.mobileMenu}>
-                <div>
+                <div ref={node}>
                     <Burger open={open} setOpen={setOpen} />
                     <Menu open={open} setOpen={setOpen} />
                 </div>

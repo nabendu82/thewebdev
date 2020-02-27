@@ -4,6 +4,7 @@ export const StyledMenu = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:center;
     background: #add8e6;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-150%)'};
     height: 100vh;
