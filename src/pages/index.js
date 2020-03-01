@@ -9,6 +9,8 @@ import { FaSortAmountUp } from "react-icons/fa";
 import Menu from "../components/Menu/Menu";
 import Burger from "../components/Burger/Burger";
 import { useOnClickOutside } from "../constants/hooks";
+import Advert from "../components/Advert";
+import RightMenu from "../components/Menu/RightMenu";
 
 const getPosts = graphql`
 {
@@ -48,6 +50,10 @@ export default () => {
     const [open, setOpen] = useState(false);
     const node = useRef();
     useOnClickOutside(node, () => setOpen(false));
+    const [isOpen, setRight] = useState(false);
+    const toggleRightMenu = () => {
+        setRight(isOpen => !isOpen)
+    }
     const handleInputChange = event => {
         const query = event.target.value
         const posts = response.allMdx.edges || []
@@ -79,9 +85,10 @@ export default () => {
                     <Menu open={open} setOpen={setOpen} />
                 </div>
                 <h2 className={styles.mobileHeader}>My TWD</h2>
-                <button type="button" className={styles.logoBtn} >
+                <button type="button" className={styles.logoBtn} onClick={toggleRightMenu} >
                     <FaSortAmountUp className={styles.logoIcon} />
                 </button>
+                <RightMenu open={isOpen} />
             </div>
             <div className={styles.home}>
                 <section className={styles.right__sec}>
@@ -100,11 +107,7 @@ export default () => {
                     <PostList posts={posts} />
                 </section>
                 <section className={styles.left__sec}>
-                    <section className={styles.sponserAds}>
-                        <div className={styles.advert1}>
-                            <img src={cover} className={styles.coverImg} alt="the book cover" />
-                        </div>
-                    </section>
+                    <Advert imgPath={cover} />
                 </section>
             </div>
         </Layout>
