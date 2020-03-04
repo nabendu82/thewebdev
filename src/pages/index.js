@@ -11,6 +11,7 @@ import Burger from "../components/Burger/Burger";
 import { useOnClickOutside } from "../constants/hooks";
 import Advert from "../components/Advert";
 import RightMenu from "../components/Menu/RightMenu";
+import SeriesList from "../components/SeriesList";
 
 const getPosts = graphql`
 {
@@ -24,6 +25,7 @@ const getPosts = graphql`
                 date(formatString: "MMMM Do, YYYY")
                 author
                 tags
+                series
                 image {
                 childImageSharp {
                     fluid {
@@ -108,6 +110,7 @@ export default () => {
                 </section>
                 <section className={styles.left__sec}>
                     <Advert imgPath={cover} />
+                    <SeriesList seriesList={posts} />
                 </section>
             </div>
         </Layout>
