@@ -9,7 +9,8 @@
     outline: none;
     width: 300px;
     height: 600px;
-    margin-bottom: 2rem;
+    margin: 0 auto;
+    padding-top: 1rem;
     background: var(--mainWhite);
     text-align: center;
     display: flex;

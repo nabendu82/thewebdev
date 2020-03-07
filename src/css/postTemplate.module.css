@@ -43,6 +43,20 @@
 .tagLink:hover {
     color: var(--darkGrey);
 }
+.seriesLink{
+    color: var(--mainWhite);
+    text-decoration: none;
+    background: #4CAAB3;
+    padding: 8px 10px;
+    border-radius: 2%;
+    transition: all 0.3s ease-in-out;
+}
+.seriesLink:hover {
+    color: var(--darkGrey);
+}
+.seriesText{
+    margin: 1rem auto;
+}
 .info h1 {
     letter-spacing: 5px;
     margin-bottom: 0.5rem;
