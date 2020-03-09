@@ -5,9 +5,8 @@ import PostList from "../components/PostList";
 import TagList from "../components/TagList";
 import { graphql, useStaticQuery } from "gatsby";
 import cover from "../images/cover.png";
-import { FaSortAmountUp } from "react-icons/fa";
+import { FaSortAmountUp, FaSortAmountDown } from "react-icons/fa";
 import Menu from "../components/Menu/Menu";
-import Burger from "../components/Burger/Burger";
 import { useOnClickOutside } from "../constants/hooks";
 import Advert from "../components/Advert";
 import RightMenu from "../components/Menu/RightMenu";
@@ -50,6 +49,9 @@ export default () => {
         query: emptyQuery,
     });
     const [open, setOpen] = useState(false);
+    const toggleLeftMenu = () => {
+        setOpen(open => !open)
+    }
     const node = useRef();
     useOnClickOutside(node, () => setOpen(false));
     const [isOpen, setRight] = useState(false);
@@ -70,8 +72,8 @@ export default () => {
             )
         })
         setState({
-          query, // with current query string from the `Input` event
-          filteredData, // with filtered data from posts.filter(post => (//filteredData)) above
+            query,
+            filteredData,
         })
     }
 
@@ -82,10 +84,10 @@ export default () => {
     return (
         <Layout>
             <div className={styles.mobileMenu}>
-                <div ref={node}>
-                    <Burger open={open} setOpen={setOpen} />
-                    <Menu open={open} setOpen={setOpen} />
-                </div>
+                <button type="button" className={styles.logoBtn} onClick={toggleLeftMenu} >
+                    <FaSortAmountDown className={styles.logoIcon} />
+                </button>
+                    <Menu open={open} />
                 <h2 className={styles.mobileHeader}>My TWD</h2>
                 <button type="button" className={styles.logoBtn} onClick={toggleRightMenu} >
                     <FaSortAmountUp className={styles.logoIcon} />
