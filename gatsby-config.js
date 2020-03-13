@@ -42,6 +42,18 @@ module.exports = {
           sitemap: 'https://thewebdev.tech/sitemap.xml',
           policy: [{ userAgent: '*', allow: '/' }]
       }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+          name: `The Web Dev`,
+          short_name: `TWD`,
+          start_url: `/`,
+          background_color: `#ffffff`,
+          theme_color: `#4ABCF8`,
+          display: `standalone`,
+          icon: `src/images/logo.png`,
+      },
     }
   ]
 }
