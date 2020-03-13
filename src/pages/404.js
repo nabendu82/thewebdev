@@ -1,9 +1,11 @@
 import React from 'react'
 import '../css/404.css'
+import SEO from "../components/SEO"
 
 const Error = () => {
     return (
         <div id="notfound">
+            <SEO title="Error" />
             <div className="notfound">
                 <div className="notfound-404">
                     <h3>Oops! Page not found</h3>

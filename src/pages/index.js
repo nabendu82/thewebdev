@@ -11,6 +11,7 @@ import { useOnClickOutside } from "../constants/hooks";
 import Advert from "../components/Advert";
 import RightMenu from "../components/Menu/RightMenu";
 import SeriesList from "../components/SeriesList";
+import SEO from "../components/SEO"
 
 const getPosts = graphql`
 {
@@ -83,6 +84,7 @@ export default () => {
 
     return (
         <Layout>
+            <SEO title="Home" />
             <div className={styles.mobileMenu}>
                 <button type="button" className={styles.logoBtn} onClick={toggleLeftMenu} >
                     <FaSortAmountDown className={styles.logoIcon} />

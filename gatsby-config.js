@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `TheWebDev Blog`,
+    title: `TheWebDev`,
     author: `Nabendu Biswas`,
-    description: `Blog post by Nabendu Biswas to share stuff i learn in my Web development journey`,
+    description: `Web-development blog posts to take your dev skills to next level`,
+    twitterUsername: "@nabendu82",
+    image:'/thewebdev.jpg',
     siteUrl: `https://thewebdev.tech/`,
     keywords: [
       "Nabendu",
@@ -28,6 +30,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-mdx`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

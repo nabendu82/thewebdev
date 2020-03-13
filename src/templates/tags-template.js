@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import styles from "../css/tagsTemplate.module.css"
+import SEO from "../components/SEO"
 
 const tagsTemplate = ({ pageContext, data }) => {
     const { tag } = pageContext;
@@ -11,6 +12,7 @@ const tagsTemplate = ({ pageContext, data }) => {
         } tagged with "${tag}"`;
     return (
         <Layout>
+            <SEO title="Tags" />
             <section className={styles.template}>
                 <h1>{tagHeader}</h1>
                 <ul>

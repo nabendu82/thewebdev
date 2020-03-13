@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout';
 import { Link, graphql } from 'gatsby';
 import styles from "../css/tagsTemplate.module.css"
+import SEO from "../components/SEO"
 
 const seriesTemplate = ({ pageContext, data }) => {
     const { series } = pageContext;
@@ -11,6 +12,7 @@ const seriesTemplate = ({ pageContext, data }) => {
         } tagged with "${series}"`;
     return (
         <Layout>
+            <SEO title="Series" />
             <section className={styles.template}>
                 <h1>{seriesHeader}</h1>
                 <ul>

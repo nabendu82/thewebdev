@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { FaGithub, FaTwitterSquare, FaDev } from "react-icons/fa"
 import { kebabCase } from 'lodash'
+import SEO from "../components/SEO"
 
 const postTemplate = ({ data }) => {
     const { title, date, author, twitter, github, dev, image, tags, series } = data.mdx.frontmatter;
@@ -14,6 +15,7 @@ const postTemplate = ({ data }) => {
 
     return (
         <Layout>
+            <SEO title={title} />
             <section className={styles.template}>
                 <Link to="/" className={styles.link}>
                     back to all posts
