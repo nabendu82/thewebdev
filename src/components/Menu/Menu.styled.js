@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledMenu = styled.nav`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
+    display: block;
     background: #add8e6;
+    height: 100%;
+    overflow-y: scroll;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-150%)'};
-    height: 100vh;
-    text-align: left;
     padding: 2rem;
     position: absolute;
     top: 9%;

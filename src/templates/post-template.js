@@ -7,12 +7,21 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { FaGithub, FaTwitterSquare, FaDev } from "react-icons/fa"
 import { kebabCase } from 'lodash'
 import SEO from "../components/SEO"
+import { Disqus } from "gatsby-plugin-disqus";
 
 const postTemplate = ({ data }) => {
-    const { title, date, author, twitter, github, dev, image, tags, series } = data.mdx.frontmatter;
+    const { title, date, author, twitter, github, dev, image, tags, series, slug } = data.mdx.frontmatter;
     const { body } = data.mdx;
     const img = image.childImageSharp.fluid;
-
+    const url = "https://thewebdev.tech/";
+    const blogIdentity = slug;
+    console.log(blogIdentity);
+    console.log(`${url}${slug}`);
+    let disqusConfig = {
+        url: `${url}${slug}`,
+        identifier: blogIdentity,
+        title: title,
+    }
     return (
         <Layout>
             <SEO title={title} />
@@ -48,6 +57,7 @@ const postTemplate = ({ data }) => {
                     {github && <a href={github} target="_blank" rel="noopener noreferrer">{<FaGithub />}</a>}
                     {dev && <a href={dev} target="_blank" rel="noopener noreferrer">{<FaDev />}</a>}
                 </div>
+                <Disqus config={disqusConfig} />
             </section>
         </Layout>
     )
