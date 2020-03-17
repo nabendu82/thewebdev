@@ -8,6 +8,7 @@ import { FaGithub, FaTwitterSquare, FaDev } from "react-icons/fa"
 import { kebabCase } from 'lodash'
 import SEO from "../components/SEO"
 import { Disqus } from "gatsby-plugin-disqus";
+import Subscribe from '../components/subscribe';
 
 const postTemplate = ({ data }) => {
     const { title, date, author, twitter, github, dev, image, tags, series, slug } = data.mdx.frontmatter;
@@ -57,6 +58,7 @@ const postTemplate = ({ data }) => {
                     {github && <a href={github} target="_blank" rel="noopener noreferrer">{<FaGithub />}</a>}
                     {dev && <a href={dev} target="_blank" rel="noopener noreferrer">{<FaDev />}</a>}
                 </div>
+                <Subscribe />
                 <Disqus config={disqusConfig} />
             </section>
         </Layout>

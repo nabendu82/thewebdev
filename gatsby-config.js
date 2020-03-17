@@ -69,6 +69,12 @@ module.exports = {
       options: {
           shortname: `https-thewebdev-tech`
       }
-    }
+    },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+          endpoint: "https://blog.us4.list-manage.com/subscribe/post?u=5c156d7649897240e9c994d38&amp;id=67f40851e0",
+      },
+    },
   ]
 }
