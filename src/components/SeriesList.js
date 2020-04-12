@@ -8,6 +8,7 @@ const SeriesList = ({ seriesList }) => {
         tmpArr = [...tmpArr, element.node.frontmatter.series];
     });
     tmpArr = [...new Set(tmpArr)];
+    tmpArr = tmpArr.filter(arr => arr);
 
     return (
         <section className={styles.tagList}>

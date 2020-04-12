@@ -33,7 +33,7 @@ const seriesTemplate = ({ pageContext, data }) => {
 }
 
 export const query = graphql`
-    query getSeries($series: String!) {
+    query getSeries($series: String) {
         allMdx(sort: {fields: frontmatter___date, order: DESC}
                     filter: {frontmatter: { series: { in: [$series] }}}) {
             totalCount
