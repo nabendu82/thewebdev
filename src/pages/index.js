@@ -45,10 +45,12 @@ const getPosts = graphql`
 export default () => {
     const response = useStaticQuery(getPosts);
     const allPosts = response.allMdx.edges;
+    const postCount = response.allMdx.totalCount;
     const emptyQuery = ""
     const [state, setState] = React.useState({
         filteredData: [],
         query: emptyQuery,
+        filteredCount: 0
     });
     const [open, setOpen] = useState(false);
     const toggleLeftMenu = () => {
@@ -72,16 +74,20 @@ export default () => {
                 title.toLowerCase().includes(query.toLowerCase()) ||
                 tags.join("").toLowerCase().includes(query.toLowerCase())
             )
-        })
+        });
+        const filteredCount = filteredData.length;
         setState({
             query,
             filteredData,
+            filteredCount
         })
     }
 
-    const { filteredData, query } = state;
+    const { filteredData, query, filteredCount } = state;
     const hasSearchResults = filteredData && query !== emptyQuery;
     const posts = hasSearchResults ? filteredData : allPosts;
+    const hasCount = filteredCount && query !== emptyQuery;
+    const count = hasCount ? filteredCount : postCount;
 
     return (
         <Layout>
@@ -111,6 +117,7 @@ export default () => {
                         placeholder="Type to filter posts..."
                         onChange={handleInputChange}
                         />
+                        <span className={styles.postCount}>{count}</span>
                     </div>
                     <PostList posts={posts} />
                 </section>
