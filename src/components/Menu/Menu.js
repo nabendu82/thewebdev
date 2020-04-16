@@ -3,6 +3,7 @@ import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 import { graphql, useStaticQuery } from "gatsby";
 import TagList from "../TagList";
+import SubscribeComp from '../SubscribeComp';
 
 const getTags = graphql`
 {
@@ -36,6 +37,7 @@ const Menu = ({ open }) => {
     return (
         <StyledMenu open={open}>
             <TagList tags={tags} />
+            <SubscribeComp />
         </StyledMenu>
     )
 }

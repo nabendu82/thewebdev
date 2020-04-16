@@ -4,7 +4,7 @@ import styles from "../css/home.module.css";
 import PostList from "../components/PostList";
 import TagList from "../components/TagList";
 import { graphql, useStaticQuery } from "gatsby";
-import cover from "../images/cover.png";
+import cover from "../images/Gatsby.png";
 import { FaSortAmountUp, FaSortAmountDown } from "react-icons/fa";
 import Menu from "../components/Menu/Menu";
 import { useOnClickOutside } from "../constants/hooks";
@@ -12,6 +12,7 @@ import Advert from "../components/Advert";
 import RightMenu from "../components/Menu/RightMenu";
 import SeriesList from "../components/SeriesList";
 import SEO from "../components/SEO"
+import SubscribeComp from "../components/SubscribeComp";
 
 const getPosts = graphql`
 {
@@ -99,6 +100,7 @@ export default () => {
             <div className={styles.home}>
                 <section className={styles.right__sec}>
                     <TagList tags={posts} />
+                    <SubscribeComp />
                 </section>
                 <section className={styles.blog__sec}>
                     <div className={styles.searchBox}>

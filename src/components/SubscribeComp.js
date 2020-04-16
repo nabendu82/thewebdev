@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from "../css/advert.module.css";
+import Subscribe from './subscribe';
 
-const Advert = ({ imgPath }) => {
+const SubscribeComp = () => {
     return (
         <section className={styles.sponserAds}>
             <div className={styles.advert1}>
-                <img src={imgPath} className={styles.coverImg} alt="the book cover" />
-                <p>Coming Soon!</p>
+                <Subscribe />
+                <p>Also, details about Gatsby Cookbook</p>
             </div>
         </section>
     )
 }
 
-export default Advert;
+export default SubscribeComp;

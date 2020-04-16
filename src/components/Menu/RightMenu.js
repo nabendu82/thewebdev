@@ -1,6 +1,6 @@
 import React from 'react';
 import Advert from '../Advert';
-import cover from "../../images/cover.png";
+import cover from "../../images/Gatsby.png";
 import { StyledRightMenu } from './RightMenu.styled';
 import { graphql, useStaticQuery } from "gatsby";
 import SeriesList from '../SeriesList';
