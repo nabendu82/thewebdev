@@ -6,7 +6,7 @@ const Advert = ({ imgPath }) => {
         <section className={styles.sponserAds}>
             <div className={styles.advert1}>
                 <img src={imgPath} className={styles.coverImg} alt="the book cover" />
-                <p>Coming Soon!</p>
+                <p>Coming July 2020</p>
             </div>
         </section>
     )
