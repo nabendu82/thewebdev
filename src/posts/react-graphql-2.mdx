@@ -1,0 +1,536 @@
+---
+title: Build a complete app with React and GraphQL — 2
+slug: app-with-react-graphql-2
+image: ./react-graphql-2.jpeg
+date: 2019-05-22
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: React-graphql
+tags: ['javascript', 'react', 'graphql']
+---
+
+Welcome to part-2 of the series. This series have been inspired by [this](https://www.youtube.com/watch?v=ed8SzALpx1Q) youtube tutorial from freecodecamp.
+
+We will first add another type author to **schema.js**
+
+The process is almost similar to the one for books type.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    const graphql = require('graphql');
+
+    const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt } = graphql;
+
+    // Dummy data
+    var books = [
+        { name: 'Name of the Wind', genre: 'Fantasy', id: '1' },
+        { name: 'Two States', genre: 'Drama', id: '2' },
+        { name: 'The Long Earth', genre: 'Sci-Fi', id: '3' },
+    ];
+
+    var authors = [
+        { name: 'Patrick Rothfuss', age: 44, id: '1' },
+        { name: 'Chetan Bhagat', age: 45, id: '2' },
+        { name: 'Terry Pratchett', age: 66, id: '3' }
+    ];
+
+    const BookType = new GraphQLObjectType({
+        name: 'Book',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            genre: { type: GraphQLString }
+        })
+    });
+
+    const AuthorType = new GraphQLObjectType({
+        name: 'Author',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            age: { type: GraphQLInt }
+        })
+    });
+
+    const RootQuery = new GraphQLObjectType({
+        name: 'RootQueryType',
+        fields: {
+            book: {
+                type: BookType,
+                args: { id: { type: GraphQLID } },
+                resolve(parent, args){
+                    return books.find(item => item.id === args.id);
+                }
+            },
+            author: {
+                type: AuthorType,
+                args: { id: { type: GraphQLID } },
+                resolve(parent, args){
+                    return authors.find(item => item.id === args.id);
+                }
+            }
+        }
+    });
+
+
+    module.exports = new GraphQLSchema({
+        query: RootQuery
+    });
+```
+
+</div>
+
+One thing to note that we have make the id as **GraphQLID**. The difference from **GraphQLString** is that, we can pass a number also in **id**.
+
+![number in id](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044690/CompleteAppReactGraphql/2/1_iifep8.png)*number in id*
+
+The usual string will also work.
+
+![id is string](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044690/CompleteAppReactGraphql/2/2_zxyhpn.png)*id is string*
+
+Next, we will make the relation between the book and author types. Each book have an author, so in *book array* we add a key **authorId**, for each object corresponding to the id in *authors array*.
+
+Also, in BookType we are adding query to get the author by using the parent’s authorId.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    …
+    …
+    var books = [
+        { name: 'Name of the Wind', genre: 'Fantasy', id: '1', authorId: '1' },
+        { name: 'Two States', genre: 'Drama', id: '2', authorId: '2' },
+        { name: 'The Long Earth', genre: 'Sci-Fi', id: '3', authorId: '3' },
+    ];
+
+    var authors = [
+        { name: 'Patrick Rothfuss', age: 44, id: '1' },
+        { name: 'Chetan Bhagat', age: 45, id: '2' },
+        { name: 'Terry Pratchett', age: 66, id: '3' }
+    ];
+
+    const BookType = new GraphQLObjectType({
+        name: 'Book',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            genre: { type: GraphQLString },
+            author: {
+                type: AuthorType,
+                resolve(parent, args){
+                    return authors.find(item => item.id === parent.authorId);
+                }
+            }
+        })
+    });
+
+    …
+    …
+```
+
+</div>
+
+Now, we can query in graphiql and get the author details also for a book.
+
+![author details also present](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044690/CompleteAppReactGraphql/2/3_rvz6cx.png)*author details also present*
+
+Now, we will do the opposite. Each author have book, in fact each author can have many books. So, we have a new variable type called **GraphQLList**.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    const graphql = require('graphql');
+
+    const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList } = graphql;
+
+    // Dummy data
+    var books = [
+        { name: 'Name of the Wind', genre: 'Fantasy', id: '1', authorId: '1' },
+        { name: 'Two States', genre: 'Drama', id: '2', authorId: '2' },
+        { name: 'The Long Earth', genre: 'Sci-Fi', id: '3', authorId: '3' },
+        { name: 'The Colour of Magic', genre: 'Fantasy', id: '4', authorId: '3' },
+        { name: 'The Light Fantastic', genre: 'Fantasy', id: '5', authorId: '3' },
+        { name: 'Five Point something', genre: 'Drama', id: '6', authorId: '2' },
+
+    ];
+
+    var authors = [
+        { name: 'Patrick Rothfuss', age: 44, id: '1' },
+        { name: 'Chetan Bhagat', age: 45, id: '2' },
+        { name: 'Terry Pratchett', age: 66, id: '3' }
+    ];
+
+    const BookType = new GraphQLObjectType({
+        name: 'Book',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            genre: { type: GraphQLString },
+            author: {
+                type: AuthorType,
+                resolve(parent, args){
+                    return authors.find(item => item.id === parent.authorId);
+                }
+            }
+        })
+    });
+
+    const AuthorType = new GraphQLObjectType({
+        name: 'Author',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            age: { type: GraphQLInt },
+            books: {
+                type: new GraphQLList(BookType),
+                resolve(parent, args){
+                    return books.filter(obj => obj.authorId === parent.id);
+                }
+            }
+        })
+    });
+    ...
+    ...
+```
+
+</div>
+
+Now, on running our query for authors, we get all his books
+
+![author’s books](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044690/CompleteAppReactGraphql/2/4_kbwvdt.png)*author’s books*
+
+Now, what if we want all the books in our database or all authors. It is very simple using GraphQL, as we need to just update our RootQuery with **GraphQLList** as below in **schema.js**.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    …
+    …
+    const RootQuery = new GraphQLObjectType({
+        name: 'RootQueryType',
+        fields: {
+            book: {
+                type: BookType,
+                args: { id: { type: GraphQLID } },
+                resolve(parent, args){
+                    return books.find(item => item.id === args.id);
+                }
+            },
+            author: {
+                type: AuthorType,
+                args: { id: { type: GraphQLID } },
+                resolve(parent, args){
+                    return authors.find(item => item.id === args.id);
+                }
+            },
+            books: {
+                type: new GraphQLList(BookType),
+                resolve(parent, args){
+                    return books;
+                }
+            },
+            authors: {
+                type: new GraphQLList(AuthorType),
+                resolve(parent, args){
+                    return authors;
+                }
+            }
+        }
+    });
+
+    module.exports = new GraphQLSchema({
+        query: RootQuery
+    });
+```
+
+</div>
+
+Now, a books query will return all books.
+
+![The books query](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044690/CompleteAppReactGraphql/2/5_riblvy.png)*The books query*
+
+An authors query can also be done. We can also include the book.
+
+![authors query](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/6_an1sgu.png)*authors query*
+
+Now, it’s time to store all our data into mongoDB. So, head over to [https://mlab.com/](https://mlab.com/) and login.
+
+Then Create New mongoDB deployment.
+
+![Create New mongoDB](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/7_s5mmog.png)*Create New mongoDB*
+
+Click on the Free plan.
+
+![The free plan](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/8_djndf3.png)*The free plan*
+
+Select a Region and then click Continue.
+
+![Select a Region](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/9_clcnoy.png)*Select a Region*
+
+Give a name to your database and click continue.
+
+![Database name](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/10_rznymu.png)*Database name*
+
+In the next page, Submit the order.
+
+![Submit Order](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/11_fh13ag.png)*Submit Order*
+
+Next, click on your new database.
+
+![The new DB](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/12_fvcchn.png)*The new DB*
+
+In **Users** tab, click on Add database user. It will open a pop-up in which you need to provide a username and password.
+
+![username and password](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/13_oqcpzj.png)*username and password*
+
+Now, to connect to our database we need to use the query string highlighted below.
+
+![Query string](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/14_vvvnhz.png)*Query string*
+
+Now, open your terminal and stop nodemon and install mongoose.
+
+![install mongoose](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/15_vswhjb.png)*install mongoose*
+
+Next, we add the code in **App.js** to connect to our database.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    const express = require('express');
+    const graphqlHTTP = require('express-graphql');
+    const schema = require('./schema/schema');
+    const mongoose = require('mongoose');
+
+    const app = express();
+
+    mongoose.connect('mongodb://nabs:useyourown@ds159546.mlab.com:59546/graphql-react');
+    mongoose.connection.once('open', () => {
+        console.log('Conneted to database');
+    });
+
+    app.use('/graphql', graphqlHTTP({
+        schema,
+        graphiql: true
+    }));
+
+    app.listen(4000, () => {
+        console.log('Listening at port 4000');
+    });
+```
+
+</div>
+
+The running nodemon, will show the success message.
+
+![Connected finally](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044686/CompleteAppReactGraphql/2/16_m6rsdt.png)*Connected finally*
+
+Now, we need to create our mongodb schemas. So, go ahead and create a folder **models** inside **server**. Inside it we create two files — **book.js** and **author.js**
+
+In **author.js** add below code to export an **authorSchema**.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    const mongoose = require('mongoose');
+    const Schema = mongoose.Schema;
+
+    const authorSchema = new Schema({
+        name: String,
+        age: Number
+    });
+
+    module.exports = mongoose.model('Author', authorSchema);
+```
+
+</div>
+
+In **book.js** add below code to export an **bookSchema**.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    const mongoose = require('mongoose');
+    const Schema = mongoose.Schema;
+
+    const bookSchema = new Schema({
+        name: String,
+        genre: String,
+        authorId: String
+    });
+
+    module.exports = mongoose.model('Book', bookSchema);
+```
+
+</div>
+
+Next, head over to **schema.js** and delete the dummy data and all return statements with dummy data. We will add an mutation, which will be used to insert data in our database.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    const graphql = require('graphql');
+    const Book = require('../models/book');
+    const Author = require('../models/Author');
+
+    const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList } = graphql;
+
+    const BookType = new GraphQLObjectType({
+        name: 'Book',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            genre: { type: GraphQLString },
+            author: {
+                type: AuthorType,
+                resolve(parent, args){
+                    //return authors.find(item => item.id === parent.authorId);
+                }
+            }
+        })
+    });
+
+    const AuthorType = new GraphQLObjectType({
+        name: 'Author',
+        fields: ( ) => ({
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            age: { type: GraphQLInt },
+            books: {
+                type: new GraphQLList(BookType),
+                resolve(parent, args){
+                    //return books.filter(obj => obj.authorId === parent.id);
+                }
+            }
+        })
+    });
+
+    const RootQuery = new GraphQLObjectType({
+        name: 'RootQueryType',
+        fields: {
+            book: {
+                type: BookType,
+                args: { id: { type: GraphQLID } },
+                resolve(parent, args){
+                    //return books.find(item => item.id === args.id);
+                }
+            },
+            author: {
+                type: AuthorType,
+                args: { id: { type: GraphQLID } },
+                resolve(parent, args){
+                    //return authors.find(item => item.id === args.id);
+                }
+            },
+            books: {
+                type: new GraphQLList(BookType),
+                resolve(parent, args){
+                    //return books;
+                }
+            },
+            authors: {
+                type: new GraphQLList(AuthorType),
+                resolve(parent, args){
+                    //return authors;
+                }
+            }
+        }
+    });
+
+    const Mutation = new GraphQLObjectType({
+        name: 'Mutation',
+        fields: {
+            addAuthor: {
+                type: AuthorType,
+                args: {
+                    name: { type: GraphQLString },
+                    age: { type: GraphQLInt }
+                },
+                resolve(parent, args){
+                    let author = new Author({
+                        name: args.name,
+                        age: args.age
+                    });
+                    return author.save();
+                }
+            }
+        }
+    });
+
+
+    module.exports = new GraphQLSchema({
+        query: RootQuery,
+        mutation: Mutation
+    });
+```
+
+</div>
+
+Next, head over to graphiql to add an author with mutation.
+
+![Author added with mutation](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/17_ut1bo7.png)*Author added with mutation*
+
+Also, check in your mlab whether that author was added.
+
+![mlab checking](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/18_zwcksq.png)*mlab checking*
+
+Now, we will add mutation to add a book.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    ...
+    ...
+
+    const Mutation = new GraphQLObjectType({
+        name: 'Mutation',
+        fields: {
+            addAuthor: {
+                type: AuthorType,
+                args: {
+                    name: { type: GraphQLString },
+                    age: { type: GraphQLInt }
+                },
+                resolve(parent, args){
+                    let author = new Author({
+                        name: args.name,
+                        age: args.age
+                    });
+                    return author.save();
+                }
+            },
+            addBook: {
+                type: BookType,
+                args: {
+                    name: { type: GraphQLString },
+                    genre: { type: GraphQLString },
+                    authorId: { type: GraphQLID }
+                },
+                resolve(parent, args){
+                    let book = new Book({
+                        name: args.name,
+                        genre: args.genre,
+                        authorId: args.authorId
+                    });
+                    return book.save();
+                }
+            }
+        }
+    });
+    ...
+    ...
+```
+
+</div>
+
+Next, head over to graphiql to add an **book** with mutation. Notice, that the **authorId** we have to get from mlab, from the newly created author.
+
+![book mutation](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/19_ttbv6v.png)*book mutation*
+
+Add some more book and then head over to mlab to verify your additions.
+
+![mlab checking](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/20_z85z6q.png)*mlab checking*
+
+This concludes part-2 of the series. You can find code till here in the github [link](https://github.com/nabendu82/react-graphql).
