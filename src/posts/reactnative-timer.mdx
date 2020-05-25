@@ -9,6 +9,7 @@ github: https://github.com/nabendu82
 dev: https://dev.to/nabendu82
 tags: ['reactnative', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Continuing my React Native journey, i found a great site [https://learn.handlebarlabs.com/](https://learn.handlebarlabs.com/) by Spencer Carli. This post is based on one of the free course by him.
 
@@ -48,7 +49,11 @@ Next, we will change our index.js to display a button on the center of screen.
 
 It will show below in our App.
 
+<div className={styles.image__small}>
+
 ![Android App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389540/TimerReactnative/8_pzmguo.png)*Android App*
+
+</div>
 
 Next, we will make the button round with center align text. In react-native, we have an element Dimensions by which we can use screen width as measurement.
 
@@ -56,7 +61,11 @@ Next, we will make the button round with center align text. In react-native, we 
 
 By the above changes our button is perfectly round and text centered.
 
+<div className={styles.image__small}>
+
 ![Round button](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/10_l5k3nz.png)*Round button*
+
+</div>
 
 Next, we will add logic to display timer text above the button. Here, we are using useState hook to store a variable remainingSecs and also keeping a flag isActive.
 
@@ -76,7 +85,11 @@ With the above code, we were getting a wrong type of display. Our passed 5 was s
 
 Now, our App looks like below.
 
+<div className={styles.image__small}>
+
 ![TimerText](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/13_hxdo09.png)*TimerText*
+
+</div>
 
 Lastly, we will add a Reset button. We are also reusing the styles by using [] in style.
 
@@ -84,6 +97,10 @@ Lastly, we will add a Reset button. We are also reusing the styles by using [] i
 
 This completes our App and it looks like below.
 
+<div className={styles.image__small}>
+
 ![Final App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590389541/TimerReactnative/15_f1g2zl.png)*Final App*
+
+</div>
 
 Hope, you liked the app. You can find the code for the same in this github [link](https://github.com/nabendu82/TimerReactNative).

@@ -9,6 +9,7 @@ github: https://github.com/nabendu82
 dev: https://dev.to/nabendu82
 tags: ['reactnative', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 For the past one month, i have been doing development in React Native. I am using the expo-cli to create the project and using my physical Android phone for testing. It’s time to install the Android emulator on my laptop, so that i don’t have to check my phone every-time.
 
@@ -82,7 +83,7 @@ Next, we need to open the terminal and add two export in the .bash_profile file.
 
 Next run the below command in terminal
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     source ~/.bash_profile
@@ -96,7 +97,11 @@ After that in Android Studio, open the AVD Manager. It is in the top right corne
 
 It will open your Android emulator.
 
+<div className={styles.image__small}>
+
 ![Emulator](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590387470/AndroEmulator/20_no1fdp.png)*Emulator*
+
+</div>
 
 Now, start any of your completed React-native project by npm start. If you don’t have any yet, create one using my previous blog to create a Restaurant Search React-native app [here](https://medium.com/@nabendu82/restaurant-search-app-with-react-native-using-zomato-api-11faa7380b89).
 
@@ -106,6 +111,10 @@ Click on Run on Android device/emulator and it will try to open it. First time i
 
 If successful, you will see our restaurant app running on Android Simulator.
 
+<div className={styles.image__small}>
+
 ![Restaurant app](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590387470/AndroEmulator/22_qonswu.png)*Restaurant app*
+
+</div>
 
 Hope you liked this setup blog. See you soon :)

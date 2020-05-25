@@ -9,6 +9,7 @@ github: https://github.com/nabendu82
 dev: https://dev.to/nabendu82
 tags: ['reactnative', 'react', 'javascript']
 ---
+import styles from "../css/postTemplate.module.css"
 
 I had delayed learning React Native for some time now. After working with React for quite sometime, it is the obvious next step.
 
@@ -20,7 +21,7 @@ Our Restaurant Search app will have a Search Bar to search anything about food a
 
 We will generate our React native project using expo-cli. So, head over to terminal and run the below command.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     npx expo-cli init restroSearch
@@ -44,15 +45,23 @@ Now, i am running the output on a physical Android device. For running on a phys
 
 Now, open the app on your phone. You will get the below screen.
 
+<div className={styles.image__small}>
+
 ![Expo App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384928/RestaurantSearch/4_osh8cm.png)*Expo App*
+
+</div>
 
 Click on Scan QR Code, it will open Camera. Point it to the QR code in the browser and you will the below screen, after all installation is done.
 
+<div className={styles.image__small}>
+
 ![Initial App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384927/RestaurantSearch/5_wecsfm.png)*Initial App*
+
+</div>
 
 We will be using the StackNavigator in our project. So, go ahead and install these dependencies.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     npm install react-navigation
@@ -72,7 +81,11 @@ Now, create a file SearchScreen.js inside src -> screens. You need to create the
 
 This will change our Application in our Android app and will show the SearchScreen component.
 
+<div className={styles.image__small}>
+
 ![SearchScreen](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384926/RestaurantSearch/8_ollbno.png)*SearchScreen*
+
+</div>
 
 Let’s create the SearchBar first. First create a components folder inside src. The create a file SearchBar.js inside it. Add the below content in it.
 
@@ -84,7 +97,11 @@ The styling in react native is mostly done through camelCase notation.
 
 Now, our app will look like below.
 
+<div className={styles.image__small}>
+
 ![Restaurant Search](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384927/RestaurantSearch/10_frujpj.png)*Restaurant Search*
+
+</div>
 
 We will be passing a state from our parent component SearchScreen to SearchBar and will use callback to change it from SearchBar.
 
@@ -106,7 +123,11 @@ Next, add the same in SearchBar component.
 
 Now, we can test it. Open you Android app and then type something on it and press the green enter key.
 
+<div className={styles.image__small}>
+
 ![Searching](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384925/RestaurantSearch/15_e2dvdq.png)*Searching*
+
+</div>
 
 We can see the console log in our terminal after submitting.
 
@@ -120,7 +141,7 @@ Zomato’s documentation is pretty good and contains swagger,so you can check th
 
 We will be using the Restaurant Search API mainly. I will be searching only the restaurants in Bangalore, so we will use the below GET api. We also need to pass our API keys in the header.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&q=Kabab
@@ -130,7 +151,7 @@ We will be using the Restaurant Search API mainly. I will be searching only the 
 
 Next, we will head over to terminal and install axios
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     npm install axios
@@ -152,7 +173,11 @@ Now, we will use these hooks inside our SearchScreen component.
 
 Now, i our android app we get the result.
 
+<div className={styles.image__small}>
+
 ![API](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384923/RestaurantSearch/21_h71wqd.png)*API*
+
+</div>
 
 Next, we will create the component to show this result on screen. We will create a component ResultsList.js
 
@@ -172,7 +197,11 @@ Next, let’s use this in the ResultsList component.
 
 This will show the below in our App.
 
+<div className={styles.image__small}>
+
 ![The Result](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384922/RestaurantSearch/26_mq0ngz.png)*The Result*
+
+</div>
 
 Now, let’s use the data an show it properly. We will use the FlatList to display the horizontal list, but use another component to show each item.
 
@@ -184,7 +213,11 @@ Next, we will create the ResultsDetail component. It just take the item, which i
 
 It will show as the almost complete version of the App.
 
+<div className={styles.image__small}>
+
 ![The App](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384924/RestaurantSearch/29_iktzux.png)*The App*
+
+</div>
 
 You might have noticed, we were not able to scroll vertically on an Android phone. So, to fix that issue we have to use ScrollView to wrap our list and also need to change the View to and empty div `<>`
 
@@ -212,6 +245,10 @@ Next, we will add some styles for these elements.
 
 Now click on any restaurant and it will open the details of the restaurant.
 
+<div className={styles.image__small}>
+
 ![Restaurant details](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590384920/RestaurantSearch/36_xox8w3.png)*Restaurant details*
+
+</div>
 
 You can find the code for the same in github [here](https://github.com/nabendu82/NativeRestaurantSearc) and the apk file can be downloaded from [here](https://drive.google.com/open?id=113_1ZGrYBL-XCX93BvIZ3P0qy3Jx2txa).
