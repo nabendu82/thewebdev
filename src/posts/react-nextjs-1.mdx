@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: React-nextjs
 tags: ['javascript', 'react', 'graphql']
 ---
+import styles from "../css/postTemplate.module.css"
 
 I have recently completed the amazing [Advanced React](https://advancedreact.com/) course by Wes Bos. In the course he taught to built, an online store with the latest technologies listed below.
 
@@ -33,7 +34,7 @@ We will understand a bit of the frontend flow, to make this hamburger menu. The 
 
 Next, we will make the Page component. We have some basic styled components used here with theme and also have an injectGlobal from styled component, which is used to inject global styles to all components.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     import React, { Component } from "react";
@@ -105,7 +106,7 @@ For the hamburger menu to work properly, we have to inject some css in the globa
 
 So, in our styled component project we inject in **Page.js** inside **injectGlobal**
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     /*Below Styles for the burger menu*/

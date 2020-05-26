@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: React-nextjs
 tags: ['javascript', 'react', 'graphql']
 ---
+import styles from "../css/postTemplate.module.css"
 
 I am building a demo Indian Restaurant Billing App , after completing [Advanced React](https://advancedreact.com/) course by Wes Bos.
 
@@ -41,7 +42,7 @@ In the file **mail.js** only keep the below.
 
 Now, in our **Mutation.js** import three new statements at the top and only take makeANiceEmail from mail.js
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const { makeANiceEmail } = require('../mail');

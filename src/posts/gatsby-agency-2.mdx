@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: Gatsby-agency
 tags: ['gatsby', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to part-2 of the series. We will start with Section Four here.
 
@@ -33,7 +34,7 @@ Now, we will add the CSS to our IndexStyles.jsfile, inside the SectionFour style
 
 We also need to install a new fontawesome library, as we are using some brand icons here. So, in the terminal stop gatsby and install this via npm
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     npm install @fortawesome/free-brands-svg-icons

@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: React-graphql
 tags: ['javascript', 'react', 'graphql']
 ---
+import styles from "../css/postTemplate.module.css"
 
 We are starting a new series and it’s about the latest GraphQL. Here we built an App, with React in the frontend and GraphQL in place of REST API.
 
@@ -27,7 +28,7 @@ Next we will install express.
 
 Now, open up your code editor and create a new file **app.js** in the **server** directory. The content for the same is below.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const express = require('express');
@@ -62,7 +63,7 @@ Now, create a new folder **schema** inside **server** and then a new file **sche
 
 In **schema.js** put the below code. Here, we are first defining a type **BookType** and then a query called **RootQuery** to query it.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const graphql = require('graphql');
@@ -100,7 +101,7 @@ In **schema.js** put the below code. Here, we are first defining a type **BookTy
 
 Now, we will use the same in our **app.js**
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const express = require('express');
@@ -122,7 +123,7 @@ Now, we will use the same in our **app.js**
 
 Next, we will add some dummy data in our **schema.js** as our database is still not ready. And also inside our resolve, we will use find to return the book whose id have been passed as args.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const graphql = require('graphql');
@@ -168,7 +169,7 @@ Next, we will add some dummy data in our **schema.js** as our database is still 
 
 Next, we will use the amazing **graphiql** tool to check our query as our front-end is not ready yet. We will need to configure it first in
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const express = require('express');

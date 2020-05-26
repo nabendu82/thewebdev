@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: React-graphql
 tags: ['javascript', 'react', 'graphql']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to part-2 of the series. This series have been inspired by [this](https://www.youtube.com/watch?v=ed8SzALpx1Q) youtube tutorial from freecodecamp.
 
@@ -17,7 +18,7 @@ We will first add another type author to **schema.js**
 
 The process is almost similar to the one for books type.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const graphql = require('graphql');
@@ -95,7 +96,7 @@ Next, we will make the relation between the book and author types. Each book hav
 
 Also, in BookType we are adding query to get the author by using the parent’s authorId.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     …
@@ -139,7 +140,7 @@ Now, we can query in graphiql and get the author details also for a book.
 
 Now, we will do the opposite. Each author have book, in fact each author can have many books. So, we have a new variable type called **GraphQLList**.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const graphql = require('graphql');
@@ -204,7 +205,7 @@ Now, on running our query for authors, we get all his books
 
 Now, what if we want all the books in our database or all authors. It is very simple using GraphQL, as we need to just update our RootQuery with **GraphQLList** as below in **schema.js**.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     …
@@ -296,7 +297,7 @@ Now, open your terminal and stop nodemon and install mongoose.
 
 Next, we add the code in **App.js** to connect to our database.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const express = require('express');
@@ -331,7 +332,7 @@ Now, we need to create our mongodb schemas. So, go ahead and create a folder **m
 
 In **author.js** add below code to export an **authorSchema**.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const mongoose = require('mongoose');
@@ -349,7 +350,7 @@ In **author.js** add below code to export an **authorSchema**.
 
 In **book.js** add below code to export an **bookSchema**.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const mongoose = require('mongoose');
@@ -368,7 +369,7 @@ In **book.js** add below code to export an **bookSchema**.
 
 Next, head over to **schema.js** and delete the dummy data and all return statements with dummy data. We will add an mutation, which will be used to insert data in our database.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     const graphql = require('graphql');
@@ -478,7 +479,7 @@ Also, check in your mlab whether that author was added.
 
 Now, we will add mutation to add a book.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     ...

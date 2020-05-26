@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: Gatsby-agency
 tags: ['gatsby', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 I have done quite a bit freelance WordPress development around 9 years back(2011). Three things which i didn’t liked at that time with WordPress. First was little coding, as i was creating these sites in WordPress with themes. Second, the sites were really slow and third, a lot of these sites were hacked and client used to come back.
 
@@ -21,7 +22,7 @@ Let’s start with Gatsby. I will be following along with the tutorial to create
 
 Next to create a new gatsby site give the following command in the terminal. It uses the most basic gatsby starter kit.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     gatsby new agencyDemo https://github.com/gatsbyjs/gatsby-starter-hello-world
@@ -53,7 +54,7 @@ We will use the extremely popular and my favorite CSS-in-JS library Styled Compo
 
 We need to install some dependencies for styled-components. So, open up the terminal and type the below command.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     npm install --save gatsby-plugin-styled-components styled-components babel-plugin-styled-components
@@ -85,7 +86,7 @@ Next, we will center our text. We need to use the positioning system as we are s
 
 Please make sure to have the below at the bottom of `IndexStyles.js` or else you will get an error.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
 export { Banner, TextWrapper, MoreText }
@@ -119,7 +120,7 @@ Now, let’s add some styled-components for the SectionTwo.
 
 We will now use some font-awesome icons to give this section a nice finish. Open the terminal and install the dependencies.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     npm install @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons

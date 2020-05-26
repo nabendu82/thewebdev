@@ -10,12 +10,13 @@ dev: https://dev.to/nabendu82
 series: React-nextjs
 tags: ['javascript', 'react', 'graphql']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Now that we have completed our Restaurant Billing app, it’s time to deploy it to the web. You can find my earlier article related to the same [Restaurant Billing App built in React NextJS](https://dev.to/nabendu82/complete-production-grade-restaurant-billing-app-built-in-react-nextjs-graphql-p10)
 
 Most apps have just the frontend to deploy or the frontend and backend to deploy. But our app have three pieces, so we need 3 deploys.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
 Prisma Server— MySQL database
@@ -113,7 +114,7 @@ Now, it’s time to deploy our app to Yoga Server. You need to have heroku cli i
 
 Next,head over to the terminal. You should be in the main folder containing your **backend** and **frontend** folders. First commit your all uncommited code by -
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     git add -A
@@ -142,7 +143,7 @@ We will now see the successful login in terminal.
 
 After this we need to create a new heroku app by the below command.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     heroku apps:create billingrestro-yoga-prod
@@ -162,7 +163,7 @@ Now we will get a new branch in our terminal. Do a git remote -v
 
 Heroku only provided us one endpoint, but we need two — one for backend and other for frontend. So, we will create a new endpoint by the one provide by heroku.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     git remote add heroku-backend https://git.heroku.com/billingrestro-yoga-prod.git
@@ -174,7 +175,7 @@ Heroku only provided us one endpoint, but we need two — one for backend and ot
 
 Now, we will push all our **backend** code to this **heroku-backend** remote.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     git subtree push --prefix backend heroku-backend master
@@ -236,7 +237,7 @@ We, will add these changes before pushing to remote
 
 Next, we will push to **heroku-frontend** by the below **subtree** command
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     git subtree push --prefix frontend heroku-frontend master
@@ -268,7 +269,7 @@ Then, go again to the frontend url and you get no error.
 
 But we have the same problem, which we had when creating in localhost. We need a login and only ADMIN can Sign for new Account. So, we create the Admin first by opening our Yoga playground and create one user by the below mutation.
 
-<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+<div className={styles.code__block}>
 
 ```
     mutation createUser {
