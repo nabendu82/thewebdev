@@ -1,0 +1,85 @@
+---
+title: Creating Blog site using Stackbit and Gatsby — 4
+slug: blog-gatsby-stackbit-4
+image: ./gatsby-stackbit-4.jpeg
+date: 2020-02-01
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-stackbit
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-4 of the series. As you might know that i build my personal site with Stackbit, which publishes all my [dev.to](https://dev.to/nabendu82) blogs to [nabendu.blog](https://nabendu.blog/).
+
+It’s an amazing service and i created the site in less than an hour. But as with most things which automate things, one of the major drawback is that my posts are exact replica of dev.to posts and cannot be edited.
+
+I need to do some minor changes to the site, which i will discuss further and then will try to do it. It is not possible for me to change from Stackbit now, as my site gets 1k visitors per month and also i had manually updated the site canonical links(130 blogs till date) to medium and dev. You can find how i did that in part-3 [here](https://medium.com/@nabendu82/creating-blog-site-using-stackbit-gatsbyjs-and-dev-3-afa27ffd6154).
+
+My next blog project with gatsby will be created with markdown(md) or markdown with jsx(mdx) and stored in github and that is my advice to most people.
+
+There are four things which i need to change in my blog and they are -
+
+* Adding disqus plugin to my blog, so that people can add comment and likes
+
+* Adding some advertisement to the home page. (Not anywhere else as i also don’t like more ads)
+
+* Adding more social links to the homepage.
+
+* Change my picture in the home page.
+
+* Change the favicon of the site.
+
+I was searching for a way to add disqus plugin in the code, but found a way to add social links to home page.
+
+![social links](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/1_KAihpQ1oR.png)*social links*
+
+It is pointing to the data file, so i had gone ahead and updated more links in my **social.json** file.
+
+![social.json](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/2_DMf2VN5kyF.png)*social.json*
+
+In my local development server the changes were not reflecting so i had to restart the **gatsby develop**.
+
+![social links](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/3_T27L9cuQm.png)*social links*
+
+Next, after doing some research i am installing the discuss plugin now as per [documentation](https://www.gatsbyjs.org/packages/gatsby-plugin-disqus/) inside by project directory
+
+<div className={styles.code__block}>
+
+```
+    npm install -S gatsby-plugin-disqus
+```
+
+</div>
+
+We need to register to disqus and get the website shortname. You can get it from below screen.
+
+![shortname](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/4_PNNVFj3O8l.png)*shortname*
+
+Next, it’s time to add it in **gatsby-config.js**
+
+![gatsby-config.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/5_Ogx887Jblq.png)*gatsby-config.js*
+
+Next, we need to add disqus in the template **post.js** . After some research and help from this [github](https://github.com/kingingcole/myblog) of [Cole Emeruche](https://coleruche.com/), i was able to add disqus. We need to add url, identifier and stile to **disqusConfig** and for this used a bit javascript.
+
+![post.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/6_TYEF4D0xdL.png)*post.js*
+
+Next, it’s time to add **CommentCount** and **Disqus** before and after your content.
+
+![post.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/7_7Y3jq0G98i.png)*post.js*
+
+It have started now to show in localhost.
+
+![localhost disqus](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/8_s9daWcM061.png)*localhost disqus*
+
+Next, it’s time to push to github so it does the automatic deployment to netlify. After the deployment it looks awesome and my site now have comment and like section.
+
+![Just awesome](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/9_l0botf-0Qx.png)*Just awesome*
+
+So, please go ahead and start showing your love at [https://nabendu.blog/](https://nabendu.blog/)
+
+You can find the code till this at my github repo [here](https://github.com/nabendu82/nabendu-blog).
+
+This completes part-4. In the next part i will add Advertisement and some other minor changes.
