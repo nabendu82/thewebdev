@@ -1,0 +1,135 @@
+---
+title: Creating Blog site using Stackbit and Gatsby — 2
+slug: blog-gatsby-stackbit-2
+image: ./gatsby-stackbit-2.jpeg
+date: 2019-11-15
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-stackbit
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part 2 of the series and my **100th blog** :)
+
+After completing my blogging site in part-1, it’s time to buy and domain name and add the details in netlify.
+
+For adding a custom domain, i generally follow steps from this awesome [Brad Traversy](https://twitter.com/traversymedia) [video](https://www.youtube.com/watch?v=bjVUqvcCnxM&list=PLuOLMA-n-nN9TOxtU11gNLaMZBXxCtvWD&index=19&t=1000s).
+
+The first thing to do is to buy a domain name and we will use the most popular service —[ namecheap](http://www.namecheap.com)
+
+Once you login to your account, you will see this below screen.
+
+![namecheap](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/1_jvqG0aRLKy.png)*namecheap*
+
+I had searched for my name and added two domains to my cart.
+
+![Buying domains](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/2_nrZWGIHH6P.png)*Buying domains*
+
+Then we click on **View Cart**, which will show the next screen.
+
+![Finally buying](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/3_S7W871VJhS.png)*Finally buying*
+
+Once you click on **Confirm Order**, you will be taken to the next screen where you confirm your Payment options.
+
+![Card options](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/4_zQuBbFpvN.png)*Card options*
+
+Once you click on **Continue**, you will be taken to below screen where you have to pay.
+
+![Pay it](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/5_sq2Q3wOgAi.png)*Pay it*
+
+Once you clicked on **Pay Now** in above screen, the purchase will be completed.
+
+![Finally done](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/6_x-DefXVIkT.png)*Finally done*
+
+After this we click on the **Manage** button and it will take us to our dashboard. But strangely enough it asking me to Verify Contacts. For this i clicked a link in the mail which they sent me. Hopefully it will be solved by tomorrow.
+
+![The error](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/7_5uBuS2s6sT.png)*The error*
+
+The error was resolved in a hour and i got the **Manage** button.
+
+![Manage button](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/8_eI5AO1ejc.png)*Manage button*
+
+Next, open [netlify](https://app.netlify.com/) and login to your account. You will be having the blog site we created in part-1 there.
+
+![My blog](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/9_L5cVcF040P.png)*My blog*
+
+In the next screen on **Setup a custom domain**.
+
+![Custom domain](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/10_VetoAMJVbh.png)*Custom domain*
+
+In the next screen i will give the domain name(**nabendu.blog**), which i purchased from namecheap. And then click on **Verify** button.
+
+![nabendu.blog](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/11_Gq66GEO6v.png)*nabendu.blog*
+
+Next, it will ask whether i am the owner and we can click on **Yes, add domain** button.
+
+![Yes](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/12_adYshC1Edh.png)*Yes*
+
+Now, it’s time to go back to namecheap.com and click on **Manage** button in nabendu.blog in the dashboard.
+
+![Manage button](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/13_eTX412z5f4.png)*Manage button*
+
+It will open the below screen. Here click on **Advanced DNS** tab.
+
+![The Advanced DNS](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/14_lFJfuQZYvV.png)*The Advanced DNS*
+
+We can use Netlify DNS to configure the DNS, but we will be using our service provider(namecheap) to do so. You can go through [this](https://docs.netlify.com/domains-https/custom-domains/configure-external-dns/#configure-a-subdomain) article for more details.
+
+So, click on **ADD NEW RECORD** button.
+
+![Add new](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/15_EvhT8nzO6.png)*Add new*
+
+According to Netlify docs, we need to add an **A record** and add their load balancer IP address **104.198.14.52**
+
+Add the record and then click on the small green tick mark.
+
+![A Record](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/16_N6ojZTDO_.png)*A Record*
+
+Next, we will add a **CNAME record**. Since, i already had one i edited it. The Value should be equal to the random domain name, which netlify had given us.
+
+![CNAME](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/17_2DSoUncE70.png)*CNAME*
+
+Also, let’s get rid of the **URL Redirect Record** by clicking on the delete button in it’s row. So, now our Advanced DNS page looks like below.
+
+![Final Advanced DNS](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/18_41Q-gcb5cj.png)*Final Advanced DNS*
+
+Now, go to your netlify account and refresh the webpage. You will see like below if everything is ok.
+
+![Everything ok](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/19_pmZDAXJqfF.png)*Everything ok*
+
+Now, one of a very good feature of Netlify is to provide free secure https site. But it generally takes time. If you scroll down on the same page, it will show that it is **Waiting for DNS propagation**.
+
+![Waiting](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/20_R-wJTXe6ek.png)*Waiting*
+
+It can take up-to a day for DNS propagation. But we can view the http version of our site, with the **Not Secure** warning by the browser.
+
+![Not Secure site](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/21_KD2ifadxu.png)*Not Secure site*
+
+Netlify also provide great **Contact form**, which was given to us by Stackbit. We can check whether it is working by heading to it.
+
+![Submitting a form](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/22_CxY9R-ghBp.png)*Submitting a form*
+
+If it is successful, we will get the below screen.
+
+![Success](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/23_Vd1Ogr2bS.png)*Success*
+
+Now, head over to Overview in netlify and scroll down. You can see the newly sent message.
+
+![Contact form message](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/24_Cb3jU7rRZ5.png)*Contact form message*
+
+I checked my https and it’s got activated in less then 30 mins.
+
+![https site](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/25_9L9v-mmKse.png)*https site*
+
+Now, if we head over to [https://nabendu.blog/](https://nabendu.blog/) we won’t get any error.
+
+![Finally https](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/2/26_JVXUtwgCS.png)*Finally https*
+
+Finally by blog site is live.
+
+Now, this blog i getting long so ending it here. Still some work is remaining but all of it is backend work, which will help me with SEO, analytics, canonical links.
+
+See you soon in the final part :)
