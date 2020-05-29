@@ -1,0 +1,85 @@
+---
+title: Learn GatsbyJS by creating a tourism site -3
+slug: gatsby-tourism-3
+image: ./gatsby-tourism-3.jpeg
+date: 2019-12-01
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-3 of the series. As told in the earlier post, this series is based on the learning from [this](https://www.udemy.com/course/gatsby-tutorial-and-projects-course/) awesome udemy course by **John Smilga**
+
+Let’s start where we left in the project. We will create a footer first. Inside the **css** folder add **foooter.module.css** file. You can get the content for the same from my github [link](https://github.com/nabendu82/gatsbyTourism).
+
+![Footer CSS](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/1_qwjc1XkBsv.png)*Footer CSS*
+
+Next, we will update our **Footer.js** component to use this CSS. Here we are just mapping through our links and social-icons from the constant files, and displaying them. We also have a copyright section.
+
+![Footer Component](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/2_gdSuWmewLD.png)*Footer Component*
+
+It will show our Footer in the desktop view as below.
+
+![Footer desktop](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/3_Wz0UYXy2s.png)*Footer desktop*
+
+The Footer is also very responsive in the mobile view.
+
+<div className={styles.image__small}>
+
+![Footer mobile](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/4_uM3QKs3Jy8.png)*Footer mobile*
+
+</div>
+
+Next, we will create the **SimpleHero** component, which will show an image covering the whole page on the Home page. Create a new file **SimpleHero.js** inside **components** directory.
+
+![SimpleHero](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/5_yEaaJAY4X.png)*SimpleHero*
+
+One of the main thing to check in the **SimpleHero** component, is the **defaultHero** class. It comes from the **layout.css** file. Here, we are using **min-height** to display it in whole page minus the header. We are also using a **linear-gradient** here. Then we are using **display: flex**, which will be useful soon to display the center text.
+
+![defaultHero](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/5.2_oyEqcM1zJq.png)*defaultHero*
+
+We will then update our **index.js** page to show this component.
+
+![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/6_QEdtrrnJ-U.png)*index.js*
+
+It will show our huge image on the home page.
+
+![Hero Image](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/7_RGSJkLEySO.png)*Hero Image*
+
+Next, we will create a banner which will contain a large heading, then paragraph and a large button to take us to places page.
+
+So, go ahead and create **banner.module.css** inside **css** folder and the below content in it.
+
+![Banner Style.](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/8_3MeSu_1nPA.png)*Banner Style.*
+
+Next, we will create **Banner.js** inside components folder and it will contain below content. We can pass the props **title**, **info** and also **children** to it.
+
+![Banner component](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/9_mSUDR70DSE.png)*Banner component*
+
+Next, we will add the **Banner** component in our **index.js** and pass it the required props —**title** and **info**. Also, we are passing a **Link** as a **children**.
+
+![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/10_eqKxLFvhI.png)*index.js*
+
+It will show our Banner text inside our Hero image.
+
+![Banner Text](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/11_fPaNS5gpy.png)*Banner Text*
+
+Next, we will update our Error component. So, go ahead and create **error.module.css** inside **css** folder and the below content in it.
+
+![Error CSS](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/12_0uI0bPn0D.png)*Error CSS*
+
+Next, update the **404.js** page with the below content. As, you might have noticed that we are reusing **Banner** component.
+
+![404.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/13_RiP-L7bhI.png)*404.js*
+
+Now, when we goto any non-existent page the below will be displayed.
+
+![Dead End](https://ik.imagekit.io/thewebdev/GatsbyTourism/3/14_u03QJ466e.png)*Dead End*
+
+This completes part-3 of the series. You can find the code for the same in [this](https://github.com/nabendu82/gatsbyTourism) link.
+
+See you soon in part-4.

@@ -1,0 +1,133 @@
+---
+title: Learn GatsbyJS by creating a tourism site -4
+slug: gatsby-tourism-4
+image: ./gatsby-tourism-4.jpeg
+date: 2019-12-02
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+
+Welcome to part-4 of the series. We will use styled-components in this post to style our project. So, we will install the plugin **gatsby-plugin-styled-components** in our project.
+
+As per the official [document](https://www.gatsbyjs.org/packages/gatsby-plugin-styled-components/) we need to npm install these packages first.
+
+<div className={styles.code__block}>
+
+```
+    npm install --save gatsby-plugin-styled-components styled-components babel-plugin-styled-components
+```
+
+</div>
+
+So, head over to your project root directory and stop the **gatsby develop** and run the above npm install.
+
+Then head over to **gatsby-config.js** file in the root directory and add this plugin as below.
+
+![Gatsby Config](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/1_ORP-GxatuK.png)*Gatsby Config*
+
+Next, head over to your terminal and run the **gatsby develop** again.
+
+![gatsby develop](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/2_95wJht41d.png)*gatsby develop*
+
+Next, we will create the **About Hampi** section in the Home page. For this first add the **about.module.css** file in the **css** folder. You can get the content for the same from my github [link](https://github.com/nabendu82/gatsbyTourism).
+
+![About css](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/3_9SYlePh4QD.png)*About css*
+
+Next, we will create the **About** section inside the **components** folder. We will create another folder **Home** inside it and **About.js** file inside it.
+
+![About component](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/4_yiL-QSohbx.png)*About component*
+
+We will have a general purpose **Title** component inside **About**, in which we are using **styled-components**. We are styling the two words differently, which we had passed as props from the **About** component.
+
+![Title.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/5_4eXKOmzld.png)*Title.js*
+
+Next, let’s show the **About** component in **index.js**
+
+![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/6_L3YSx9P0rP.png)*index.js*
+
+It will show the **About** component, which contains the **Title** component in our home page.
+
+![Title only](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/7_Y41VUXRb4.png)*Title only*
+
+Next, we will complete our **About** component in which we will show an image, a subtitle and two paragraphs and a button. Update the **About.js** as below
+
+<div className={styles.code__block}>
+
+```
+    import React from "react"
+    import Title from "../Title"
+    import styles from "../../css/about.module.css"
+    import img from "../../images/defaultBcg.jpeg"
+
+    const About = () => {
+        return (
+            <section className={styles.about}>
+            <Title title="about" subtitle="hampi" />
+            <div className={styles.aboutCenter}>
+                <article className={styles.aboutImg}>
+                <div className={styles.imgContainer}>
+                    <img src={img} alt="about company" />
+                </div>
+                </article>
+                <article className={styles.aboutInfo}>
+                <h4>The abode of bygone ruins</h4>
+                <p>
+                Hampi, the city of ruins, is a UNESCO World Heritage Site.
+                Situated in the shadowed depth of hills and valleys
+                in the  state of Karnataka,
+                this place is a historical delight for travellers.
+                </p>
+                <p>
+                Surrounded by 500 ancient monuments,
+                beautiful temples, bustling street markets,
+                bastions, treasury building and captivating
+                remains of Vijayanagar Empire,
+                Hampi is a backpacker's delight.
+                </p>
+                <a className="btn-primary" target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://en.wikipedia.org/wiki/Hampi" >
+                    read more
+                </a>
+                </article>
+            </div>
+            </section>
+        )
+    }
+
+    export default About
+```
+
+</div>
+
+It will show our beautiful **About Hampi** section.
+
+![About Hampi](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/8_1SKeElW7CV.png)*About Hampi*
+
+Next, we will create the **Hot Tips** section in the Home Page. For this first add the **tips.module.css** file in the **css** folder. The content is below.
+
+![Tips css](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/9_NWmB_YkqX.png)*Tips css*
+
+Then add **tips.js** inside the **constants** folder and the below content.
+
+![tips.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/10_IqXX7Oyz_Z.png)*tips.js*
+
+Now, we will add a **Tips.js** file inside **components->Home** folder. As, you can see we are reusing the **Title** component here. Also, we are mapping through the **tips** constant to display all it’s items.
+
+![Tips](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/11_YVdf0cPSM.png)*Tips*
+
+Next, let’s show the **Tips** component in **index.js**
+
+![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/12_-nMi8LG4Mh.png)*index.js*
+
+This will show our **Hot Tips** section in our Home Page.
+
+![Hot Tips](https://ik.imagekit.io/thewebdev/GatsbyTourism/4/13_Y4pTXkuKX.png)*Hot Tips*
+
+This completes part-4 of the series. You can find the code for the same in [this](https://github.com/nabendu82/gatsbyTourism) link.

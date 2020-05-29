@@ -1,0 +1,171 @@
+---
+title: Learn GatsbyJS by creating a tourism site -11
+slug: gatsby-tourism-11
+image: ./gatsby-tourism-11.jpeg
+date: 2019-12-14
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-11 of the series. Here we will first create the queries in GraphiQL for our places. We have a **Places** page in our project and will also show **Featured places** on the home page.
+
+So, head over to GraphiQL and type the below query to get all places. We can also get the details of the query from the docs, on the right side.
+
+![GraphiQL](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/1_gZBxXNaVYL.png)*GraphiQL*
+
+Let’s also search for images in the doc. As per the docs, we can have fluid or fixed images. But we cannot use the fragment in Graphiql as usual and we will use **src**, which we are going to later change in the code.
+
+![images](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/2_lCu7LNEPrU.png)*images*
+
+Let’s also add query for Featured places. Here we are using the filter option, to get only featured places, which i have only four.
+
+![Featured](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/3_j_bItwOhp.png)*Featured*
+
+Next, move to your code editor and create a folder **Places** inside **components** folder. Create three files **Places.js**, **PlaceList.js** and **Place.js**.
+
+Also, create a file **FeaturedPlaces.js** inside **Home** folder.
+
+![Places](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/4_uOi9iBNYp.png)*Places*
+
+Also, add an **items.module.css** in the **css** folder. The content of it is below.
+
+![styles](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/5_LwsN4Vt9Z8.png)*styles*
+
+Next, let’s update our **FeaturedPlaces.js** . Here, we will first add our query for featured places, which we had earlier created in Graphiql. The only thing changes is the fragment **GatsbyContentfulFluid_tracedSVG**, instead of **src**.
+
+![FeaturedPlaces](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/6_-rR2b7OSq-.png)*FeaturedPlaces*
+
+We will complete our code and will first check if we are getting data correctly, by placing a console.log()
+
+![FeaturedPlaces completed](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/7_ICy2U2KYR.png)*FeaturedPlaces completed*
+
+Next, head over to **index.js** to add the **FeaturedPlaces** component.
+
+![FeaturedPlaces](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/8_htiA9MHLsp.png)*FeaturedPlaces*
+
+Now, in the browser open the home page and also open developer tools -> console. We can see data coming from Contentful.
+
+![Console](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/9_PQsGqwglN.png)*Console*
+
+Now, let’s show the places array from our **FeaturedPlaces** component.
+
+![Featured](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/10_no9-OuEch.png)*Featured*
+
+We will for now create a simple Place component.
+
+![Place.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/11_44cdxCoXU.png)*Place.js*
+
+Now, when we move to the browser, we can see four Single place.
+
+![Places](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/12_rtiEvg5dNl.png)*Places*
+
+Next, we will start to work on our **Place** component. First let’s add **place.module.css** inside the **css** folder. The content of it is below.
+
+<div className={styles.code__block}>
+
+```
+    .place {
+        box-shadow: var(--lightShadow);
+        transition: var(--mainTransition);
+    }
+    .place:hover {
+        box-shadow: var(--darkShadow);
+    }
+
+    .img-container {
+        position: relative;
+        background: var(--primaryColor);
+        transition: var(--mainTransition);
+    }
+    .img {
+        transition: var(--mainTransition);
+    }
+    .img-container:hover .img {
+        opacity: 0.3;
+    }
+
+    .link {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        text-transform: uppercase;
+        letter-spacing: var(--mainSpacing);
+        color: var(--mainWhite);
+        border: 2px solid var(--mainWhite);
+        padding: 0.9rem 1.6rem;
+        display: inline-block;
+        transition: var(--mainTransition);
+        cursor: pointer;
+    }
+    .link:hover {
+        background: var(--mainWhite);
+        color: var(--primaryColor);
+    }
+    .img-container:hover .link {
+        opacity: 1;
+    }
+
+    .footer {
+        padding: 1rem;
+        text-align: left;
+    }
+    .footer h3 {
+        text-transform: capitalize;
+        margin-bottom: 0;
+    }
+    .info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-transform: uppercase;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+    .info h6,
+    .info h4 {
+        margin-bottom: 0;
+    }
+    .country {
+        text-transform: capitalize;
+        color: var(--primaryColor);
+        display: flex;
+        align-items: center;
+    }
+    .icon {
+        margin-right: 0.4rem;
+    }
+    .details {
+        color: var(--darkGrey);
+        text-transform: uppercase;
+        text-align: right;
+    }
+```
+
+</div>
+
+Next, let’s add some code in **Place.js** to show the image.
+
+![Place.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/13_jgE4NVJPkJ.png)*Place.js*
+
+It will show all our three images in the **Features Places**.
+
+![Featured Images](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/14_J4RTwu9cAn.png)*Featured Images*
+
+Let’s complete our code by adding the AniLink, which will take to our slug while clicking. We are also showing the name after the image. Also, notice that i had removed some of the things which are not required.
+
+![Anilink](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/15_VPScogXuAh.png)*Anilink*
+
+Now, it will show our Featured Place with the name of the place below it.
+
+![Places](https://ik.imagekit.io/thewebdev/GatsbyTourism/11/16_DzWpaYeLi.png)*Places*
+
+This completes part-11 of the series. You can find my code in my github account [here](https://github.com/nabendu82/gatsbyTourism).
+
+Also, because of the continuous deployment it got sucessfully pushed to netlify [site](https://amazinghampi.netlify.com/).

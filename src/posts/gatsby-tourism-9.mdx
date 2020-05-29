@@ -1,0 +1,109 @@
+---
+title: Learn GatsbyJS by creating a tourism site -9
+slug: gatsby-tourism-9
+image: ./gatsby-tourism-9.jpeg
+date: 2019-12-10
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-9 of the series. Now, it’s time to get out data and display it in our project. We can do this with internal data, but we will use headless CMS to store our data and then will consume it.
+
+We will use [contentful](https://www.contentful.com/) for our project. So, go ahead and signup. Now, when you go to the dashboard for the first time you will get the below screen.
+
+![Contentful space](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/1_xlLobpLow.png)*Contentful space*
+
+Once we click on **Add a space**, we will be displayed the below pop-up. It shows that we have two free spaces and can have up-to 5000 records in the free account.
+
+![Add a space](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/2_5cZQ7Fzptg.png)*Add a space*
+
+Once you click on the Free tab, it will open the below pop-up. Here, you have to type the **Space name**.
+
+![amazing hampi](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/3_kaYsc3cDLm.png)*amazing hampi*
+
+Once you clicked on Proceed to confirmation on the above screen, it will show the below Confirmation screen.
+
+![Confirm](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/4_YTAAfiEO7.png)*Confirm*
+
+Once you clicked on **Confirm and create space**, it will take to the below screen. Here, **Content model** and **Content** are the important tabs.
+
+![Home page](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/5_2Wyy8F8m21.png)*Home page*
+
+The **Content model** describes the fields of data and the **Content** describes the data. So, head over to the **Content model** tab and click on **Add content type**.
+
+![Add content type](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/6_CAlWr71JJ.png)*Add content type*
+
+Next, we have to give a **Name** and **Description** and click on **Create**.
+
+![Name](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/7_yBB_fYoIpU.png)*Name*
+
+We are basically creating data about different places to visit in Hampi. The next screen will ask us to add some fields.
+
+![Add field](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/8_XHCBMKD3fX.png)*Add field*
+
+So, let’s add some fields by clicking on the **Add field** button. The next screen will show as the type of fields. We will select **Text** by clicking on it.
+
+![Add new field](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/9_HwEj6R2-IM.png)*Add new field*
+
+In the below screen give a Name. In our case it is **name** and then click on **Create and configure**.
+
+![New Text field](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/10_XdPSyhc_CC.png)*New Text field*
+
+Then in the next screen first click on the tab **Validations** and then select the checkbox **Required field**. We are doing this, so that the user cannot leave this field empty. After this click on the **Save** button.
+
+![Validations](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/11_3TCnFvSZq.png)*Validations*
+
+The next field will be **slug** and it will be a text field and required like **name**. This field basically for the text at the end of url, which represent each place. Follow the same process as **name** and create the field.
+
+![slug](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/12_JpOZuyT9F.png)*slug*
+
+Next, we will create **Time Required** field. This field tells the tourist the time required to visit a place. This will be an integer field, but not a required field.
+
+So, once you clicked on **Add field**, in the pop-up click on **Number**.
+
+![Number](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/13_ChHz0jwWDy.png)*Number*
+
+Give it a Name and then click on **Create**, since it is not a required field.
+
+![Create](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/14_cEEAsHerWa.png)*Create*
+
+Next, create **Timings** and **Entry Fees** field. Both of them will be short text and not required.
+
+![timings and entry-fees](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/15_yWnJZU9ayW.png)*timings and entry-fees*
+
+Next, we will create the field **Description**. It will be Long text and required.
+
+![Description](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/16_FHQB0DeDn.png)*Description*
+
+In the Home page we will have **Featured places**, which will contain the top 3 places to visit in Hampi. So, let’s create a Boolean field for it.
+
+Once you click on **Add Field**, select **Boolean** as below screen.
+
+![Boolean](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/17_qifag5LZf.png)*Boolean*
+
+Give it a name **featured** and click on **Create and configure** to make it required field.
+
+![featured](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/18_v-GxIliKn.png)*featured*
+
+Next, we will create the field for images. It will hold one or more images, required for a place.
+
+Once you click on **Add Field**, select **Media** as below screen.
+
+![Media selected](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/19_kGZODKMXq_.png)*Media selected*
+
+In the Name give **images**, then select the radio box for **Many files**. Then click on **Create and configure** to make it required field, before Saving.
+
+![images](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/20_1twZaIXkOK.png)*images*
+
+Now, we are done with all the model. So, press the Save button on the top right corner.
+
+![Save it](https://ik.imagekit.io/thewebdev/GatsbyTourism/9/21_KIVVz6JTx9.png)*Save it*
+
+This completes part-9 of the series.
+
+We will start adding data in part-10.

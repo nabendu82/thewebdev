@@ -1,0 +1,140 @@
+---
+title: Learn GatsbyJS by creating a tourism site -10
+slug: gatsby-tourism-10
+image: ./gatsby-tourism-10.jpeg
+date: 2019-12-13
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-10 of the series. It’s time to add some content. So, head over to **Content** tab. You will see the below screen. Click on the big **Add amazing-hampi-data** button.
+
+![Amazing Hampi Data](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/1__b4tlfsA7.png)*Amazing Hampi Data*
+
+We will get to add data in the next screen.
+
+![Adding data](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/2_FXcWIWaPzN.png)*Adding data*
+
+Let’s add some content about our first place in Hampi.
+
+![Adding content](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/3_MoEmAWfGQK.png)*Adding content*
+
+For adding image, we select the image and then hit the **Publish** button first.
+
+![Publish](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/4_NKOAyLDhTk.png)*Publish*
+
+I had added two images, so it will show as below.
+
+![Two images](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/5_1Xc84BtTrL.png)*Two images*
+
+Now, publish it on the main screen by clicking the **Publish** button.
+
+![Published](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/6_r8RHjijQMR.png)*Published*
+
+Now, it will show an item in the **Content** screen.
+
+![Content](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/7_5QGKi8Pc0B.png)*Content*
+
+Next, i will add some more content about the places to visit in Hampi. I will follow the same step. You can take the data from the github code or take it from the website, after a few tutorials.
+
+I had added entries about 22 places in contentful.
+
+![Content](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/8_g0ZCXe1PX4.png)*Content*
+
+Next, we will import these data in our site. For this we will install the plugin **gatsby-source-contentful**. The docs for the same can be found [here](https://www.gatsbyjs.org/packages/gatsby-source-contentful/).
+
+As usual, we need to first npm install in our project directory.
+
+<div className={styles.code__block}>
+
+```
+    npm install --save gatsby-source-contentful
+```
+
+</div>
+
+So, head over to project directory and stop **gatsby develop** and npm install.
+
+![npm install](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/9_3Ep2hZqdS.png)*npm install*
+
+Next, in **gatsby-config.js** we had to add the plugin. Now, as per the docs let’s add the object.
+
+![contentful object](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/10_oH-GBcgku.png)*contentful object*
+
+Now, let’s get our API keys from contentful. In contentful API, click on **Settings -> API Keys**.
+
+![API](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/11_1zs7Ne6gyx.png)*API*
+
+Seems, like there is already a key created for the first time.
+
+![Example Key 1](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/12_166sbMo6s.png)*Example Key 1*
+
+Once, we clicked on **Example Key 1** in the above screen, we can edit the name of the key. We need to note our **Space ID** and **Content Delivery API — access token** from here.
+
+![Space ID](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/13_f1RMM8IgPs.png)*Space ID*
+
+Now, head over to your code and these two. We are not going to keep them here and soon move them to environment variable, as we don’t need to push these key’s to GitHub and have everyone see them.
+
+![Gatsby Config](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/14_GoToao7PwC.png)*Gatsby Config*
+
+Let’s head over to our terminal to check whether the setup was right, by running **gatsby develop**.
+
+Our command ran without any error and we also got the connection fetching correct data from contentful.
+
+![Contentful](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/15_0RbhOP8E3.png)*Contentful*
+
+Let’s go to our graphql and refresh the browser. Now, click on docs and we can see contentful queries.
+
+![GraphQL](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/16_7G66KdMiO5.png)*GraphQL*
+
+Next, we will use environment variables to put the **spaceId** and **accessToken** in it. For that we need to install **dotenv** package. So, head over to your terminal and stop **gatsby develop** and npm install the package.
+
+![npm install](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/17_p-EQbfmibU.png)*npm install*
+
+Now, as per the [docs](https://www.gatsbyjs.org/docs/environment-variables/) we need to add the below lines in our **gatsby-config.js**
+
+![dotenv](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/18_vh7aO1IJc.png)*dotenv*
+
+Now, we need to create a **.env.development** file in the root directory.
+
+![.env](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/19_A5y3922mod.png)*.env*
+
+Now, in the **.env.development** file take the keys from **gatsby-config.js** and add them without quotation marks in two variables.
+
+![Variables](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/20_eMlGg5cp0.png)*Variables*
+
+Next, in **gatsby-config.js** add this by process.env
+
+![process.env](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/21_34kkC_7cNS.png)*process.env*
+
+Now, head over to **.gitignore** and add the **.env.development** file in it.
+
+![.gitignore](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/22_Ugrj5tUkXI.png)*.gitignore*
+
+Once again head over to the terminal and run **gatsby develop**, to check if all runs well.
+
+![gatsby develop](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/22-1_2A0qmpD5A.png)*gatsby develop*
+
+Now, before pushing to github we need to add these variables in our netlify also. So, head over to your netlify deployment.
+
+![netlify](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/23_adCGC2tYEU.png)*netlify*
+
+Click on the big Site Settings button. The on the left menu click on **Built & deploy** and then **Environment**.
+
+![Deploy](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/24_-rzbv6Co5u.png)*Deploy*
+
+Now, click on the **Edit Variables** and add our two variables. After that click on **Save**.
+
+![Env](https://ik.imagekit.io/thewebdev/GatsbyTourism/10/25_py0yoLeOs.png)*Env*
+
+Now, commit your code and push it to github. You can find my code in my github account [here](https://github.com/nabendu82/gatsbyTourism).
+
+Also, because of the continuous deployment it got sucessfully pushed to netlify [site](https://amazinghampi.netlify.com/).
+
+This completes part-10 of the series.
+

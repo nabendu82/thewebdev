@@ -1,0 +1,62 @@
+---
+title: Learn GatsbyJS by creating a tourism site -19
+slug: gatsby-tourism-19
+image: ./gatsby-tourism-19.jpeg
+date: 2019-12-29
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-19 of the series. In this part we will start adding code for displaying the large image, when we click on the **Open** button inside the photo in Photos page.
+
+For this we will follow exactly the similar process which we followed in [part-16](https://thewebdev.tech/gatsby-tourism-16) of the series.
+
+So, create a file **photos-template.js** inside **templates** folder. And for now put a dummy data, which we are going to replace soon.
+
+![photos-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/1_bcnlkpkXsJ.png)*photos-template.js*
+
+Let’s first write our graphql query in Graphiql playground.
+
+![Playground](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/2_VoCPRwTRR.png)*Playground*
+
+Next, open **gatsby-node.js** and add this new query.
+
+![gatsby-node.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/3_KH6iz_c4Zg.png)*gatsby-node.js*
+
+Next, we will loop through the node and create the page.
+
+![gatsby-node.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/4_2HxtTjSRmY.png)*gatsby-node.js*
+
+To, test whether everything is working we need to stop and start **gatsby develop** in terminal. After that move to any non-existing page in the browser and you can see those pages been created.
+
+![New pages](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/5_gWs6Jclpa-.png)*New pages*
+
+Click on any one of them and you will get our dummy text.
+
+![dummy data](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/6_sTlyPMA6E.png)*dummy data*
+
+Let’s first create the query to show the single blog photo in our playground.
+
+![Graphiql playground](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/7_F0qMiKlaeW.png)*Graphiql playground*
+
+Next, let’s add this query to our **photos-template.js** and also don’t forget to change **src** in images to **…GatsbyContentfulFluid**
+
+![photos-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/8_3egZC1dyrw.png)*photos-template.js*
+
+Next, we will display the image along with the name and description. We need to import some components as earlier and we are also using the css from our blog module. We are showing the image through the **Img** from **gatsby-image**
+
+![Displaying the image](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/9_nKzsrrfI0X.png)*Displaying the image*
+
+Now, when we click on any Photo in the Photos page, we get the amazing full photo shown. Feel free to use it in any of your personal work.
+
+![Rail station](https://ik.imagekit.io/thewebdev/GatsbyTourism/19/10_iUITybaVL.png)*Rail station*
+
+This completes part-19 of the series. You can find the code for the same [here](https://github.com/nabendu82/gatsbyTourism).
+
+I am almost done with the series, expect to buy a domain name and update the netlify settings to host it. Plus some plugins also needed to be added for SEO and other stuff. It will also be slowly adding most of my Hampi trips photos to Photos page for royalty free use.
+

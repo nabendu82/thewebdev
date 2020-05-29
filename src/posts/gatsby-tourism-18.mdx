@@ -1,0 +1,86 @@
+---
+title: Learn GatsbyJS by creating a tourism site -18
+slug: gatsby-tourism-18
+image: ./gatsby-tourism-18.jpeg
+date: 2019-12-28
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-18 of the series. In this part i want to create a new page — Photos. It will contain most of the awesome photos, it took during my hampi [vacation](https://medium.com/@nabendu82/my-hampi-vacation-day1-b0a2b7e26cbf). All of these photos will be royalty free, so fell free to use them.
+
+To create a new link in both Navbar and footer component, we just need to add it in **links.js** file.
+
+![links.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/1_q54RqNX4X.png)*links.js*
+
+And it will be added to both Navbar and Footer in the website.
+
+![New link added](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/2_E82REJw1s8.png)*New link added*
+
+Then let’s create a file **photos.js** inside pages folder. It is almost similar to **blog.js** page, except the image which is **hampiPhoto.jpg**
+
+![photos.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/3_oKWdiaNKax.png)*photos.js*
+
+Next, let’s create a folder **Photos** inside **components** directory. The create a file **PhotoList.js** inside it. Right now only putting a dummy content inside it to test it.
+
+![PhotoList.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/4_zBeVgH8QUm.png)*PhotoList.js*
+
+Now, when we open the Photos page it displays everything correctly.
+
+![Photos page](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/5_dFMjdZS2O0.png)*Photos page*
+
+Before adding code in the file, we need to create content in contenful and also need to test the query. So, head over to contentful and create a new Content Model.
+
+![New model](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/6_JLs7MQkJr.png)*New model*
+
+Now, i have added four fields and all of them are required fields. They are as below. The detail process to create them can be found in the part-9 of the series [here](https://dev.to/nabendu82/learn-gatsbyjs-by-creating-a-tourism-site-9-5ahf).
+
+![Fields](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/7_1d1-v82--.png)*Fields*
+
+After saving the above by clicking on the **Save** button, let’s add some content first in **Content** tab.
+
+![Adding Content](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/8_khCOYee8ni.png)*Adding Content*
+
+Now, in the content page i am giving a name, slug, brief description and two photos. Actually they are same but the first one is smaller and 650x487 pixels and will be displayed on the Photos page. The larger and original one will be displayed once we go to the new page with the slug mechanism. This is the photo, which anyone can download for their personal use.
+
+![Content added](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/9_X_2KVIzIr.png)*Content added*
+
+I have added five content from my Hampi trip as of now. Will add hundreds more later.
+
+![Five content](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/10_a9CH2aprf0.png)*Five content*
+
+After any change in contentful, you have to restart the dev server by closing and starting **gatsby develop** from the terminal. Also, refresh your **Graphiql playground** at [http://localhost:8000/___graphql](http://localhost:8000/___graphql) to check the query. You can run the below query to get all the data back from contentful.
+
+![All data from contentful](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/11_z2fYPClsU.png)*All data from contentful*
+
+Now, let’s add our query to **PhotoList.js** to get all data from contentful. We are using the similar code which we used for **BlogList.js**
+
+![PhotoList.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/12_pPjTRrbqf.png)*PhotoList.js*
+
+Now, let’s check whether we are receiving the data by opening the console and going to Photos page.
+
+![Data from contentful](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/13_2Tv6UaI_tD.png)*Data from contentful*
+
+Now, that we are receiving the data it’s time to show them in the component. First let add some more imports at the top in **PhotoList.js**
+
+![PhotoList.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/14_m6EZyH0FXK.png)*PhotoList.js*
+
+Next, let’s update inside the return statement to pass each node through a map to the **PhotoCard** component.
+
+![PhotoList.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/15_hEPV1IuKQa.png)*PhotoList.js*
+
+Now, create **PhotoCard.js** inside **Photos** folder. Add the below content to display the content.
+
+![PhotoCard.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/16_6o7Z0O5Xb.png)*PhotoCard.js*
+
+Now, when we go to our Photos page in the browser we get all the five photos.
+
+![All photos](https://ik.imagekit.io/thewebdev/GatsbyTourism/18/17_XqRPNy5GW.png)*All photos*
+
+This completes part-18 of the series. You can find the code for the same [here](https://github.com/nabendu82/gatsbyTourism).
+

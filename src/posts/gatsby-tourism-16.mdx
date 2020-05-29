@@ -1,0 +1,83 @@
+---
+title: Learn GatsbyJS by creating a tourism site -16
+slug: gatsby-tourism-16
+image: ./gatsby-tourism-16.jpeg
+date: 2019-12-21
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-16 of the series. In this part we will show the blog pages, when a user clicks on it. For this we will follow the same template approach, which we followed in tour.
+
+So, create a file **blog-template.js** inside **templates** folder. And for now put a dummy data, which we are going to replace soon.
+
+![blog-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/1_pN3uUVmMI.png)*blog-template.js*
+
+Let’s first write our graphql query in Graphiql playground.
+
+![graphql query](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/2_G7y_jOmcn.png)*graphql query*
+
+Next, open **gatsby-node.js** and add this new query.
+
+![gatsby-node.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/3_UYC08iRFW8.png)*gatsby-node.js*
+
+Next, we will loop through the node and create the page.
+
+![data.posts](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/4_EEQ_SxxkR6.png)*data.posts*
+
+To, test whether everything is working we need to stop and start **gatsby develop** in terminal. After that move to any non-existing page in the browser and you can see those pages been created.
+
+![New pages](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/5_w56JdejeUA.png)*New pages*
+
+Click on any one of them and you will get our dummy text.
+
+![dummy data](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/6_IsbHZcz_gP.png)*dummy data*
+
+Let’s first create the query to show the single blog post in our playground.
+
+![Query](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/7_9LgjRaqEzc.png)*Query*
+
+Let’s also add the styles in the **css** folder as **single-blog.module.css**
+
+![styles](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/8_w59AznFj7.png)*styles*
+
+Now, we will start to update our blog-template.js. We are using the query which we created in our playground. After that we are de-structuring data which we are receiving. We are right now showing the **title** and **published** field in the blog.
+
+![blog-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/9_zdokt8i9Ue.png)*blog-template.js*
+
+So, when we head over to a blog post we can see that it is getting rendered properly.
+
+![Hippie hampi](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/10_exRp--3suH.png)*Hippie hampi*
+
+Let’s also add the **author** and a link to go back to Blog page.
+
+![author](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/11_n7LVtv_kcU.png)*author*
+
+Now, to display a markdown file which we are getting back in the description field, requires some configuration.
+
+I found [this](https://codebushi.com/gatsby-with-contentful-cms/) blog, which was helpful me do the setup.
+
+For displaying markdown files, we need to npm install the plugin **gatsby-transformer-remark**. So, head over to the terminal and stop the **gatsby develop** and install it.
+
+![npm install](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/12_a1nA3TpoXs.png)*npm install*
+
+Next, also add it in the **gatsby-config.js** file.
+
+![gatsby-config.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/13_qKvh_zsIM.png)*gatsby-config.js*
+
+Next, move back to your **blog-template.js**. Here we need to update the query for description a bit to add transformer plugin thing.
+
+![markdown rendering](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/14_xFmknvX1Hx.png)*markdown rendering*
+
+Now, start your **gatsby develop** from the terminal and head over to a blog post after that. You can see the markdown rendered successfully.
+
+![awesome hampi](https://ik.imagekit.io/thewebdev/GatsbyTourism/16/15_-QJDnjiJp.png)*awesome hampi*
+
+This completes part-16 of the series. You can find the code for the same [here](https://github.com/nabendu82/gatsbyTourism).
+
+Also, because of the continuous deployment it got successfully pushed to netlify [site](https://amazinghampi.netlify.com/).

@@ -1,0 +1,138 @@
+---
+title: Learn GatsbyJS by creating a tourism site -2
+slug: gatsby-tourism-2
+image: ./gatsby-tourism-2.jpeg
+date: 2019-11-30
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-tourism
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-2 of the series. As told in the earlier post, this series is based on the learning from [this](https://www.udemy.com/course/gatsby-tutorial-and-projects-course/) awesome udemy course by **John Smilga**
+
+Let’s start where we left in the project. We will not be going through CSS in this series, as it’s a gatsby series.
+
+We will have the global CSS in **layout.css** in the **components** directory. You can get the content for the same from my github [link](https://github.com/nabendu82/gatsbyTourism).
+
+Also, place a **images** folder inside the **src** folder. The content for the same can be taken from by github.
+
+We also need to import the **layout.css** in **Layout.js**
+
+![Layout.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/1_qJGR5p-hx.png)*Layout.js*
+
+It will show our homepage at [http://localhost:8000/](http://localhost:8000/) with the new fonts.
+
+![Homepage](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/2_CInNB3_04d.png)*Homepage*
+
+We will next install a package called **react-icons**, which will help us show nice icons in our project. For this go ahead and exit **gatsby develop** and then npm install the package, in your project directory.
+
+<div className={styles.code__block}>
+
+```
+    npm install --save react-icons
+```
+
+</div>
+
+Make sure to start your **gatsby develop** again.
+
+![gatsby develop](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/3_HG_K40sUTB.png)*gatsby develop*
+
+Next, we will create a folder **constants** inside **src** and two files **links.js** and **social-icons.js** inside it.
+
+The contents of **links.js** is below. We will use it at various places in our project to navigate to different links.
+
+![links.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/4_f_IvK0XFS.png)*links.js*
+
+The content of **social-icons.js** are below. It will contain our icons from react-icons, will we will show at various places in our project.
+
+![social-icons.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/5_9CJ1tBxGCS.png)*social-icons.js*
+
+Next, we will create a **css** folder inside our **src** folder. Place the file **navbar.module.css** inside it. You can get the content for the same from my github [link](https://github.com/nabendu82/gatsbyTourism).
+
+![navbar.module.css](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/6_VSDLzfjG59.png)*navbar.module.css*
+
+Now, let’s start creating our Navbar component. So, go ahead and edit you **Navbar.js** file as below.
+
+<div className={styles.code__block}>
+
+```
+    import React, { useState } from "react"
+    import { Link } from "gatsby"
+    import styles from "../css/navbar.module.css"
+    import { FaAlignRight } from "react-icons/fa"
+    import links from "../constants/links"
+    import socialIcons from "../constants/social-icons"
+    import logo from "../images/logo.png"
+    const Navbar = () => {
+        const [isOpen, setNav] = useState(false);
+        const toggleNav = () => {
+            setNav(isOpen => !isOpen)
+        }
+
+    return (
+            <nav className={styles.navbar}>
+                <div className={styles.navCenter}>
+                    <div className={styles.navHeader}>
+                        <img src={logo} className={styles.brandLogo} alt="backroads logo" />
+                        <button type="button" className={styles.logoBtn} onClick={toggleNav}>
+                            <FaAlignRight className={styles.logoIcon} />
+                        </button>
+                    </div>
+                    <ul className={isOpen ?
+                                `${styles.navLinks} ${styles.showNav}` :
+                                `${styles.navLinks}`}>
+                        {links.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    <Link to={item.path}>
+                                        {item.text}
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <div className={styles.navSocialLinks}>
+                        {socialIcons.map((item, index) => {
+                            return (
+                                <a key={index}
+                                    href={item.url}  target="_blank"
+                                    rel="noopener noreferrer">
+                                    {item.icon}
+                                </a>
+                            )
+                        })}
+                    </div>
+                </div>
+            </nav>
+        )
+    }
+
+    export default Navbar
+```
+
+</div>
+
+Here, we are using the **useState** hook to toggle our links on a smaller screen. You can learn more about hooks from hook post — [Understanding React Hooks by building a simple App](https://dev.to/nabendu82/understanding-react-hooks-by-building-a-simple-app-4i6d)
+
+First we are showing a react-icon **FaAlignRight** on smaller screen. When the user is clicking on the button, we are calling the function **toggleNav**, which will make **isOpen** to be true.
+
+Now, when **isOpen** is true we will be loading different CSS classes, which will basically open a drawer to show the links on smaller screen.
+
+<div className={styles.image__small}>
+
+![Smaller screen](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/7_wgdKyZDqHg.gif)*Smaller screen*
+
+</div>
+
+On desktop, we will get the whole menu and also the react-icon will be hidden.
+
+![Navbar on desktop](https://ik.imagekit.io/thewebdev/GatsbyTourism/2/8_5rZ6I93kt3.png)*Navbar on desktop*
+
+This completes part-2 of the series. Hope you learned something new. You can find the code for the same in [this](https://github.com/nabendu82/gatsbyTourism) link.
+
+See you soon in part-3.
