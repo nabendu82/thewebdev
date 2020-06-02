@@ -1,0 +1,111 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 9
+slug: coding-blog-gatsby-mdx-9
+image: ./gatsby-mdx-9.jpg
+date: 2020-02-23
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-9 of the series. We will start to create our **post-template.js** file now. Let’s first add the query which we created in the earlier part here.
+
+![post-template.js](https://ik.imagekit.io/thewebdev/thewebdev/9/1_CVuf3z5Za.png)*post-template.js*
+
+Next, we will add the rest of the code to use these data. We are first destructuring the data. After that using various section to show it.
+
+![post-template.js](https://ik.imagekit.io/thewebdev/thewebdev/9/2_9c-ebQDA1.png)*post-template.js*
+
+Also, do add the below in **postTemplate.module.css** file.
+
+<div className={styles.code__block}>
+
+```
+    .template {
+        width: 100vw;
+        margin: 4rem auto;
+        padding: 2rem;
+        background: var(--mainWhite);
+    }
+
+    .link {
+        border: 1px solid var(--mainBlack);
+        padding: 4px 8px;
+        display: inline-block;
+        color: var(--mainBlack);
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 2rem;
+    }
+    .link:hover {
+        background: var(--mainBlack);
+        color: var(--mainWhite);
+    }
+    .info {
+        text-align: center;
+    }
+    .info h1 {
+        letter-spacing: 5px;
+        margin-bottom: 0.5rem;
+        text-transform: capitalize;
+        font-size: 48px;
+    }
+    .info h4 {
+        letter-spacing: 5px;
+        text-transform: capitalize;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .content {
+        margin: 2rem 0;
+    }
+    .content h2 {
+        text-transform: capitalize;
+        margin-bottom: 1rem;
+    }
+    .content p {
+        margin: 0.95em 0 1.2em;
+        padding: 0.2em;
+    }
+
+    .content img{
+        width: 100%;
+        height: auto;
+    }
+```
+
+</div>
+
+We also need to change a bit in some earlier css files. First add font-size in **layout.css**
+
+![layout.css](https://ik.imagekit.io/thewebdev/thewebdev/9/3_wkikMVf8TK.png)*layout.css*
+
+Next, change the image height in **postcard.module.css** file
+
+![postcard.module.css](https://ik.imagekit.io/thewebdev/thewebdev/9/4_M0-eftAO8M.png)*postcard.module.css*
+
+Now, when we goto any post we can see it with content and image responsive. This is on a larger screen.
+
+![larger screen](https://ik.imagekit.io/thewebdev/thewebdev/9/5_Oul9gy6xA.png)*larger screen*
+
+This is what is shown on a smaller screen.
+
+<div className={styles.image__small}>
+
+![smaller screen](https://ik.imagekit.io/thewebdev/thewebdev/9/6_qcqxnRCPfs.png)*smaller screen*
+
+</div>
+
+This is an almost complete project, if one want to use for his personal blog. But i am creating it for everyone to post, so a lot of other things are remaining.
+
+Beside this tags on home-page, author twitter/github/dev details on each post, twitter/linkedin share of each post, canonical links addition, search option in home-page are remaining.
+
+This completes part-9 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.

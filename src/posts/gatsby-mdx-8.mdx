@@ -1,0 +1,51 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 8
+slug: coding-blog-gatsby-mdx-8
+image: ./gatsby-mdx-8.jpg
+date: 2020-02-22
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-8 of the series. Now, it’s time to generate those pages programatically, when we click on the **Read More** button.
+
+First create a file **post-template.js** file inside the **templates** folder. Let’s do all the necessary imports required in it first.
+
+![post-template.js](https://ik.imagekit.io/thewebdev/thewebdev/8/1_vwtoqBuo2C.png)*post-template.js*
+
+We will next create a simple query in graphql playground to get all the slugs.
+
+![slug query](https://ik.imagekit.io/thewebdev/thewebdev/8/2_QqtEKYNEz.png)*slug query*
+
+Now, to create pages dynamically we have to create a file **gatsby-node.js** in the root directory.
+
+Here, we are having a NodeJS file so the syntax is according to that. We are first using the query which we had created above.
+
+After that we are receiving the posts. We are looping through it and creating page through the **post-template.js** file which we had created.
+
+![gatsby-node.js](https://ik.imagekit.io/thewebdev/thewebdev/8/3_iCBrbfCv6E.png)*gatsby-node.js*
+
+We need to then close the gatsby develop and re-run it, but i was getting error as i didn’t have any postTemplate.module.css in the css folder. Let’s quickly create an empty file.
+
+![postTemplate.module.css](https://ik.imagekit.io/thewebdev/thewebdev/8/4_UZSAkJubQ.png)*postTemplate.module.css*
+
+After restarting gatsby develop head over to any non-existent page in the browser and you can see the dynamically created page.
+
+![Dynamic pages](https://ik.imagekit.io/thewebdev/thewebdev/8/5_VI8SYYXncy.png)*Dynamic pages*
+
+If we click any one of them, we will get the matter from **post-template.js** file.
+
+![postTemplate](https://ik.imagekit.io/thewebdev/thewebdev/8/6_9opVenWYQ.png)*postTemplate*
+
+Now, we will first write the GraphQL query to get the single post. Here, we are using mdx and passing a slug to it. In the playground we are using Query Variables to pass a slug.
+
+![Single Post](https://ik.imagekit.io/thewebdev/thewebdev/8/7_GA7KCgy8l.png)*Single Post*
+
+This completes part-8 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.

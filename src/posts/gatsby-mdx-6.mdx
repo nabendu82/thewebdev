@@ -1,0 +1,71 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 6
+slug: coding-blog-gatsby-mdx-6
+image: ./gatsby-mdx-6.jpg
+date: 2020-02-20
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-6 of the series. In this part we will, first start with our GraphQL queries. So, head over to [http://localhost:8000/___graphql](http://localhost:8000/___graphql) but make sure gatsby develop is running in the terminal.
+
+Here, we will first check our **allMdx** query by checking the **totalCount**. And it returns the right count.
+
+![allMdx](https://ik.imagekit.io/thewebdev/thewebdev/6/1_8NGpMwWdtj.png)*allMdx*
+
+Next, let’s get some basic matter from our frontmatter. We have to get this by the below query.
+
+![frontmatter](https://ik.imagekit.io/thewebdev/thewebdev/6/2_BitW3QDs-H.png)*frontmatter*
+
+Now, i found out that for images to be optimised they need to be put inside the **posts** folder as our **gatsby-source-filesystem** is pointing to that folder. So, i moved all images to that folder and made the following changes in the mdx files.
+
+![mdx files](https://ik.imagekit.io/thewebdev/thewebdev/6/3_QE-9axENb.png)*mdx files*
+
+Now, we need to restart gatsby develop and refresh graphql in browser, to see the changes.
+
+Let’s get the image details by below updated query and we are also getting the short description by using **excerpt**.
+
+![image](https://ik.imagekit.io/thewebdev/thewebdev/6/4_gE_gxkakxz.png)*image*
+
+Since, in all blog posts the posts are sorted by date, we will do the same by updating our query.
+
+![DESC](https://ik.imagekit.io/thewebdev/thewebdev/6/5_p0RLrVpCBk.png)*DESC*
+
+Let’s now start to code for displaying our posts. We will first add two files in components folder — **PostList.js** and **PostCard.js**
+
+And add the below holding content in **PostCard.js**.
+
+![PostCard.js](https://ik.imagekit.io/thewebdev/thewebdev/6/6-0_6MExhCubx.png)*PostCard.js*
+
+Next, update the **PostList.js** as below.
+
+![PostList.js](https://ik.imagekit.io/thewebdev/thewebdev/6/6-1_kLCqblHg4b.png)*PostList.js*
+
+Now, let’s show it in our home page by updating the **index.js** file.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/6/7_gZQrNHlUI-.png)*index.js*
+
+Now, both the components are been shown in the home page of browser.
+
+![localhost](https://ik.imagekit.io/thewebdev/thewebdev/6/8_yGZl1_uRB.png)*localhost*
+
+We will call GraphQL from our **index.js** page and then the result will be passed down to the component. We are adding the import and the GraphQL query which we got from the graphql playground.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/6/9_UOSVFrCHA_.png)*index.js*
+
+Next, we will use the **getPosts** inside **useStaticQuery** to get the response. We are further **destructuring** it in posts and the passing it as props in **PostList** component.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/6/10_eWtHR-WinS.png)*index.js*
+
+We can open the console and check the result.
+
+![console](https://ik.imagekit.io/thewebdev/thewebdev/6/11_-MDEbESu9d.png)*console*
+
+This completes part-6 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.

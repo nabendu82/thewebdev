@@ -1,0 +1,109 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 7
+slug: coding-blog-gatsby-mdx-7
+image: ./gatsby-mdx-7.jpg
+date: 2020-02-21
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-7 of the series. Let’s start from where we left. We will update our **PostList.js** to use the props which were passed to it.
+
+![PostList.js](https://ik.imagekit.io/thewebdev/thewebdev/7/1_Zc-_sTTha.png)*PostList.js*
+
+We also need to add the css for it as **postlist.module.css** in the css folder. Add the below styles in it as of now.
+
+![postlist.module.css](https://ik.imagekit.io/thewebdev/thewebdev/7/2_ob6ojYfUj.png)*postlist.module.css*
+
+Now, our home page will show three PostCard components as we have three posts currently.
+
+![PostCard](https://ik.imagekit.io/thewebdev/thewebdev/7/3_GgjjzY_iri.png)*PostCard*
+
+Next, we will work on the **PostCard** component to show nice styles for each post.
+
+Update the **PostCard.js** file as below. We are destructuring the props which we had received from the **PostList** component and using it to get the different parts.
+
+![PostCard.js](https://ik.imagekit.io/thewebdev/thewebdev/7/4_0PZB_MzkJV.png)*PostCard.js*
+
+Next, create a file **postcard.module.css** inside the css folder and add the below styles in it.
+
+<div className={styles.code__block}>
+
+```
+    .card {
+        margin-bottom: 2rem;
+        background: var(--mainWhite);
+        padding: 1rem;
+        text-align: center;
+    }
+    .info {
+        padding: 1rem 0;
+    }
+    .info h2 {
+        font-size: 30px;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+    }
+    .info h6 {
+        color: var(--darkGrey);
+        text-transform: capitalize;
+    }
+    .info p {
+        padding: 20px 0 30px 0;
+        text-align: left;
+    }
+    .link {
+        border: 1px solid var(--mainBlack);
+        padding: 4px 8px;
+        display: inline-block;
+        color: var(--mainBlack);
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all 0.3s ease-in-out;
+    }
+    .link:hover {
+        background: var(--mainBlack);
+        color: var(--mainWhite);
+    }
+    [@media](http://twitter.com/media) screen and (min-width: 776px) {
+        .card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        .image > div {
+            height: 250px;
+        }
+    }
+```
+
+</div>
+
+Next, i will also remove those borders from **home.module.css** file, as they were only for reference
+
+![home.module.css](https://ik.imagekit.io/thewebdev/thewebdev/7/5_DHd-tLaCus.png)*home.module.css*
+
+This will display our home page as below in the browser on large screens.
+
+![large screens](https://ik.imagekit.io/thewebdev/thewebdev/7/6_B8rQEa8m4Q.png)*large screens*
+
+It will look like below in small screens.
+
+<div className={styles.image__small}>
+
+![Small screen](https://ik.imagekit.io/thewebdev/thewebdev/7/7_dbTbbC9PU.png)*Small screen*
+
+</div>
+
+This completes part-7 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.

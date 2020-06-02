@@ -1,0 +1,85 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 5
+slug: coding-blog-gatsby-mdx-5
+image: ./gatsby-mdx-5.jpg
+date: 2020-02-19
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-5 of the series. In this part we will start with the adding **gatsby-plugin-mdx** in our project. It will help to show mdx blogs in our project. MDX files are updated form of markdown files, where you can use react JSX also.
+
+So, as per the documentation we will install the plugin by below command. So, stop you gatsby develop and run below command.
+
+<div className={styles.code__block}>
+
+```
+    npm install --save gatsby-plugin-mdx @mdx-js/mdx @mdx-js/react
+```
+
+</div>
+
+After that let’s add the basic configuration in **gatsby-config.js** file and then don’t forget to start gatsby by running gatsby develop
+
+![gatsby-config.js](https://ik.imagekit.io/thewebdev/thewebdev/5/1_fTI3NNgIH.png)*gatsby-config.js*
+
+Next, i am adding my first three posts which i wrote nearly 2 years back as mdx files in the **posts** folder. Also, i had added images for all three in the **images** folder.
+
+![posts](https://ik.imagekit.io/thewebdev/thewebdev/5/2_WrEv0W32Vk.png)*posts*
+
+We will be using **Frontmatter** a lot in this project. Infact it will be used to go all the heavy lifting in the project. So, let’s add the initial frontmatter in all three mdx post. I will also be updating to add tags and canonical links to each post later on in the series.
+
+Frontmatter doesn’t shows on the post, but are used to generate page, use information and sort pages.
+
+![Frontmatter](https://ik.imagekit.io/thewebdev/thewebdev/5/3_32rjKv-T5.png)*Frontmatter*
+
+Similarly i have added to other two posts also as below.
+
+![youtube-2.mdx](https://ik.imagekit.io/thewebdev/thewebdev/5/4_unIIFXBoH.png)*youtube-2.mdx*
+
+![youtube-3.mdx](https://ik.imagekit.io/thewebdev/thewebdev/5/5_BUkjS90p_O.png)*youtube-3.mdx*
+
+We now have to install a plugin that will help to add our local files to the GraphQL data layer, so that we can use the posts.
+
+So, npm install the source system plugin, but first stop your gatsby develop in the terminal.
+
+![source-filesystem](https://ik.imagekit.io/thewebdev/thewebdev/5/6_JZfW1Z88E.png)*source-filesystem*
+
+Next, we need to add this in the **gatsby-config.js** file.
+
+![gatsby-config.js](https://ik.imagekit.io/thewebdev/thewebdev/5/7_uyTRWZ6c67.png)*gatsby-config.js*
+
+We will also install the **gatsby-image** plugin for image optimization. But we need to install two more additional plugins first for that.
+
+<div className={styles.code__block}>
+
+```
+    npm install --save gatsby-transformer-sharp gatsby-plugin-sharp
+```
+
+</div>
+
+Also, need to add them in the **gatsby-config.js** file.
+
+![gatsby-config.js](https://ik.imagekit.io/thewebdev/thewebdev/5/8_EiSGQiWD-i.png)*gatsby-config.js*
+
+Let’s finally install the **gatsby-image** plugin.
+
+<div className={styles.code__block}>
+
+```
+    npm install --save gatsby-image
+```
+
+</div>
+
+After this restart the development server by gatsby develop.
+
+This completes part-5 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.
