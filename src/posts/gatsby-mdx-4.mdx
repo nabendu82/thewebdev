@@ -1,0 +1,105 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 4
+slug: coding-blog-gatsby-mdx-4
+image: ./gatsby-mdx-4.jpg
+date: 2020-02-18
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-4 of the series. In this part we will start with the footer component first. But i want to show social icons in footer. So, create a file **social-icons.js** inside **constants** folder.
+
+![social-icons.js](https://ik.imagekit.io/thewebdev/thewebdev/4/1_y_BOuIhsj-.png)*social-icons.js*
+
+Inside the **css** folder add **foooter.module.css** file. Put the below content in it.
+
+<div className={styles.code__block}>
+
+```
+    .footer {
+        margin-top: auto;
+        background: var(--primaryColor);
+        padding: 2rem;
+        text-align: center;
+        color: var(--mainBlack);
+    }
+    .links a {
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--mainBlack);
+        margin: 0.5rem 1rem;
+        letter-spacing: var(--mainSpacing);
+        transition: var(--mainTransition);
+        font-weight: bold;
+    }
+    .links a:hover {
+        color: var(--mainWhite);
+    }
+    .icons a {
+        display: inline-block;
+        margin: 1rem;
+        font-size: 1.3rem;
+        color: var(--mainBlack);
+        transition: var(--mainTransition);
+    }
+    .icons a:hover {
+        color: var(--mainWhite);
+    }
+    .copyright {
+        text-transform: capitalize;
+        letter-spacing: var(--mainSpacing);
+        line-height: 2;
+    }
+```
+
+</div>
+
+Next, we will update our **Footer.js** file to show links, social links and a copyright message.
+
+![Footer.js](https://ik.imagekit.io/thewebdev/thewebdev/4/2_DlyZxDBPk.png)*Footer.js*
+
+Now, our footer looks way better on the large screen.
+
+![Large screen](https://ik.imagekit.io/thewebdev/thewebdev/4/3_GgX9-2DqeS.png)*Large screen*
+
+And it also looks good on small screens.
+
+<div className={styles.image__small}>
+
+![Smaller screens](https://ik.imagekit.io/thewebdev/thewebdev/4/4_K89d2ojIs.png)*Smaller screens*
+
+</div>
+
+Next, let’s have the layout done for home page. It will contain left section, blog section and right section. Open the **index.js** and make the following changes.
+
+Will change these later to different components. Right now only checking the layout.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/4/5_1gHOMKCL0.png)*index.js*
+
+Next, create a file **home.module.css** inside the **css** folder and add the following css in it.
+
+![home.module.css](https://ik.imagekit.io/thewebdev/thewebdev/4/6_TBM-wW1xI.png)*home.module.css*
+
+We are using CSS grid to divide the screen into three columns. On the large screen it will look like below.
+
+![large screen](https://ik.imagekit.io/thewebdev/thewebdev/4/7_xcLfNvpabP.png)*large screen*
+
+On the smaller screens, we are hiding both left and right sidebars.
+
+<div className={styles.image__small}>
+
+![smaller screen](https://ik.imagekit.io/thewebdev/thewebdev/4/8_hAg8_CucK.png)*smaller screen*
+
+</div>
+
+The border colors and lot other things will be changed later when we built the components.
+
+This completes part-4 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.

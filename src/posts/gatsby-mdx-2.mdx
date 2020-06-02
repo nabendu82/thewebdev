@@ -1,0 +1,178 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 2
+slug: coding-blog-gatsby-mdx-2
+image: ./gatsby-mdx-2.jpg
+date: 2020-02-16
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+
+Welcome to part-2 of the series. I will be using mdx for the Gatsby site and taken the initial learnings from [this](https://www.udemy.com/course/gatsby-tutorial-and-projects-course/learn/lecture/15206316#overview) udemy course from **John Smilga**.
+
+Let’s open the terminal and create a new Gatsby project **thewebdev** with bare-bone starter package.
+
+![thewebdev](https://ik.imagekit.io/thewebdev/thewebdev/2/1_mAOKeKG9D.png)*thewebdev*
+
+After the setup is done, let’s start the development server by changing to it and running gatsby develop.
+
+![gatsby develop](https://ik.imagekit.io/thewebdev/thewebdev/2/2_SBeGGUzyW.png)*gatsby develop*
+
+Now, we can open our project in localhost and it will show the Hello World text.
+
+![Hello World](https://ik.imagekit.io/thewebdev/thewebdev/2/3_y0DrCrdV7K.png)*Hello World*
+
+Next, let’s open up our VSCode for the project and create three folders **components**, **posts**, **templates** inside **src** folder.
+
+![VS Code](https://ik.imagekit.io/thewebdev/thewebdev/2/4_xHYfWHhcP.png)*VS Code*
+
+Let’s first create the 404 page, which will be displayed if the user goes to any non-existent page. I found the template for this page from the internet and created a file **404.js** inside **pages** folder.
+
+![404.js](https://ik.imagekit.io/thewebdev/thewebdev/2/5_A_KcSs_nv.png)*404.js*
+
+Next, create a folder **css** inside the **src** folder and put the file **404.css** inside it. The content of it is below.
+
+<div className={styles.code__block}>
+
+```
+    #notfound {
+        position: relative;
+        height: 100vh;
+    }
+
+    #notfound .notfound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+    }
+
+    .notfound {
+        max-width: 520px;
+        width: 100%;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    .notfound .notfound-404 {
+        position: relative;
+        height: 240px;
+    }
+
+    .notfound .notfound-404 h1 {
+        font-family: 'Montserrat', sans-serif;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        font-size: 252px;
+        font-weight: 900;
+        margin: 0px;
+        color: #262626;
+        text-transform: uppercase;
+        letter-spacing: -40px;
+        margin-left: -20px;
+    }
+
+    .notfound .notfound-404 h1>span {
+        text-shadow: -8px 0px 0px #fff;
+    }
+
+    .notfound .notfound-404 h3 {
+        font-family: 'Cabin', sans-serif;
+        position: relative;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #262626;
+        margin: 0px;
+        letter-spacing: 3px;
+        padding-left: 6px;
+    }
+
+    .notfound h2 {
+        font-family: 'Cabin', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #000;
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .notfound .notfound-404 {
+            height: 200px;
+        }
+        .notfound .notfound-404 h1 {
+            font-size: 200px;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .notfound .notfound-404 {
+            height: 162px;
+        }
+        .notfound .notfound-404 h1 {
+            font-size: 162px;
+            height: 150px;
+            line-height: 162px;
+        }
+        .notfound h2 {
+            font-size: 16px;
+        }
+    }
+```
+
+</div>
+
+Now on going to any non-existent page you will get this below page.
+
+![404.js](https://ik.imagekit.io/thewebdev/thewebdev/2/6_wvZiTjaj7d.png)*404.js*
+
+We will create the **contact** and the **about** page in the similar manner. More pages and login component will be put later as needed.
+
+![Contact page](https://ik.imagekit.io/thewebdev/thewebdev/2/7_cmZ4l5ifWN.png)*Contact page*
+
+![About Page](https://ik.imagekit.io/thewebdev/thewebdev/2/8_isFqYTTou.png)*About Page*
+
+Now, let’s have a **Navbar** and **Footer** component. We will make them inside a **components** folder, which will be inside **src** folder.
+
+![Navbar component](https://ik.imagekit.io/thewebdev/thewebdev/2/9_mQBOPhcwj.png)*Navbar component*
+
+![Footer Component](https://ik.imagekit.io/thewebdev/thewebdev/2/10_bIQ46zxXGT.png)*Footer Component*
+
+Now, it’s a common practice in React/Gatsby to have Layout component, which will have all the common things like Navbar and Footer. So, let’s create a file **Layout.js** inside **components** folder.
+
+![Layout.js](https://ik.imagekit.io/thewebdev/thewebdev/2/11_ozyyHmUFAM.png)*Layout.js*
+
+Next, let use it in our **index.js** file. As, you might have noticed that the **Layout** component is wrapping all the other thing, which is only **Hello World!** now. This only is the **children**, which is the props been passed to the Layout component.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/2/12_R-DbTyotc.png)*index.js*
+
+Now, when we go to the Home page, it will show both **Navbar** and **Footer** components.
+
+![Home Page](https://ik.imagekit.io/thewebdev/thewebdev/2/13_yAUwxxj4V.png)*Home Page*
+
+Now, we can use the reusable component Layout in all our other pages and they will show **Navbar** and **Footer** components.
+
+![contact.js](https://ik.imagekit.io/thewebdev/thewebdev/2/14_Qx5Z2TMJ9w.png)*contact.js*
+
+![about.js](https://ik.imagekit.io/thewebdev/thewebdev/2/15_4eIJZxfo3.png)*about.js*
+
+If we goto any other pages also, the Navbar and the Footer would be present.
+
+![Contact Page](https://ik.imagekit.io/thewebdev/thewebdev/2/16_0Cvyp0iL3w.png)*Contact Page*
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) link.
+
+This completes part-2 of the series.
