@@ -1,0 +1,63 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 15
+slug: coding-blog-gatsby-mdx-15
+image: ./gatsby-mdx-15.jpg
+date: 2020-03-01
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-15 of the series. First let’s fix a small bug as the tags was not centring properly in all small screens. Add the below change in **Menu.styled.js** file.
+
+![Menu.styled.js](https://ik.imagekit.io/thewebdev/thewebdev/15/1_J2InOqS0R7.png)*Menu.styled.js*
+
+Now, it will show like below in tablet screens.
+
+![tab screens](https://ik.imagekit.io/thewebdev/thewebdev/15/2_cCRijUkJ4.png)*tab screens*
+
+And like below in mobile screens.
+
+<div className={styles.image__small}>
+
+![Mobile Screens](https://ik.imagekit.io/thewebdev/thewebdev/15/3_wWwDrut2O.png)*Mobile Screens*
+
+</div>
+
+Next, we will add a very good feature to the menu. This feature also i got from the awesome [tutorial](https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/).
+
+The feature is close the Side Menu, when we click on anywhere outside. This gives an added option to the user to close the Side menu, without clicking on the X.
+
+For this we will first create a new file **hooks.js** inside the **constants** folder.
+
+In this file, we are using the useEffect hooks. You can read more about it in my earlier blog post [here](https://thewebdev.tech/react-hooks).
+
+We are adding an event listener here and checking whether it is equal to the ref which will be passed. If it is true then we will use the handler function.
+
+![hooks.js](https://ik.imagekit.io/thewebdev/thewebdev/15/4_SrsZfUJ6mz.png)*hooks.js*
+
+Next, let’s update it in **index.js** file. We will first import the hooks compoment.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/15/5_-dsikkc-KX.png)*index.js*
+
+Next, we are using the React **useRef** which can get access to any DOM node. Then we are sending the variable **node** and the function **setOpen(false)** in the **useOnClickOutside** function.
+
+We are finally giving the **div** wrapping our **Burger** and **Menu** component, this ref.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/15/6_ac1Lp1cKSA.png)*index.js*
+
+Now, we can click outside to close the Side Menu.
+
+<div className={styles.image__small}>
+
+![Closing Menu](https://ik.imagekit.io/thewebdev/thewebdev/15/7_1cq7u__b0m.gif)*Closing Menu*
+
+</div>
+
+This completes part-15 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.

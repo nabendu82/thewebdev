@@ -1,0 +1,78 @@
+---
+title: My Coding Blog From Scratch Using Gatsby and MDX - 13
+slug: coding-blog-gatsby-mdx-13
+image: ./gatsby-mdx-13.jpg
+date: 2020-02-27
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Gatsby-mdx
+tags: ['gatsby', 'react', 'javascript']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-13 of the series. We will start by adding the same box-shadow that we created for Search bar in the previous part, to all the boxes on the site.
+
+Let’s first add in the Tags box. So, update the below in **taglist.module.css**
+
+![taglist.module.css](https://ik.imagekit.io/thewebdev/thewebdev/13/1_8WoHwANhF.png)*taglist.module.css*
+
+Next, we will add box-shadow for all posts by updating styles in **postcard.module.css** file.
+
+![postcard.module.css](https://ik.imagekit.io/thewebdev/thewebdev/13/2_to5XbnSrWV.png)*postcard.module.css*
+
+Now, all our white box will have nice box-shadows in it.
+
+![box shadows](https://ik.imagekit.io/thewebdev/thewebdev/13/3_w1cBpOjzSt.png)*box shadows*
+
+Let’s add a box to the right side also. It will hold the image for my upcoming Gatsby book and also subscribe to get discount.
+
+For this first add a dummy image in the **images** folder and also import it at the top.
+
+![book image](https://ik.imagekit.io/thewebdev/thewebdev/13/4_mYWb-zsVEG.png)*book image*
+
+Next, let’s add the html for it in the left section.
+
+![image addtion](https://ik.imagekit.io/thewebdev/thewebdev/13/5_tRAtpNCS2.png)*image addtion*
+
+Next, we will add some styles for it in the **home.module.css** file.
+
+![home.module.css](https://ik.imagekit.io/thewebdev/thewebdev/13/6_5XLlz6TW4.png)*home.module.css*
+
+It will show the book image as below.
+
+![Book Image](https://ik.imagekit.io/thewebdev/thewebdev/13/7_4VXtVvnHh3.png)*Book Image*
+
+I checked and the image was not fully responsive, so made it responsive by below change in the css, in the **home.module.css** file.
+
+![Responsive image](https://ik.imagekit.io/thewebdev/thewebdev/13/8_umeTjR9v7L.png)*Responsive image*
+
+Let’s create a mobile menu to show the Right and the left side bar in small screens. We will create an additional menu for this. First add the same in **index.js** file.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/13/9_Gm2ADyw3c2.png)*index.js*
+
+We also need to add the following import at the top of the file.
+
+![index.js](https://ik.imagekit.io/thewebdev/thewebdev/13/10_XFmSwrkAwG.png)*index.js*
+
+Now, let’s add the style for the same in **home.module.css** file.
+
+![home.module.css](https://ik.imagekit.io/thewebdev/thewebdev/13/11_1iF1CFECh.png)*home.module.css*
+
+This will show the mobile menu only in smaller screen then 992 px.
+
+
+![Smaller screen](https://ik.imagekit.io/thewebdev/thewebdev/13/12_ZvnMiOB2ZB.png)*Smaller screen*
+
+Also, will show as below in Mobile screen.
+
+<div className={styles.image__small}>
+
+![Mobile Screen](https://ik.imagekit.io/thewebdev/thewebdev/13/13_q1YEccHU5.png)*Mobile Screen*
+
+</div>
+
+This completes part-13 of the series.
+
+You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.
