@@ -1,8 +1,8 @@
 ---
-title: My Coding Blog From Scratch Using Gatsby and MDX - 20
-slug: coding-blog-gatsby-mdx-20
-image: ./gatsby-mdx-20.jpg
-date: 2020-03-10
+title: My Coding Blog From Scratch Using Gatsby and MDX - 25
+slug: coding-blog-gatsby-mdx-25
+image: ./gatsby-mdx-25.jpg
+date: 2020-03-16
 author: Nabendu Biswas
 twitter: https://twitter.com/nabendu82
 github: https://github.com/nabendu82
@@ -12,9 +12,11 @@ tags: ['gatsby', 'react', 'javascript']
 ---
 import styles from "../css/postTemplate.module.css"
 
-Welcome to part-20 of the series. In the last part, i got an error while deploying to netlify. It was a small mistake but i was not able to find it. On asking in the Gatsby Spectrum chat, they responded quickly as usual and i was able to solve it.
+Welcome to part-25 of the series. Since the site [thewebdev.tech](https://thewebdev.tech/) was deployed, i was able to check it in a real mobile device and there were some styles issues with the left sidebar and right sidebar.
 
-![Spectrum](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589896645/20-dev/1_iibqzc.png)*Spectrum*
+So, to fix it first open **taglist.module.css** and make the width of the box auto. This will make the series list and tag list adjust itself in all screen sizes, including smaller screens.
+
+![taglist.module.css](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589955075/25-dev/1_i56tx1.png)*taglist.module.css*
 
 Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
@@ -24,13 +26,15 @@ Rest of the chapter is exclusive content and will be in my upcoming book **Gatsb
 
 </div>
 
-And finally our site is live and that also as a https site at [https://thewebdev.tech/](https://thewebdev.tech/)
+Next, it’s time to push to github so it does the automatic deployment to netlify. After the deployment it is showing on my site, which now have comment and like section for each blog.
 
-![thewebdev](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589896665/20-dev/17_zicoaw.png)*thewebdev*
+![Comment system](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589955075/25-dev/14_bwev7e.png)*Comment system*
 
-This completes part-20 of the series.
+This completes part-25 of the series.
 
 You can find the code for the same in [this](https://github.com/nabendu82/thewebdev-public) github repo.
+
+Also, the site is live at [https://thewebdev.tech/](https://thewebdev.tech/)
 
 The book is currently 80% complete and available on leanpub to purchase at [this](https://leanpub.com/gatsbycookbook) url. So, please show your support and purchase the book or tell it to someone who is interested in developing blazing fast production websites in GatsbyJS.
 
