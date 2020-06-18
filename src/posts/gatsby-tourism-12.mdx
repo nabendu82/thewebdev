@@ -16,47 +16,13 @@ Welcome to part-12 of the series. Let’s start by creating our **Places** compo
 
 ![Places.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/1_TngErFW-w.png)*Places.js*
 
-As we are getting the places, we are passing it to the **PlaceList** component. Let’s create a simple **PlaceList** component now.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![PlaceList](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/2_ULh5HB0kZ.png)*PlaceList*
+<div className={styles.image__small}>
 
-Next, we will show our **Places** component in our **places.js** page.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![places.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/3_zJOJ5oC4wc.png)*places.js*
-
-Let’s now update our **PlaceList.js** to show all the Places. Here we are using a Class based component and accessing the **places** passes from **Places** component, by **this.props.places**.
-
-We are also having two local state of **places** and **sortedPlaces**. It gets updated by the **this.props.places**, once the components loads and updated by a React lifecycle **componentDidMount**()
-
-After, that we are sorting over **sortedPlaces** and passing it’s value to an already created **Place** component.
-
-![PlaceList.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/4_dEmPj7KDNK.png)*PlaceList.js*
-
-Now, when we move to [http://localhost:8000/places](http://localhost:8000/places) , it will show all the 22 places.
-
-![places](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/5_SrorFrpvR-.png)*places*
-
-Next, we will create template to show when we go to a single place. Head over to your code editor and create a **templates** folder inside **src** folder. Create a file **place-template.js** inside it. Also, put the basic code in it.
-
-![templates](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/6_sVNfCWRgM.png)*templates*
-
-We are basically creating our pages programmatically through the templates. So, create a file **gatsby-node.js** in the root directory.
-
-![gatsby-node.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/7_jmNQKPCRPw.png)*gatsby-node.js*
-
-Let’s first create the query in GraphiQL, so head over to [graphql](http://localhost:8000/___graphql) and create the below query which gives us all the slugs.
-
-![slugs](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/8_inpf0y9l3T.png)*slugs*
-
-Now, head over to file **gatsby-node.js** and add the below content. Here, we are using async-await syntax to make the call. We are using the graphql query, we had created in the Graphiql.
-
-Once we receive the data, we are looping over it and creating the pages with slug and the template.
-
-![graphql](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/9_JKvYW0dQA.png)*graphql*
-
-After, saving the file we need to restart the server. After the restart in your browser, goto any non-existing page and you will be shown the 404 page with all pages. We can see all the pages dynamically created.
-
-![All pages](https://ik.imagekit.io/thewebdev/GatsbyTourism/12/10_zRcFmlUOCm.png)*All pages*
+</div>
 
 If we click on any of page, it will show us data from **place-template.js**
 

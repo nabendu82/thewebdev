@@ -16,129 +16,13 @@ Welcome to part-13 of the series. In this part we will first start with creating
 
 ![slug](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/1_LmYgBqpit.png)*slug*
 
-We need to pass a variable to this query dynamically from our code. To test the same, we will update our query as below. And pass the variable from the screen “QUERY VARIABLES”.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![Variables](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/2_21fGPVcdT7.png)*Variables*
+<div className={styles.image__small}>
 
-Let’s complete the above query by adding all the fields.
-
-![All fields](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/3_L415roKeK.png)*All fields*
-
-Next, we will add the query to our **place-template.js** and display it. We are de-structuring the data, which we receive from the query.
-
-Some of our place have multiple images, so we are de-structuring the **images**. We are keeping the first image as **mainImage** and rest of the image in array as **placeImages**.
-
-![place-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/4_Zg7N-bVts.png)*place-template.js*
-
-Now, once we move to a place having multiple image and open the console, we can see the variables. And also the name is getting displayed in the page.
-
-![variables](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/5_vGkVGkfGWA.png)*variables*
-
-Let’s first add the styles for templates by creating a file **template.module.css** inside **css** folder.
-
-<div className={styles.code__block}>
-
-```
-    .template {
-        padding: 4rem 0;
-    }
-    .center {
-        width: 80vw;
-        margin: 0 auto;
-    }
-    .images {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        grid-column-gap: 1rem;
-        grid-row-gap: 1rem;
-        margin-bottom: 2rem;
-    }
-    .image {
-        box-shadow: var(--lightShadow);
-    }
-    .template h2 {
-        text-transform: capitalize;
-        letter-spacing: var(--mainSpacing);
-        margin-bottom: 1rem;
-    }
-    .info {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .info p {
-        display: flex;
-        align-items: center;
-        margin-right: 2rem;
-        text-transform: capitalize;
-    }
-    .icon {
-        color: var(--primaryColor);
-        font-size: 1.4rem;
-        margin-right: 0.5rem;
-    }
-    .desc {
-        line-height: 2;
-    }
-    .template h4 {
-        text-transform: capitalize;
-    }
-    .template h2 {
-        margin: 2rem 0;
-    }
-    .journey {
-        margin: 3rem 0;
-    }
-    @media screen and (min-width: 992px) {
-        .journey,
-        .desc {
-            width: 70vw;
-        }
-    }
-    @media screen and (min-width: 1200px) {
-        .center {
-            width: 95vw;
-            max-width: 1170vw;
-    }
-    .images {
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        grid-column-gap: 50px;
-    }
-    }
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
-
-Next, let’s update our **place-template.js** to show more fields.
-
-![More Fields](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/6_nUnRh8L2Hp.png)*More Fields*
-
-Also, we need to change our **src** in the query to a fragment or else our code will give error.
-
-![Fragment](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/7_IAYZMttnnI.png)*Fragment*
-
-Now, once we go to a page we can see our images and text.
-
-![Images and text](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/8_U20xidU5pI.png)*Images and text*
-
-Next, let’s add all the fields in **place-template.js** for our place. It will contain the **timeRequired**, **timings** and **description** fields.
-
-![Completed almost](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/9_TfnAI-zaK.png)*Completed almost*
-
-And our page now looks almost complete.
-
-![Details done](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/10_gtMiHNXIG.png)*Details done*
-
-One last thing that is remaining is to put a button to go back to the places page. So, add an **AniLink** for the same in **place-template.js**
-
-![AniLink](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/11_r1983FXZFy.png)*AniLink*
-
-This will show a nice return button.
-
-![Nice button](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/12_SwNtwTiFsV.png)*Nice button*
-
-Once it had pushed the code to github, it starts the automatic deployment to netlify. But my netlify build failed due to fragment **GatsbyContentfulFluid_tracedSVG** used at three places.
-
-![Netlify Error.](https://ik.imagekit.io/thewebdev/GatsbyTourism/13/13_p8iVOpqhm.png)*Netlify Error.*
 
 So, i fixed the error by changing the fragment from **GatsbyContentfulFluid_tracedSVG** to **GatsbyContentfulFluid** in all three files.
 

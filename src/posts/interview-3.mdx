@@ -13,6 +13,7 @@ tags: ['javascript', 'webdev', 'career']
 Welcome to part-3 of the series. Let’s start with where we left.
 
 **Question 12-** *What is the difference between call, bind and apply?*
+
 **Answer-**call, bind and apply are used in calling a function, with some Object. You can think them of doing something like below.
 
 ![call, bind and apply](https://cdn-images-1.medium.com/max/2820/1*myxF889wodiwW4IGwlGMpA.png)*call, bind and apply*
@@ -60,6 +61,7 @@ We will take the returned function in **bindFunc** and then execute it in the ne
 ![bind explained](https://cdn-images-1.medium.com/max/3200/1*Ds82F6hGoLWbrawtPozE9A.png)*bind explained*
 
 **Question 13-** *Tell some practical applications of call, bind and apply?*
+
 **Answer-**We can use **call** to change an array like object to array. This is generally required as arrays have a lot of methods like map, reduce, filter which is required for manipulation of data. For example to convert the **arguments** array like object into array.
 
 Consider the below example, in which we console log arguments. If we expand it in dev console, it shows its not and array and it’s **__proto__** doesn’t have array functionalities.
@@ -118,6 +120,7 @@ Consider the below code. We bind the “this” of the event handler to the comp
 **Note**: Details of the above scenario in my article on “*Demystifying this in JavaScript and React*” [here](https://dev.to/nabendu82/demystifying-this-in-javascript-and-react-4d9p).
 
 **Question 14-** *How to remove duplicates from array?*
+
 **Answer-**There are many different ways to remove duplicates from an array.
 
 ### Solution 1
@@ -166,6 +169,7 @@ We can use the new ES6 data structure *Set*. They have properties to only store 
     //Output - Array(4) [ 1, 2, 3, 5 ]
 ```
 **Question 15-** *What is the difference between for..in and for..of loops?*
+
 **Answer-**The *for..in* loop is used to iterate over properties of an Objects. In JavaScript Arrays are also Objects and each characters in an string have an index. So, we can use them also to iterate over Arrays and Strings.
 ```
     //Object example

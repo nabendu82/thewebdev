@@ -18,55 +18,13 @@ So, let’s stop our **gatsby develop** and npm install the plugin.
 
 ![npm install](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/1_bF7_KHAQx.png)*npm install*
 
-Next, start the development server by **gatsby develop**. After that head over to your code editor and create a new file **StyledHero.js** inside it.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![StyledHero](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/2_s_2AWkB-5.png)*StyledHero*
+<div className={styles.image__small}>
 
-Put the below content in the file. We are making **StyledHero.js** a general purpose component, which can be used in all pages for the large hero image. All of the code for the component is taken from the [docs](https://www.gatsbyjs.org/packages/gatsby-background-image/) of the **gatsby-background-image** plugin.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![StyledHero](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/3_X8gfvitbDu.png)*StyledHero*
-
-We are using one additional props in our component, which is home. Our home page will also contain a linear gradient and also the size of the image will also cover the entire page.
-
-We took both of them from the existing **layout.css**, which is been used in the **SimpleHero.js** component.
-
-![layout.css](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/4_KvQlNRdcfm.png)*layout.css*
-
-Now let’s rendered our **StyledHero** in our **Home** page. Move over to **index.js** and replace the **SimpleHero** with **StyledHero**.
-
-![StyledHero](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/5_xNOsfJg-s.png)*StyledHero*
-
-Next, we will create our query for displaying image in GraphiQL.
-
-![GraphiQL](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/6_ePcwxAb5-w.png)*GraphiQL*
-
-Earlier we used **StaticQuery** but we will be using **PageQuery** because **index.js** is a page. Here, we are using the query which we had created in our GraphiQL. After that passing it as props to our **StyledHero** component.
-
-![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/7_5Db9Eft7Uw.png)*index.js*
-
-Now, when we check in the browser we can see our optimized background image.
-
-![Optimized background](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/8_Pk98_7vn2f.png)*Optimized background*
-
-Next, we will add background image to all pages. First, we will add in the **places.js** file. Everything will be similar to **index.js** , except that we are not passing the **home** prop in **StyledHero**.
-
-![places.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/9_IqY52azrRy.png)*places.js*
-
-By not passing the home prop, we get a smaller image with no linear gradient.
-
-![Places](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/10_8eOri1sFyP.png)*Places*
-
-Next, we will update the **contact.js** page. Here we are using a different image.
-
-![contact.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/11_UgqYGFLF0P.png)*contact.js*
-
-It will result in the below change in our Contact page in browser.
-
-![Contact Page](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/12_0VOhaIyAY.png)*Contact Page*
-
-Next, we will update the **blog.js** file. Here also we are using a different image.
-
-![blog.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/7/13_gY1QTmHa_D.png)*blog.js*
+</div>
 
 And our Blog page looks like below in browser.
 

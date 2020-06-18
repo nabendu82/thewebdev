@@ -16,69 +16,13 @@ Welcome to part-14 of the series. In this part we will start my creating a new *
 
 ![Contentful](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/1_7rqLiWp-W.png)*Contentful*
 
-In the pop-up window give a **Name** and **Description** and click on **Create**.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![Create content type](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/2_S_r4fDpOCx.png)*Create content type*
+<div className={styles.image__small}>
 
-In the next screen, after you click on **Add field** you will get below pop-up. Click on **Text** in this window.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![Add new field](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/3_th4NiBLW01.png)*Add new field*
-
-In the next window give a **Name** and then click on **Create and configure**
-
-![title](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/4_qswhNxuGi.png)*title*
-
-In the next window first click on **Validations** tab. After that click on the checkbox **Required field** and then **Save** button.
-
-![Required](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/5_oPqhQXHdJs.png)*Required*
-
-We will follow exactly same process to create a **slug** field.
-
-![slug](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/6_i6jW8DsIf.png)*slug*
-
-Next, we will add a **Date and time** field.
-
-![Date](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/7_LkqyAq0eyJ.png)*Date*
-
-Give this field a **Name** and click on **Create and configure**. You need to follow the same process as title filed to make it **required** field.
-
-![published](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/8_UA0iwZ7dg2.png)*published*
-
-Next, we will create a description field. It will be **Text field**, but a **Long text, full-text search**. As usual create it a required field.
-
-![description](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/9_jiXl_strqe.png)*description*
-
-Also, create an author filed. But don’t make it required by clicking on **Create**.
-
-![author](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/10_8m_HDvfrM4.png)*author*
-
-After this click on **Save** at the top right corner to save this **Content Model**.
-
-![post content model](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/11_SGOS0RI8I.png)*post content model*
-
-Next, let’s add some data into the **Content Model**. First goto the **Content** tab and then click on **Add entry**. After that click on **post**.
-
-![post](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/12_RFdjqs5Fx9.png)*post*
-
-Now, for the post i am taking real blogs from medium. We will put it in the description field, but it takes mark down file. So, we can convert the medium post to markdown by [this](https://medium.com/@macropus/export-your-medium-posts-to-markdown-b5ccc8cb0050) awesome npm package.
-
-![Content](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/13_2sjn_fEuJH.png)*Content*
-
-I have added four original blogs till now from medium.com. Will add more later as i am also planning to visit Hampi soon.
-
-![Hippy Hampi blogs](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/14_wAgJdbKge.png)*Hippy Hampi blogs*
-
-One thing which i forgot to add in the **Content model** is an image field. So, i will head over to the **Content model — post** and add an **Media** field.
-
-![Media field](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/15_fLawKjO6um.png)*Media field*
-
-Give it a name **image** and then click on **Create and configure** to make it a required field.
-
-![Name](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/16_vSt1WjMxa.png)*Name*
-
-Next, save it by clicking on **Save** button.
-
-![Save](https://ik.imagekit.io/thewebdev/GatsbyTourism/14/17_AkKWgM9Sw.png)*Save*
+</div>
 
 I have also added the required image in all posts. After that too get access to these new post, we need to restart the server. So, go ahead and stop **gatsby develop** from terminal and re-run it.
 

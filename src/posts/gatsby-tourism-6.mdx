@@ -22,68 +22,14 @@ So, head over to project directory and stop any **gatsby develop**, if it is run
 
 ![npm install](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/1_EuSs3Gsuu.png)*npm install*
 
-Next, we will update our **gatsby-config.js** file to use this plugin to get our **images** folder path
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![Gatsby config](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/2_BZp9oMQBSc.png)*Gatsby config*
+<div className={styles.image__small}>
 
-Let’s quickly verify, whether our plugin is working properly. So, head over to Graphiql and refresh the browser. After that run the below query. It will give us the number of files in the **images** folder. As we have 6 files in **images** folder, so it will give output 6.
-
-![GraphiQL](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/3_9GIoVcAqnU.png)*GraphiQL*
-
-The **gatsby-source-filesystem** also provides us with another query called file, which gives details of any file present in **images** folder.
-
-![file](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/4_ymKoRj-UM.png)*file*
-
-Next, we will install the [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) plugin. This is the plugin, which we will use in our project to speed up image loading.
-
-As per the [docs](https://www.gatsbyjs.org/packages/gatsby-image/), we have to do two npm installs. They are below.
-
-<div className={styles.code__block}>
-
-```
-    npm install --save gatsby-image
-    npm install --save gatsby-transformer-sharp gatsby-plugin-sharp
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
 
-![npm install](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/5_Lft3XeJQj.png)*npm install*
-
-After, the installs are complete update the **gatsby-config.js** file as below.
-
-![Gatsby Config](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/6_Ynd9nxLgBT.png)*Gatsby Config*
-
-Next, start the project by running **gatsby develop**. As per the documentation, we need to use the gatsby-image plugin as below. We can have two type of images — fixed or fluid.
-
-![How to use](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/7_-g5_NIvifH.png)*How to use*
-
-We can use the below fragments in our code, in place of GatsbyImageSharpFixed
-
-![Fragments](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/7.2_x7SY9F_1lo.png)*Fragments*
-
-We will use this later in our project. For now we can check query in the GraphiQL.
-
-![GraphiQL](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/8_2tvcdpAQJ5.png)*GraphiQL*
-
-Let’s also check for the fluid one. We can check this from the same **file** code, but we need to give aliases as the name is same.
-
-![fixed and fluid](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/9_c0Ce_PVbQm.png)*fixed and fluid*
-
-As, you can see from above we cannot use the Fragments in our GraphiQL and using **src**. This is a limitation as of now, but we can use them without any error in our code.
-
-Now, it’s time to use **gatsby-image** in our About component, which is in the home page. We will again create our GraphQL query in the GraphiQL first. Notice that we have also named the query — aboutImage.
-
-![query aboutImage](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/10_h22SeVCtc.png)*query aboutImage*
-
-Next, we will move to **About** component and paste our query from GraphiQL, to a variable **getAbout**. Also, notice that we had replaced **src** with a fluid fragment **GatsbyImageSharpFluid_tracedSVG**
-
-Did some required imports at the top of the file and commented out our earlier import, which was used for displaying the image.
-
-After that we are de-structuring **aboutImage** and then using the **useStaticQuery**, which is a hook provided by Gatsby.
-
-Finally using **Img** from gatsby-image to display our image.
-
-![About component](https://ik.imagekit.io/thewebdev/GatsbyTourism/6/11_ytQ4Zi9rW.png)*About component*
 
 When you see the output on your browser, you can see the About component displaying the same image. But what you see is an optimized image, which loads very fast on all screen with even slow internet speeds.
 

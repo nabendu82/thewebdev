@@ -13,6 +13,7 @@ tags: ['javascript', 'webdev', 'career']
 Welcome to part-2 of the series. Let’s start with where we left.
 
 **Question 4-** *What is the difference between function declaration and function expression ?*
+
 **Answer-**Function declaration is defining functions as in most languages, but function expression is assigning an anonymous function to an variable.
 
 Consider the below example. We can call a function declaration even before defining it but same is not true for function expression and it will give reference error.
@@ -36,6 +37,7 @@ Consider the below example. We can call a function declaration even before defin
 **Note**: The detailed explanation can be found in my blog for Scopes and Closures [here](https://dev.to/nabendu82/ydkjs-scopes-and-closures-part2-9ej).
 
 **Question 5-** *Is JavaScript synchronous or asynchronous and what is event loop?*
+
 **Answer-**JavaScript is a synchronous, single-threaded language. The asynchronous behaviour of JavaScript(setTimeout, callbacks, promises) is not a part of JavaScript itself and built on top of JavaScript language in browser and accessed through browser APIs.
 > Now, the browser have a Call Stack, Browser API and Message Queue and the order of there processing is called event loop.
 
@@ -76,6 +78,7 @@ This is how the whole Event Loop works inside a browser and async calls like set
 **Answer-**The output of the same will be A C B. setTimeout even with 0ms will be called last because of event loop concept as shown in Question 5.
 
 **Question 7-** *What is a closure and how do we use it?*
+
 **Answer-**Closures are basically a inner function storing the scope information of the variable stored in Outer function.
 
 Consider the below code. The variable **b** have an scope in outer function ie from line 4 to line 10. So, at line 13 when we call the outer function, it can access the value of b, but at line 14 there is no outer function.
@@ -89,6 +92,7 @@ Now it doesn’t matter where you call inner, whether in this file or some third
 **Note**: You can find detailed explanation about Closures in my article [here](https://thewebdev.tech/ydkjs-scopes-and-closures-5).
 
 **Question 8-** *Explain “this” keyword in JavaScript?*
+
 **Answer-**JavaScript “this” keyword simply means that if you are inside a scope or function or object, “this” means whichever scope/function/object you are in. We can have “this” in various context. Let’s go through them.
 
 ### “this” inside global scope
@@ -110,6 +114,7 @@ Now if we have a function called cleanTable(), then “this” refers to window
 ![“this” inside a function](https://cdn-images-1.medium.com/max/5760/1*TpBI4a2DjuaDkQj5aZ2ayw.png)*“this” inside a function*
 
 **Question 9-** *Explain “this” keyword in call method?*
+
 **Answer-**call method is used for calling a function, with some Object and in such cases the “this” is for that Object. We can also pass some argument to it.
 
 ![*“this” keyword in call method*](https://cdn-images-1.medium.com/max/5760/1*kENdlsGg4HBff4iwD0w7uA.png)**“this” keyword in call method**
@@ -206,6 +211,7 @@ Use arrow function in the innerFunc. Arrow functions have special meaning for �
     //Output - Cleaning nabs table with Harpic
 ```
 **Question 11-** *Explain “this” keyword inside a constructor function or ES6 class?*
+
 **Answer-**Constructor function and ES6 classes are both same. The ES6 classes are nothing but synthetic sugar for constructor function and internally behaves exactly the same.
 
 “this” inside both of them is the instance which creates the variable with new keyword.

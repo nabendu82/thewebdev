@@ -35,93 +35,13 @@ Now, as per the documentation we need to add the below text in **gatsby-config.j
 
 ![gatsby-config.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/2_iIhX_qtI5.png)*gatsby-config.js*
 
-Next, we also need to add site metadata in our **gatsby-config.js**, as it will be used by the next plugins. One main thing to notice is the **image** tag. The image mentioned in it needs to be placed in **static** folder.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![siteMetadata](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/3_aUH5r6wcf-.png)*siteMetadata*
+<div className={styles.image__small}>
 
-After this start your **gatsby develop** and head over to the code editor and add **SEO.js** file inside the **components** folder. The initial content of the file will be as below. Here it’s excepts two props **title** and **description** from any component.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![SEO.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/4_MSIFv6br4w.png)*SEO.js*
-
-Next, head over the home page **index.js** and import the SEO component and use it to pass **title** and **description**.
-
-![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/5_UAob-UxtVT.png)*index.js*
-
-Now, when we head over to the localhost we can find the title and the meta tag inside the head tag.
-
-![title and meta](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/6_7Mahr2A0fI.png)*title and meta*
-
-We will now introduce graphql in our **SEO.js** , but for that let’s first create the query in Graphiql playground.
-
-![Playground](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/7_bFu5Drzfs.png)*Playground*
-
-Next, let’s add the query to our **SEO.js** and also change our **title** to also include the **siteTitle** which we are getting from our query. We are also adding a new meta for **image**.
-
-![SEO.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/8_FJNvaaDTca.png)*SEO.js*
-
-In the above file, we have made **description** props as optional, so if we don’t pass it we will be using **siteDesc** which we have defined in **gatsby-config.js**
-
-So, let’s delete the description from **index.js** as we will use the longer and more accurate **siteDesc**
-
-![index.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/9_g3Jl0ZZTuQ.png)*index.js*
-
-Now, in our localhost we can see these changes.
-
-![title and meta](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/10_7fedQJjVyR.png)*title and meta*
-
-Next, we will add Twitter Card to our project. With the twitter card added, when we share our project on twitter, it will show a nice image with description.
-
-![twitter card](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/11_U1Lq7gJ2X.png)*twitter card*
-
-Next, we will also add facebook Card to our project. With the facebook card added, when we share our project on facebook, it will show a nice image with description.
-
-![Facebook card](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/12_aLijrRDQFf.png)*Facebook card*
-
-For testing the cards, we need to push the code to github so that it is deployed in netlify.
-
-![Netlify deployed](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/13_arvvG36Yn.png)*Netlify deployed*
-
-Next, let’s test the same on **twitter card validator** and **facebook card validator**, to check how it will look in both social networks.
-
-![Twitter validator](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/14_vxdyjzmFE.png)*Twitter validator*
-
-![Facebook card validator](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/15_kMoQbGk8Ny.png)*Facebook card validator*
-
-It look exactly as we like on both networks. So, now let’s add SEO to all pages of our project.
-
-First, we will add SEO component to **404.js** and **contact.js**. They will also have default **description** like **index.js**, so we are not passing description prop.
-
-![404.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/16_1mWhjDLEW.png)*404.js*
-
-![contact.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/17_VILVP0QsbG.png)*contact.js*
-
-Our next three pages i.e. **blog.js** , **photos.js** and **places.js** will have different description. So, we will be passing the description props.
-
-![blog.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/18_o_vmadfI3v.png)*blog.js*
-
-![photos.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/19_sMf7rPvLG.png)*photos.js*
-
-![places.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/20_7XdvP2T326.png)*places.js*
-
-Now, we have three templates which auto generates pages for us. We will be using the page name as title in all three.
-
-![blog-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/21_zrcp76sJ1.png)*blog-template.js*
-
-![place-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/22_j8Rdm3yPEm.png)*place-template.js*
-
-![photos-template.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/23_-mKd8u-zh.png)*photos-template.js*
-
-Then we will add two more plugins for SEO — **gatsby-plugin-robots-txt** and **gatsby-plugin-sitemap**. The details for installing both can be found in my earlier blog [here](https://thewebdev.tech/blog-gatsby-stackbit-3).
-
-After the required npm installs, we are adding the below in **gatsby-config.js** file.
-
-![gatsby-config.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/24_bp0ACoJ2xl.png)*gatsby-config.js*
-
-I will be also adding google analytics to the site, so that i can keep count and other analysis of the visitor. The installation process can be found in my earlier blog [here](https://thewebdev.tech/blog-gatsby-stackbit-3).
-
-After the required steps in google analytics page and also npm installing the plugin, the below changes needed to be made in **gatsby-config.js** file.
-
-![gatsby-config.js](https://ik.imagekit.io/thewebdev/GatsbyTourism/20/25_UiVsPE7lj.png)*gatsby-config.js*
+</div>
 
 After pushing and successfully deploying in netlify our site is live at [https://amazinghampi.com/](https://amazinghampi.com/) and the project complete.
 

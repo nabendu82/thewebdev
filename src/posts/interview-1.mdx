@@ -27,6 +27,7 @@ This series is based on my experience in giving and taking interview, and the in
 Let’s start with Basic JavaScript questions which is generally asked in First round and sometimes in second round also.
 
 **Question 1-** *What is the difference between keyword let, const and var ?*
+
 **Answer-** The variable var was since the beginning of JS but the variables let and const were introduced recently in ES6.
 var is *function scoped*, whereas let and const are *block scoped*.
 We will understand difference between var and let first. Consider the below example. It is having an IIFE and inside it there is an if stement. The if statement creates a scope for let variable but var doesn’t have block scope so, it can be accessed outside it also.
@@ -110,6 +111,7 @@ And also adding and changing values in objects are possible.
     //output is obj is { name: "Nabendu", skill: "React", profession: "Developer" }
 ```
 **Question 2-** *What is the difference between == and === ?*
+
 **Answer-**Both are comparision operator in JavaScript. The == does an type conversion before comparing, but === does strict comparision and no type conversion.
 
 Consider the below for ==. The comparison between string 1 and numeric 1 produce **true**, because numeric 1 is converted to string before comparing.
@@ -131,6 +133,7 @@ Now, consider the same example for ===. It will produce false because no type co
     //Output - They are not equal
 ```
 **Question 3-** *What is the difference between null and undefined ?*
+
 **Answer-**Both represents empty values. But the difference is when you define a variable and not assign a value JS assigns undefined to it. null is generally assigned by the users in cases where they want to clear some values.
 ```
     let a;
@@ -140,7 +143,8 @@ Now, consider the same example for ===. It will produce false because no type co
 ```
 The other difference is **typeof(undefined) is undefined** but **typeof(null) is object**. It should be null but that a bug in JavaScript which is from early days.
 
-**Question 3-** *What is prototypal inheritance ?*
+**Question 4-** *What is prototypal inheritance ?*
+
 **Answer-**Prototypal inheritence means, to create new capabilities using prototype. Let consider the below example. Here, we create a Car constructor function and then call it with new keyword. Now, the nabsCar and shikhaCar variables have their own instance of Car, but can have a common protoype function getModel()
 ```
     let Car = function(model) {
