@@ -36,43 +36,13 @@ I was searching for a way to add disqus plugin in the code, but found a way to a
 
 ![social links](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/1_KAihpQ1oR.png)*social links*
 
-It is pointing to the data file, so i had gone ahead and updated more links in my **social.json** file.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![social.json](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/2_DMf2VN5kyF.png)*social.json*
+<div className={styles.image__small}>
 
-In my local development server the changes were not reflecting so i had to restart the **gatsby develop**.
-
-![social links](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/3_T27L9cuQm.png)*social links*
-
-Next, after doing some research i am installing the discuss plugin now as per [documentation](https://www.gatsbyjs.org/packages/gatsby-plugin-disqus/) inside by project directory
-
-<div className={styles.code__block}>
-
-```
-    npm install -S gatsby-plugin-disqus
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
-
-We need to register to disqus and get the website shortname. You can get it from below screen.
-
-![shortname](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/4_PNNVFj3O8l.png)*shortname*
-
-Next, it’s time to add it in **gatsby-config.js**
-
-![gatsby-config.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/5_Ogx887Jblq.png)*gatsby-config.js*
-
-Next, we need to add disqus in the template **post.js** . After some research and help from this [github](https://github.com/kingingcole/myblog) of [Cole Emeruche](https://coleruche.com/), i was able to add disqus. We need to add url, identifier and stile to **disqusConfig** and for this used a bit javascript.
-
-![post.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/6_TYEF4D0xdL.png)*post.js*
-
-Next, it’s time to add **CommentCount** and **Disqus** before and after your content.
-
-![post.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/7_7Y3jq0G98i.png)*post.js*
-
-It have started now to show in localhost.
-
-![localhost disqus](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/4/8_s9daWcM061.png)*localhost disqus*
 
 Next, it’s time to push to github so it does the automatic deployment to netlify. After the deployment it looks awesome and my site now have comment and like section.
 

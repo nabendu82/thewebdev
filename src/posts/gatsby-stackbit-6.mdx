@@ -28,69 +28,13 @@ I decided to add Media.net ads to my site as they serve ads from yahoo network. 
 
 ![Ads.txt](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/1_skiE9pnzPH.png)*Ads.txt*
 
-Now for a gatsby site it is to be placed inside the **static** folder.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![Static folder](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/2_vfrAkBxrqt.png)*Static folder*
+<div className={styles.image__small}>
 
-After deploying to netlify you can click on the refresh button and it will show **optimized**.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![Optimized](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/3_UXobf6Dbla.png)*Optimized*
-
-Next, goto Ad Units tab and you will see all the Ads.
-
-![Ad Units](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/4_hQ0BIPUent.png)*Ad Units*
-
-I had a bit problem with the provided defaults Ads as they were not showing on desktop due to layout of my website. So, i created my own Ads. One thing to keep in mind is that you should also have these two checkbox selected while creating a ad.
-
-![Responsive Ads](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/5_IV6C2ZnCgB.png)*Responsive Ads*
-
-Now, when you go inside any Ad unit you will get two scripts to be placed in the head and body tag of your website.
-
-![Head and Body](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/6_ltKKiAhn7.png)*Head and Body*
-
-Now, i was not able to figure out where to put these scripts in my gatsby site. The tech support of media.net and stackoverflow also were of not able to help me as Gatsby is quite new. But i got awesome help from folks at gatsby and came to know about there [spectrum chat](https://spectrum.chat/gatsby-js/general?tab=posts). I posted in the General forum and a person [Jeremy](https://spectrum.chat/users/js-brecht) helped me through the complete process. Thanks **Jeremy Albright** for your help.
-
-![Gatsby Help](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/7_FNbIlanLbF.png)*Gatsby Help*
-
-I got pointed to a great [article](https://uxworks.online/how-to-add-a-script-in-head-or-body-tag-in-your-gatsby-website/) to insert scripts provided by anyone in the head and body tag of the site. You need to update the **gatsby-ssr.js** file in the root directory.
-
-![gatsby-ssr.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/8_F41LrOKFmD.png)*gatsby-ssr.js*
-
-Now, you have to had **setHeadComponents**, **setPostBodyComponents** and **setPreBodyComponents** in the **onRenderBody** function. Now the **head** tag script will come in **setHeadComponents**, but need to be updated to have **dangerouslySetInnerHTML**.
-
-Similarly, the **body** tag script will come in **setPreBodyComponents** with ***dangerouslySetInnerHTML*** . Also, notice that i had put an inline style `style={{textAlign: 'center'}}` to centre the Ad. I had done this because my Ads were not properly showing on desktop.
-
-![gatsby-ssr.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/9_WzhfiMSufp.png)*gatsby-ssr.js*
-
-After this commit the changes and deploy in netlify and you will get ads shown in all page and blogs before it.
-
-![Ads](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/10_IoLQjQXtv.png)*Ads*
-
-I had also put a different Ad unit in the **setPostBodyComponents** which will be shown after every page and blog. Now there were already some scripts in my **setPostBodyComponents**, so i put the div provided by media.net after it. Also, the head script was same so i didn’t had to put anything again in the **setHeadComponents**
-
-![After Ads](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/11_jxvj_EaBP-.png)*After Ads*
-
-After this commit the changes and deploy in netlify and you will get ads shown in all page and blogs after it.
-
-![After Ads](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/12_ZTnHt8ja1M.png)*After Ads*
-
-I did one more update to my site as you might have noticed from above screenshot. I added **Subscription** component in my sidebar. Earlier my subscription component was been shown after each of my blogs.
-
-In my **subscribe.js** i am expecting a props now, which will decide whether to show the headings or not.
-
-![subscribe.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/13_3c0PzaMtX.png)*subscribe.js*
-
-Also, one of the other changes was to make the background transparent in **subscribe.module.scss**
-
-![subscribe.module.scss](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/14_u3UWPH8Xgr.png)*subscribe.module.scss*
-
-Next, it’s time to update it first in **post.js** and pass the new props as true.
-
-![post.js](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/15_fH1WGxF8n5.png)*post.js*
-
-It will show the updated Subscribe component without any background color after every post.
-
-![Subscribe button](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/6/16_0QoZ7z2lC.png)*Subscribe button*
+</div>
 
 Next to show the Subscribe component in the Sidebar, i had updated the **Social.js** file. I had included it in the file, followed by adding a React fragment and added it with passing the props heading as false.
 

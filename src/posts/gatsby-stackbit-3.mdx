@@ -20,135 +20,13 @@ So, let’s head over to the terminal and run the command to get the latest data
 
 I will be adding two SEO plugins first.
 
-## gatsby-plugin-robots-txt
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-So, let’s head over to the [plugin page](https://www.gatsbyjs.org/packages/gatsby-plugin-robots-txt/?=gatsby-plugin-robots-txt). As the name suggest it creates a **robots.txt** file for our gatsby site. It’s good for SEO as it tells google bots on how to crawl your site.
+<div className={styles.image__small}>
 
-We will follow the instruction and do an npm install in our directory.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![npm install](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/2_TEieVePlm.png)*npm install*
-
-In the **gatsby-config.js** , we need to add the marked code in our plugin array.
-
-![robot](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/3_LMq3wZ4L1J.png)*robot*
-
-## gatsby-plugin-sitemap
-
-This plugin generates sitemap for your site, which is very important for SEO. As per the instruction on [plugin page](https://www.gatsbyjs.org/packages/gatsby-plugin-sitemap/?=) , let’s do npm install.
-
-![npm install](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/4_mOGbjNytR.png)*npm install*
-
-Now, this plugin is easy to use. We need to add the plugin name in our **gatsby-config.js** inside the plugins array.
-
-![sitemap](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/5_TzZgOk0Y3.png)*sitemap*
-
-We also need to have a **siteUrl** in our **siteMetaData**. But Stackbit create a json for us. So, we need to add there. We will also add some other useful keywords for SEO in the **site-metadata.json** file.
-
-I found a helpful list in **Emeruche Cole** github [link](https://github.com/kingingcole/myblog/blob/master/gatsby-config.js)
-
-![siteMetaData](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/6_U9YAU9wfjG.png)*siteMetaData*
-
-Next, let’s start our server to see if there are any error.
-
-![npm run develop](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/7_0FCypmdCVM.png)*npm run develop*
-
-I have also checked in [http://localhost:8000/](http://localhost:8000/) and there were no errors. Next, let’s add these changes to our production. With Netlify, it’s just pushing the changes to GitHub.
-
-So, i had just committed my changes and pushed to GitHub.
-
-![Pushed to github](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/8_sQnh2ArTz1.png)*Pushed to github*
-
-Once i head over to my netlify dashboard for this site, it will show building.
-
-![Building](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/9_PpZReFbcnE.png)*Building*
-
-It got published in less then 5 minutes. Now, when i head over to my site my change of title is there. Everything else is behind the scenes.
-
-![nabendu’s blog](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/10_h661zBLy1S.png)*nabendu’s blog*
-
-Next, we will add one of the most important plugin and i.e. for analytics.
-
-## gatsby-plugin-google-analytics
-
-This plugin will be used to add google analytics to our website. As per the [gatsby docs](https://www.gatsbyjs.org/docs/adding-analytics/) on setting up google analytics we have first setup a google analytics account and then get the tracking id.
-
-Let’s open [google analytics](https://analytics.google.com/analytics/web/provision/#/provision). If you are not logged in, please login to your google account.
-
-![Welcome page](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/11_Hf8MeOpaW.png)*Welcome page*
-
-Once i click on **Start Measuring** button, it will take you to the below page. Here you will be asked to give your account name. Then click on **Next** button.
-
-![Account name](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/12_Oebh5VXqF.png)*Account name*
-
-In the screen below select **Web** and click **Next**.
-
-![Web](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/13_b-HlHnvwec.png)*Web*
-
-In this screen, we give some basic site information including the site url.
-
-![Basic site information](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/14_Cak0bxEKg4.png)*Basic site information*
-
-Once you clicked on Create button in the above screen, a pop-up will be opened.
-
-![The popup](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/15_EszGHZoYJy.png)*The popup*
-
-Here, you have to accept two Terms and conditions. Then click on **Accept** button.
-
-![I Accept](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/16_0_aRp_DXn.png)*I Accept*
-
-The next screen will contain your **Tracking ID**. It is in the format UA-XXXXXXXXX-X
-
-![Tracking ID](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/17_-5i2GhOdw.png)*Tracking ID*
-
-Now, it’s time to install the gatsby google analytics plugin.
-
-![analytics plugin](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/18_4mHnuabM6E.png)*analytics plugin*
-
-Next, we need to add the plugin in **gatsby-config.js** file. Here, we need to put the Tracking ID, we got from google.
-
-![gatsby config](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/19_GuXomBDLI0.png)*gatsby config*
-
-Next, let’s start the dev server to see if any issues. We need to restart the server by **npm run develop**
-
-I have also checked agin in [http://localhost:8000/](http://localhost:8000/) and there were no errors. Next, let’s add these changes to our production.
-
-So, i had just committed my changes and pushed to GitHub. It will again build our production site in Netlify.
-
-![Changes published](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/20_hPWsErzeT9.png)*Changes published*
-
-Once the site is published, go back to google analytics page and click on Home tab. You will see your site data. It is very less now, please visit more to read my blogs and increase my count :).
-
-![Site data](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/21_UmkdBmO-oZ.png)*Site data*
-
-One more important thing i want to do on my personal blog site and that is to change the **canonical link** in my **medium** and **dev** posts.
-
-If a post occurs at more then one place then google bots give more priority to the original post. Now, it doesn’t matter where you published the blog first, because all big blogging platforms have ways to give canonical links.
-
-My process is to create the blog in medium first because that is what i am doing since the last 1.5 years. After that i use an awesome package called [mediumexporter](https://medium.com/@macropus/export-your-medium-posts-to-markdown-b5ccc8cb0050) to change the post to Mark Down file.
-
-After that i paste the content of Mark Down file to a new dev post. Since dev is also serving as my headless CMS for my site, due to the awesome service of Stackbit, it gets published in my personal site.
-
-Will show the process on one of my earlier blog. First will add link to a medium post.
-
-I had opened one of my earlier medium post. Since i am logged in, i also get the edit button. First click on the Setting icon, after that the **Edit Story**.
-
-![Editing Medium](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/22_vgLhmtbsnT.png)*Editing Medium*
-
-After that click on the three dots and then click on **Customize canonical link**.
-
-![More editing](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/23_PT7dwOz2w8.png)*More editing*
-
-After that we need to paste the original story link in the **Set canonical URL:** Here i gave the link from my blog site. After that click on **Save** button.
-
-![Set Canonical URL](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/24_79_4EjRqz.png)*Set Canonical URL*
-
-Next it time to head over to **dev.to** and change the canonical link there also. When i head over to my same blog in dev, i get the **Edit** button.
-
-![DEV editing](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/25_O-HMI4Zxi4.png)*DEV editing*
-
-Next, we click on the three dots.
-
-![Click the arrow](https://ik.imagekit.io/thewebdev/Gatsby_Stackbit/3/26_Buz7oON2Bk.png)*Click the arrow*
+</div>
 
 It will open a pop-up, where we had to give the canonical link. I again give it the link from my blog site in **Canonical URL**. After that click on **Done** button, which will close this pop-up. Also, click on **SAVE CHANGES** button after this.
 
