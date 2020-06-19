@@ -17,52 +17,56 @@ We can solve this issue using three solutions — Flux, Redux , Context API. We 
 We will first look briefly into what is Flux. Flux also follows the unidirectional flow of react, but it’s a closed circle. It have four parts — ***The React components, Actions, dispatcher and Store***
 
 **React Component**
+
 It either creates an action or listen for a change in store or do both.
 
 **Actions**
+
 Do some action when triggered from component and pass it to dispatcher
 
 **Dispatcher**
+
 Just a middleman, sends actions to all stores
 
 **Store**
+
 Manages the logic and emits the changes, to be picked up by components.
 
 We only need three components in this Flux refactoring. The basic flow will be as below. We will understand it more, once we build it.
 
-![Flux flow for Youtube Player](https://cdn-images-1.medium.com/max/2000/1*NZFTOoH7vNK6FGn4BH2wLw.png)*Flux flow for Youtube Player*
+![Flux flow for Youtube Player](https://ik.imagekit.io/thewebdev/Youtube-React/4/1_GKHVsUTc3_.png)*Flux flow for Youtube Player*
 
 Now, i will be first cloning from the create [youtube player repo](https://github.com/nabendu82/youtube-player).
 
-![Clone exiting callback youtube-player code](https://cdn-images-1.medium.com/max/2000/1*JGMoPbUaEyrp1v_ULV6YaA.png)*Clone exiting callback youtube-player code*
+![Clone exiting callback youtube-player code](https://ik.imagekit.io/thewebdev/Youtube-React/4/2_8GiyOfYJww.png)*Clone exiting callback youtube-player code*
 
 After that change to that directory and do a **npm install.**Once the npm install finishes successfully do a **npm start**
 
-![cd to directory and npm install, then npm start](https://cdn-images-1.medium.com/max/2000/1*RCJjkeQAGqufRil2rbDSUg.png)*cd to directory and npm install, then npm start*
+![cd to directory and npm install, then npm start](https://ik.imagekit.io/thewebdev/Youtube-React/4/3-0_nW09NyQyVL.png)*cd to directory and npm install, then npm start*
 
 In Flux and other central state logic implementations, we move much of the logic out of React. It only remains as a View, which it is meant to be.
 
 Let install flux into our project by **npm install — save flux**
 
-![npm install — save flux](https://cdn-images-1.medium.com/max/2000/1*CJ5t5H2GWs63h2X598xX5g.png)*npm install — save flux*
+![npm install — save flux](https://ik.imagekit.io/thewebdev/Youtube-React/4/3-1_Ta6eNasbtJ.png)*npm install — save flux*
 
 Now one of the main part of our youtube-player logic is to go the Async API call to youtube through **youtube-search-api**. We will move this logic out to our **App.js** to **action** file. We will first see the basic unidirectional flow of Flux by showing a initial search of ‘React Tutorials’.
 From the constructor, we the call to the action file function **videoSearch**(). We will create that next.
 
-![New App.js](https://cdn-images-1.medium.com/max/2000/1*nrXX3UrjzlcIkJGbT-bW6g.png)*New App.js*
+![New App.js](https://ik.imagekit.io/thewebdev/Youtube-React/4/4_m4EzQasrQv.png)*New App.js*
 
 Now create an **actions** folder in src directory and a file **ytSearch_actions.js** inside it. This action file is doing the Async YTSearch now, with searchTearm(*‘React Tutorials’ from App.js*). It is receiving an array of object from youtube as a response.
 Then sending the same to **dispatcher** as an object with an identifier in actionType and the received data in payload.
 
-![**ytSearch_actions.js**](https://cdn-images-1.medium.com/max/2000/1*pPYsygHMEo3GtW6H4CkDrg.png)***ytSearch_actions.js***
+![**ytSearch_actions.js**](https://ik.imagekit.io/thewebdev/Youtube-React/4/5_fTt4YSrJyk.png)***ytSearch_actions.js***
 
 Also, create a **constants** folder and an **index.js** file inside it. It is used here in **actions**(*ActionTypes.FETCH_YTSEARCH*) and also will be used in **store**. Basically used to keep the constants maintainable.
 
-![constant file](https://cdn-images-1.medium.com/max/2000/1*msAYa0-mSnia8eNneZxwlA.png)*constant file*
+![constant file](https://ik.imagekit.io/thewebdev/Youtube-React/4/6_Mbp_oe3TP.png)*constant file*
 
 Now create a **dispatcher** folder and an **index.js** file inside it. It is just a simple file, with functionality written internally. It basically takes everything from the actions and passes it to all stores.
 
-![dispatcher](https://cdn-images-1.medium.com/max/2000/1*k4QuCHYOYGe_Cp-WzlNJGg.png)*dispatcher*
+![dispatcher](https://ik.imagekit.io/thewebdev/Youtube-React/4/7_fDddsiM1ML.png)*dispatcher*
 
 Now create a folder **stores** and a file **ytSearch_store.js** inside it. It contains the major functionality in a flux application. Here we are first importing an **emitter**.
 In the constructor, we first registering with the dispatcher as it’s gets it data from dispatcher.
@@ -75,7 +79,7 @@ It calls the function **addNewSearchItem(action.payload)**.
 We then call the function **_addNewSearchItem()**, where we assign this array of object to a local array and EMITs it.
 The **getAllVIdeos**() returns the state of this local array, which we will use later in receiving component. The next two functions **addChangeListener**() and **removeChangeListener**() will also be used in our receiving component.
 
-![**ytSearch_store.js**](https://cdn-images-1.medium.com/max/2000/1*b0t2wtc1eXksLLJ5W8IJPw.png)***ytSearch_store.js***
+![**ytSearch_store.js**](https://ik.imagekit.io/thewebdev/Youtube-React/4/8_7V84_T-oKM.png)***ytSearch_store.js***
 
 Now, we will update our receiving component **video_list_item.js** .Note, in this refactored flux youtube player, we don’t need the file *video_list.js*
 Here we are first importing the store. Creating a state object with items as key which calls **YTSearchStore.getAllVIdeos()** and gets the array of object.
@@ -84,12 +88,12 @@ In constructor, a **_onChange()** function is also call. It sets the state varia
 This keeps on changing, once we do the search. There is react lifecycle hook **componentWillMount()** and **componentWillUnmount()**, which are used to **addChangeListener()** and **removeChangeListener()** from dispatcher.
 In **render**() method, we display the url and the title in a list through using map and iterating over.
 
-![updated **video_list_item.js**](https://cdn-images-1.medium.com/max/2000/1*imD8UQPHIXO60UEKVn1BeQ.png)*updated **video_list_item.js***
+![updated **video_list_item.js**](https://ik.imagekit.io/thewebdev/Youtube-React/4/10_7J5F_iJ86m.png)*updated **video_list_item.js***
 
 Our **array of object**, which we receive from youtube.
 
-![array of object](https://cdn-images-1.medium.com/max/2000/1*9dM8C4p_6NqVxiAo1OXdhw.png)*array of object*
+![array of object](https://ik.imagekit.io/thewebdev/Youtube-React/4/11_lSr4AGduD.png)*array of object*
 
 Our list of videos from youtube is showing perfectly and this concludes Part 1.
 
-![list of videos from youtube](https://cdn-images-1.medium.com/max/2000/1*v0pX4_vjp90vmS3eBhPIUQ.png)*list of videos from youtube*
+![list of videos from youtube](https://ik.imagekit.io/thewebdev/Youtube-React/4/12_Kk0izoOEr8.png)*list of videos from youtube*
