@@ -18,29 +18,13 @@ First create a file **post-template.js** file inside the **templates** folder. L
 
 ![post-template.js](https://ik.imagekit.io/thewebdev/thewebdev/8/1_vwtoqBuo2C.png)*post-template.js*
 
-We will next create a simple query in graphql playground to get all the slugs.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
-![slug query](https://ik.imagekit.io/thewebdev/thewebdev/8/2_QqtEKYNEz.png)*slug query*
+<div className={styles.image__small}>
 
-Now, to create pages dynamically we have to create a file **gatsby-node.js** in the root directory.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-Here, we are having a NodeJS file so the syntax is according to that. We are first using the query which we had created above.
-
-After that we are receiving the posts. We are looping through it and creating page through the **post-template.js** file which we had created.
-
-![gatsby-node.js](https://ik.imagekit.io/thewebdev/thewebdev/8/3_iCBrbfCv6E.png)*gatsby-node.js*
-
-We need to then close the gatsby develop and re-run it, but i was getting error as i didn’t have any postTemplate.module.css in the css folder. Let’s quickly create an empty file.
-
-![postTemplate.module.css](https://ik.imagekit.io/thewebdev/thewebdev/8/4_UZSAkJubQ.png)*postTemplate.module.css*
-
-After restarting gatsby develop head over to any non-existent page in the browser and you can see the dynamically created page.
-
-![Dynamic pages](https://ik.imagekit.io/thewebdev/thewebdev/8/5_VI8SYYXncy.png)*Dynamic pages*
-
-If we click any one of them, we will get the matter from **post-template.js** file.
-
-![postTemplate](https://ik.imagekit.io/thewebdev/thewebdev/8/6_9opVenWYQ.png)*postTemplate*
+</div>
 
 Now, we will first write the GraphQL query to get the single post. Here, we are using mdx and passing a slug to it. In the playground we are using Query Variables to pass a slug.
 

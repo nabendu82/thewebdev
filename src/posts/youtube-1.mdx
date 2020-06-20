@@ -24,11 +24,19 @@ We will create the react app using the awesome create-react-app from facebook. S
 
 For [npm 5.1 and earlier](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f) and for [npm 5.2 and up](https://github.com/facebook/create-react-app)
 
+<div className={styles.image__small}>
+
 ![create-react-app](https://ik.imagekit.io/thewebdev/Youtube-React/1/2_S_EJoZt4KB.png)*create-react-app*
+
+</div>
 
 It will take 2–3 mins to create the basis boilerplate app. The cd into it and do “**npm start**”
 
+<div className={styles.image__small}>
+
 ![cd into it and npm start](https://ik.imagekit.io/thewebdev/Youtube-React/1/3_Cdrcs3Vjo2.png)*cd into it and npm start*
+
+</div>
 
 It will start the app on [http://localhost:3000/](http://localhost:3000/) and show the basic boilerplate, which we will change soon
 
@@ -84,27 +92,51 @@ You have to “**Enable API**” and then head to **Credentials **and click “C
 
 Copy the api key to your **App.js**
 
+<div className={styles.image__small}>
+
 ![Copy the API key](https://ik.imagekit.io/thewebdev/Youtube-React/1/8_Z4g_p0dfUM.png)*Copy the API key*
+
+</div>
 
 We will install a package called **youtube-api-search** to help in searching, so head over to your command prompt and install in project through npm by
 
+<div className={styles.image__small}>
+
 ![npm install — save youtube-api-search](https://ik.imagekit.io/thewebdev/Youtube-React/1/9_eNET7tKSAX.png)*npm install — save **youtube-api-search***
+
+</div>
 
 We will start creating our **SearchBar **component now. Head over to it and change like below to create a class based component-
 
+<div className={styles.image__small}>
+
 ![search_bar.js](https://ik.imagekit.io/thewebdev/Youtube-React/1/10_IFz1Ss6bpX.png)*search_bar.js*
+
+</div>
 
 Now add this component to our App.js by adding below lines
 
+<div className={styles.image__small}>
+
 ![import SearchBar and display it.](https://ik.imagekit.io/thewebdev/Youtube-React/1/11_8BEBBar6vR.png)*import SearchBar and display it.*
+
+</div>
 
 Head over to the react-app, it shows this input box now. You should have **npm start **running for it.
 
+<div className={styles.image__small}>
+
 ![Showing input box](https://ik.imagekit.io/thewebdev/Youtube-React/1/12_rCBygMaOr3.png)*Showing input box*
+
+</div>
 
 Now we will complete the input field in our **search_bar.js** and it will have some new logic, which i will explain next.
 
+<div className={styles.image__small}>
+
 ![With state and onChange](https://ik.imagekit.io/thewebdev/Youtube-React/1/13_U2BCtotdh.png)*With state and onChange*
+
+</div>
 
 We are using **state **which is one of the key concept of React. It is basically an object of this file, which holds various key-value pairs. It is initialized in constructor by statement like ***this.state = { };***
 

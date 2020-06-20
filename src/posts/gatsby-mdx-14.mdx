@@ -30,91 +30,13 @@ Next, we will create the **Burger** and **Menu** folders in **components** and t
 
 ![Burger and Menu](https://ik.imagekit.io/thewebdev/thewebdev/14/1_dyloMCTmA-.png)*Burger and Menu*
 
-Next, in the **Burger.js** file put the below content. It is used to show three horizontal lines, which forms our hamburger menu. We are also getting two props in this component.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
-![Burger.js](https://ik.imagekit.io/thewebdev/thewebdev/14/2_n59-3iBA8.png)*Burger.js*
+<div className={styles.image__small}>
 
-Put the below styles in **Burger.styled.js** file. Here, we are hiding it at larger screen. We are also using **open** props for some transition, when it is clicked.
-
-<div className={styles.code__block}>
-
-```
-    import styled from 'styled-components';
-
-    export const StyledBurger = styled.button`
-        position: absolute;
-        top: 10%;
-        left: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        width: 2rem;
-        height: 2rem;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: 200;
-
-    &:focus {
-            outline: none;
-        }
-
-    div {
-            width: 2rem;
-            height: 0.25rem;
-            background: #0A0A0A;
-            border-radius: 10px;
-            transition: all 0.3s linear;
-            position: relative;
-            transform-origin: 1px;
-            :first-child {
-                transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
-                }
-
-    :nth-child(2) {
-                opacity: ${({ open }) => open ? '0' : '1'};
-                transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
-            }
-
-    :nth-child(3) {
-                transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
-            }
-
-    @media(min-width: 992px) {
-                display:none;
-            }
-    }
-    `;
-
-    export default StyledBurger;
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
-
-Next, let’s update our **Menu.js** file. First, write the import statement followed by the GraphQL query, which we are going to use to show the only component now in our left menu ie **TagList**.
-
-![Menu.js](https://ik.imagekit.io/thewebdev/thewebdev/14/3_ni6lZLeZ4.png)*Menu.js*
-
-Next, we will use a styled component **StyledMenu** which will be open when the props open is true. We are using the component **TagList** inside it.
-
-![Menu.js](https://ik.imagekit.io/thewebdev/thewebdev/14/4_rFmwvd2Pv.png)*Menu.js*
-
-Next, let’s update the styles in **Menu.styled.js**. Here, we are again using the open props to show the menu.
-
-![Menu.styled.js](https://ik.imagekit.io/thewebdev/thewebdev/14/5_MxVkVsGhoe.png)*Menu.styled.js*
-
-We also needs to update the below in **taglist.module.css** as it was not showing good on smaller scrrens.
-
-![taglist.module.css](https://ik.imagekit.io/thewebdev/thewebdev/14/6_BJp5ZWB-Nv.png)*taglist.module.css*
-
-Next, let’s update our **index.js** file to show these two component. First, let’s import them at the top.
-
-![index.js](https://ik.imagekit.io/thewebdev/thewebdev/14/7_PMeY-Mc1J.png)*index.js*
-
-Then we will first add a new state variable and it’s function by useState hooks. After that we replace our logo button with the **Burger** and **Menu** component.
-
-![index.js](https://ik.imagekit.io/thewebdev/thewebdev/14/8_46qmkj8eYw.png)*index.js*
 
 Now, in the mobile view we will get the hamburger menu which will show the Menu on click.
 

@@ -16,77 +16,13 @@ Welcome to part-11 of the series. We will first add one thing in **TagList.js** 
 
 ![TagList.js](https://ik.imagekit.io/thewebdev/thewebdev/11/1_lGgHhEmJN.png)*TagList.js*
 
-Next, let’s create a file **tags-template.js** inside the **templates** folder. We are just putting a basic content here first.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
-![tags-template.js](https://ik.imagekit.io/thewebdev/thewebdev/11/2_K-OdL5zIR.png)*tags-template.js*
+<div className={styles.image__small}>
 
-Then we have to update **gatsby-node.js** which will generate the pages dynamically. We are first importing **lodash** and also getting back the **tags** from our graphql query.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![gatsby-node.js](https://ik.imagekit.io/thewebdev/thewebdev/11/3_Vued5d8mXW.png)*gatsby-node.js*
-
-After that we are again first getting all the unique tags and then passing it to createPage function. Here, we are writing the component which is **tags-template.js**
-
-![tags](https://ik.imagekit.io/thewebdev/thewebdev/11/4_uZXJbjzdIu.png)*tags*
-
-After that if we go to any non-existent page, we can get the newly created tags pages.
-
-![Non existent](https://ik.imagekit.io/thewebdev/thewebdev/11/5_3sIG8VqHsy.png)*Non existent*
-
-On clicking on anyone of them, we can see the basic content of our **tags-template.js** file.
-
-![Basic content](https://ik.imagekit.io/thewebdev/thewebdev/11/6_RbgnfTqHef.png)*Basic content*
-
-Let’s now create the query needed to display, the pages with specific tags. Here, we are using **filter** option to get all blogs with react tag.
-
-![filter](https://ik.imagekit.io/thewebdev/thewebdev/11/7_Or0L5NhB3P.png)*filter*
-
-Now, we will add the query in the **tags-template.js** file.
-
-![query](https://ik.imagekit.io/thewebdev/thewebdev/11/8_JUnOA0TqQY.png)*query*
-
-Next, let’s use these to display the page. It will be shown whenever user clicks on some tag on the home page.
-
-![Display](https://ik.imagekit.io/thewebdev/thewebdev/11/9_dRZ42yVVuL.png)*Display*
-
-Let’ also add some styles in a newly created **tagsTemplate.module.css** in css folder.
-
-![styles](https://ik.imagekit.io/thewebdev/thewebdev/11/10_Ddz9XEX2HH.png)*styles*
-
-Now, when you click on any tag in the home page, it will show below.
-
-![tags](https://ik.imagekit.io/thewebdev/thewebdev/11/11_9S_57oiOE.png)*tags*
-
-Next, let’s also change the **PostCard** component, to show the tags. Do, the below changes in **PostCard.js**
-
-![PostCard.js](https://ik.imagekit.io/thewebdev/thewebdev/11/12_wVe8czFyxF.png)*PostCard.js*
-
-Also, do the following changes in **postcard.module.css**
-
-![postcard.module.css](https://ik.imagekit.io/thewebdev/thewebdev/11/13_AikiSolJVP.png)*postcard.module.css*
-
-This will show tags in our home page also.
-
-![tags in homepage](https://ik.imagekit.io/thewebdev/thewebdev/11/14_nH1XXj25B.png)*tags in homepage*
-
-The tags are simple spans, so i thought to change them to links. So, that on click you can go directly to the tag page. Make the following changes in **PostCard.js** file.
-
-![PostCard.js](https://ik.imagekit.io/thewebdev/thewebdev/11/15_2pLHTJI-ek.png)*PostCard.js*
-
-Next, let’s add some new styles for it in **postcard.module.css**
-
-![postcard.module.css](https://ik.imagekit.io/thewebdev/thewebdev/11/16_TlV4MWadua.png)*postcard.module.css*
-
-Now, we will also add tags in each post page. First let’s add tags in the query in **post-template.js** file.
-
-![post-template.js](https://ik.imagekit.io/thewebdev/thewebdev/11/17_TFzquNaQHT.png)*post-template.js*
-
-Next, let’s make the following changes in **post-template.js** to show the tags.
-
-![post-template.js](https://ik.imagekit.io/thewebdev/thewebdev/11/18_xvvX_-QJ4.png)*post-template.js*
-
-Now, let’s add and update some styles in **postTemplate.module.css**
-
-![postTemplate.module.css](https://ik.imagekit.io/thewebdev/thewebdev/11/19_kok2P6_KiO.png)*postTemplate.module.css*
+</div>
 
 It will show these beautiful tags in each posts.
 

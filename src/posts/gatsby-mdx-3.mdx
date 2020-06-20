@@ -17,131 +17,13 @@ Welcome to part-3 of the series. We will start where we had left and will first 
 
 ![layout.css](https://ik.imagekit.io/thewebdev/thewebdev/3/1_it29iPRmx.png)*layout.css*
 
-We also need to import it in **Layout.js** so that it could be included in every page.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
-![Layout.js](https://ik.imagekit.io/thewebdev/thewebdev/3/2_XHzERf7S2.png)*Layout.js*
+<div className={styles.image__small}>
 
-Now, it update all our pages with this css and we can find the change in page background and font family.
-
-![Page changed](https://ik.imagekit.io/thewebdev/thewebdev/3/3_0sz4fvqVfJ.png)*Page changed*
-
-Let’s make the Navbar component now. We will first install a package called **react-icons**, which will help us show nice icons in our project. For this go ahead and exit **gatsby develop** and then npm install the package, in your project directory.
-
-<div className={styles.code__block}>
-
-```
-    npm install --save react-icons
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
-
-Make sure to start your **gatsby develop** again.
-
-Next, we will create a folder **constants** inside **src** and a file **links.js** inside it.
-
-The contents of **links.js** is below. We will use it at various places in our project to navigate to different links.
-
-![links.js](https://ik.imagekit.io/thewebdev/thewebdev/3/4_s7OphILgz.png)*links.js*
-
-Now, let’s start creating our Navbar component. So, go ahead and edit you **Navbar.js** file as below. We will add new imports first.
-
-![Navbar.js header](https://ik.imagekit.io/thewebdev/thewebdev/3/5_9RDQjwSXl3.png)*Navbar.js header*
-
-As you might have noticed, we are using a logo for our Navbar. Create a **images** folder inside **src** folder and place a file **logo.png** in it. You can get it from my github [account](https://github.com/nabendu82/thewebdev).
-
-![logo.png](https://ik.imagekit.io/thewebdev/thewebdev/3/6_SJIm9JtwCi.png)*logo.png*
-
-Now, we will complete our **Navbar.js** where, we are using the **useState** hook to toggle our links on a smaller screen.
-
-Here we are showing a react-icon **FaAlignRight** on smaller screen. When the user is clicking on the button, we are calling the function **toggleNav**, which will make **isOpen** to be true.
-
-Now, when **isOpen** is true we will be loading different CSS classes, which will basically open a drawer to show the links on smaller screen.
-
-![Navbar.js](https://ik.imagekit.io/thewebdev/thewebdev/3/7_XED40FPMJ.png)*Navbar.js*
-
-Now, for the styles add a file **navbar.module.css** inside the **css** folder. The content of it is below.
-
-<div className={styles.code__block}>
-
-```
-    .navbar{
-        background: var(--primaryColor);
-
-    }
-    .nav-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.25rem;
-    }
-    .brand-logo {
-        width: 60px;
-        height: 40px;
-    }
-    .logo-btn {
-        background: transparent;
-        border: none;
-        outline: none;
-    }
-    .logo-btn:hover {
-        cursor: pointer;
-    }
-    .logo-icon {
-        color: var(--mainBlack);
-        font-size: 1.5rem;
-    }
-
-    .nav-links {
-        list-style-type: none;
-        transition: var(--mainTransition);
-        height: 0;
-        overflow: hidden;
-    }
-    .show-nav {
-        height: 200px;
-    }
-    .nav-links a {
-        display: block;
-        padding: 1rem 1.25rem;
-        text-decoration: none;
-        text-transform: capitalize;
-        color: var(--mainBlack);
-        transition: var(--mainTransition);
-        font-weight: bold;
-        letter-spacing: var(--mainSpacing);
-    }
-    .nav-links a:hover {
-        color: var(--mainWhite);
-    }
-    @media screen and (min-width: 576px) {
-        .navbar {
-            padding: 0 2rem;
-        }
-    }
-
-    @media screen and (min-width: 992px) {
-        .logo-btn {
-            display: none;
-        }
-        .nav-center {
-            max-width: 100vw;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-links {
-            height: auto;
-            display: flex;
-        }
-    }
-```
-
-</div>
-
-Now, our website navbar looks like below on larger screens.
-
-![larger screens](https://ik.imagekit.io/thewebdev/thewebdev/3/8_W7Q5RGVTE.png)*larger screens*
 
 And it looks like below on smaller screen, where we see a hamburger menu and on clicking on it, it goes down.
 

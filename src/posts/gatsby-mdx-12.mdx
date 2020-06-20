@@ -20,33 +20,13 @@ Let’s first add the Search Bar by updating the **index.js** file as below. We 
 
 ![index.js](https://ik.imagekit.io/thewebdev/thewebdev/12/1_LT7P4BxbQA.png)*index.js*
 
-We are using useState hooks and set the default state with query as empty string and filteredData s empty array. You can read more about react hooks in my earlier post [here](https://dev.to/nabendu82/understanding-react-hooks-by-building-a-simple-app-4i6d).
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
-![Default state](https://ik.imagekit.io/thewebdev/thewebdev/12/2_cNbHU20AZ.png)*Default state*
+<div className={styles.image__small}>
 
-Next, we will do the handleInputChange function. Here, we are capturing the user input in event.target.value. We also have access to all posts in response.allMdx.edges. After that we are using filter to filter through all the posts which either matches the description, title or tags. Since, tags is an array of strings we are using join. After, that we are using setState to reset the query and filteredData and this will re-render the component.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![handleInputChange](https://ik.imagekit.io/thewebdev/thewebdev/12/3_ge7vZxU7xH.png)*handleInputChange*
-
-Next, we are renaming the posts to allPosts. We are doing this so that we can make the value of posts conditional, based on whether the user have entered something in the search bar or need to see all posts.
-
-![allPosts](https://ik.imagekit.io/thewebdev/thewebdev/12/4_HFmP9juqO.png)*allPosts*
-
-Next, we are updating the rendering logic to decide whether to show filteredData or allPosts.
-
-![hasSearchResults](https://ik.imagekit.io/thewebdev/thewebdev/12/5_okbNTxu3cl.png)*hasSearchResults*
-
-I did a mistake as we don’t have any description in our code but excerpt. So, updating the same and also adding author to the filtering logic.
-
-![mistake](https://ik.imagekit.io/thewebdev/thewebdev/12/6_71Hgf6V5KX.png)*mistake*
-
-Let’s also add some styles in home.module.css for our search bar.
-
-![Styles](https://ik.imagekit.io/thewebdev/thewebdev/12/7_p6vGD5cXrX.png)*Styles*
-
-This will show our Search bar as below in our project.
-
-![Search Bar](https://ik.imagekit.io/thewebdev/thewebdev/12/8_zNo9Bb0yOu.png)*Search Bar*
+</div>
 
 And our Search Bar is fully working now.
 

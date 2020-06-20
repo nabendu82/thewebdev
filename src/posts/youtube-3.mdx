@@ -18,7 +18,11 @@ We now have three main tasks remaining. First showing the Video player, second t
 
 First to add a Video Player, goto **App.js** and change as below
 
+<div className={styles.image__small}>
+
 ![App.js changes](https://ik.imagekit.io/thewebdev/Youtube-React/3/1_qDcMMVnbq0.png)*App.js changes*
+
+</div>
 
 The code for VideoDetails is these two lines.
 
@@ -34,7 +38,11 @@ Notice, we created a new key-value pair **selectedVideo** in state which will be
 
 Lets update **video_detail.js** next and understand the logic.
 
+<div className={styles.image__small}>
+
 ![video_detail.js](https://ik.imagekit.io/thewebdev/Youtube-React/3/2_w_9ZYn6Puk.png)*video_detail.js*
+
+</div>
 
 In it we are receiving the single *video object as prop* and extracting **videoId**, **title** and **description** from it. Then displaying in an iframe and showing title and description below it. Also, using a little bootstrap magic for styling.
 
@@ -52,7 +60,11 @@ if(!video){
 
 Comment them out and you will get the below error
 
+<div className={styles.image__small}>
+
 ![null error](https://ik.imagekit.io/thewebdev/Youtube-React/3/3_-c2sgWVhm.png)*null error*
+
+</div>
 
 It occurs because in our **App.js**, we have **selectedVideo: null** initially set in state. Then the YTSearch happens which goes to youtube for search and takes maybe 1–2 sec, and then change the **selectedVideo: data[0]**.
 But React doesn’t wait for it and render() runs, and passes the **selectedVideo** as null to **VideoDetail.**
@@ -153,7 +165,11 @@ Goto *index.css* and change it completely
 
 These are minor styles to make our app look better. All of them are self-explainatory.
 
+<div className={styles.image__small}>
+
 ![index.css](https://ik.imagekit.io/thewebdev/Youtube-React/3/4_PYfZOEhjk8.png)*index.css*
+
+</div>
 
 The **index.css** file is called from our **index.js**, which we never changed. So, the styles will be reflected. Only a minor thing need to be added in **search_bar.js**
 Add **className=”search-bar”** to the top level div as shown below

@@ -16,85 +16,13 @@ Welcome to part-7 of the series. Let’s start from where we left. We will updat
 
 ![PostList.js](https://ik.imagekit.io/thewebdev/thewebdev/7/1_Zc-_sTTha.png)*PostList.js*
 
-We also need to add the css for it as **postlist.module.css** in the css folder. Add the below styles in it as of now.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**. You can find more details about it [here](https://dev.to/nabendu82/my-one-year-of-work-gatsby-cookbook-3651).
 
-![postlist.module.css](https://ik.imagekit.io/thewebdev/thewebdev/7/2_ob6ojYfUj.png)*postlist.module.css*
+<div className={styles.image__small}>
 
-Now, our home page will show three PostCard components as we have three posts currently.
-
-![PostCard](https://ik.imagekit.io/thewebdev/thewebdev/7/3_GgjjzY_iri.png)*PostCard*
-
-Next, we will work on the **PostCard** component to show nice styles for each post.
-
-Update the **PostCard.js** file as below. We are destructuring the props which we had received from the **PostList** component and using it to get the different parts.
-
-![PostCard.js](https://ik.imagekit.io/thewebdev/thewebdev/7/4_0PZB_MzkJV.png)*PostCard.js*
-
-Next, create a file **postcard.module.css** inside the css folder and add the below styles in it.
-
-<div className={styles.code__block}>
-
-```
-    .card {
-        margin-bottom: 2rem;
-        background: var(--mainWhite);
-        padding: 1rem;
-        text-align: center;
-    }
-    .info {
-        padding: 1rem 0;
-    }
-    .info h2 {
-        font-size: 30px;
-        text-transform: capitalize;
-        margin-bottom: 10px;
-    }
-    .info h6 {
-        color: var(--darkGrey);
-        text-transform: capitalize;
-    }
-    .info p {
-        padding: 20px 0 30px 0;
-        text-align: left;
-    }
-    .link {
-        border: 1px solid var(--mainBlack);
-        padding: 4px 8px;
-        display: inline-block;
-        color: var(--mainBlack);
-        text-decoration: none;
-        text-transform: capitalize;
-        transition: all 0.3s ease-in-out;
-    }
-    .link:hover {
-        background: var(--mainBlack);
-        color: var(--mainWhite);
-    }
-    [@media](http://twitter.com/media) screen and (min-width: 776px) {
-        .card {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-        }
-        .info {
-            display: flex;
-            align-items: center;
-            padding: 0 1.5rem;
-        }
-        .image > div {
-            height: 250px;
-        }
-    }
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
-
-Next, i will also remove those borders from **home.module.css** file, as they were only for reference
-
-![home.module.css](https://ik.imagekit.io/thewebdev/thewebdev/7/5_DHd-tLaCus.png)*home.module.css*
-
-This will display our home page as below in the browser on large screens.
-
-![large screens](https://ik.imagekit.io/thewebdev/thewebdev/7/6_B8rQEa8m4Q.png)*large screens*
 
 It will look like below in small screens.
 

@@ -25,11 +25,19 @@ Add this in **index.html** in the head part.
 
 </div>
 
+<div className={styles.image__small}>
+
 ![adding bootstrap to index.html](https://ik.imagekit.io/thewebdev/Youtube-React/2/1_rfDQbIe38.png)*adding bootstrap to index.html*
+
+</div>
 
 Let’s start by updating **App.js**
 
+<div className={styles.image__small}>
+
 ![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/2/2_DpOQ3KCj2Y.png)*App.js*
+
+</div>
 
 Here we are first importing the **youtube-search-api**, which we install through npm in previous part. Then in the constructor we are creating a state object which contains a key-value pair of **videos: []**. So, basically an empty array.
 
@@ -45,7 +53,11 @@ Now in the render() we are a new line `<VideoList videos={this.state.videos} />`
 
 Now lets use this props **videos** which is a array of object, in the **VideoList** component. Open the file **video_list.js** and update the below.
 
+<div className={styles.image__small}>
+
 ![video_list.js](https://ik.imagekit.io/thewebdev/Youtube-React/2/4_4cZMqDSipx.png)*video_list.js*
+
+</div>
 
 This is a simple functional component, here in **(props)** we will receive the **videos** passed by **App** as **props.videos**
 
@@ -59,7 +71,11 @@ The unordered list `<ul className="col-md-4 list-group">` contains a **className
 
 Lets move to **VideoListItem** now, which is our individual row. We will update the **video_list_item.js** now as below
 
+<div className={styles.image__small}>
+
 ![video_list_item.js](https://ik.imagekit.io/thewebdev/Youtube-React/2/5_YKktvWZ3Jw.png)***video_list_item.js***
+
+</div>
 
 Here again we are receiving props video and accessing it by **props.video**. We will take image and title from here. Let’s see what we receive.
 
