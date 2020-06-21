@@ -10,7 +10,7 @@ dev: https://dev.to/nabendu82
 series: Youtube-Player-React
 tags: ['react', 'javascript', 'flux']
 ---
-
+import styles from "../css/postTemplate.module.css"
 
 Welcome to Part 3 and here we will add the functionality to click on a video, in the list to select it and display it in player.
 
@@ -22,22 +22,38 @@ Now the flow will be —
 
 Let’s now start with **video_list_item.js** and add the **onClick**() handler. Here we have imported the YTSearchAction first and then in **li** (which will hold a single video in list), added an onClick() handler which will fire an action in actions file. The line **key={video.etag}**, is to identify this video uniquely as **etag** for each video from youtube is unique. It is required to do in React when handling arrays, or else it throws a big red warning.
 
-![**video_list_item.js**](https://cdn-images-1.medium.com/max/2000/1*pHcWA8dm0uC9KnwsPZGvAA.png)***video_list_item.js***
+<div className={styles.image__small}>
+
+![**video_list_item.js**](https://ik.imagekit.io/thewebdev/Youtube-React/6/1_3E8YiyZFam.png)***video_list_item.js***
+
+</div>
 
 Next we will add this **userSelected()** in **yTSearch_action.js**. This is quite straightforward and similar to videoSearch(), just that we are not doing any API calls and passing a single **video object**.
 
-![userSelected() in **yTSearch_action.js**](https://cdn-images-1.medium.com/max/2000/1*cK9KQUV2UuVjBtfg-9aVVQ.png)
+<div className={styles.image__small}>
+
+![userSelected() in **yTSearch_action.js**](https://ik.imagekit.io/thewebdev/Youtube-React/6/2_VugD9V1Nhw.png)
+
+</div>
 
 Now to handle this action, we will add code in **ytSearch_store.js**. Basically, we are having this new empty array **_userSelected** and assigning it to the video we received from **yTSearch_action.js** in **action.payload** and then emitting it.
 
-![**ytSearch_store.js**](https://cdn-images-1.medium.com/max/2000/1*Z3jCNcnXSOBTAMnwnrpDOQ.png)
+<div className={styles.image__small}>
+
+![**ytSearch_store.js**](https://ik.imagekit.io/thewebdev/Youtube-React/6/3_-OGXtuXhMg.png)
+
+</div>
 
 Now, let’s move to the receiving end and it is the **video_detail.js**. We will receive this video there and show it in the video player.
 
-![**video_detail.js**](https://cdn-images-1.medium.com/max/2000/1*uLILPzA5xQwRlABjQiVvTw.png)***video_detail.js***
+<div className={styles.image__small}>
+
+![**video_detail.js**](https://ik.imagekit.io/thewebdev/Youtube-React/6/4_ihxDtov4ot.png)***video_detail.js***
+
+</div>
 
 The highlighted parts are the new addition. We are basically checking whether the video is received through clicking of a video or through the initial render/search in bar.
 
-![Final web-app](https://miro.medium.com/max/700/1*vxde-44hdy2lFMO0a5Dnug.png)*Final web-app*
+![Final web-app](https://ik.imagekit.io/thewebdev/Youtube-React/6/5_KRxnoCkJHa.png)*Final web-app*
 
 This concludes our series. Hope you enjoyed it. The github repo is [here](https://github.com/nabendu82/youtube-player-flux).
