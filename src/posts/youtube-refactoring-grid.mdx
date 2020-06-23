@@ -10,108 +10,154 @@ dev: https://dev.to/nabendu82
 series: Youtube-Player-React
 tags: ['react', 'javascript', 'grid']
 ---
+import styles from "../css/postTemplate.module.css"
+
 The youtube player which we have created so far uses the usual bootstrap. Now i have learnt the hard way that if you want to be really good at frontend development, you have to ditch bootstrap and start using CSS.
 
 Now the older float were really the great road-block for any developer learning CSS and they tends to go toward bootstrap. With the recent addition of flexbox and Grid, it now easy for anyone to ditch bootstrap.
 
-Let’s refactor the youtube player which we created in the the Youtube player with [react series](https://dev.to/nabendu82/refactoring-reactjs-youtube-player-to-show-selected-video-43bk).
+Let’s refactor the youtube player which we created in the the Youtube player with [react series](https://thewebdev.tech/refactoring-youtube-player-to-show-selected-video).
 We will now clone the repo and do a npm install.
+
+<div className={styles.code__block}>
+
 ```
 git clone https://github.com/nabendu82/youtube-player-selected.git youtube-player-advancedCSS
 ```
 
+</div>
+
 So, this is our bootstrap app look now -
 
-![bootstap app](https://cdn-images-1.medium.com/max/2880/1*yEP8wZUZuSQWjnKs4B_j0A.png)*bootstap app*
+![bootstap app](https://ik.imagekit.io/thewebdev/Youtube-React/8/1_Etk3b0jBYc.png)*bootstap app*
 
 Now we will remove all the bootstrappy classes from our project. Only will keep some of the normal classes.
 
 **search_bar.js**
+
+<div className={styles.code__block}>
+
 ```
-<div className=”search-bar”>
+<div className="search-bar">
 <input value={this.state.term} onChange={this.onInputChange} /></div>
 ```
+
+</div>
+
 **video_detail.js**
+
+<div className={styles.code__block}>
+
 ```
 <div>
-<div>
-<iframe className=”frame__item” src={url} />
-</div>
-<div>
-<div>{video.snippet.title}</div>
-<div>{video.snippet.description}</div>
-</div>
+    <div>
+        <iframe className="frame__item" src={url} />
+    </div>
+    <div>
+        <div>{video.snippet.title}</div>
+        <div>{video.snippet.description}</div>
+    </div>
 </div>
 ```
+
+</div>
+
 **video_list_item.js**
+
+<div className={styles.code__block}>
+
 ```
-<li
-onClick={() => {onUserSelected(video), selectedByUser(currIndex);}}
-className=”list-item”
-style={active ? styles.isactive : styles.inactive}>
-<div>
-<div>
-<img src={imageUrl} />
-</div>
-<div>
-<div>{video.snippet.title}</div>
-</div>
-</div>
-</li>
+    <li onClick={() => { onUserSelected(video), selectedByUser(currIndex)}}
+        className="list-group-item"
+        style={active ? styles.isactive : styles.inactive}
+    >
+        <div>
+            <div>
+                <img src={imageUrl} />
+            </div>
+            <div>
+                <div>{video.snippet.title}</div>
+            </div>
+        </div>
+    </li>
 ```
+
+</div>
+
 **video_list.js**
+
+<div className={styles.code__block}>
+
 ```
 return <ul>{videoItems}</ul>;
 ```
+
+</div>
+
 **app.js**
+
+<div className={styles.code__block}>
+
 ```
-<div>
-<SearchBar
-onSearchTermChange={searchTerm => this.videoSearch(searchTerm)}/><div className=”wrapper__container”>
-<div className=”grid__container”>
-<VideoDetail video={this.state.selectedVideo} />
-<VideoList onVideoSelect={userSelected =>this.setState({ selectedVideo: userSelected })}
-videos={this.state.videos}/>
-</div>
-</div>
-</div>
+    <div>
+        <SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm)} />
+        <div className="wrapper__container">
+            <div className="grid__container">
+                <VideoDetail video={this.state.selectedVideo} />
+                <VideoList
+                onVideoSelect={userSelected => this.setState({ selectedVideo: userSelected })}
+                videos={this.state.videos} />
+            </div>
+        </div>
+    </div>
 ```
+
+</div>
+
 Now our app looks like this.
 
-![Without any styling](https://cdn-images-1.medium.com/max/2880/1*67PnjOA-VMEaI8sq3Ftl7g.png)*Without any styling*
+![Without any styling](https://ik.imagekit.io/thewebdev/Youtube-React/8/2_K5buuRG-p.png)*Without any styling*
 
 In our `index.css` we will just add below. The most important part is the `grid__container` where we are setting a grid container. You can learn more about grid from the awesome free
+
+<div className={styles.code__block}>
+
 ```
 .wrapper__container {
-margin: 20px;
+    margin: 20px;
 }
 .grid__container {
-display: grid;
-grid-template-columns: 700px 300px;
-justify-content: center;
-grid-column-gap: 20px;
+    display: grid;
+    grid-template-columns: 700px 300px;
+    justify-content: center;
+    grid-column-gap: 20px;
 }
 .search-bar {
-margin: 20px;
-text-align: center;
+    margin: 20px;
+    text-align: center;
 }
 .search-bar input {
-width: 75%;
+    width: 75%;
 }
 .frame__item {
-width: 100%;
-height: 600px;
+    width: 100%;
+    height: 600px;
 }
 .list-item {
-cursor: pointer;
-list-style: none;
-border: 1px solid gray;
+    cursor: pointer;
+    list-style: none;
+    border: 1px solid gray;
 }
 .list-item:hover {
-background-color: #eee;
+    background-color: #eee;
 }
 ```
+
+</div>
+
 And with this our site get’s fixed and we again get the layout.
 
-![fixed layout with grid](https://cdn-images-1.medium.com/max/2872/1*UtyAScLjkJnQBqM43NWA4Q.png)*fixed layout with grid*
+![fixed layout with grid](https://ik.imagekit.io/thewebdev/Youtube-React/8/3_q70QoJWXqK.png)*fixed layout with grid*
+
+You can get the github repo for this part [here](https://github.com/nabendu82/youtube-player-cssgrid)
 
