@@ -1,0 +1,45 @@
+---
+title: React Redux Tutorial | Create Youtube Player -2
+slug: youtube-redux-2
+image: ./youtube-redux-2.jpg
+date: 2020-06-25
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Youtube-Player-React
+tags: ['react', 'javascript', 'redux']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-2 of the series. Now we will add the **SearchBar** functionality. It is pretty much straight forward. First update the **App.js** to include **SearchBar** as below.
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/10/1_v8IF1H_uOx.png)*App.js*
+
+Now, update the **search_bar.js** . Here, we are first import the connect and the **YTSearchAction**. After that from the **onInputChange**(), we are passing the text box updated value to the **mapDispatchToProps**, similar to **App.js**
+
+![search_bar.js](https://ik.imagekit.io/thewebdev/Youtube-React/10/2_z_pqqauPcS.png)*search_bar.js*
+
+Now, our Search bar is fully functional and we can search anything on youtube.
+
+![SearchBar](https://ik.imagekit.io/thewebdev/Youtube-React/10/3_sk9MOkBCAb.png)*SearchBar*
+
+Now, we will show the youtube player by working on **video_detail.js** . First let add the component to **App.js**
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/10/4_qgXTqGfLrb.png)*App.js*
+
+Now, we will update the **video_detail.js**. You will see the pattern is almost similar to **video_list_item.js** , where also we use **mapStateToProps** to get the **ytSearchState** value and then use the react lifecycle methods **componentWillReceiveProps** to get the changed **ytSearchState**.
+
+![video_detail.js](https://ik.imagekit.io/thewebdev/Youtube-React/10/5_hLCUQh2Bp.png)*video_detail.js*
+
+Next, we will get the first video and display it with the usual html used previously.
+
+We are also checking if we receive an empty array, because the YouTube API call takes time and react will throw error, if we don’t check the condition.
+
+![video_detail.js](https://ik.imagekit.io/thewebdev/Youtube-React/10/6_BtiOXy8SPG.png)*video_detail.js*
+
+Now, we will get the Video player to display on our page and show the first video of the search.
+
+![Video Player](https://ik.imagekit.io/thewebdev/Youtube-React/10/7_HIzZmWzRr1.png)*Video Player*
+
+This completes part-2 of the series.
