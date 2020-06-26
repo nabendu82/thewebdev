@@ -1,0 +1,58 @@
+---
+title: React Hooks Tutorial | Create Youtube Player -1
+slug: youtube-hooks-1
+image: ./youtube-hooks-1.jpg
+date: 2020-06-26
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Youtube-Player-React
+tags: ['react', 'javascript', 'hooks']
+---
+import styles from "../css/postTemplate.module.css"
+
+Recently i started to add more articles to my old blog series on Creating a Youtube Player. I had added articles to refactor it to use Redux, now i am changing the project to use React Hooks instead of the class based components.
+
+You can find the whole series [here](https://thewebdev.tech/series/Youtube-Player-React).
+
+I had also started creating an YouTube video series on the same. You can find the whole playlist [here](https://www.youtube.com/watch?v=yT_bWQhgvrw&list=PLaIfT4YsrqUkXh3tth_M8CugV4s2r8C-G).
+
+So, let’s start converting our class based project to function based project, using hooks.
+
+First, we are cloning the old project from my GitHub repo. You can find it [here](https://github.com/nabendu82/youtube-player).
+
+![Cloning](https://ik.imagekit.io/thewebdev/Youtube-React/12/1_wSL-UYJEI.png)*Cloning*
+
+Next, we have to add the API key which is been used to get data from youtube API. You can find details about how to get it in my first post [here](https://thewebdev.tech/create-youtube-player-in-reactjs-part-1).
+
+![.env](https://ik.imagekit.io/thewebdev/Youtube-React/12/2_7BbcxEwEmq.png)*.env*
+
+Next, let’s change to the directory and do **npm install** to install the packages required for this project.
+
+![npm install](https://ik.imagekit.io/thewebdev/Youtube-React/12/3_X1PBcV2cM.png)*npm install*
+
+After that open the **App.js** and delete all components except the **VideoList**. We are going to change the logic for it first.
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/12/4_gCO-msAmfv.png)*App.js*
+
+Now, first change the class based component to a function based component. After that at Line 7, we are using the **useState** hook to create a local state of videos and initializing it to an empty array.
+
+After that we are using another hook **useEffect** to call a function **fetchResource** with the initial **React Tutorials** value. Now we are calling **useEffect** with an empty array. We are doing this because **useEffect** is a combination of **componentDidMount** and **componentDidUpdate**, and if we don’t pass the empty array, it will be called every-time the **App** component is rendered. We want to only it to call the **fetchResource** once, i.e. only use **componentDidMount **feature and hence pass the empty array. You can read more about it in this awesome blog post [here](https://medium.com/javascript-in-plain-english/react-hooks-how-to-use-useeffect-ecea3e90d84f).
+
+
+I also have a post, which explains in details the **useState** and **useEffect** hooks. You can find it [here](https://thewebdev.tech/react-hooks).
+
+Inside the **fetchResource** function, we are doing the API call with our familiar **YTSearch**() function. We are then using **setVideos**(basically setState) to change the state of videos.
+
+After that we are just passing it to the **VideoList** component.
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/12/5_P5app8LDRG.png)*App.js*
+
+With this our App will be shown as below.
+
+![App](https://ik.imagekit.io/thewebdev/Youtube-React/12/6_GuICiLMdqz.png)*App*
+
+This completes part-1 of the series.
+
+You can find the code for the same in my github repo [here](https://github.com/nabendu82/youtube-player-hooks).

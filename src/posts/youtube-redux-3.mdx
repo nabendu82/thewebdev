@@ -1,0 +1,69 @@
+---
+title: React Redux Tutorial | Create Youtube Player -3
+slug: youtube-redux-3
+image: ./youtube-redux-3.jpg
+date: 2020-06-25
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Youtube-Player-React
+tags: ['react', 'javascript', 'redux']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-3 of the series.
+
+We will add the functionality to click on a video, in the list to select it and display it in the player.
+
+Let’s now start with **video_list_item.js** and add the **onClick**() handler. Here we have imported the **YTSearchAction** first and then in **li** (which will hold a single video in list), added an **onClick**() handler which will send the video to the init function.
+
+![video_list_item.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/1_CbhtJlqmq2.png)*video_list_item.js*
+
+Next, we will create the **mapDispatchToProps**, where we are dispatching a new action method **getUserSelected** with the clicked video.
+
+![video_list_item.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/2_fyZtgXJSBL.png)*video_list_item.js*
+
+Next we will add this **getUserSelected()** in **yt_search_action.js**. This is quite straightforward and similar to **getSearchResult()**, just that we are not doing any API calls and passing a single **video object**.
+
+![yt_search_action.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/3_3O8CfViCsG.png)*yt_search_action.js*
+
+As we have added a new constant, so we need to add the same in **types.js** file.
+
+![types.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/4_yhuI2QE6s.png)*types.js*
+
+Now to handle this action, we will add code in **yt_search_reducer.js**. Basically, we are having this new empty object **_userSelected** and assigning it to the video we received from **yt_search_action.js** in **action.payload** .
+
+![yt_search_reducer.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/5_f695VEst70.png)*yt_search_reducer.js*
+
+Now, let’s move to the receiving end and it is the **video_detail.js**. We will receive this video there and change it in the video player.
+
+So, we are first adding a new state variable **userSelected** and also mapping it to a props **userSelected**, which we are receiving from **YTReducer**. We are also adding the logic for it in **componentWillReceiveProps**.
+
+![**video_detail.js**](https://ik.imagekit.io/thewebdev/Youtube-React/11/6_COSQcW6_R.png)***video_detail.js***
+
+Next, we will change the logic to show the user selected video, if we get a Object with some value in **userSelected** or else will show the first video from the search.
+
+![**video_detail.js**](https://ik.imagekit.io/thewebdev/Youtube-React/11/7_W5Ih0GEQp.png)***video_detail.js***
+
+Now, our project is over, but we have a small issue and that it if we click on any video to change it. After that search again and it still show the old video.
+
+![Small Issue](https://ik.imagekit.io/thewebdev/Youtube-React/11/8_jZA5fuYg5.gif)*Small Issue*
+
+Now, to solve it we have to go back to our **search_bar.js** and dispatch an action for **getUserSelected()** with empty object.
+
+![search_bar.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/9_KV2xBFwEbX.png)*search_bar.js*
+
+Now, i want to push this code to github. But before moving i will hide the API Keys. So, i created a **.env** file in the root directory and added the API key in it.
+
+![.env](https://ik.imagekit.io/thewebdev/Youtube-React/11/10_UQBJx-hG6t.png)*.env*
+
+After that also added the same in **.gitignore** file, so that it is not pushed to github.
+
+![.gitignore](https://ik.imagekit.io/thewebdev/Youtube-React/11/11_oE_2s71nhh.png)*.gitignore*
+
+And then update the **yt_search_action.js** to use the key from the environment variable.
+
+![yt_search_action.js](https://ik.imagekit.io/thewebdev/Youtube-React/11/12_9OLdufxP7t.png)*yt_search_action.js*
+
+You need to restart **npm start** to see the project working again. You can find the code for this series in this github [repo](https://github.com/nabendu82/youtube-player-redux).
