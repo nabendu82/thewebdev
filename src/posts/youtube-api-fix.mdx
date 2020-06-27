@@ -1,0 +1,72 @@
+---
+title: Add YouTube API Key and hide in React App
+slug: youtube-api-fix
+image: ./youtube-api-fix.jpg
+date: 2020-06-27
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+tags: ['react', 'javascript', 'youtube']
+---
+import styles from "../css/postTemplate.module.css"
+
+When i create my first blog 2.5 years back, it was a React app which was using YouTube API. You can find the link for it [here](https://thewebdev.tech/create-youtube-player-in-reactjs-part-1).
+
+Now, i did the classic beginners mistake of pushing my youtube data API keys to github. I received a mail also from google to remove it.
+
+So, i decided to remove them from public github. For this i first cloned my repo from github.
+
+![Cloned](https://ik.imagekit.io/thewebdev/YouTube-API/1_froYfW5iL.png)*Cloned*
+
+After that went to [https://console.developers.google.com/](https://console.developers.google.com/) and it took me to below screen.
+
+![Developer console](https://ik.imagekit.io/thewebdev/YouTube-API/2_l42QhcjKc.png)*Developer console*
+
+Then click on the search bar and typed **Youtube data** and clicked on **YouTube Data API v3**.
+
+![YouTube Data API v3](https://ik.imagekit.io/thewebdev/YouTube-API/3_4TRlkLtaB.png)*YouTube Data API v3*
+
+It shows the usage of my API and clearly the requests are quite high, and that seems the reason, google sent me mail.
+
+![High Usage](https://ik.imagekit.io/thewebdev/YouTube-API/4_Wq_K3d7x3.png)*High Usage*
+
+So, i decided to delete all three of them. Clicking on the Delete icon, opens this pop-up, in which you have to type DELETE and then click on DELETE button.
+
+![Delete](https://ik.imagekit.io/thewebdev/YouTube-API/5_fB5ZhqiSa.png)*Delete*
+
+Now, i click on the **CREATE CREDENTIALS** button on the top right corner of the page.
+
+![Create Credentials](https://ik.imagekit.io/thewebdev/YouTube-API/6_eIrlOpDt1.png)*Create Credentials*
+
+In the next screen select **YouTube Data API v3**, then **Web browser (JavaScript)**, after that the **Public Data** and finally click on **What credentials do i need?** button.
+
+![Credentials](https://ik.imagekit.io/thewebdev/YouTube-API/7_6SQ9cRiln.png)*Credentials*
+
+In the next screen, we will get our API Key. Save it and click on the **Done** button.
+
+![Done](https://ik.imagekit.io/thewebdev/YouTube-API/8_PGmF86DMY.png)*Done*
+
+Now, on the API page a new entry will be shown.
+
+![API Key](https://ik.imagekit.io/thewebdev/YouTube-API/9_vADqIZvm8.png)*API Key*
+
+Now open the code in VSCode and create an **.env** file in the root directory. Here add a variable **REACT_APP_API_KEY** and put you API key here.
+
+Two important things are that the variable name have to start with **REACT_APP_** and the key should not contains quotes.
+
+![.env](https://ik.imagekit.io/thewebdev/YouTube-API/10_7p4JRnkba.png)*.env*
+
+After that change the API reference in the file where it is called. I added it in App.js and now accessing it with **process.env.REACT_APP_API_KEY**
+
+![App.js](https://ik.imagekit.io/thewebdev/YouTube-API/11_-oUhajlTH.png)*App.js*
+
+Next, we also need to add the **.env** file in **.gitignore** file, so that it is not pushed to github.
+
+![.gitignore](https://ik.imagekit.io/thewebdev/YouTube-API/12_wmUR9vddG.png)*.gitignore*
+
+Now, i did a **npm install** and **npm start** for the app and it is working fine and getting the data from Youtube API.
+
+![YouTube API](https://ik.imagekit.io/thewebdev/YouTube-API/13_XMMuzIyp5.png)*YouTube API*
+
+Hope, this helps and you don’t commit the same mistake which i did to expose a API key on the internet.
