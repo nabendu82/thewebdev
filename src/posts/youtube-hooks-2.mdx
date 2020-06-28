@@ -1,0 +1,45 @@
+---
+title: React Hooks Tutorial | Create Youtube Player -2
+slug: youtube-hooks-2
+image: ./youtube-hooks-2.jpg
+date: 2020-06-28
+author: Nabendu Biswas
+twitter: https://twitter.com/nabendu82
+github: https://github.com/nabendu82
+dev: https://dev.to/nabendu82
+series: Youtube-Player-React
+tags: ['react', 'javascript', 'hooks']
+---
+import styles from "../css/postTemplate.module.css"
+
+Welcome to part-2 of the series. Let’s continue our journey, where i am changing my class based project to a functional project using hooks.
+
+We will add the search functionality now. So, open the **search_bar.js** file. Below is the code of our current **SearchBar** component.
+
+![search_bar.js](https://ik.imagekit.io/thewebdev/Youtube-React/13/1_RyGTwcOjj4.png)*search_bar.js*
+
+So, let’s change it to a functional component first. After that at Line 4, we are using the **useState** hook to set the state variable of **term** to empty string. At line 7, we are using **setTerm**() which is equivalent to use **setState**() in class based components.
+
+![search_bar.js](https://ik.imagekit.io/thewebdev/Youtube-React/13/2_IsL0Nowm1.png)*search_bar.js*
+
+Now, let’s add the **SearchBar** to our **App.js** file. Here, we are calling the **fetchResource** function with the search term which we are receiving back from the **search_bar.js** file.
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/13/3-0_pmQc3lrQab.png)*App.js*
+
+So, now we have a fully functional SearchBar which changes the video to what we search.
+
+![Functional SearchBar](https://ik.imagekit.io/thewebdev/Youtube-React/13/3-1_T3X6fFzpa1.png)*Functional SearchBar*
+
+Next, we will add the **VideoDetail** component. For this we are using another state variable **sldVideo**. We are setting it to first object from the **data** array inside the **fetchResource** function. After that passing it to the **VideoDetail** component. So, it will show the first video, which gets returned from the first call with **React Tutorials**.
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/13/4_yLrKMLesK9.png)*App.js*
+
+We will next add the Selected video functionality, so that the user can change the video by clicking from the list. We don’t need to change any logic in **VideoList** or **VideoListItem** component. We are just using the selected video to change the state of **sldVideo**, by calling **setSldVideo(selected)**
+
+![App.js](https://ik.imagekit.io/thewebdev/Youtube-React/13/5_G5f9wCaiU.png)*App.js*
+
+This completes our refactoring and now our App is hook based.
+
+![Hook Based](https://ik.imagekit.io/thewebdev/Youtube-React/13/6_xmWEtoaMGh.png)*Hook Based*
+
+This completes part-2. You can find the code for the same in my github repo [here](https://github.com/nabendu82/youtube-player-hooks).
