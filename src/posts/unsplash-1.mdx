@@ -10,34 +10,50 @@ dev: https://dev.to/nabendu82
 series: Unsplash-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to the brand new series to build an web app from scratch using ReactJS. We will be using the latest ReactJS syntax of 2019 to create this app. This app have been created from the learning from the great course *Modern React with Redux* by *Stephen Grider* on udemy. You can find the link [here](https://www.udemy.com/react-redux/).
 
 Let’s start building our app. Go, to your terminal and create a brand new app by *npx create-react-app image-search*. This command only works, if you have npm 5.2+. Head on to this [link](https://github.com/facebook/create-react-app) to learn more about this wonderful tool by facebook and the other way to create a new react app.
 
-![create-react-app](https://cdn-images-1.medium.com/max/2000/1*OJJm9wSW9iYwokDoWixmdw.png)*create-react-app*
+<div className={styles.image__small}>
+
+![create-react-app](https://ik.imagekit.io/thewebdev/Unsplash-API/1/1_nEXNQoUp7-.png)*create-react-app*
+
+</div>
 
 Now, you will get the *Happy Hacking* message and the instruction if successful. We will cd to the newly created folder and do a *npm start*.
 
-![Happy hacking](https://cdn-images-1.medium.com/max/2000/1*Zyg2JUfOZ8P-EWz16CFVIg.png)*Happy hacking*
+<div className={styles.image__small}>
+
+![Happy hacking](https://ik.imagekit.io/thewebdev/Unsplash-API/1/2_AOe9Zh2_Gp.png)*Happy hacking*
+
+</div>
 
 If the compiling is successful, you will get the below message.
 
-![Successful](https://cdn-images-1.medium.com/max/2000/1*EprxV63RosjrgDWHqLww5w.png)*Successful*
+<div className={styles.image__small}>
+
+![Successful](https://ik.imagekit.io/thewebdev/Unsplash-API/1/3_PuCMzX0NB0.png)*Successful*
+
+</div>
 
 It will open automatically [http://localhost:3000/](http://localhost:3000/) or you open it in any modern browser. It will show the basic React app.
 
-![Basic React app](https://cdn-images-1.medium.com/max/2880/1*TwxpoUbDNJgkTYLJZnj25Q.png)*Basic React app*
+![Basic React app](https://ik.imagekit.io/thewebdev/Unsplash-API/1/4_EZl4BMM3M-.png)*Basic React app*
 
 Now, React is all about dividing our app into components. Here, also we will have two main components — SearchBar and ImageList.
 
 Open the project in VSCode. Select everything inside src folder(as in screenshot below) and delete it.
 
-![Start new](https://cdn-images-1.medium.com/max/2880/1*hRp3Za2vgl5VvRLAyLoZkg.png)*Start new*
+![Start new](https://ik.imagekit.io/thewebdev/Unsplash-API/1/5_v_7cWDl3zc.png)*Start new*
 
 Next, create a new folder *components* inside *src* and a file *App.js* inside it. Also, create *index.js* in *src* folder.
 
 In App.js we create a basic functional component now. Type the following code in **App.js**.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
 
@@ -49,7 +65,13 @@ In App.js we create a basic functional component now. Type the following code in
 
     export default App;
 ```
+
+</div>
+
 Goto index.js and render this App.js in it. Type the following code in **index.js**.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -57,11 +79,17 @@ Goto index.js and render this App.js in it. Type the following code in **index.j
 
     ReactDOM.render(<App />, document.querySelector('#root'));
 ```
+
+</div>
+
 This will now show the text App on our localhost like below.
 
-![Basic app](https://cdn-images-1.medium.com/max/2880/1*ptpS0Y9DthFtur9Z1By1TQ.png)*Basic app*
+![Basic app](https://ik.imagekit.io/thewebdev/Unsplash-API/1/6_EaxHgD4lPt.png)*Basic app*
 
 We will now create **SearchBar.js** file inside our component folder. It will be a basic class based component, which will have a input field inside a form.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
 
@@ -79,7 +107,13 @@ We will now create **SearchBar.js** file inside our component folder. It will be
 
     export default SearchBar;
 ```
+
+</div>
+
 Head over to **App.js** now to render our SearchBar component.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import SearchBar from './SearchBar';
@@ -94,11 +128,17 @@ Head over to **App.js** now to render our SearchBar component.
 
     export default App;
 ```
+
+</div>
+
 Now, our tiny SearchBar shows in localhost. We are going to style it soon.
 
-![Tiny Searchbar at top-left corner](https://cdn-images-1.medium.com/max/2880/1*Wk5RUqw6ze4Yd8DN9KMY6w.png)*Tiny Searchbar at top-left corner*
+![Tiny Searchbar at top-left corner](https://ik.imagekit.io/thewebdev/Unsplash-API/1/7_HTcHceZMu.png)*Tiny Searchbar at top-left corner*
 
 Lets style a bit our SearchBar now will good old CSS. Headover to **SearchBar.js** and give some *classNames*, which we will use in our css file.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import './SearchBar.css';
@@ -118,7 +158,13 @@ Lets style a bit our SearchBar now will good old CSS. Headover to **SearchBar.js
 
     export default SearchBar;
 ```
+
+</div>
+
 Now create a file **SearchBar.css** in the same directory and add some styles as below.
+
+<div className={styles.code__block}>
+
 ```
     .flexContainer {
         display: flex;
@@ -134,8 +180,11 @@ Now create a file **SearchBar.css** in the same directory and add some styles as
         width: 30%;
     }
 ```
+
+</div>
+
 These simple CSS now make our SearchBar a bit more styled. Headover, to localhost to see our changes.
 
-![Styled SearchBar](https://cdn-images-1.medium.com/max/2880/1*pFyMe-Hw9-x-z28iPAE2Kw.png)*Styled SearchBar*
+![Styled SearchBar](https://ik.imagekit.io/thewebdev/Unsplash-API/1/8_10EMoWYi8Q.png)*Styled SearchBar*
 
 This concludes Part-1 of the series.
