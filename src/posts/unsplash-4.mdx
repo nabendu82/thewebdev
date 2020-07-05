@@ -10,10 +10,14 @@ dev: https://dev.to/nabendu82
 series: Unsplash-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to part-4 of the series. In part-3 we had completed the version-1 of the app. Here, we will start making the version-2, where the images will be tiled better. To do so, we will use the magic of CSS grids and React Ref.
 
 We will first start with CSS grid. For applying grid, lets add a class **image__list** to the `<div>` containing image list. Also, create a file **imageList.css** in the same directory.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import './imageList.css';
@@ -30,7 +34,13 @@ We will first start with CSS grid. For applying grid, lets add a class **image__
 
     export default ImageList;
 ```
+
+</div>
+
 Next, we will add some basic CSS grid to our **imageList.css** file. Here, we are giving rule to have each column 250px wide or 1fr(special unit in grid).
+
+<div className={styles.code__block}>
+
 ```
     .image__list{
         display: grid;
@@ -42,9 +52,12 @@ Next, we will add some basic CSS grid to our **imageList.css** file. Here, we ar
         width: 250px;
     }
 ```
+
+</div>
+
 Head over to localhost and the see the magic of CSS grid.
 
-![Grid magic](https://cdn-images-1.medium.com/max/2880/1*EkRj8RGQPaqoktbgr-84RQ.png)*Grid magic*
+![Grid magic](https://ik.imagekit.io/thewebdev/Unsplash-API/4/1_Dbl0BttRe.png)*Grid magic*
 
 Now, you can see from above screenshot that all is not nice. Vertically, the larger images are spanning more, so creating an ugly space in smaller images.
 
@@ -52,9 +65,12 @@ We will fix it my using **grid-row-end** but we dont know how much to span for e
 
 For this first, we will make a separate component **ImageCard** for image. It will be responsible to show each image.
 
-![ImageCard Component](https://cdn-images-1.medium.com/max/2880/1*gAp0QTVE8-jgFVquTc4Olg.png)*ImageCard Component*
+![ImageCard Component](https://ik.imagekit.io/thewebdev/Unsplash-API/4/2_qR_jIGtST.png)*ImageCard Component*
 
 We will create our ImageCard component now. Open **ImageCard.js** and add the below code.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
 
@@ -71,7 +87,13 @@ We will create our ImageCard component now. Open **ImageCard.js** and add the be
 
     export default ImageCard;
 ```
+
+</div>
+
 Here, we are simply shifting all the logic to display an `<img />` tag to this component. Next, we head over to **ImageList.js** to change code to show this component. Our changes are marked in bold.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import './imageList.css';
@@ -89,11 +111,17 @@ Here, we are simply shifting all the logic to display an `<img />` tag to this c
 
     export default ImageList;
 ```
+
+</div>
+
 Now, we will use JavaScript to reach into the DOM and figure out height of each image. Now, to get access to DOM in React we use the ref system.
 
 Let’s add the ref system to **ImageList.js** .Here, we have added a constructor to create a Ref by the **React.createRef()** method. Then, we assign it to the imag tag by **ref={this.imageRef}**.
 
 Now, we use **componentDidMount** to get access to it. As, we know componentDidMount lifecycle method runs after the DOM is rendered.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
 
@@ -120,28 +148,40 @@ Now, we use **componentDidMount** to get access to it. As, we know componentDidM
 
     export default ImageCard;
 ```
+
+</div>
+
 Now, open the app in localhost and also the developer console. Here we will see 10 images been shown in the console.
 
-![The img access](https://cdn-images-1.medium.com/max/2880/1*FO20dgF5gZQ4rr5srUZB3w.png)*The img access*
+![The img access](https://ik.imagekit.io/thewebdev/Unsplash-API/4/3_42r0-FWOzg.png)*The img access*
 
 Now, open a rendered <img /> tag and you will see the **clientHeight** property. This property tells about the height of each image. We will use it to fix our app.
 
-![The clientHeight](https://cdn-images-1.medium.com/max/2880/1*WAaP4QU156sNaJ8vFBMviA.png)The **clientHeight**
+![The clientHeight](https://ik.imagekit.io/thewebdev/Unsplash-API/4/4_FjfSBmg6c.png)The **clientHeight**
 
 As from the screenshot above, it is clear that the *clientHeight* can be accessed as *this.imageRef.current.clientHeight*, so put the same in console log.
+
+<div className={styles.code__block}>
+
 ```
     componentDidMount() {
             console.log(this.imageRef);
             console.log(this.imageRef.current.clientHeight);
         }
 ```
+
+</div>
+
 On doing the search again, we should see the image height. But we see zero(0) instead.
 
-![The unexpected](https://cdn-images-1.medium.com/max/2880/1*pGnTNRJ0tGES4RcO1Z6R3g.png)*The unexpected*
+![The unexpected](https://ik.imagekit.io/thewebdev/Unsplash-API/4/5_SDJOg_lrsC.png)*The unexpected*
 
 This is because the DOM element(*this.imageRef*) which we see in the console, doesn’t have the complete information about the image at the time. It only gets the information, once we expand the element and is done by the browser.
 
 To solve this issue, we have to go through the route of eventlistner as in the below code.
+
+<div className={styles.code__block}>
+
 ```
     componentDidMount() {
             this.imageRef.current.addEventListener('load', this.setSpans);
@@ -151,13 +191,19 @@ To solve this issue, we have to go through the route of eventlistner as in the b
             console.log(this.imageRef.current.clientHeight);
         }
 ```
+
+</div>
+
 Here, we had added Event Listener to current object. Then when the image is loaded, we call a method *setSpans()*.
 
 On doing the search again, we correctly see the image height.
 
-![The image Height](https://cdn-images-1.medium.com/max/2880/1*_PoKCbzbZ6YKdCmcvBX7ZQ.png)*The image Height*
+![The image Height](https://ik.imagekit.io/thewebdev/Unsplash-API/4/6_iWWDl-2m4.png)*The image Height*
 
 Before starting our ***grid-row-end*** maths, we have to do a small change in our **imageList.css** file. We will add a property **grid-auto-rows** and set it to 150px. It specifies that each row will be 150 pixels height.
+
+<div className={styles.code__block}>
+
 ```
     .image__list{
         display: grid;
@@ -170,9 +216,15 @@ Before starting our ***grid-row-end*** maths, we have to do a small change in ou
         width: 250px;
     }
 ```
+
+</div>
+
 Next we will start our Maths. Here we are taking our height and dividing it with 150. The value 150 is our row height, so it will give us the number of spans.
 
 Now, we have a state variable **spans**. We then do a **this.setState** inside **setSpans**().
+
+<div className={styles.code__block}>
+
 ```
     class ImageCard extends Component {
         constructor(props) {
@@ -202,15 +254,21 @@ Now, we have a state variable **spans**. We then do a **this.setState** inside *
         }
     }
 ```
+
+</div>
+
 Next, we will use this in the CSS grid property **grid-row-end: span** `<Number>`. Now , this property will expand each row according to the value.
 
 Let’s do the Search again in localhost. Also, open the developer console. You can see that each grid element now have a property like **grid-row-end: span 2**
 
-![**grid-row-end: span**](https://cdn-images-1.medium.com/max/2880/1*3oepT2TR0qp6GVlofz1W-g.png)***grid-row-end: span***
+![**grid-row-end: span**](https://ik.imagekit.io/thewebdev/Unsplash-API/4/7_BGhxiJpWC.png)***grid-row-end: span***
 
 As, from the above screenshot all is not completely well. This is because 150px height is way too much and for some images it creates too much empty spaces. To fix it we will make some little adjustments first in **imageList.css**
 
 Here, we are making each row of 10px and also eliminating the gap between the rows. The **place-items:center;** is just to center everything perfectly.
+
+<div className={styles.code__block}>
+
 ```
     .image__list{
         display: grid;
@@ -220,7 +278,13 @@ Here, we are making each row of 10px and also eliminating the gap between the ro
         place-items:center;
     }
 ```
+
+</div>
+
 Next in ImageCard.js also we make the same adjustment. Now instead of dividing by 150, we are dividing by 10.
+
+<div className={styles.code__block}>
+
 ```
     setSpans = () => {
             const height = this.imageRef.current.clientHeight;
@@ -228,9 +292,12 @@ Next in ImageCard.js also we make the same adjustment. Now instead of dividing b
             this.setState({ spans: spansRows });
         }
 ```
+
+</div>
+
 This will cause a lot more spans, but will fix our problem.
 
-![Problem fixed](https://cdn-images-1.medium.com/max/2880/1*RfH3L72h35mfXrCRjMJOxg.png)*Problem fixed*
+![Problem fixed](https://ik.imagekit.io/thewebdev/Unsplash-API/4/8_mPWUhlnEk.png)*Problem fixed*
 
 This completes our mini project. Hope you liked it. You can find the github link [here](https://github.com/nabendu82/image-search).
 
