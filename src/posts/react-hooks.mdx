@@ -9,6 +9,7 @@ github: https://github.com/nabendu82
 dev: https://dev.to/nabendu82
 tags: ['react', 'javascript', 'hooks']
 ---
+import styles from "../css/postTemplate.module.css"
 
 We are going to build a simple app using the latest React feature of hooks, which lets us use Class components concepts in Functional components.
 
@@ -16,17 +17,28 @@ This series have been inspired from an example in “Modern React with Redux” 
 
 So, open up your terminal and create a new react app **react-hooks**.
 
-![react-hooks](https://cdn-images-1.medium.com/max/2000/1*kuub7j19MDl6698g7l5GCA.png)*react-hooks*
+<div className={styles.image__small}>
+
+![react-hooks](https://ik.imagekit.io/thewebdev/React-Hooks/1_gUxpyilon0.png)*react-hooks*
+
+</div>
 
 Next, cd into that directory. Open up your code editor and start the react application.
 
-![initial setup](https://cdn-images-1.medium.com/max/2000/1*hK9JqQG9EmzPPUO1_YS8jw.png)*initial setup*
+<div className={styles.image__small}>
+
+![initial setup](https://ik.imagekit.io/thewebdev/React-Hooks/2_tyRMYLoV6.png)*initial setup*
+
+</div>
 
 Now, as usual go into the **src** directory in your code editor and delete everything.
 
-![Delete everything](https://cdn-images-1.medium.com/max/2880/1*1mYBrJAjslMHWg2pMdD2gw.png)*Delete everything*
+![Delete everything](https://ik.imagekit.io/thewebdev/React-Hooks/3_hl9exvMeKQ.png)*Delete everything*
 
 Next, create a new file **index.js** in the **src** folder. The content of it will be below code.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -36,7 +48,13 @@ Next, create a new file **index.js** in the **src** folder. The content of it wi
         <App />, document.querySelector('#root')
     );
 ```
+
+</div>
+
 Now, make an **components** directory inside src folder and create a new file **App.js**, whose content will be below code.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react'
 
@@ -52,11 +70,17 @@ Now, make an **components** directory inside src folder and create a new file **
 
     export default App;
 ```
+
+</div>
+
 So, if the initial setup is right you will see the below in our localhost.
 
-![App is rendered](https://cdn-images-1.medium.com/max/2880/1*m8kKlyfmrK0NwCoejTct_Q.png)*App is rendered*
+![App is rendered](https://ik.imagekit.io/thewebdev/React-Hooks/4_34mQTaAs9H.png)*App is rendered*
 
 Next, update the App.js to have two buttons, onclick of which different text is displayed.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
     import './App.css';
@@ -80,7 +104,13 @@ Next, update the App.js to have two buttons, onclick of which different text is 
 
     export default App;
 ```
+
+</div>
+
 We also add a tiny bit of CSS by creating an **App.css** in the same folder.
+
+<div className={styles.code__block}>
+
 ```
     .main__container {
         display: grid;
@@ -96,17 +126,28 @@ We also add a tiny bit of CSS by creating an **App.css** in the same folder.
         font-size:1.5rem;
     }
 ```
+
+</div>
+
 And our App now looks like below.
 
-![posts](https://cdn-images-1.medium.com/max/2880/1*prAZCqtoqWtP4CC1kNgsMQ.png)*posts*
+![posts](https://ik.imagekit.io/thewebdev/React-Hooks/5_Xph95gYyTA.png)*posts*
 
 We are now going to change our app to a functional based component and then use hooks.
 
 So, there are different types of hooks. The are listed in the diagram below.
 
-![Different type of hooks](https://cdn-images-1.medium.com/max/2000/1*oAX03V1Dko9avaj1mrvzfw.png)*Different type of hooks*
+<div className={styles.image__small}>
+
+![Different type of hooks](https://ik.imagekit.io/thewebdev/React-Hooks/6_9y78zSOD3X.png)*Different type of hooks*
+
+</div>
+
 
 We need the **useState** hook for our App, as we are using state in our App. So, let’s change it to use hooks. The major changes are in bold and we are also changed the class based App component to a functional one.
+
+<div className={styles.code__block}>
+
 ```
     import React, { useState } from 'react';
     import './App.css';
@@ -128,19 +169,57 @@ We need the **useState** hook for our App, as we are using state in our App. So,
 
     export default App;
 ```
+
+</div>
+
 If you go to [http://localhost:3000/](http://localhost:3000/) and check the app, will behave the same. It means our transformation was successful.
 
 But lets understand what the line **const [resource, setResource] = useState(‘posts’)** means by below diagram.
 
-![useState explained](https://cdn-images-1.medium.com/max/2000/1*fDh9b9uCHX9nM1umBbWCTQ.png)*useState explained*
+![useState explained](https://ik.imagekit.io/thewebdev/React-Hooks/7_kqGuFCDdg.png)*useState explained*
 
 The **useState(‘posts’)** is an array of two elements and we are doing array destructuring, so **resource=useState(‘posts’)[0]** and **setResource=useState(‘posts’)[1]**
 
 Next, we will start creating our **ResourceList** component, but first we will install axios to make GET request to a simple endpoint. So, go ahead to your terminal and stop the running app and install axios
 
-![install axios](https://cdn-images-1.medium.com/max/2000/1*2oSkmTMzm3vFb-dvvwXaJw.png)*install axios*
+<div className={styles.image__small}>
+
+![install axios](https://ik.imagekit.io/thewebdev/React-Hooks/8_NznsS1fi6H.png)*install axios*
+
+</div>
+
+Update the **App.js** to send the **resources** to a new component **ResourceList**
+
+<div className={styles.code__block}>
+
+```
+import React, { useState } from 'react'
+import ResourceList from './ResourceList'
+import './App.css'
+
+const App = () => {
+    const [resources, setResource] = useState('posts');
+
+        return (
+        <div className="main__container">
+            <span className="buttons__container">
+            <button onClick={() => setResource('posts')}>Posts</button>
+            <button onClick={() => setResource('todos')}>Todos</button>
+            </span>
+            <ResourceList item={resources} />
+        </div>
+        )
+}
+
+export default App
+```
+
+</div>
 
 Now, create a new file **ResourceList.js** inside **src** directory. Add the following class based code to it. Here we are making use of two lifecycle methods — **componentDidMount** and **componentDidUpdate**, because we are doing an API call at initial render and also whenever the user clicks on the button.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
     import axios from 'axios';
@@ -171,7 +250,13 @@ Now, create a new file **ResourceList.js** inside **src** directory. Add the fol
 
     export default ResourceList;
 ```
+
+</div>
+
 Now, we are going to change this to use hooks. We need another hook for lifecycle methods — useEffect.
+
+<div className={styles.code__block}>
+
 ```
     import React, { useState, useEffect } from 'react';
     import axios from 'axios';
@@ -197,11 +282,17 @@ Now, we are going to change this to use hooks. We need another hook for lifecycl
 
     export default ResourceList;
 ```
+
+</div>
+
 Now, the hook **useEffect** is a combination of two lifecycle methods — **componentDidMount** and **componentDidUpdate**
 
-![useEffect hook](https://cdn-images-1.medium.com/max/2000/1*hR8U4F8aVXuPvVLiDPIHhA.png)*useEffect hook*
+![useEffect hook](https://ik.imagekit.io/thewebdev/React-Hooks/9_kQAdWHnolg.png)*useEffect hook*
 
 Lastly, lets complete our app by showing the content of **Todos** or **Posts** from our backend API. Change the following in return statement in **ResourceList.js**
+
+<div className={styles.code__block}>
+
 ```
     return (
             <ul>
@@ -209,8 +300,11 @@ Lastly, lets complete our app by showing the content of **Todos** or **Posts** f
             </ul>
         )
 ```
+
+</div>
+
 And our final app looks like below.
 
-![Final App](https://cdn-images-1.medium.com/max/2880/1*a2bBh8fnJTc96omXjPXUTA.png)*Final App*
+![Final App](https://ik.imagekit.io/thewebdev/React-Hooks/10_zJzG4VTJ4B.png)*Final App*
 
 You can find the final code for the same in this github [link](https://github.com/nabendu82/react-hooks).
