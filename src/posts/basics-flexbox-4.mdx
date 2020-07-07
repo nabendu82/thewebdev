@@ -10,6 +10,8 @@ dev: https://dev.to/nabendu82
 series: Flexbox-basics
 tags: ['css', 'beginners', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
+
 We will start looking at the flex items property from here onwards.
 
 We will use this [codepen](https://codepen.io/nabendu82/full/zjgywm/) for our project.
@@ -17,19 +19,23 @@ We will use this [codepen](https://codepen.io/nabendu82/full/zjgywm/) for our pr
 Let’s start with the property to align a single item ie align-self.
 
 We will use this basic setup.
+
+<div className={styles.code__block}>
+
 ```
-<div class=”container”>
-    <div class=”box box1">1</div>
-    <div class=”box box2">2</div>
-    <div class=”box box3">3</div>
-    <div class=”box box4">4</div>
-    <div class=”box box5">5</div>
-    <div class=”box box6">6</div>
-    <div class=”box box7">7</div>
-    <div class=”box box8">8</div>
-    <div class=”box box9">9</div>
-    <div class=”box box10">10</div>
+<div class="container">
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+    <div class="box box4">4</div>
+    <div class="box box5">5</div>
+    <div class="box box6">6</div>
+    <div class="box box7">7</div>
+    <div class="box box8">8</div>
+    <div class="box box9">9</div>
+    <div class="box box10">10</div>
 </div>
+
 .container {
     display:flex;
     border:10px solid mistyrose;
@@ -49,11 +55,17 @@ We will use this basic setup.
     padding-bottom: 300px;
 }
 ```
+
+</div>
+
 It will show as below-
 
-![default settings](https://cdn-images-1.medium.com/max/2862/1*vS_5EWYFu-W70uUfG2onEw.png)*default settings*
+![default settings](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/1_SXh1bgP8Q.png)*default settings*
 
 Now the align-self allows to overwrite the alignment along the cross axis for an individual flex item. We will see all main three vales in below example.
+
+<div className={styles.code__block}>
+
 ```
 .box2{
     padding-bottom: 200px;
@@ -68,22 +80,29 @@ Now the align-self allows to overwrite the alignment along the cross axis for an
     align-self: center;
 }
 ```
-![align-self](https://cdn-images-1.medium.com/max/2880/1*306MCa_LbaraKjYaNLGInA.png)*align-self*
+
+</div>
+
+![align-self](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/2_HztwUXu3Nb.png)*align-self*
 
 Now we will see the flex items property **flex**. This is actually a shorthand for flex-grow, flex-shrink and flex-basis combined, which we will see later.
 
 The codepen for the same is [here](https://codepen.io/nabendu82/full/RyXEQr/)
 
 The basic setup is -
+
+<div className={styles.code__block}>
+
 ```
-<div class=”container”>
-    <div class=”box box1">one 😎</div>
-    <div class=”box box2">two 🍕</div>
-    <div class=”box box3">three 🍟</div>
-    <div class=”box box4">four 👍</div>
-    <div class=”box box5">five 👀</div>
-    <div class=”box box6">six 💩</div>
+<div class="container">
+    <div class="box box1">one 😎</div>
+    <div class="box box2">two 🍕</div>
+    <div class="box box3">three 🍟</div>
+    <div class="box box4">four 👍</div>
+    <div class="box box5">five 👀</div>
+    <div class="box box6">six 💩</div>
 </div>
+
 .box {
     color:white;
     font-size: 50px;
@@ -91,6 +110,7 @@ The basic setup is -
     text-shadow:4px 4px 0 rgba(0,0,0,0.1);
     padding:10px;
 }
+
 /* Colours for each box */
 .box1 { background:#1abc9c;}
 .box2 { background:#3498db;}
@@ -106,11 +126,17 @@ The basic setup is -
     display:flex;
 }
 ```
+
+</div>
+
 The output is -
 
-![default setup](https://cdn-images-1.medium.com/max/2870/1*9IUDkF-iiUX6ap9909COpg.png)*default setup*
+![default setup](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/3_hRaVWTTuDZ.png)*default setup*
 
 Now we can clearly, see there is some free space above. And the flex property decides how this free space will be distribute. Like if we give **flex:1** to all items, the free space will be distribute equally among all flex-items.
+
+<div className={styles.code__block}>
+
 ```
 .container {
     display:flex;
@@ -119,9 +145,15 @@ Now we can clearly, see there is some free space above. And the flex property de
     flex:1;
 }
 ```
-![flex:1](https://cdn-images-1.medium.com/max/2874/1*EQd6f5EG30B_F5dnPGXtFg.png)*flex:1*
+
+</div>
+
+![flex:1](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/4_RN88t6phs6.png)*flex:1*
 
 If we give **flex:2** to a single item in above scenario, it will take twice the free space as others.
+
+<div className={styles.code__block}>
+
 ```
 .container {
     display:flex;
@@ -133,16 +165,23 @@ If we give **flex:2** to a single item in above scenario, it will take twice the
     flex:2;
 }
 ```
-![flex:2 to item2](https://cdn-images-1.medium.com/max/2874/1*NG7cMtwofrnB2H3XHBjecA.png)*flex:2 to item2*
+
+</div>
+
+![flex:2 to item2](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/5_95VVz3u1J_.png)*flex:2 to item2*
 
 We will learn the individual properties of flex-grow, flex-shrink and flex-basis next.
 
 For this we will be using this codepen as [basis](https://codepen.io/nabendu82/full/zjgybX/).
+
+<div className={styles.code__block}>
+
 ```
-<div class=”container”>
-    <div class=”box box1">one 😎</div>
-    <div class=”box box2">two 🍕</div>
+<div class="container">
+    <div class="box box1">one 😎</div>
+    <div class="box box2">two 🍕</div>
 </div>
+
 .box {
     color:white;
     font-size: 50px;
@@ -150,9 +189,11 @@ For this we will be using this codepen as [basis](https://codepen.io/nabendu82/f
     text-shadow:4px 4px 0 rgba(0,0,0,0.1);
     padding:10px;
 }
+
 /* Colours for each box */
 .box1 { background:#1abc9c;}
 .box2 { background:#3498db;}
+
 /* We start writing out flexbox here. The above is just page setup */
 .container {
     display:flex;
@@ -164,15 +205,21 @@ For this we will be using this codepen as [basis](https://codepen.io/nabendu82/f
     flex:1 1 0;
 }
 ```
+
+</div>
+
 Which will result in -
 
-![basics](https://cdn-images-1.medium.com/max/2876/1*yN_Y2k0Or5N2W9qNgtU4Mg.png)*basics*
+![basics](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/6_wvk0Al11aI.png)*basics*
 
 flex: 1 is shorthand for `flex-grow flex-shrink flex-basis`
 So, as above we can write **flex: 1 1 0**
 
 It means flex-grow: 1, flex-shrink: 1 and flex-basis: 0. We will learn more about them now.
 #### flex-basis means the default size of the element before remaining space is distributed. If we give it alone, it will only take the pixels we give it. like below.
+
+<div className={styles.code__block}>
+
 ```
 .box1{
     flex-basis: 400px;
@@ -181,8 +228,14 @@ It means flex-grow: 1, flex-shrink: 1 and flex-basis: 0. We will learn more abou
     flex-basis: 300px;
 }
 ```
-![flex-basis](https://cdn-images-1.medium.com/max/2872/1*Gxv5MDNe1HV72v0uSgHXXg.png)*flex-basis*
+
+</div>
+
+![flex-basis](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/7_tkMLnVCq1U.png)*flex-basis*
 #### flex-grow means how to distribute the free space between items. Like in above situation we have a lot of free space.
+
+<div className={styles.code__block}>
+
 ```
 .box1{
     flex-basis: 300px;
@@ -193,10 +246,16 @@ It means flex-grow: 1, flex-shrink: 1 and flex-basis: 0. We will learn more abou
     flex-grow: 1;
 }
 ```
+
+</div>
+
 So, it means box1 will take twice the available free space and box2 will take in comparison with box1 single free space.
 
-![flex-grow](https://cdn-images-1.medium.com/max/2876/1*K5M18MqSmCg6ROBjhuQFPg.png)*flex-grow*
+![flex-grow](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/8_KQVRLW_kdL.png)*flex-grow*
 #### flex-shrink means the ability of item to shrink in the proportion when less space is there. Will come into play when we go to mobile layout
+
+<div className={styles.code__block}>
+
 ```
 .box1{
     flex-basis: 300px;
@@ -209,8 +268,15 @@ So, it means box1 will take twice the available free space and box2 will take in
     flex-shrink: 1;
 }
 ```
+
+</div>
+
 The above means, when there is less space then shrink box1 5 times more then box2
 
-![flex-shrink](https://cdn-images-1.medium.com/max/2000/1*MjOyloIiQ5bCAfnd1ToHHw.png)*flex-shrink*
+<div className={styles.image__small}>
+
+![flex-shrink](https://ik.imagekit.io/thewebdev/Flexbox-basics/4/9_gPeWOW5uDA.png)*flex-shrink*
+
+</div>
 
 This concludes the flexbox series. Hope you enjoyed it.
