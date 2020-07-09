@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: Twitch-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to Part-2 of the series. In this part , we will create Authentication to login to our App.
 
@@ -17,55 +18,76 @@ We will use google OAuth authentication. So, head over to [google console](https
 
 Once, you logging with your google account you will find a Dashboard already open. This happens when you already have some project using Google APIs. I already have some projects. So, i need to click near the top left corner on the Project name(Mine is vue-calendar). It will open a pop-up in which i will click on **NEW PROJECT** button.
 
-![Already have projects](https://cdn-images-1.medium.com/max/2880/1*tOJJzBb8oAm79ideQJlZPQ.png)*Already have projects*
+![Already have projects](https://ik.imagekit.io/thewebdev/Twitch-React/2/1_J-6Xm8PxJ.png)*Already have projects*
 
 If you are new you will directly get the **NEW PROJECT** button. In the next page as in screenshot below, enter an appropriate name for the project and click the **CREATE** button.
 
-![Create Streamer Project](https://cdn-images-1.medium.com/max/2000/1*hdKElb1Jf6Vr5K7e2Jv_Fw.png)*Create Streamer Project*
+![Create Streamer Project](https://ik.imagekit.io/thewebdev/Twitch-React/2/2_KpkZen1_Bh.png)*Create Streamer Project*
 
 It will take 30–40 seconds to create your project. You will be taken to the first screen and an notification will come, near the top-right corner.
 
-![Streamer Successfully created](https://cdn-images-1.medium.com/max/2880/1*9Q1EsMbmU5ZvvyQ-HNMWdQ.png)*Streamer Successfully created*
+![Streamer Successfully created](https://ik.imagekit.io/thewebdev/Twitch-React/2/3_XjOpFcKMMb.png)*Streamer Successfully created*
 
 Again click onear the top left corner on the Project name(Mine is vue-calendar). It will open a pop-up in which click the newly created project. Mine is **Streamer**.
 
-![Streamer](https://cdn-images-1.medium.com/max/2880/1*8pIrOZ23Jsy1NYh8-seXiw.png)*Streamer*
+![Streamer](https://ik.imagekit.io/thewebdev/Twitch-React/2/4_brvACTgUq.png)*Streamer*
 
 In the App Screen now Click on the tab **Credentials** and the **OAuth consent screen**
 
-![Consent Screen](https://cdn-images-1.medium.com/max/2880/1*NaGcl-clhH--XzQbDzLIUQ.png)*Consent Screen*
+![Consent Screen](https://ik.imagekit.io/thewebdev/Twitch-React/2/5_kR4PrfUrVY.png)*Consent Screen*
 
 Here give the **Application name** and scroll down and click on **SAVE** button.
 
-![Application Name Again](https://cdn-images-1.medium.com/max/2880/1*DkUNtTpG3H2t0yEGWNBeyw.png)*Application Name Again*
+![Application Name Again](https://ik.imagekit.io/thewebdev/Twitch-React/2/6_BZYt6ixsnQ.png)*Application Name Again*
 
 On Saving, you will be taken to **Credentials** page within **Credentials** tab, as in screenshot below. Click on **Create Credentials** select bar. In it click on **OAuth Client ID**.
 
-![Credentials](https://cdn-images-1.medium.com/max/2880/1*gYQx4lBod5gDHkQJQRUX1Q.png)*Credentials*
+![Credentials](https://ik.imagekit.io/thewebdev/Twitch-React/2/7_GeX1AIwwgX.png)*Credentials*
 
 In the next page, select Web application radio button and then, in **Authorised JavaScript origins** give [http://localhost:3000](http://localhost:3000/). Then click on **Create** button.
 
-![localhost](https://cdn-images-1.medium.com/max/2880/1*HhE5YMUHQfOJPy4V-Y0t9w.png)*localhost*
+![localhost](https://ik.imagekit.io/thewebdev/Twitch-React/2/8_Zog-f0MvSF.png)*localhost*
 
 A pop-up **OAuth client** will show your **client ID** and **client secret**. We are going to use the **client ID**, so copy it somewhere.
 
-![OAuth Client](https://cdn-images-1.medium.com/max/2880/1*asryAhF7qg1PJllkbNvfcw.png)*OAuth Client*
+![OAuth Client](https://ik.imagekit.io/thewebdev/Twitch-React/2/9_m5LgXkDcEv.png)*OAuth Client*
 
 We will now include the Google Auth in our project. The first step is to go to our **index.html** file and inside the `<head>` tag add the following line.
+
+<div className={styles.code__block}>
+
 ```
     <script src="https://apis.google.com/js/api.js"></script>
 ```
-![index.html](https://cdn-images-1.medium.com/max/2880/1*zSjUppg36J49RihnZWrS2w.png)*index.html*
+
+</div>
+
+![index.html](https://ik.imagekit.io/thewebdev/Twitch-React/2/10_uMq0UWBW4j.png)*index.html*
+
+Now, before moving forward i want to hide the API Keys and not push it to the github. I had recently written an article to hide API Keys in React. You can find it [here](https://thewebdev.tech/youtube-api-fix)
+
+So, following that i will first create an **.env** file in the root directory and put the API key in it.
+
+![.env](https://ik.imagekit.io/thewebdev/Twitch-React/2/10-1_B-OQWf253.png)*.env*
+
+Now, put the same in **.gitignore**, so that we don't push it to github.
+
+![.gitignore](https://ik.imagekit.io/thewebdev/Twitch-React/2/10-2_Goqbx0pnHv.png)*.gitignore*
 
 Next create a **GoogleAuth.js** file inside our **components** directory. Add the below code in it. Most of it is standard code, require to add Google Authentication to our web-app. In place of **YOUR_CLIENT_ID**, put the client id you got while creating the app.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react'
+
+    const API_KEY = process.env.REACT_APP_API_KEY
 
     class GoogleAuth extends Component {
         componentDidMount() {
             window.gapi.load('client:auth2', () => {
                 window.gapi.client.init({
-                    clientId: '**YOUR_CLIENT_ID**',
+                    clientId: `${API_KEY}`,
                     scope: 'email'
                 });
             });
@@ -82,7 +104,13 @@ Next create a **GoogleAuth.js** file inside our **components** directory. Add th
 
     export default GoogleAuth;
 ```
+
+</div>
+
 Next, we add this to our **Header.js** file.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { Link } from 'react-router-dom';
@@ -105,7 +133,13 @@ Next, we add this to our **Header.js** file.
 
     export default Header;
 ```
+
+</div>
+
 We also, need more styles in our **Header.css** file to show it correctly.
+
+<div className={styles.code__block}>
+
 ```
     ...
     ...
@@ -122,14 +156,21 @@ We also, need more styles in our **Header.css** file to show it correctly.
         margin-left:4px;
     }
 ```
+
+</div>
+
 Now, we will move back to **GoogleAuth.js** file to complete our Authentication logic. Here, we have attached .then() to our API call google. Then we are getting the authentication instance.
 
 We have a local state variable **isSignedIn**, which we are setting to the get(). It returns true if the user is signed in or false if not.
 
 We are also adding a event listener to isSignedIn and if it fires, then changing state again.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
     import './GoogleAuth.css';
+    const API_KEY = process.env.REACT_APP_API_KEY
 
     class GoogleAuth extends Component {
         state = { isSignedIn: null };
@@ -137,7 +178,7 @@ We are also adding a event listener to isSignedIn and if it fires, then changing
     componentDidMount() {
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
-                clientId: 'YOUR_CLIENT_ID',
+                clientId: `${API_KEY}`,
                 scope: 'email'
             }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance();
@@ -188,9 +229,15 @@ We are also adding a event listener to isSignedIn and if it fires, then changing
 
     export default GoogleAuth;
 ```
+
+</div>
+
 Finally, there is a function **renderAuthButton**() which checks the status of the user and shows a Signout or a Signin button.
 
 Finally, added a **GoogleAuth.css** file in components directory, which contains the button styles. These i have found from [this](https://codepen.io/davidelrizzo/pen/vEYvyv) codepen.
+
+<div className={styles.code__block}>
+
 ```
     .loginBtn {
         box-sizing: border-box;
@@ -235,29 +282,35 @@ Finally, added a **GoogleAuth.css** file in components directory, which contains
         background: #E74B37;
     }
 ```
+
+</div>
+
 The result is a beautiful and fully working **Login with Google** button.
 
-![Login with Google](https://cdn-images-1.medium.com/max/2880/1*pbY8BxsWUT75P0fy8zjybQ.png)*Login with Google*
+![Login with Google](https://ik.imagekit.io/thewebdev/Twitch-React/2/11_9JvU7vS85x.png)*Login with Google*
 
 Click on it and it will ask for your approval to authenticate.
 
-![Approval to authenticate](https://cdn-images-1.medium.com/max/2880/1*DOAbwFYJGoqhOfqU0NPjiQ.png)*Approval to authenticate*
+![Approval to authenticate](https://ik.imagekit.io/thewebdev/Twitch-React/2/12__7qF7IXAoB.png)*Approval to authenticate*
 
 Approve it and you will be logged in and will get the Logout button.
 
-![Logout button](https://cdn-images-1.medium.com/max/2880/1*0lx2CJ_H1WF583BRScHagw.png)*Logout button*
+![Logout button](https://ik.imagekit.io/thewebdev/Twitch-React/2/13_u9z7yLWBdA.png)*Logout button*
 
 Next, we will move some of our authentication logic to Redux. So, open your terminal and stop the running instance of server. Then install redux and react-redux to your project.
 
-![redux and react-redux](https://cdn-images-1.medium.com/max/2000/1*pgXz4jrarbWU0xvlo5037A.png)*redux and react-redux*
+![redux and react-redux](https://ik.imagekit.io/thewebdev/Twitch-React/2/14_67yiF6jpV.png)*redux and react-redux*
 
 Once, it installs sucessfully do an **npm start** again to start your local server.
 
 Let’s start with our redux setup. Inside our **src** directory add **actions** and **reducers** folders. Inside each of them add an **index.js** file. In the **index.js** file for reducer, add the boilerplate code. We will soon replace it with real reducers.
 
-![Additions for Redux](https://cdn-images-1.medium.com/max/2880/1*CvbhYjqoZjoN5Xk2fqxvBw.png)*Additions for Redux*
+![Additions for Redux](https://ik.imagekit.io/thewebdev/Twitch-React/2/15_1u_U6DGUO.png)*Additions for Redux*
 
 Next, open out root index.js and change it to include redux. The changes are highlighted in bold.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -271,7 +324,13 @@ Next, open out root index.js and change it to include redux. The changes are hig
     ReactDOM.render(
     <Provider store={store}><App /></Provider>, document.querySelector('#root'));
 ```
+
+</div>
+
 Now, let’s create our action creator. Goto the **index.js** file in **actions** folder and create two simple functions.
+
+<div className={styles.code__block}>
+
 ```
     export const signIn = () => {
         return {
@@ -285,7 +344,13 @@ Now, let’s create our action creator. Goto the **index.js** file in **actions*
         };
     };
 ```
+
+</div>
+
 Now, we will use these functions in our **GoogleAuth.js** by using react-redux connect. Do, these changes in **GoogleAuth.js.**We are changing the function **onAuthChange**() and adding stuff to connect to Redux actions.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
     import './GoogleAuth.css';
@@ -322,7 +387,13 @@ Now, we will use these functions in our **GoogleAuth.js** by using react-redux c
 
     export default connect(null, { signIn, signOut })(GoogleAuth);
 ```
+
+</div>
+
 Now, time to create the reducer. Create a file **authReducer.js** inside folder **reducers**. Type the below code inside it. Here, we are taking the SIGN_IN and SIGN_OUT ,which we got from action creator and updating our state.
+
+<div className={styles.code__block}>
+
 ```
     const INITIAL_STATE = {
         isSignedIn: null
@@ -339,7 +410,13 @@ Now, time to create the reducer. Create a file **authReducer.js** inside folder 
         }
     }
 ```
+
+</div>
+
 Next, hook this reducer to our combine reducer at **index.js** in **reducers** folder.
+
+<div className={styles.code__block}>
+
 ```
     import { combineReducers } from 'redux';
     import authReducer from './authReducer';
@@ -348,7 +425,13 @@ Next, hook this reducer to our combine reducer at **index.js** in **reducers** f
         auth: authReducer
     });
 ```
+
+</div>
+
 Now, time to hook these changes in **GoogleAuth.js** file and get rid of local state logic completely. The changes are marked in bold. We basically introduced **mapStateToProps** to get the **auth** from our reducer.
+
+<div className={styles.code__block}>
+
 ```
     import React, { Component } from 'react';
     import './GoogleAuth.css';
@@ -419,14 +502,26 @@ Now, time to hook these changes in **GoogleAuth.js** file and get rid of local s
 
     export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth);
 ```
+
+</div>
+
 We are done with our authentication. You can head over to localhost and check. But we will do a small refactor in our code base. This refactor is generally consider good practice in Redux.
 
 Create a file **types.js** inside **actions** folder. Type the following code in it.
+
+<div className={styles.code__block}>
+
 ```
     export const SIGN_IN = 'SIGN_IN';
     export const SIGN_OUT = 'SIGN_OUT';
 ```
+
+</div>
+
 Now, use these variables instead of strings in **authReducer.js**
+
+<div className={styles.code__block}>
+
 ```
     import { SIGN_IN, SIGN_OUT } from '../actions/types';
 
@@ -445,7 +540,13 @@ Now, use these variables instead of strings in **authReducer.js**
         }
     }
 ```
+
+</div>
+
 Also, do similar change in **index.js** of **actions**
+
+<div className={styles.code__block}>
+
 ```
     import { SIGN_IN, SIGN_OUT } from './types';
 
@@ -461,7 +562,13 @@ Also, do similar change in **index.js** of **actions**
         };
     };
 ```
+
+</div>
+
 We will be doing one another refactor. This is for later uses. Head over to **GoogleAuth.js** and change the below in **onAuthChange()**
+
+<div className={styles.code__block}>
+
 ```
     onAuthChange = (isSignedIn) => {
         if(isSignedIn) {
@@ -471,7 +578,13 @@ We will be doing one another refactor. This is for later uses. Head over to **Go
         }
     }
 ```
+
+</div>
+
 Now, in **index.js** of **actions** folder use this **userId**.
+
+<div className={styles.code__block}>
+
 ```
     import { SIGN_IN, SIGN_OUT } from './types';
 
@@ -488,7 +601,13 @@ Now, in **index.js** of **actions** folder use this **userId**.
         };
     };
 ```
+
+</div>
+
 Now, we will do the changes in **authReducer.js**
+
+<div className={styles.code__block}>
+
 ```
     import { SIGN_IN, SIGN_OUT } from '../actions/types';
 
@@ -508,9 +627,12 @@ Now, we will do the changes in **authReducer.js**
         }
     }
 ```
+
+</div>
+
 Finally head over to localhost to check if everything is working fine.
 
-![All is well](https://cdn-images-1.medium.com/max/2880/1*TMLENFEf7a_-7d1YJsVVJw.png)*All is well*
+![All is well](https://ik.imagekit.io/thewebdev/Twitch-React/2/16_HCTJe_J6_Z.png)*All is well*
 
 This concludes our rather long part-2 in which we are done with authentication. You can find the code till here in my github [link](https://github.com/nabendu82/streams).
 
