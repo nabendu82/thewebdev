@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: Twitch-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to Part-3 of the series. We will implement forms in our project. We will use Redux-forms, but first let hook up redux-devtools in our project.
 
@@ -18,6 +19,9 @@ Redux Devtools is a chrome/firefox extension, which is extremely useful to debug
 Head over to Redux Devtools Extension page [here](https://github.com/zalmoxisus/redux-devtools-extension). You will find link for both Firefox and chrome webstore there. Go ahead and install it.
 
 Next, you have to make some changes in root index.js file to use this extension. The changes are marked in bold.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -32,17 +36,23 @@ Next, you have to make some changes in root index.js file to use this extension.
     ReactDOM.render(
     <Provider store={store}><App /></Provider>, document.querySelector('#root'));
 ```
+
+</div>
+
 Now, head over to localhost and open the Developer panel. There click on the **Redux** tab. If the setup went right, you will see something like below.
 
-![Redux Devtools](https://cdn-images-1.medium.com/max/2880/1*heAoGctp-Vmxq2G69GoiQw.png)*Redux Devtools*
+![Redux Devtools](https://ik.imagekit.io/thewebdev/Twitch-React/3/1_bGmcMySwEv.png)*Redux Devtools*
 
 Next, we will start with adding Redux-form in our project. It is a third party library, which helps us to use forms in an efficient way in our project.
 
 Open your terminal, stop the running instance of server and install
 
-![redux-form@8.1.0](https://cdn-images-1.medium.com/max/2000/1*HYcVa9cPOVjqchHWmw-nRg.png)*redux-form@8.1.0*
+![redux-form@8.1.0](https://ik.imagekit.io/thewebdev/Twitch-React/3/2_Of8MROmua.png)*redux-form@8.1.0*
 
 Don’t forget to restart your server by **npm start**. Let’s now wire-up *redux-form* in our project. Open **index.js** file in **reducers** folder and update below code.
+
+<div className={styles.code__block}>
+
 ```
     import { combineReducers } from 'redux';
     import authReducer from './authReducer';
@@ -53,7 +63,13 @@ Don’t forget to restart your server by **npm start**. Let’s now wire-up *red
         form: formReducer
     });
 ```
+
+</div>
+
 Next, we will update our **StreamCreate.js** file to use *redux-form*
+
+<div className={styles.code__block}>
+
 ```
     import React, {Fragment} from 'react';
     import { Field, reduxForm } from 'redux-form';
@@ -81,11 +97,17 @@ Next, we will update our **StreamCreate.js** file to use *redux-form*
 
     export default reduxForm({form: 'streamCreate'})(StreamCreate);
 ```
+
+</div>
+
 Here, it is mostly boilerplate code. We import **Field, reduxForm** from redux-form. The **reduxForm** is used like **connect** in a Redux project.
 
 The Field component is used for different form element. Here, we are using to create two input boxes. Then we have a function **renderInputBox()**, which have label and input.
 
 Next, we will hook up some styles in our form. So, create a **formStyles.css** file in the same folder and add the below code.
+
+<div className={styles.code__block}>
+
 ```
     .ui__form {
         display: grid;
@@ -109,12 +131,18 @@ Next, we will hook up some styles in our form. So, create a **formStyles.css** f
         font-size:1.2rem;
     }
 ```
+
+</div>
+
 Now, goto [http://localhost:3000/streams/create](http://localhost:3000/streams/create) to see our form.
 
-![Our Form](https://cdn-images-1.medium.com/max/2880/1*-wlpMzLp-wEAMLYn5cBMfQ.png)*Our Form*
+![Our Form](https://ik.imagekit.io/thewebdev/Twitch-React/3/3_paGkeeB4-a.png)*Our Form*
 
 Next, let’s add submission capabilities to our form. We will update the below in **StreamCreate.js**.
 In the **onSubmit** of the form we use **this.props.handleSubmit**() to get the values submitted by user.
+
+<div className={styles.code__block}>
+
 ```
     ...
     ...
@@ -134,7 +162,13 @@ In the **onSubmit** of the form we use **this.props.handleSubmit**() to get the 
     ...
     ...
 ```
+
+</div>
+
 Let’s also add some CSS to make our default button beautiful in **formStyles.css**
+
+<div className={styles.code__block}>
+
 ```
     .ui__form button {
         background: lightgrey;
@@ -147,13 +181,19 @@ Let’s also add some CSS to make our default button beautiful in **formStyles.c
         background: gold;
     }
 ```
+
+</div>
+
 Now, goto [http://localhost:3000/streams/create](http://localhost:3000/streams/create) and enter some values in form. Then submit the form by pressing on button. You can see in console, the form values gets passed in a nice Object.
 
-![Easy Redux form](https://cdn-images-1.medium.com/max/2880/1*Z6YxYwNQdtEb5CVRq6DT7Q.png)*Easy Redux form*
+![Easy Redux form](https://ik.imagekit.io/thewebdev/Twitch-React/3/4_Vxnkt61qU.png)*Easy Redux form*
 
 Next, we will add form validation to our form. Redux-form have a different way to validate forms. We will first have a function named **validate**, then we will have an empty error object inside it. If the title and description doesn’t have any value, add error object with values.
 
 Next in the renderInputBox() we add meta and show **meta.error**
+
+<div className={styles.code__block}>
+
 ```
     import React, {Fragment} from 'react';
     import { Field, reduxForm } from 'redux-form';
@@ -199,11 +239,17 @@ Next in the renderInputBox() we add meta and show **meta.error**
 
     export default reduxForm({form: 'streamCreate', validate})(StreamCreate);
 ```
+
+</div>
+
 Now, open [http://localhost:3000/streams/create](http://localhost:3000/streams/create) and you will see our error messages as below screenshot. Enter some values in the fields for them to go away.
 
-![Errors](https://cdn-images-1.medium.com/max/2880/1*G1r-CF5OqLh0Pc5oxxflJQ.png)*Errors*
+![Errors](https://ik.imagekit.io/thewebdev/Twitch-React/3/5_cBfuKmKujr.png)*Errors*
 
 As you might have noticed that, we are directly showing the error message on form loading. We generally should give the user a chance to fill the fields. We will update our code to do so. We are taking the meta property and calling a function **renderError**(). Inside it checking whether the user have touched the input fields and then only displaying error.
+
+<div className={styles.code__block}>
+
 ```
     ...
     ...
@@ -227,15 +273,24 @@ As you might have noticed that, we are directly showing the error message on for
     ...
     ...
 ```
+
+</div>
+
 Also, add a little bit of CSS in **formStyles.css** to show this error message in red.
+
+<div className={styles.code__block}>
+
 ```
     .err__msg{
         font-size: 1rem;
         color:red;
     }
 ```
+
+</div>
+
 Now, open [http://localhost:3000/streams/create](http://localhost:3000/streams/create) and you will not see error messages by default. Enter some values one fields for other just, tab in and tab out. You will see the error message.
 
-![Error message](https://cdn-images-1.medium.com/max/2880/1*rSghl12FAeD5-hb0JrUsRw.png)*Error message*
+![Error message](https://ik.imagekit.io/thewebdev/Twitch-React/3/6_yI9tUNt94Q.png)*Error message*
 
 This completes our Redux-form and concludes part-3 of the series.
