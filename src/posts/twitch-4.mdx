@@ -10,38 +10,48 @@ dev: https://dev.to/nabendu82
 series: Twitch-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to Part-4 of the series. We will start implementing streams in our project.
 
-![Our Structure](https://cdn-images-1.medium.com/max/2000/1*uaJb0ZocZmi9oRnhkosk8Q.png)*Our Structure*
+![Our Structure](https://ik.imagekit.io/thewebdev/Twitch-React/4/1_HDiCpIUQRX.png)*Our Structure*
 
 We will now setup the API Server. Now, open the terminal and goto your **streams** folder. Here create a new folder **api** and cd into it.
 
-![api folder](https://cdn-images-1.medium.com/max/2000/1*izmv-E7V5Da1BwrpfuJvZQ.png)*api folder*
+![api folder](https://ik.imagekit.io/thewebdev/Twitch-React/4/2_PZGD9TKFc6.png)*api folder*
 
 Now type **npm init** in the command line. It will ask you for details of many things. Press enter for each of them.
 
-![npm init](https://cdn-images-1.medium.com/max/2000/1*OhkEVV79FF8jiVmRKse68w.png)*npm init*
+![npm init](https://ik.imagekit.io/thewebdev/Twitch-React/4/3_4WRuuUBYsN.png)*npm init*
 
 At the end it will show the **package.json** structure and ask for our permission. Type **yes** in it.
 
-![Yes](https://cdn-images-1.medium.com/max/2000/1*lxT9pQbpc4MrcZ23Qykkeg.png)*Yes*
+![Yes](https://ik.imagekit.io/thewebdev/Twitch-React/4/4_9nA72npVR.png)*Yes*
 
 Now, we have a **package.json** file inside our api folder. Now, we will install the npm package **json-server**.
 
-![json-server](https://cdn-images-1.medium.com/max/2000/1*n-782nsBmxr6VFzfuuE8EA.png)*json-server*
+![json-server](https://ik.imagekit.io/thewebdev/Twitch-React/4/5_ZkT7aCjjF6.png)*json-server*
 
 Now, open the **api** directory in VSCode. Here add a **db.json** file and also a .**gitignore** file(If you are using github).
 
-![api folder](https://cdn-images-1.medium.com/max/2880/1*qyGJXuO_JONFrn7-X-qx3g.png)*api folder*
+![api folder](https://ik.imagekit.io/thewebdev/Twitch-React/4/6_wO9KnVTUiJ.png)*api folder*
 
 Add the following in **db.json** file.
+
+<div className={styles.code__block}>
+
 ```
     {
         "streams": []
     }
 ```
+
+</div>
+
 Now, add the following in .**gitignore** file
+
+<div className={styles.code__block}>
+
 ```
     # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -67,7 +77,13 @@ Now, add the following in .**gitignore** file
     yarn-debug.log*
     yarn-error.log*
 ```
+
+</div>
+
 Now, open the **package.json** file and update the start script.
+
+<div className={styles.code__block}>
+
 ```
     {
         "name": "api",
@@ -84,19 +100,25 @@ Now, open the **package.json** file and update the start script.
         }
     }
 ```
+
+</div>
+
 Now, goto the **api** folder in terminal and do a **npm start**.
 
-![npm start](https://cdn-images-1.medium.com/max/2000/1*oe8VIYQvKPYiiTtQ7xRHdw.png)*npm start*
+![npm start](https://ik.imagekit.io/thewebdev/Twitch-React/4/7_409LZSxjTF.png)*npm start*
 
 Now, let’s move to our **client** code again. So, open the terminal where client is running and stop it(Ctrl+c) and then install **axios** and **redux-thunk.** Don’t forget to start back the client server after installation with **npm start**.
 
-![axios and thunk](https://cdn-images-1.medium.com/max/2000/1*uzGUL-_G1VgqPkgDw7Vovw.png)*axios and thunk*
+![axios and thunk](https://ik.imagekit.io/thewebdev/Twitch-React/4/8_mRXVDlngqf.png)*axios and thunk*
 
 Now, create a new folder **apis** inside **src**. Create a new file **streams.js** in it.
 
-![streams.js](https://cdn-images-1.medium.com/max/2880/1*eupBg585WdtyoevqX6y9vg.png)*streams.js*
+![streams.js](https://ik.imagekit.io/thewebdev/Twitch-React/4/9_z_Ja9sbHV0.png)*streams.js*
 
 Add the following code in **streams.js**
+
+<div className={styles.code__block}>
+
 ```
     import axios from 'axios';
 
@@ -104,7 +126,13 @@ Add the following code in **streams.js**
         baseURL: 'http://localhost:3001'
     });
 ```
+
+</div>
+
 Now, we will create our action creator in **index.js** inside **action** folder. Here we are first import our axios streams. Then creating an action creator to do a post call to **/streams** endpoint, with **formValues**.
+
+<div className={styles.code__block}>
+
 ```
     import { SIGN_IN, SIGN_OUT } from './types';
     import streams from '../apis/streams';
@@ -126,9 +154,15 @@ Now, we will create our action creator in **index.js** inside **action** folder.
         streams.post('/streams', formValues);
     }
 ```
+
+</div>
+
 Now, head over to our **StreamCreate.js** to use this action creator. We are first importing **connect** and our action **createStream** . Then we are changing our reduxForm at the end of the file a bit, to include connect.
 
 Finally we are using **createStream** inside *onSubmitForm*(), to send **formValues** to action creator.
+
+<div className={styles.code__block}>
+
 ```
     import React, {Fragment} from 'react';
     import { Field, reduxForm } from 'redux-form';
@@ -162,7 +196,13 @@ Finally we are using **createStream** inside *onSubmitForm*(), to send **formVal
 
     export default connect(null, { createStream })(formWrapped);
 ```
+
+</div>
+
 Next, we also have to include redux-thunk in our project. We do the same by going to our root **index.js** and adding the things marked in bold.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -178,17 +218,23 @@ Next, we also have to include redux-thunk in our project. We do the same by goin
     ReactDOM.render(
     <Provider store={store}><App /></Provider>, document.querySelector('#root'));
 ```
+
+</div>
+
 Now, time to check our POST request. Head to [http://localhost:3000/streams/create](http://localhost:3000/streams/create) and enter data and click on Submit button. Also, keep the network tab in developer console open. You can see the POST request sucessfully made.
 
-![The post request](https://cdn-images-1.medium.com/max/2880/1*cOQZbVCrcAIsWHr9DdjB2Q.png)*The post request*
+![The post request](https://ik.imagekit.io/thewebdev/Twitch-React/4/10_m0_N2FT1U9.png)*The post request*
 
 We will also open the **db.json** to verify that the POST request was done.
 
-![db.json](https://cdn-images-1.medium.com/max/2880/1*DA5bqd4Jfjw6tHaFZAiKkA.png)*db.json*
+![db.json](https://ik.imagekit.io/thewebdev/Twitch-React/4/11_Fzw5sT5EY.png)*db.json*
 
 Now, we will update action creator in **index.js** inside **action** folder. We will also add action creators for other RESTful items like DELETE, EDIT, FETCH.
 
 First add those types inside **types.js** inside **action** folder.
+
+<div className={styles.code__block}>
+
 ```
     export const SIGN_IN = 'SIGN_IN';
     export const SIGN_OUT = 'SIGN_OUT';
@@ -198,7 +244,13 @@ First add those types inside **types.js** inside **action** folder.
     export const DELETE_STREAM = 'DELETE_STREAM';
     export const EDIT_STREAM = 'EDIT_STREAM';
 ```
+
+</div>
+
 Next, add function for the above types in **index.js** inside **action** folder.
+
+<div className={styles.code__block}>
+
 ```
     import { SIGN_IN, SIGN_OUT, CREATE_STREAM, FETCH_STREAM, FETCH_STREAMS, DELETE_STREAM, EDIT_STREAM } from './types';
     import streams from '../apis/streams';
@@ -241,11 +293,17 @@ Next, add function for the above types in **index.js** inside **action** folder.
         dispatch({ type: DELETE_STREAM, payload: id })
     }
 ```
+
+</div>
+
 We will now work on our reducer and put it in one go. Create a new file **streamReducer.js** inside **reducer** folder.
 
-![streamReducer.js file](https://cdn-images-1.medium.com/max/2880/1*gSrVcTtu_dwflq8j5Ae3Kg.png)*streamReducer.js file*
+![streamReducer.js file](https://ik.imagekit.io/thewebdev/Twitch-React/4/12_IwgjiBFafb.png)*streamReducer.js file*
 
 First let create case for FETCH_STREAM, CREATE_STREAM and EDIT_STREAM in our reducer file **streamReducer.js** as they are similar.
+
+<div className={styles.code__block}>
+
 ```
     import { CREATE_STREAM, FETCH_STREAM, FETCH_STREAMS, DELETE_STREAM, EDIT_STREAM } from '../actions/types';
 
@@ -262,11 +320,17 @@ First let create case for FETCH_STREAM, CREATE_STREAM and EDIT_STREAM in our red
         }
     }
 ```
+
+</div>
+
 Now, we will create FETCH_STREAMS and DELETE_STREAM case. For that we will first install **lodash**, which have a very useful omit function.
 
-![npm install](https://cdn-images-1.medium.com/max/2000/1*tRl27pCv1XRV1rvLruNzAw.png)*npm install*
+![npm install](https://ik.imagekit.io/thewebdev/Twitch-React/4/13_yPjZlH12HA.png)*npm install*
 
 Again open the **streamReducer.js** inside **reducer** folder.
+
+<div className={styles.code__block}>
+
 ```
     import { CREATE_STREAM, FETCH_STREAM, FETCH_STREAMS, DELETE_STREAM, EDIT_STREAM } from '../actions/types';
     import _ from 'lodash';
@@ -288,7 +352,13 @@ Again open the **streamReducer.js** inside **reducer** folder.
         }
     }
 ```
+
+</div>
+
 Next, we will hook this new reducer to our root reducer. So, open **index.js** inside **reducer** folder.
+
+<div className={styles.code__block}>
+
 ```
     import { combineReducers } from 'redux';
     import authReducer from './authReducer';
@@ -301,7 +371,13 @@ Next, we will hook this new reducer to our root reducer. So, open **index.js** i
         streams: streamReducer
     });
 ```
+
+</div>
+
 We will now start to show the streams created by us. Open **StreamList.js** which is inside **components** -> **streams** folder and hook our action creator.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -323,15 +399,21 @@ We will now start to show the streams created by us. Open **StreamList.js** whic
 
     export default connect(null, { fetchStreams })(StreamList);
 ```
+
+</div>
+
 Now, go to [http://localhost:3000/](http://localhost:3000/) and open the developer console. Goto the Redux tab. You can see the stream, we created earlier here.
 
-![Stream created earlier](https://cdn-images-1.medium.com/max/2880/1*rsYg9jbplz1r0YaqYcrIig.png)*Stream created earlier*
+![Stream created earlier](https://ik.imagekit.io/thewebdev/Twitch-React/4/14_MxcZX0gOGV.png)*Stream created earlier*
 
 Before moving forward, let’s create another stream So, open [http://localhost:3000/streams/create](http://localhost:3000/streams/create) and create another stream.
 
-![Another stream](https://cdn-images-1.medium.com/max/2880/1*LLkwZ39GrrBbjc0nLNdsLw.png)*Another stream*
+![Another stream](https://ik.imagekit.io/thewebdev/Twitch-React/4/15_wKsi5Q7Zox.png)*Another stream*
 
 Next, we will show these streams in our home page. So, go ahead and open **StreamList.js** which is inside **components** -> **streams** folder and add below. Here, we are getting the data in streams object. We are then iterating over it and showing it through a renderList method.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -370,11 +452,17 @@ Next, we will show these streams in our home page. So, go ahead and open **Strea
 
     export default connect(mapStateToProps, { fetchStreams })(StreamList);
 ```
+
+</div>
+
 Right now if you look into our Home page, the list is been show but there is no style.
 
-![Not much style](https://cdn-images-1.medium.com/max/2880/1*OSaQShfpl2BIdlF4m7M3TA.png)*Not much style*
+![Not much style](https://ik.imagekit.io/thewebdev/Twitch-React/4/16_qxT1ufbl4a.png)*Not much style*
 
 Next, we will add some styles to it to make it look good. Create a new file **StreamList.css** inside same **components** -> **streams** folder. Don’t forget to import it first in our **StreamList.js** file.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -382,9 +470,15 @@ Next, we will add some styles to it to make it look good. Create a new file **St
     import './StreamList.css';
     ...
     ...
+```
+
+</div>
 
 Now in **StreamList.css** add the following code.
 
+<div className={styles.code__block}>
+
+```
     .list{
         display: grid;
         grid-gap: 1.2rem;
@@ -405,9 +499,12 @@ Now in **StreamList.css** add the following code.
         padding: 10px;
     }
 ```
+
+</div>
+
 Now, our app looks like below.
 
-![Good looking app](https://cdn-images-1.medium.com/max/2880/1*ILHK2g9PQFs61JSmUZB2Cw.png)*Good looking app*
+![Good looking app](https://ik.imagekit.io/thewebdev/Twitch-React/4/17_5byU_bPNu8.png)*Good looking app*
 
 This concludes part-4 of the series. You can find code till this point [here](https://github.com/nabendu82/streams).
 
