@@ -10,10 +10,14 @@ dev: https://dev.to/nabendu82
 series: Twitch-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to Part-5 of the series. Let’s start where we left. We would like to associate users, to our stream so that we can add a Delete and Edit button for the logged in user, of that stream.
 
 Open the **index.js** file in *src -> actions* folder and add the userId in createStream().
+
+<div className={styles.code__block}>
+
 ```
     export const createStream = formValues => async (dispatch, getState) => {
         const { userId } = getState().auth;
@@ -21,13 +25,19 @@ Open the **index.js** file in *src -> actions* folder and add the userId in crea
         dispatch({ type: CREATE_STREAM, payload: response.data })
     }
 ```
+
+</div>
+
 Now, move to [http://localhost:3000/streams/create](http://localhost:3000/streams/create) and create a new stream.
 
-![New stream with userId](https://cdn-images-1.medium.com/max/2876/1*KTok2OS9ima1ulGg3Clq-Q.png)*New stream with userId*
+![New stream with userId](https://ik.imagekit.io/thewebdev/Twitch-React/5/1_xukEa90mK1.png)*New stream with userId*
 
 Now, we will show Delete and Edit button for the user who created the stream. So, head over to **StreamList.js** and update the mapStateToProps to include the current user id(currUserId).
  Next, we create a new function **renderAdmin()**, which we call from inside renderList(). Here, we first check whether our stream user is equal to the user we received from redux state.
 If they are same we display two buttons.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -82,7 +92,13 @@ If they are same we display two buttons.
 
     export default connect(mapStateToProps, { fetchStreams })(StreamList);
 ```
+
+</div>
+
 Next, we also add some CSS to these buttons in **StreamList.css**
+
+<div className={styles.code__block}>
+
 ```
     .editBtn,.deleteBtn {
         box-sizing: border-box;
@@ -110,11 +126,17 @@ Next, we also add some CSS to these buttons in **StreamList.css**
         cursor: pointer;
     }
 ```
+
+</div>
+
 Now, in [http://localhost:3000/](http://localhost:3000/) we can see these two button only for our latest stream which have a userId.
 
-![Beautiful Buttons](https://cdn-images-1.medium.com/max/2880/1*unubQqA9RmXxTlhIdbNv6Q.png)*Beautiful Buttons*
+![Beautiful Buttons](https://ik.imagekit.io/thewebdev/Twitch-React/5/2_uzxVwcyupN.png)*Beautiful Buttons*
 
 Next, we will create a “Create Stream” button on our homepage. Now, open **StreamList.js** and add a new method. It will contain a Link tag, on click of which we will go to the create form page.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -160,7 +182,13 @@ Next, we will create a “Create Stream” button on our homepage. Now, open **S
 
     export default connect(mapStateToProps, { fetchStreams })(StreamList);
 ```
+
+</div>
+
 Next, we also add some CSS to this Link button in **StreamList.css**
+
+<div className={styles.code__block}>
+
 ```
     .createBtn{
             width:20%;
@@ -171,17 +199,29 @@ Next, we also add some CSS to this Link button in **StreamList.css**
         text-decoration: none;
     }
 ```
-![The Create Stream button](https://cdn-images-1.medium.com/max/2880/1*iuWDJDMJJU32WPETryx5vw.png)*The Create Stream button*
+
+</div>
+
+![The Create Stream button](https://ik.imagekit.io/thewebdev/Twitch-React/5/3_HYhZHN2XJ.png)*The Create Stream button*
 
 Now, whenever we create a new stream in [http://localhost:3000/streams/create](http://localhost:3000/streams/create) we should move the user to the home page and show that new stream.
 
 We will create our own history object, instead of depending on react router. So, create a new file **history.js** in the **src** folder.
+
+<div className={styles.code__block}>
+
 ```
     import { createBrowserHistory } from 'history';
 
     export default createBrowserHistory();
 ```
+
+</div>
+
 Now, we will change our App.js to use this new history object. We changed our **BrowserRouter** to **Router**.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { Router, Route } from 'react-router-dom';
@@ -212,7 +252,13 @@ Now, we will change our App.js to use this new history object. We changed our **
 
     export default App;
 ```
+
+</div>
+
 Next, open the **index.js** file in *src -> actions* folder. Import the history at the top and inside `createStream(), add histoy.push(‘/’).` So, the moment the stream creation is dispatched, we move back to the home page.
+
+<div className={styles.code__block}>
+
 ```
     import history from '../history';
     …
@@ -228,7 +274,13 @@ Next, open the **index.js** file in *src -> actions* folder. Import the history 
     …
     …
 ```
+
+</div>
+
 Next, we will add Edit functionality to our App. This will allow user to edit an Stream. Now, open **StreamList.js** and change the Edit button in `renderAdmin()` to a Link tag.
+
+<div className={styles.code__block}>
+
 ```
     renderAdmin(stream) {
         if(stream.userId === this.props.currUserId) {
@@ -241,7 +293,13 @@ Next, we will add Edit functionality to our App. This will allow user to edit an
             }
         }
 ```
+
+</div>
+
 Also, add some CSS in **StreamList.css**
+
+<div className={styles.code__block}>
+
 ```
     .linkBtn{
         color: black;
@@ -249,7 +307,13 @@ Also, add some CSS in **StreamList.css**
         padding: 0.6rem;
     }
 ```
+
+</div>
+
 Next, in App.js we modify the route for Edit.
+
+<div className={styles.code__block}>
+
 ```
     const App = () => {
         return (
@@ -268,13 +332,19 @@ Next, in App.js we modify the route for Edit.
         );
     }
 ```
+
+</div>
+
 Now, when you click on the “Edit” button, it will navigate to the Edit component.
 
-![The StreamEdit component](https://cdn-images-1.medium.com/max/2880/1*84PvlK-qXZgG-jFN3cpNWw.png)*The StreamEdit component*
+![The StreamEdit component](https://ik.imagekit.io/thewebdev/Twitch-React/5/4_ezhMatJbi.png)*The StreamEdit component*
 
 Now, it’s time to work on our **StreamEdit.js** file. We basically changed it like the **StreamList** component and getting the list of all Streams from the global redux state. But, we want only the content of that steam, which the user selected.
 
 So, we are making user of *this.props.match.params.id*
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -305,13 +375,19 @@ So, we are making user of *this.props.match.params.id*
 
     export default connect(mapStateToProps, { fetchStream })(StreamEdit);
 ```
+
+</div>
+
 Now, click on and Edit button and it will show you the title of that stream.
 
-![Title shown](https://cdn-images-1.medium.com/max/2880/1*5ulA0jaRnhlohLLRxCJzJQ.png)*Title shown*
+![Title shown](https://ik.imagekit.io/thewebdev/Twitch-React/5/5_L3p_Cs75b.png)*Title shown*
 
 Our **StreamEdit** component is going to be quite similar to **StreamCreate** component. So, we are going to refactor the code and make a common component and we will call it **StreamForm**.
 
 Go ahead and create **StreamForm.js** inside streams directory. We are moving all the form logic from **StreamCreate** to here.
+
+<div className={styles.code__block}>
+
 ```
     import React, {Fragment} from 'react';
     import { Field, reduxForm } from 'redux-form';
@@ -365,7 +441,13 @@ Go ahead and create **StreamForm.js** inside streams directory. We are moving al
 
     export default reduxForm({form: 'streamForm', validate})(StreamForm);
 ```
+
+</div>
+
 Next we refactor the **StreamCreate.js** file to contain the connect logic only.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -391,11 +473,17 @@ Next we refactor the **StreamCreate.js** file to contain the connect logic only.
 
     export default connect(null, { createStream })(StreamCreate);
 ```
+
+</div>
+
 After, this refactor create a new stream and check whether it works.
 
 Now, we refactor the **StreamEdit.js** file, to use this **StreamForm** component. One of the main difference from StreamCreate is that we pass a set of **initialValues** to StreamForm. This **initialValues** is a concept of Redux Form, where we can pass any initial values to the form and it will display it.
 
 In **initialValues** we are passing an Object containing the title and the description.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import { connect } from 'react-redux';
@@ -433,23 +521,41 @@ In **initialValues** we are passing an Object containing the title and the descr
 
     export default connect(mapStateToProps, { fetchStream, editStream })(StreamEdit);
 ```
+
+</div>
+
 A tiny style addition to our **formStyles.css**
+
+<div className={styles.code__block}>
+
 ```
     h3{
         text-align: center;
     }
 ```
+
+</div>
+
 Now, edit a Stream and you will see it’s content.
 
-![Editing a stream](https://cdn-images-1.medium.com/max/2880/1*TC0Ayg2FUtWuc3ytNG7aiw.png)*Editing a stream*
+![Editing a stream](https://ik.imagekit.io/thewebdev/Twitch-React/5/6_B0a8mQ-XtJ.png)*Editing a stream*
 
 Next, let’s update our **onSubmit()** in **StreamEdit.js **, to save our changes to the backend. So, we call editStream action creator with stream id and the formValues.
+
+<div className={styles.code__block}>
+
 ```
     onSubmit = (formValues) => {
         this.props.editStream(this.props.match.params.id, formValues);
     }
 ```
+
+</div>
+
 We also do a minor change in **index.js** file in *src -> actions* folder. We are changing the path to home url, after a dispatch is done and we changed the put request to patch.
+
+<div className={styles.code__block}>
+
 ```
     export const editStream = (id, formValues) => async dispatch => {
         const response = await streams.patch(`/streams/${id}`, formValues);
@@ -457,6 +563,9 @@ We also do a minor change in **index.js** file in *src -> actions* folder. We ar
         history.push('/');
     }
 ```
+
+</div>
+
 So, go ahead and edit a form and submit. If everything is ok, you will get back to the home page with the changes.
 
 This concludes part-5 of the series. You can find code till this point [here](https://github.com/nabendu82/streams).
