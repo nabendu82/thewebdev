@@ -10,12 +10,16 @@ dev: https://dev.to/nabendu82
 series: Twitch-react
 tags: ['javascript', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to Part-6 of the series. Let’s start where we left. We will next create our Delete component. We are going to show a modal to the delete the stream.
 
 We will be using a React Portal for this, as creating a Modal is tricky in React.
 
 So, go ahead and create a **Modal.js** file inside the **components** folder. Add the following code to it. We are using the method createPortal, in which the second argument is to select an id modal.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -40,7 +44,13 @@ So, go ahead and create a **Modal.js** file inside the **components** folder. Ad
 
     export default Modal;
 ```
+
+</div>
+
 Let’s create the id=”modal” inside our **index.html** file in public folder. As, most of you might know that the whole React application is rendered in id=”root”. So, with the help of React Portal, we can create another element and use it to show our modal.
+
+<div className={styles.code__block}>
+
 ```
     …
     …
@@ -49,7 +59,13 @@ Let’s create the id=”modal” inside our **index.html** file in public folde
     …
     …
 ```
+
+</div>
+
 Next, create **Modal.css** file inside the **components** folder. Add the code to show a basic modal.
+
+<div className={styles.code__block}>
+
 ```
     .modal-body {
         position: fixed;
@@ -79,7 +95,13 @@ Next, create **Modal.css** file inside the **components** folder. Add the code t
         justify-self: end
     }
 ```
+
+</div>
+
 Now, go ahead and add this Modal component in our **StreamDelete.js** file.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import Modal from '../Modal';
@@ -95,17 +117,33 @@ Now, go ahead and add this Modal component in our **StreamDelete.js** file.
 
     export default StreamDelete;
 ```
+
+</div>
+
 Now, head over to [http://localhost:3000/streams/delete](http://localhost:3000/streams/delete) in browser and you can see our modal.
 
-![Beautiful Modal](https://cdn-images-1.medium.com/max/2880/1*kuhZ14gcyFMvQcrbnbBeUg.png)*Beautiful Modal*
+![Beautiful Modal](https://ik.imagekit.io/thewebdev/Twitch-React/6/1_ts_g8m3Byp.png)*Beautiful Modal*
 
 One thing to notice in `Modal.js` file is that, we have used an onClick event handler on the main `div`. It is used to navigate the user to the home page from, if he clicks anywhere outside the modal window ie the grey area.
 But not to do so, if he clicks anywhere inside the modal window, we have use e.stopPropagation.
+
+<div className={styles.code__block}>
+
 ```
     <div onClick={() => history.push('/')} className="modal-body">
                 <div  onClick={(e) => e.stopPropagation()} className="modal-main delete-modal">
+                ...
+                </div>
+    ...
+    </div>
 ```
+
+</div>
+
 Our Modal Component is not reusable, so let’s make it more reusable so that we can use in some other place also. We will move all the hard-coded logic into the parent component and use it via props here. So, in **Modal.js** make the following changes.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import ReactDOM from 'react-dom';
@@ -126,7 +164,13 @@ Our Modal Component is not reusable, so let’s make it more reusable so that we
 
     export default Modal;
 ```
+
+</div>
+
 Next, in **StreamDelete.js**, add those parts.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import Modal from '../Modal';
@@ -155,7 +199,13 @@ Next, in **StreamDelete.js**, add those parts.
 
     export default StreamDelete;
 ```
+
+</div>
+
 Now, we will add logic to those Delete and Cancel buttons. So, move to **App.js** and change the delete to include id also.
+
+<div className={styles.code__block}>
+
 ```
     const App = () => {
         return (
@@ -174,7 +224,13 @@ Now, we will add logic to those Delete and Cancel buttons. So, move to **App.js*
         );
     }
 ```
+
+</div>
+
 Next, goto **StreamList.js** and add logic to the delete button there.
+
+<div className={styles.code__block}>
+
 ```
     renderAdmin(stream) {
         if(stream.userId === this.props.currUserId) {
@@ -187,9 +243,15 @@ Next, goto **StreamList.js** and add logic to the delete button there.
             }
         }
 ```
+
+</div>
+
 Now, if you go to homepage and click on Delete button, it will open our modal.
 
 Next, we will change our **StreamDelete.js** to a class based component as we will use redux state here.
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import Modal from '../Modal';
@@ -222,7 +284,13 @@ Next, we will change our **StreamDelete.js** to a class based component as we wi
 
     export default StreamDelete;
 ```
+
+</div>
+
 Now, we will use all redux state in our StreamDelete component. The logic will be almost similar to what we did for StreamEdit component. So, go ahead and edit the **StreamDelete.js**
+
+<div className={styles.code__block}>
+
 ```
     import React from 'react';
     import Modal from '../Modal';
@@ -270,7 +338,13 @@ Now, we will use all redux state in our StreamDelete component. The logic will b
 
     export default connect(mapStateToProps, { fetchStream, deleteStream } )(StreamDelete);
 ```
+
+</div>
+
 One last thing is to update **deleteStream**() inside **index.js** in action folder. We added **history.push(‘/’)** similar to edit and create to move the user back to the homepage once a stream is deleted.
+
+<div className={styles.code__block}>
+
 ```
     export const deleteStream = (id) => async dispatch => {
         await streams.delete(`/streams/${id}`);
@@ -278,6 +352,9 @@ One last thing is to update **deleteStream**() inside **index.js** in action fol
         history.push('/');
     }
 ```
+
+</div>
+
 So, go ahead and delete a stream. Everything should work properly.
 
 This concludes part-6 of the series. You can find code till this point [here](https://github.com/nabendu82/streams).
