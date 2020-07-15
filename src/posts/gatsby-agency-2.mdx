@@ -20,77 +20,13 @@ We are adding SectionFour in the index.js
 
 ![index.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373035/AgencyGatsby/30_rklzvy.png)*index.js*
 
-Now, let’s add CSS for the same in IndexStyles.js. Also, don’t forget to export the newly created Styled component.
 
-![The CSS](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373034/AgencyGatsby/31_cuitq2.png)*The CSS*
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-Now, we will create the Grid which will contain the six sections. The six sections will be exactly the same, only the background will be different.
+<div className={styles.image__small}>
 
-![CSS grid](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373034/AgencyGatsby/32_sgkhq2.png)*CSS grid*
-
-Now, we will add the CSS to our IndexStyles.jsfile, inside the SectionFour styled component.
-
-![Styles](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373034/AgencyGatsby/33_d7frp3.png)*Styles*
-
-We also need to install a new fontawesome library, as we are using some brand icons here. So, in the terminal stop gatsby and install this via npm
-
-<div className={styles.code__block}>
-
-```
-    npm install @fortawesome/free-brands-svg-icons
-```
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
 </div>
 
-The changes made to the header of our index.js is below.
-
-![Including Font-awesome](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373034/AgencyGatsby/34_manwnz.png)*Including Font-awesome*
-
-Now, our Section Four looks like
-
-![Section Four](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373033/AgencyGatsby/35_oea5ol.png)*Section Four*
-
-The next section, will have a parallax image with an Contact Us form. We will be reusing the Banner styled component used in Section 1 here.
-
-![index.js update](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373033/AgencyGatsby/36_wsxhty.png)*index.js update*
-
-But, we need to update the Banner styled component to contain the parallax effect.
-
-![Parallax effect.](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373033/AgencyGatsby/37_xnnlqi.png)*Parallax effect.*
-
-Next, lets add a form on top of the image.
-
-![The form](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373034/AgencyGatsby/38_txcpgw.png)*The form*
-
-Next, let’s add some Styles in IndexStyles.js
-
-![Some styles](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373033/AgencyGatsby/39_klntwa.png)*Some styles*
-
-Let’s add some more styles for the form.
-
-![More Styles](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373032/AgencyGatsby/40_riuaoq.png)*More Styles*
-
-This will result in the below section.
-
-![Contact Us](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373033/AgencyGatsby/41_bkuvgo.png)*Contact Us*
-
-Now, we will create the footer section. But our Footer will be common to all our pages. So, we will put it in the layout component.
-
-Create a folder components inside src and a file called layout.js inside it. The content contains a simple footer with different icons. Here the {children} will show the components, which we will soon wrap Layout component with.
-
-![Footer](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373032/AgencyGatsby/42_qcldg8.png)*Footer*
-
-Let’s put some styles in IndexStyles.js for Footer.
-
-![The Footer Styles](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373032/AgencyGatsby/43_fn8jxs.png)*The Footer Styles*
-
-Now, let’s wrap our HomePage with this Layout component.
-
-![index.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373032/AgencyGatsby/44_db6s4l.png)*index.js*
-
-Now, our homepage is almost complete with the Footer.
-
-![Footer](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373034/AgencyGatsby/45_imenjd.png)*Footer*
-
-We have one more thing left in the Home Page and that is the Menu. We will create that also in the Layout component as it will be shared with our Our Work and About Us page.
 

@@ -10,6 +10,7 @@ dev: https://dev.to/nabendu82
 series: Gatsby-agency
 tags: ['gatsby', 'react', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to part-3 of the series. In the previous part we have created a common footer in the layout component.
 
@@ -17,124 +18,13 @@ Let us first create a Header with Navigation.
 
 ![index.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373031/AgencyGatsby/46_h435wg.png)*index.js*
 
-Let’s add some styles now in styled-components.
+Rest of the chapter is exclusive content and will be in my upcoming book **Gatsby Cookbook**.
 
-![The Styles](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373031/AgencyGatsby/47_e33fdr.png)*The Styles*
+<div className={styles.image__small}>
 
-We now get a header with Menu.
+![Gatsby Cookbook](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1589892514/Gatsby_rnjo2t.png)
 
-![The Menu](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373032/AgencyGatsby/48_cjli4m.png)*The Menu*
-
-Next, we will create our Works page. Create a new file works.js inside pages folder.
-
-![New Works page](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373030/AgencyGatsby/49_ezfxla.png)*New Works page*
-
-Let’s add some Styles for the same in IndexStyles.js
-
-![Styling](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373030/AgencyGatsby/50_v78jka.png)*Styling*
-
-We will soon create a new component Project in which will pass each project. Let’s create an Array of Object containing some projects.
-
-![The Array](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373031/AgencyGatsby/51_lgelza.png)*The Array*
-
-Next, let’s create the Project component inside components folder.
-
-![Project](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373029/AgencyGatsby/52_miqvmp.png)*Project*
-
-Let’s add some styles for the component in global.css
-
-![global styles](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373030/AgencyGatsby/53_iwhlzx.png)*global styles*
-
-This shows our Works page.
-
-![Works](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373030/AgencyGatsby/54_zwomo5.png)*Works*
-
-We have missed one thing and that is to make the header fixed, so that if we scroll then also the header remains. For this in IndexStyles.js add the following.
-
-![Header fixed](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373029/AgencyGatsby/55_hltq51.png)*Header fixed*
-
-This was causing issues with Our Works text, because the margin: 0 for GenericH2
-
-Let’s edit it using props, so that it can be used in works.js without effecting others.
-
-![Styles updated](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373029/AgencyGatsby/56_nse4xa.png)*Styles updated*
-
-Now, in works.js we just need to add some
-
-![some added](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373028/AgencyGatsby/57_vybgbi.png)*some added*
-
-We will next create a new page about.js inside pages folder.
-
-![New page](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373025/AgencyGatsby/58_ahq77x.png)*New page*
-
-Here, we are reusing most of the part from our index.js, but using a different Banner image. We are doing this again with the help of props of styled components.
-
-![Banner updated](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373028/AgencyGatsby/59_eeoxmw.png)*Banner updated*
-
-Let’s make SectionTwo now. Here we will again reuse a styled component.
-
-![SectionTwo](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373028/AgencyGatsby/60_k8nra8.png)*SectionTwo*
-
-We made the below changes in the SectionTwo styled component, to include a white background.
-
-![SectionTwo changes](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373028/AgencyGatsby/61_znz8d9.png)*SectionTwo changes*
-
-We have also added two new styled components.
-
-![New Styled components](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373029/AgencyGatsby/62_dukarz.png)*New Styled components*
-
-Now our About page looks like below.
-
-![About Us](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373027/AgencyGatsby/63_ff2xds.png)*About Us*
-
-We will now deploy our site to netlify. We already have a form submission setup in the index.js page with netlify.
-
-If you want to know in details of form submission setup, go through [this](https://www.youtube.com/embed/6ElQ689HRcY) youtube video by Traversy media.
-
-I have already pushed all my code to github. Now, let’s deploy to netlify. Open your netlify account.
-
-![Netlify](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373027/AgencyGatsby/65_i1aecm.png)*Netlify*
-
-Now, click on New Site from Git
-
-And then choose the provider. I have choose Github as my code is there. Once you authorize, it will show you list of all your Github repositories.
-
-![All repos](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373027/AgencyGatsby/66_xigh7y.png)*All repos*
-
-Click on the repo to deploy. In my case it was AgencyDemo
-
-![Defaults](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373029/AgencyGatsby/67_qcjrlw.png)*Defaults*
-
-Keep the defaults and click on Deploy Site
-
-And the site will be deployed within minutes.
-
-![Site deployed](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373027/AgencyGatsby/68_poyrnw.png)*Site deployed*
-
-Our site is deployed. It’s time to check the form submission feature of netlify. Go to the form in home page and add content.
-
-![Content Added](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373026/AgencyGatsby/69_xooaus.png)*Content Added*
-
-The form submission didn’t went as expected and gave me a lot of error. After searching found that form handling in site generated through gatsby is a bit different in netlify. Found these two links to solve the issue.
-
-[https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/#form-handling-with-static-site-generators](https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/#form-handling-with-static-site-generators)
-[https://github.com/sw-yx/gatsby-netlify-form-example-v2](https://github.com/sw-yx/gatsby-netlify-form-example-v2)
-
-So, we will change our functional component to class based component and do the following changes.
-
-![Class based component](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373026/AgencyGatsby/70_otxu09.png)*Class based component*
-
-And these changes also.
-
-![Changes](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373026/AgencyGatsby/71_mc8oc1.png)*Changes*
-
-We also need to add thanks.js file inside pages folder
-
-![thanks](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373025/AgencyGatsby/72_uqvk1z.png)*thanks*
-
-Now, when we submitted the form we receive the message in our netlify console.
-
-![Message received](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590373025/AgencyGatsby/73_tm0wwt.png)*Message received*
+</div>
 
 You can find the complete code for the project here [https://github.com/nabendu82/AgencyDemo](https://github.com/nabendu82/AgencyDemo)
 
