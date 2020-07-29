@@ -10,9 +10,14 @@ dev: https://dev.to/nabendu82
 series: Grid-basics
 tags: ['css', 'beginners', 'grid']
 ---
+import styles from "../css/postTemplate.module.css"
+
 Welcome to part-4 of the series. We will first learn about **Sizing Grid Items** in this tutorial. In Grid also, as in Flexbox we have to select and individual item and add the property.
 
 This use this [codepen](https://codepen.io/nabendu82/full/BOmGZM/) for this part. We have 30 items and then selecting item9 to have a width. Notice it is similar to what happens when we give an item some content(We did in last tutorial).
+
+<div className={styles.code__block}>
+
 ```
     <body>
     <div class="container">
@@ -64,9 +69,15 @@ This use this [codepen](https://codepen.io/nabendu82/full/BOmGZM/) for this part
 
     </html>
 ```
-![The result](https://cdn-images-1.medium.com/max/5760/1*XeBhSL1lOQtQr-v1KX53Uw.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/4/1_ClKAOW-3ES.png)*The result*
 
 Instead of defining the width or having some content to increase the width, we have a property in grid called ***span***. We can ask an item to span the desired number of column. We will use the **grid-column** on the item.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -79,11 +90,17 @@ Instead of defining the width or having some content to increase the width, we h
             grid-column: span 2;
         }
 ```
+
+</div>
+
 Which will result in item 9 to take two spaces, but it shift item 10 to the next row.
 
-![The result](https://cdn-images-1.medium.com/max/5760/1*GmYBworK6o_Liv196n-pEQ.png)*The result*
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/4/2_HlNUcjHmJz.png)*The result*
 
 Similarly, we can use the grid-row property also, to tell how many rows the item expands.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -97,11 +114,17 @@ Similarly, we can use the grid-row property also, to tell how many rows the item
             grid-row: span 2;
         }
 ```
-![The result](https://cdn-images-1.medium.com/max/5760/1*iJZNu6lgmNHZX8t03PZ8qw.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/4/3_2GsoXsrgh.png)*The result*
 
 Now, we will look into **placing grid item**. We will place them exactly where we want. The **grid-column** is actually a short-hand property. We can divide it as **grid-column-start** and **grid-column-end**.
 
 Let’s choose item 16 and also display the grid line by opening the dev tools and selecting the grid. We will use the below code.
+
+<div className={styles.code__block}>
+
 ```
     .item16 {
             background: #BADA55;
@@ -109,11 +132,17 @@ Let’s choose item 16 and also display the grid line by opening the dev tools a
             grid-column-end: 6;
         }
 ```
+
+</div>
+
 Now we are starting from track 2 and ending at track 6. Notice that the item 16 was not able to fit in it’s space of two, so was pushed to the next row where it got the required space of 4.
 
-![The result](https://cdn-images-1.medium.com/max/5760/1*gjHrLQB22kkiQvDfGzWf6Q.png)*The result*
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/4/4_A6Vkyk03hy.png)*The result*
 
 There are another two ways to do the same. We can again condense it and use the format **grid-column: 2 / 6;** It will give the same result.
+
+<div className={styles.code__block}>
+
 ```
     .item16 {
             background: #BADA55;
@@ -122,7 +151,13 @@ There are another two ways to do the same. We can again condense it and use the 
             grid-column-end: 6; -->
         }
 ```
+
+</div>
+
 The second was is to use the span by **grid-column: 2 / span 4;** It will also produce the same result.
+
+<div className={styles.code__block}>
+
 ```
     .item16 {
                 background: #BADA55;
@@ -132,8 +167,14 @@ The second was is to use the span by **grid-column: 2 / span 4;** It will also p
                 grid-column-end: 6; -->
         }
 ```
+
+</div>
+
 There is another concept, we can use negative number. Suppose, we want an item to expand the whole row, we can give grid-column: 1 / -1;
 Similarly, grid-column: 1 / -2; means expand till the last two track.
+
+<div className={styles.code__block}>
+
 ```
     .item17 {
             background: sienna;
@@ -145,9 +186,15 @@ Similarly, grid-column: 1 / -2; means expand till the last two track.
             grid-column: 1 / -2;
         }
 ```
-![The result](https://cdn-images-1.medium.com/max/5748/1*01IUOZ0wrYFTjrMxl61HJA.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/4/5_mtZRad95so.png)*The result*
 
 We can mix it with grid-row property also.
+
+<div className={styles.code__block}>
+
 ```
     .item20 {
             background: linen;
@@ -155,6 +202,9 @@ We can mix it with grid-row property also.
             grid-row: 8 / 10;
         }
 ```
-![The result](https://cdn-images-1.medium.com/max/5760/1*BVmssV1mUAU7eIvuKzGY0Q.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/4/6_YUta-dNfB.png)*The result*
 
 This conclude part-4 of the series.
