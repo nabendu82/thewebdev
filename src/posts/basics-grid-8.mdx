@@ -10,9 +10,14 @@ dev: https://dev.to/nabendu82
 series: Grid-basics
 tags: ['css', 'beginners', 'grid']
 ---
+import styles from "../css/postTemplate.module.css"
+
 Welcome to the final part of the series.
 
 We will use this [codepen](https://codepen.io/nabendu82/full/qMKBOw/) for the album layout page. The basic code without any style(except the general style) is here.
+
+<div className={styles.code__block}>
+
 ```
     <body>
 
@@ -103,11 +108,17 @@ We will use this [codepen](https://codepen.io/nabendu82/full/qMKBOw/) for the al
     </style>
     </body>
 ```
+
+</div>
+
 We have an **albums** class, which contains all the **album**. Each **album** then have a random image of size 300x300 from unsplash. Then there is an **album__details** class, which contains a heading(**h2**), the paragraph with **album__artist** class and also one or two paragraph with **album__desc** class.
 
 ![Without any style](https://cdn-images-1.medium.com/max/5760/1*nazw1s0C8qGiUUHajc3ckg.png)*Without any style*
 
 We want to make our album completely responsive, so we will use the code below for **albums** class.
+
+<div className={styles.code__block}>
+
 ```
     .albums {
             display: grid;
@@ -115,11 +126,17 @@ We want to make our album completely responsive, so we will use the code below f
             grid-gap: 5px;
         }
 ```
+
+</div>
+
 Our columns are using minmax and are either 300px wide or 1fr. This will result in most of our fully responsive layout been done.
 
 ![Nice one](https://cdn-images-1.medium.com/max/5760/1*TeX6RnLf073oJ0wv8Z0eMw.png)*Nice one*
 
 Let give each individual album, a background, box-shadow and padding.
+
+<div className={styles.code__block}>
+
 ```
     .albums {
             display: grid;
@@ -133,11 +150,17 @@ Let give each individual album, a background, box-shadow and padding.
             padding: 20px;
         }
 ```
+
+</div>
+
 This will result in below.
 
 ![The result](https://cdn-images-1.medium.com/max/5760/1*WQtHeZ4gIrUH9hcWxCdyyg.png)*The result*
 
 Now, we want the album details to be shown on the right side of the image. So, we will make each individual album also a grid. It will have two columns- 150px and 1fr wide.
+
+<div className={styles.code__block}>
+
 ```
     .album {
             background: rgba(255, 255, 255, 0.2);
@@ -148,19 +171,31 @@ Now, we want the album details to be shown on the right side of the image. So, w
             grid-gap: 10px;
         }
 ```
+
+</div>
+
 We are running into an issue here. Our image is not taking the desired 150px column, but it is taking it’s original size of 300px.
 
 ![A bug](https://cdn-images-1.medium.com/max/5760/1*Jv5d9_bG72rmgqfk4sSeFA.png)*A bug*
 
 We can fix it by selecting the image class **album__artwork** and making the width 100%.
+
+<div className={styles.code__block}>
+
 ```
     .album__artwork {
             width: 100%;
         }
 ```
+
+</div>
+
 ![Problem solved](https://cdn-images-1.medium.com/max/5760/1*HdeGb8Ba2eYWSifliRhafA.png)*Problem solved*
 
 Let do one last thing of vertically aligning our columns of album class.
+
+<div className={styles.code__block}>
+
 ```
     .albums {
             display: grid;
@@ -182,6 +217,9 @@ Let do one last thing of vertically aligning our columns of album class.
             width: 100%;
         }
 ```
+
+</div>
+
 Which will result in our final product.
 
 ![Desktop view](https://cdn-images-1.medium.com/max/5760/1*JzKLQoXa6BJPXLgBVq7boQ.png)*Desktop view*

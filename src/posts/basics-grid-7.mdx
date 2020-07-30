@@ -10,9 +10,14 @@ dev: https://dev.to/nabendu82
 series: Grid-basics
 tags: ['css', 'beginners', 'grid']
 ---
+import styles from "../css/postTemplate.module.css"
+
 Welcome to part-7 of the series. We will learn the important concept of **CSS Grid alignment and centring** in this tutorial.
 
 We will use this [codepen](https://codepen.io/nabendu82/full/GXdowP/) in the tutorial. We will learn about the below four properties in this tutorial. You should also bookmark [this](https://css-tricks.com/snippets/css/complete-guide-grid/) awesome quick reference from CSS trick to quickly check these.
+
+<div className={styles.code__block}>
+
 ```
     justify-items:
     align-items:
@@ -23,9 +28,15 @@ We will use this [codepen](https://codepen.io/nabendu82/full/GXdowP/) in the tut
     justify-self:
     align-self:
 ```
+
+</div>
+
 > CSS grid doesn’t have a **flex-direction** property like **flexbox**. So, **justify-* is row axis** and **align-* is column axis**
 
 Our basic CSS is as below, in which we have a grid with 40 items, 10 columns of 1fr each.
+
+<div className={styles.code__block}>
+
 ```
     <body>
     <div class="container">
@@ -94,15 +105,27 @@ Our basic CSS is as below, in which we have a grid with 40 items, 10 columns of 
     </style>
     </body>
 ```
+
+</div>
+
 ![Result](https://cdn-images-1.medium.com/max/5760/1*Pa_W-7wRAdkYLUF7Vhobgg.png)*Result*
 
 ## **justify-items**
 
 First we will look into **justify-items**, which align items along row axis. It can have any of the 4 values.
 
+<div className={styles.code__block}>
+
+```
     justify-items: start | end | center | stretch;
+```
+
+</div>
 
 Let’s see **start** first. We will give all item a background of white and also, show our grid through Firefox developer edition.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -115,11 +138,17 @@ Let’s see **start** first. We will give all item a background of white and als
             background: white;
         }
 ```
+
+</div>
+
 As, you can see it aligns items to the start edge of cell.
 
 ![**justify-items: start;**](https://cdn-images-1.medium.com/max/5760/1*un5rMBkYBgoZ6wVUuLcZEw.png)***justify-items: start;***
 
 Now, **end** is opposite of start.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -132,11 +161,17 @@ Now, **end** is opposite of start.
             background: white;
         }
 ```
+
+</div>
+
 It aligns items to the end edge of cell.
 
 ![**justify-items: end;**](https://cdn-images-1.medium.com/max/5760/1*yN51GdUmmCdAKJ3m5jLkLQ.png)***justify-items: end;***
 
 The **center** value will align items to center of cell.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -149,9 +184,15 @@ The **center** value will align items to center of cell.
             background: white;
         }
 ```
+
+</div>
+
 ![**justify-items: center;**](https://cdn-images-1.medium.com/max/5760/1*4Vx9xj9VwZwp6kzjpPh_jw.png)***justify-items: center;***
 
 The final value **stretch**, which is the default also. It will fill the whole width of the cell.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -164,15 +205,27 @@ The final value **stretch**, which is the default also. It will fill the whole w
             background: white;
         }
 ```
+
+</div>
+
 ![**justify-items: stretch;**](https://cdn-images-1.medium.com/max/5760/1*mdqZOsye9GfEB5_I8o43MQ.png)***justify-items: stretch;***
 
 ## **align-items**
 
 Now, we will look into **align-items** property. It align the grid items along the column axis. It can have any of the 4 values.
+
+<div className={styles.code__block}>
+
 ```
     align-items: start | end | center | stretch;
 ```
+
+</div>
+
 We will add some rows in our grid and use the below basic code to see how **align-items** work.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -186,7 +239,13 @@ We will add some rows in our grid and use the below basic code to see how **alig
             background: white;
         }
 ```
+
+</div>
+
 First we will check the **align-items: start**
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -201,11 +260,17 @@ First we will check the **align-items: start**
             background: white;
         }
 ```
+
+</div>
+
 Which will result in, the grid items to be at the start of the column.
 
 ![**align-items: start;**](https://cdn-images-1.medium.com/max/5760/1*yio6q8elLfTz_JkSW97JHw.png)***align-items: start;***
 
 Now, let’s check align-items: end;
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -220,11 +285,17 @@ Now, let’s check align-items: end;
             background: white;
         }
 ```
+
+</div>
+
 Which will result in, the grid items to be at the end of the column.
 
 ![**align-items: end;**](https://cdn-images-1.medium.com/max/5760/1*uMPFBgQD4-Ak_XYR4bYZyA.png)***align-items: end;***
 
 Now, **align-items: center;**
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -239,11 +310,17 @@ Now, **align-items: center;**
             background: white;
         }
 ```
+
+</div>
+
 Which will result in, the grid items to be at the center of the column.
 
 ![**align-items: center;**](https://cdn-images-1.medium.com/max/5760/1*mM1MzPmotkonJi1ZTwetQw.png)***align-items: center;***
 
 Now, we will look into **align-items: stretch;**
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -258,11 +335,16 @@ Now, we will look into **align-items: stretch;**
             background: white;
         }
 ```
+
+</div>
+
 Which will result in, the grid items filling the whole height of the cell.
 
 ![**align-items: stretch;**](https://cdn-images-1.medium.com/max/5760/1*Ke7oPO9w_vtspoPoLJx88A.png)***align-items: stretch;***
 
 One trick to **center** the items is to have the *justify-items and align-items as center.* Which will center the item.
+
+<div className={styles.code__block}>
 
 ```
     .container {
@@ -279,6 +361,8 @@ One trick to **center** the items is to have the *justify-items and align-items 
         }
 ```
 
+</div>
+
 
 ![The center trick](https://cdn-images-1.medium.com/max/5760/1*RYVFLeUOVpi2fhEPU9Pwbw.png)
 
@@ -286,6 +370,9 @@ Now we will look into **justify-content** and **align-content**.
 They are generally used when your total size of the grid is less then the size of grid container.
 
 We will do **justify-content** first and to make the grid size less, we will use **grid-template-columns: repeat(5, 100px)**; The complete code is below.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -301,6 +388,9 @@ We will do **justify-content** first and to make the grid size less, we will use
             background: white;
         }
 ```
+
+</div>
+
 Which will result in the below.
 
 ![Result](https://cdn-images-1.medium.com/max/5760/1*NsGNDZ-9tsCuTLuZT9bdew.png)*Result*
@@ -308,10 +398,19 @@ Which will result in the below.
 ## justify-content
 
 The property **justify-content** have 7 values as below.
+
+<div className={styles.code__block}>
+
 ```
     justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
 ```
+
+</div>
+
 We will check **start** first.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -328,11 +427,17 @@ We will check **start** first.
             background: white;
         }
 ```
+
+</div>
+
 It aligns the grid to the **start** edge of grid container.
 
 ![justify-content: start](https://cdn-images-1.medium.com/max/5760/1*VfIAN6jaPEpV-wXAK6OEXg.png)
 
 Now, we will check **end**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -349,11 +454,17 @@ Now, we will check **end**.
             background: white;
         }
 ```
+
+</div>
+
 It aligns the grid to the **end** edge of grid container.
 
 ![**justify-content: end;**](https://cdn-images-1.medium.com/max/5760/1*jYUU0t_xupJ3fmG6nBo5qQ.png)***justify-content: end;***
 
 Now, we will check **center**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -370,11 +481,17 @@ Now, we will check **center**.
             background: white;
         }
 ```
+
+</div>
+
 It aligns the grid in the **center** of grid container.
 
 ![**justify-content: center;**](https://cdn-images-1.medium.com/max/5760/1*qGLq_yvB3LRO2mBhSK7aMg.png)***justify-content: center;***
 
 Now, we will look into **space-around**, which is quite similar to what we have in flexbox.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -391,11 +508,17 @@ Now, we will look into **space-around**, which is quite similar to what we have 
             background: white;
         }
 ```
+
+</div>
+
 It places an even amount of space between each grid item, with **half-sized spaces** on the far ends.
 
 ![**justify-content: space-around;**](https://cdn-images-1.medium.com/max/5760/1*EhylfcI1hEyISkO5HvV9Fw.png)***justify-content: space-around;***
 
 Now, we will look into **space-between.**
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -412,11 +535,17 @@ Now, we will look into **space-between.**
             background: white;
         }
 ```
+
+</div>
+
 It places an even amount of space between each grid item, with **no space** at the far ends.
 
 ![**justify-content: space-between;**](https://cdn-images-1.medium.com/max/5760/1*zcveB33XwpbtVZhT8SOVzQ.png)***justify-content: space-between;***
 
 Now, we will look into **space-evenly.**
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -433,6 +562,9 @@ Now, we will look into **space-evenly.**
             background: white;
         }
 ```
+
+</div>
+
 It places an even amount of space between each grid item, **including the far ends**.
 
 ![**justify-content: space-evenly;**](https://cdn-images-1.medium.com/max/5760/1*3jGS3bZPUdKFP_a7fOSM8g.png)***justify-content: space-evenly;***
@@ -441,9 +573,18 @@ It places an even amount of space between each grid item, **including the far en
 
 We will now look into **align-content**. This property aligns the grid along the column axis. The property **align-content** have 7 values as below.
 
+<div className={styles.code__block}>
+
+```
     align-content: start | end | center | stretch | space-around | space-between | space-evenly
+```
+
+</div>
 
 We will use this basic CSS for **align-content. **We have reduced the number of items and added a height.
+
+<div className={styles.code__block}>
+
 ```
     <body>
     <div class="container">
@@ -479,7 +620,13 @@ We will use this basic CSS for **align-content. **We have reduced the number of 
     </style>
     </body>
 ```
+
+</div>
+
 We will first look at **start**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -497,11 +644,17 @@ We will first look at **start**.
             background: white;
         }
 ```
+
+</div>
+
 It aligns the grid to the **start** edge of grid container on column axis.
 
 ![**align-content: start;**](https://cdn-images-1.medium.com/max/5760/1*K93nTKmL1dINq7sG9X-21w.png)***align-content: start;***
 
 Now, we will look at **end**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -519,11 +672,17 @@ Now, we will look at **end**.
             background: white;
         }
 ```
+
+</div>
+
 It aligns the grid to the **end** edge of grid container on column axis.
 
 ![**align-content: end;**](https://cdn-images-1.medium.com/max/5760/1*LwY7OaWgssceHqV4ouIMRg.png)***align-content: end;***
 
 Now, we will look into **center**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -541,11 +700,17 @@ Now, we will look into **center**.
             background: white;
         }
 ```
+
+</div>
+
 It aligns the grid in the **center** of grid container on column axis.
 
 ![**align-content: center;**](https://cdn-images-1.medium.com/max/5760/1*SDRLtYaAXlQJ89RTqLurBw.png)***align-content: center;***
 
 Now, we will look into **stretch**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -563,11 +728,17 @@ Now, we will look into **stretch**.
             background: white;
         }
 ```
+
+</div>
+
 It resizes the grid items to allow the grid to fill the full height of the grid container.
 
 ![**align-content: stretch;**](https://cdn-images-1.medium.com/max/5760/1*8tGaKMJb9U2_bjwySEKWbA.png)***align-content: stretch;***
 
 For the next three values of align-content, we will have 20 items in CSS. Let’s start with **space-around**.
+
+<div className={styles.code__block}>
+
 ```
     <body>
     <div class="container">
@@ -615,11 +786,17 @@ For the next three values of align-content, we will have 20 items in CSS. Let’
     </style>
     </body>
 ```
+
+</div>
+
 It places an even amount of space between each grid item, with **half-sized spaces** on the far ends on column axis.
 
 ![**align-content: space-around;**](https://cdn-images-1.medium.com/max/5760/1*OrCHanDnZdHhydKV8EGKWQ.png)***align-content: space-around;***
 
 Now, let’s look into **space-between**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -637,11 +814,17 @@ Now, let’s look into **space-between**.
             background: white;
         }
 ```
+
+</div>
+
 It places an even amount of space between each grid item, with **no space** at the far ends on column axis.
 
 ![**align-content: space-between;**](https://cdn-images-1.medium.com/max/5760/1*ENskMFdyj24_CocljTMdpA.png)***align-content: space-between;***
 
 Now, let’s look into **space-evenly**.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -659,6 +842,9 @@ Now, let’s look into **space-evenly**.
             background: white;
         }
 ```
+
+</div>
+
 It places an even amount of space between each grid item, **including the far ends**.
 
 ![**align-content: space-evenly;**](https://cdn-images-1.medium.com/max/5760/1*_sEBfuo-9jql1lG0KckkQg.png)***align-content: space-evenly;***
@@ -667,10 +853,19 @@ It places an even amount of space between each grid item, **including the far en
 ## **justify-self**
 
 Let’s look into **justify-self** first. It is similar to *justify-content* and overrides the value of justify-content, but is meant for a single item. It have got four values.
+
+<div className={styles.code__block}>
+
 ```
     justify-self: start | end | center | stretch;
 ```
+
+</div>
+
 Let’s look at **start** first. Below is our basic CSS also, which we will use for all justify-self examples.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -693,39 +888,60 @@ Let’s look at **start** first. Below is our basic CSS also, which we will use 
             justify-self: start;
         }
 ```
+
+</div>
+
 Notice the **itm8**, which is aligned to the start of the cell.
 
 ![**justify-self: start;**](https://cdn-images-1.medium.com/max/5760/1*lPfyaaUNbfI_ACGt_bLlow.png)***justify-self: start;***
 
 Now, we will look into **end**.
+
+<div className={styles.code__block}>
+
 ```
     .itm8 {
             background: yellow;
             justify-self: end;
         }
 ```
+
+</div>
+
 It aligns the **itm8**, to the end of the cell.
 
 ![**justify-self: end;**](https://cdn-images-1.medium.com/max/5760/1*hH_p7W1rQWnLHtu52ic0og.png)***justify-self: end;***
 
 Now, let’s look into **center**.
+
+<div className={styles.code__block}>
+
 ```
     .itm8 {
             background: yellow;
             justify-self: center;
         }
 ```
+
+</div>
+
 It aligns the **itm8**, to the **center** of the cell.
 
 ![**justify-self: center;**](https://cdn-images-1.medium.com/max/5760/1*ZL1eJtoOJ8HLBjlWKZWLSQ.png)***justify-self: center;***
 
 Now, let’s look into **stretch**.
+
+<div className={styles.code__block}>
+
 ```
     .itm8 {
             background: yellow;
             justify-self: stretch;
         }
 ```
+
+</div>
+
 It fills the whole **width** of the cell.
 
 ![**justify-self: stretch;**](https://cdn-images-1.medium.com/max/5760/1*oOgmm6BaCQ-x5jP6N6STog.png)***justify-self: stretch;***
@@ -734,9 +950,18 @@ It fills the whole **width** of the cell.
 
 Let’s look into **align-self** now. It is similar to *align-content* and overrides the value of *align*-content, but is meant for a single item. It have got four values.
 
+<div className={styles.code__block}>
+
+```
     align-self: start | end | center | stretch;
+```
+
+</div>
 
 Let’s look at **start** first. Below is our basic CSS also, which we will use for all align-self examples. Note that we have made the third row of 300px height, because it contains the **itm14** which we are using in example.
+
+<div className={styles.code__block}>
+
 ```
     <body>
     <div class="container">
@@ -792,39 +1017,60 @@ Let’s look at **start** first. Below is our basic CSS also, which we will use 
     </style>
     </body>
 ```
+
+</div>
+
 Notice the **itm14**, is aligned to the start of the cell on column axis.
 
 ![**align-self: start;**](https://cdn-images-1.medium.com/max/5760/1*NDMdEWDPwLasq9sd6yuYIw.png)***align-self: start;***
 
 Now, we will look into **end**.
+
+<div className={styles.code__block}>
+
 ```
     .itm14 {
             background: pink;
             align-self: end;
         }
 ```
+
+</div>
+
 It aligns the **itm14**, to the end of the cell on column axis.
 
 ![**align-self: end;**](https://cdn-images-1.medium.com/max/5760/1*5tHHpuQJs0QKmrCNzN24hQ.png)***align-self: end;***
 
 Now, we will look into **center**.
+
+<div className={styles.code__block}>
+
 ```
     .itm14 {
             background: pink;
             align-self: center;
         }
 ```
+
+</div>
+
 It aligns the **itm14**, to the center of the cell on column axis.
 
 ![**align-self: center;**](https://cdn-images-1.medium.com/max/5760/1*hoRP12fgGkG8F0eeUvnERQ.png)***align-self: center;***
 
 Now, we will look into **stretch**.
+
+<div className={styles.code__block}>
+
 ```
     .itm14 {
             background: pink;
             align-self: stretch;
         }
 ```
+
+</div>
+
 It fills the whole **height** of the cell.
 
 ![**align-self: stretch;**](https://cdn-images-1.medium.com/max/5760/1*AcgRcbNKY0-McMTgHDiN4w.png)***align-self: stretch;***

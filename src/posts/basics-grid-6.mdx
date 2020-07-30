@@ -10,9 +10,14 @@ dev: https://dev.to/nabendu82
 series: Grid-basics
 tags: ['css', 'beginners', 'grid']
 ---
+import styles from "../css/postTemplate.module.css"
+
 Welcome to Part-6 of the series. In part-4 of the series, we used grid-column and grid-row concept to place items. In this part we will use another powerful concept of Grid known as **Grid Template Areas** to place items.
 
 We will use this [codepen](https://codepen.io/nabendu82/full/Eeorqx/) for the tutorial. The basic code use for this tutorial is below.
+
+<div className={styles.code__block}>
+
 ```
     <div class="container">
         <div class="item item1">
@@ -30,11 +35,17 @@ We will use this [codepen](https://codepen.io/nabendu82/full/Eeorqx/) for the tu
         </div>
     </div>
 ```
+
+</div>
+
 Which is below. We basically want to have a 2 sidebars, a main content and a footer.
 
-![The basics](https://cdn-images-1.medium.com/max/5760/1*UTjaypUscWVyXlKPifdClA.png)*The basics*
+![The basics](https://ik.imagekit.io/thewebdev/CSS-Grid/6/1_qT7OMpvdE.png)*The basics*
 
 Now, we will have the grid layout. We will have 3 columns and 3 rows.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -43,9 +54,15 @@ Now, we will have the grid layout. We will have 3 columns and 3 rows.
             grid-template-rows: 150px 150px 100px;
     }
 ```
-![The result](https://cdn-images-1.medium.com/max/5760/1*sVUUJdpIRkxT-KcIRUPt2Q.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/6/2_S4mbI156RB.png)*The result*
 
 Now, let’s have our 2 sidebars, 1 main content and 1 footer layout. We do this by grid-template-areas and have the format as below. We mention what each row will contain.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -58,12 +75,18 @@ Now, let’s have our 2 sidebars, 1 main content and 1 footer layout. We do this
                 "footer     footer    footer"
     }
 ```
+
+</div>
+
 Now our layout with development tools open, will show the template areas.
 
-![The template areas](https://cdn-images-1.medium.com/max/5760/1*w4M20lYyMvY7rhjplGouVQ.png)*The template areas*
+![The template areas](https://ik.imagekit.io/thewebdev/CSS-Grid/6/3_i60RTgfia.png)*The template areas*
 
 Now to place the content, we just have to select the item and then use **grid-area**. As in below code for footer, we will use **.footer {grid-area: footer; }**
 We are selecting the footer class and then using the grid-area property.
+
+<div className={styles.code__block}>
+
 ```
     <body>
         <div class="container">
@@ -113,11 +136,17 @@ We are selecting the footer class and then using the grid-area property.
     </style>
     </body>
 ```
-![The result](https://cdn-images-1.medium.com/max/5760/1*B9lB6HUUcKhcHnKV6gBYyA.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/6/4_t7g1Xiral.png)*The result*
 
 By using grid-template-areas, it is also very easy to use media-queries. You only have to define the new layout. We are defining a media-query for width 700px as below.
+
+<div className={styles.code__block}>
+
 ```
-    [@media](http://twitter.com/media) (max-width: 700px) {
+    @media (max-width: 700px) {
         .container {
             grid-template-areas:
                 "content    content     content"
@@ -126,13 +155,23 @@ By using grid-template-areas, it is also very easy to use media-queries. You onl
             }
         }
 ```
+
+</div>
+
 Which results in the perfect tablet layout.
 
-![The tablet layout](https://cdn-images-1.medium.com/max/2784/1*qFHj2jfDZra5fCf6Kf93lg.png)*The tablet layout*
+<div className={styles.image__small}>
+
+![The tablet layout](https://ik.imagekit.io/thewebdev/CSS-Grid/6/5_hHPMBK3uh.png)*The tablet layout*
+
+</div>
 
 We will look into one amazing property of Grid, by which we can create the legendary **masonry layout**.
 
 We will use this [codepen](https://codepen.io/nabendu82/full/QVaRjM/) for this part. It have 70 items.
+
+<div className={styles.code__block}>
+
 ```
     <body>
     <div class="container">
@@ -215,9 +254,15 @@ We will use this [codepen](https://codepen.io/nabendu82/full/QVaRjM/) for this p
     </style>
     </body>
 ```
-![The basics](https://cdn-images-1.medium.com/max/5760/1*VJs6CJc9RmvClPw9zpNyTQ.png)*The basics*
+
+</div>
+
+![The basics](https://ik.imagekit.io/thewebdev/CSS-Grid/6/6_8tISjtRUE.png)*The basics*
 
 Now let have 10 columns of 1fr each.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -225,9 +270,15 @@ Now let have 10 columns of 1fr each.
             grid-template-columns: repeat(10, 1fr);
         }
 ```
-![The result](https://cdn-images-1.medium.com/max/5760/1*aG-cVKId0G41a6YmcJHO8A.png)*The result*
+
+</div>
+
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/6/7_mV7hrsLXU3.png)*The result*
 
 Now let’s add some irregularity in the items, to make them of different sizes.
+
+<div className={styles.code__block}>
+
 ```
     .item:nth-child(6n) {
             background: cornflowerblue;
@@ -244,11 +295,17 @@ Now let’s add some irregularity in the items, to make them of different sizes.
             grid-row: span 2;
         }
 ```
+
+</div>
+
 Which will result in this, which have many empty space in it.
 
-![The result](https://cdn-images-1.medium.com/max/5760/1*O10K4Ho5ywA5vbVEyBlv4Q.png)*The result*
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/6/8_iL5ljffNX1.png)*The result*
 
 Now just one property *grid-auto-flow*: dense; fixes this. It is the property which tries to optimise the empty space by moving items around.
+
+<div className={styles.code__block}>
+
 ```
     .container {
             display: grid;
@@ -272,7 +329,10 @@ Now just one property *grid-auto-flow*: dense; fixes this. It is the property wh
             grid-row: span 2;
         }
 ```
-![The perfect masonry](https://cdn-images-1.medium.com/max/5760/1*1S-gpTg79OwXFGMviCnWYA.png)*The perfect masonry*
+
+</div>
+
+![The perfect masonry](https://ik.imagekit.io/thewebdev/CSS-Grid/6/9_mdWHkuh6k.png)*The perfect masonry*
 
 This results in the perfect masonry, but the order of the items are not guaranteed. So, we should use it only when order of items is not important.
 
