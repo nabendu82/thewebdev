@@ -113,7 +113,7 @@ We will use this [codepen](https://codepen.io/nabendu82/full/qMKBOw/) for the al
 
 We have an **albums** class, which contains all the **album**. Each **album** then have a random image of size 300x300 from unsplash. Then there is an **album__details** class, which contains a heading(**h2**), the paragraph with **album__artist** class and also one or two paragraph with **album__desc** class.
 
-![Without any style](https://cdn-images-1.medium.com/max/5760/1*nazw1s0C8qGiUUHajc3ckg.png)*Without any style*
+![Without any style](https://ik.imagekit.io/thewebdev/CSS-Grid/8/1_J9dGlB0Iy.png)*Without any style*
 
 We want to make our album completely responsive, so we will use the code below for **albums** class.
 
@@ -131,7 +131,7 @@ We want to make our album completely responsive, so we will use the code below f
 
 Our columns are using minmax and are either 300px wide or 1fr. This will result in most of our fully responsive layout been done.
 
-![Nice one](https://cdn-images-1.medium.com/max/5760/1*TeX6RnLf073oJ0wv8Z0eMw.png)*Nice one*
+![Nice one](https://ik.imagekit.io/thewebdev/CSS-Grid/8/2_UeYm2_lhXQ.png)*Nice one*
 
 Let give each individual album, a background, box-shadow and padding.
 
@@ -155,7 +155,7 @@ Let give each individual album, a background, box-shadow and padding.
 
 This will result in below.
 
-![The result](https://cdn-images-1.medium.com/max/5760/1*WQtHeZ4gIrUH9hcWxCdyyg.png)*The result*
+![The result](https://ik.imagekit.io/thewebdev/CSS-Grid/8/3_zBNXxJGUh.png)*The result*
 
 Now, we want the album details to be shown on the right side of the image. So, we will make each individual album also a grid. It will have two columns- 150px and 1fr wide.
 
@@ -176,7 +176,7 @@ Now, we want the album details to be shown on the right side of the image. So, w
 
 We are running into an issue here. Our image is not taking the desired 150px column, but it is taking it’s original size of 300px.
 
-![A bug](https://cdn-images-1.medium.com/max/5760/1*Jv5d9_bG72rmgqfk4sSeFA.png)*A bug*
+![A bug](https://ik.imagekit.io/thewebdev/CSS-Grid/8/4_lAQBFVzT5x.png)*A bug*
 
 We can fix it by selecting the image class **album__artwork** and making the width 100%.
 
@@ -190,7 +190,7 @@ We can fix it by selecting the image class **album__artwork** and making the wid
 
 </div>
 
-![Problem solved](https://cdn-images-1.medium.com/max/5760/1*HdeGb8Ba2eYWSifliRhafA.png)*Problem solved*
+![Problem solved](https://ik.imagekit.io/thewebdev/CSS-Grid/8/5_9CCCGNw2Ul.png)*Problem solved*
 
 Let do one last thing of vertically aligning our columns of album class.
 
@@ -222,11 +222,16 @@ Let do one last thing of vertically aligning our columns of album class.
 
 Which will result in our final product.
 
-![Desktop view](https://cdn-images-1.medium.com/max/5760/1*JzKLQoXa6BJPXLgBVq7boQ.png)*Desktop view*
+![Desktop view](https://ik.imagekit.io/thewebdev/CSS-Grid/8/6_zDMi2QATv.png)*Desktop view*
 
-![Tablet view](https://cdn-images-1.medium.com/max/4384/1*uCjO7Kl5qU2W_N0fr0V72g.png)*Tablet view*
+![Tablet view](https://ik.imagekit.io/thewebdev/CSS-Grid/8/7_We46ZOgK2.png)*Tablet view*
 
-![Mobile view](https://cdn-images-1.medium.com/max/2144/1*sT1RGWguUcZMdfGujmrcrA.png)*Mobile view*
+<div className={styles.image__small}>
+
+![Mobile view](https://ik.imagekit.io/thewebdev/CSS-Grid/8/8_Clxkt38ow.png)*Mobile view*
+
+</div>
+
 > So, you can see we had made a completely responsive album layout, *without using any media queries*.
 
 This concludes the CSS Grid series. Hoping you learned something useful from it.
