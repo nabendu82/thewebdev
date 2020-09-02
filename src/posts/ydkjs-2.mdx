@@ -1,5 +1,5 @@
 ---
-title: YDKJS —  Scopes and Closures — Part2
+title: YDKJS — Scopes and Closures — 2
 slug: ydkjs-scopes-and-closures-2
 image: ./ydkjs-2.jpeg
 date: 2018-06-10
@@ -10,31 +10,55 @@ dev: https://dev.to/nabendu82
 series: YDKJS
 tags: ['javascript', 'beginners', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
 
 Welcome to the Part2 of YDKJS series. As told in part1 this series is based on my learnings from legendary book series You don’t know JS by Kyle Simpson and Javascript series by Kaushik Kothagul from Javabrains.
 
 Before understanding scope in details we have to understand two concept. Every operation in JS is either **Read operation** or **Write Operation**.
 
+**Note** - Scratchpad used in this series is not available anymore. You can use [jsbin.com](jsbin.com) instead, to run everthing in this series.
+
 Consider the below statement -
-> **var a = 10;**
+
+<div className={styles.code__block}>
+
+```
+var a = 10;
+```
+
+</div>
 
 Now this is a **write operation** because we write 10 to variable a.
 
 Now, consider the below statement.
-> **console.log(a);**
+
+<div className={styles.code__block}>
+
+```
+console.log(a);
+```
+
+</div>
 
 This is a **read operation** because we read the value of variable a.
 
 Let consider another example.
-> **var a =10;
+
+<div className={styles.code__block}>
+
+```
+var a =10;
 var b;
-b=a;**
+b=a;
+```
+
+</div>
 
 Now in this the line **b=a** is interesting, because for **a** it’s a **read operation** and for **b** it’s a **write operation**.
 
 Let consider another example to make the concept even more clear.
 
-![read write example](https://cdn-images-1.medium.com/max/2000/1*8yASTrrEqtBGzSxMh0rzKQ.png)*read write example*
+![read write example](https://ik.imagekit.io/thewebdev/YDKJS/2/1_LOZXd7Y0Bz.png)*read write example*
 
 Now at line 4, there is a **write operation** because when *greet(“Nabendu”)* is called from line 8, we have **function greet(name=”Nabendu”)** here. So, assigning name variable the value “Nabendu”.
 And at line 5 the usual read operation as we are reading the value of a.
@@ -44,13 +68,13 @@ Let’s move to one more important concept related to read and write operations.
 
 Let’s see example to be more clear.
 
-![read operation](https://cdn-images-1.medium.com/max/2000/1*kCB2_JSF7HIU7LkaeTTplA.png)*read operation*
+![read operation](https://ik.imagekit.io/thewebdev/YDKJS/2/2_4344H8J_NE.png)*read operation*
 
 *In the above we tried to do a read operation on a variable foo, without even declaring it and the compiler throws an error.*
 
 Now consider below.
 
-![write opertion](https://cdn-images-1.medium.com/max/2000/1*obZP4yRXpeaJOcLS6g32dg.png)*write opertion*
+![write opertion](https://ik.imagekit.io/thewebdev/YDKJS/2/3_DQ48hDdMJ.png)*write opertion*
 
 *We do a write operation in line 1 ie foo=10. Here also we are not declaring foo. Now this is perfectly right and the compiler doesn’t throws an error.*
 
@@ -58,14 +82,14 @@ Window object is the object in which all global variables are created as propert
 
 Let’s define these below two variables in firefox scratchpad and then do reload and run.
 
-![firefox scratchpad](https://cdn-images-1.medium.com/max/2000/1*9ym49IdPdDPHTwVQ-RGssQ.png)*firefox scratchpad*
+![firefox scratchpad](https://ik.imagekit.io/thewebdev/YDKJS/2/4_i_mV-VsVBi.png)*firefox scratchpad*
 
 In the firefox console write window and we can see the Window object containing these two variables.
 
-![Window object](https://cdn-images-1.medium.com/max/2406/1*7qiCr3aKFTMx5ksA_tMvGA.png)*Window object*
+![Window object](https://ik.imagekit.io/thewebdev/YDKJS/2/5_reJcFzzF2-.png)*Window object*
 
 Also, can access these two variables as window object’s properties.
 
-![window object properties](https://cdn-images-1.medium.com/max/2076/1*OM_kylDGOK4OS5XuuWIqzg.png)*window object properties*
+![window object properties](https://ik.imagekit.io/thewebdev/YDKJS/2/6_NWEColi9G.png)*window object properties*
 
 
