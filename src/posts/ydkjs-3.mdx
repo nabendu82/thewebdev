@@ -1,5 +1,5 @@
 ---
-title: YDKJS —  Scopes and Closures — Part3
+title: YDKJS — Scopes and Closures — 3
 slug: ydkjs-scopes-and-closures-3
 image: ./ydkjs-3.jpeg
 date: 2018-06-11
@@ -10,6 +10,8 @@ dev: https://dev.to/nabendu82
 series: YDKJS
 tags: ['javascript', 'beginners', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
+
 Welcome to part3 of the series. The traditional languages like Java and C++ are compiled languages, means you have to make an intermediate executable from your source code. In java you make a “jar file” and in C++ you make an “out file”.
 
 In javascript you directly execute your source code. A webpage will directly execute your javascript. So, for that reason many people think Javascript as a interpreted language.
@@ -19,19 +21,19 @@ Compilation step — During this step the compiler mainly registers the variable
 
 Let consider the below example. The compilation steps mainly looks at the **var** keyword. It is not bothered with what is assigned in these variables.
 
-![compilation step](https://cdn-images-1.medium.com/max/2000/1*n4-LEsPyECkvMvbD9YVZSg.png)*compilation step*
+![compilation step](https://ik.imagekit.io/thewebdev/YDKJS/3/1_4KaltIR0b.png)*compilation step*
 
 When the compiler goes to line 1, it encounters var a and registers it in the global scope and then goes to line 3 and registers the var b. Line 5 is only a console and it doesn’t finds any var, so don’t do anything.
 
 Let consider another example. Here the compiler finds 4 variable declarations.
 
-![Another compilation step example](https://cdn-images-1.medium.com/max/2000/1*O6QFpOP01s4z0FytiLpAGA.png)*Another compilation step example*
+![Another compilation step example](https://ik.imagekit.io/thewebdev/YDKJS/3/2_p5N39FyzMr.png)*Another compilation step example*
 
 It is obvious that var a, b and c are variable declaration. But **myFunc** at line 3 is also a variable declaration because functions in JS are actually object declarations.
 
 Let do another one. In this variable declaration at line 1 and line 3 in global scope are obvious. But there is another variable declaration at line 3 for **name=myName**, which is in greet scope.
 
-![Yet another compilation step example](https://cdn-images-1.medium.com/max/2000/1*SBcxHtjvYxbHJb6AQipCAw.png)*Yet another compilation step example*
+![Yet another compilation step example](https://ik.imagekit.io/thewebdev/YDKJS/3/3_RFJz2OmCF.png)*Yet another compilation step example*
 
 Interpretation step- This step is followed by the compilation step and in it the actual execution takes place.
 
@@ -47,13 +49,13 @@ Now once the interpretor goes inside the function and at line 4, it finds **cons
 
 Let consider an example how the interpretor can lead to creation of global variable.
 
-![interpretor problem](https://cdn-images-1.medium.com/max/2000/1*s7RrEoCCDr2Od7x_BX8o4w.png)*interpretor problem*
+![interpretor problem](https://ik.imagekit.io/thewebdev/YDKJS/3/4_qpEi1MOvJt.png)*interpretor problem*
 
 Here the compiler have a successful run but when the interpretor comes to line 6, it checks the value of c first at the myFn scope and then at the global scope. But it cannot find it so it throws a runtime error.
 
 Let change the line 6 to a write operation and see what happen. As we know write operations on undeclared variables don’t throws an error and the interpretor creates it.
 
-![interpretor global problem](https://cdn-images-1.medium.com/max/2000/1*YQgINh2mTqj7MMGSSTEJtA.png)*interpretor global problem*
+![interpretor global problem](https://ik.imagekit.io/thewebdev/YDKJS/3/5_gya3UfblzT.png)*interpretor global problem*
 
 Now in above the compiler ignore line 6 as there is no variable declaration with var. So, when the interpretor comes to line 6 and ask the compiler for variable c, it doesn’t gets it in myFn or the global scope.
 Since, write operations don’t throw an error in JS. The interpretor creates the same in the global scope.

@@ -10,6 +10,8 @@ dev: https://dev.to/nabendu82
 series: YDKJS
 tags: ['javascript', 'beginners', 'webdev']
 ---
+import styles from "../css/postTemplate.module.css"
+
 The this keyword can sometime be one of the most confusing things of JavaScript, as it is different then what in other object oriented languages like C++, Java.
 
 It is such a big topic, that if you need to master it you need to go through a whole book by Kyle Simpson — **You don’t know JS: this & object prototypes.** You can find the free version of the book [here](https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes).
@@ -23,6 +25,9 @@ Objects are the basics of JavaScript, even functions are object in JavaScript. N
 ### “this” in simple function
 
 In a normal JS function like below, the “**this**” refers to *global window object*.
+
+<div className={styles.code__block}>
+
 ```
     function foo() {
       console.log(this);
@@ -31,12 +36,17 @@ In a normal JS function like below, the “**this**” refers to *global window 
 
     foo();
 ```
+
+</div>
+
 Running the above code will give.
 
-![global window object](https://cdn-images-1.medium.com/max/5760/1*0Wt8xiBXE70o-IWNidrMTg.png)*global window object*
+![global window object](https://ik.imagekit.io/thewebdev/YDKJS/10/1_5393jQffeZ.png)*global window object*
 
 There is a special case with **strict mode**.
 In strict mode “**this**” to be **undefined** , as global object refers to undefined instead of window object.
+
+<div className={styles.code__block}>
 
 ```
     function foo() {
@@ -47,11 +57,16 @@ In strict mode “**this**” to be **undefined** , as global object refers to u
 
     foo();
 ```
-![this is undefined](https://cdn-images-1.medium.com/max/5760/1*XiOXGSRMGweAUZPkiHtefA.png)*this is undefined*
+
+</div>
+
+![this is undefined](https://ik.imagekit.io/thewebdev/YDKJS/10/2_H_O9Ht3Pz.png)*this is undefined*
 
 ### “this” in a object property
 
 In a object which have a property as a function, the value of “this” is the **Object** itself.
+
+<div className={styles.code__block}>
 
 ```
     var obj = {};
@@ -62,11 +77,16 @@ In a object which have a property as a function, the value of “this” is the 
 
     obj.foo();
 ```
-![this is Object itself](https://cdn-images-1.medium.com/max/5760/1*afzRrlnAA6YBlVdFwlxP4Q.png)*this is Object itself*
+
+</div>
+
+![this is Object itself](https://ik.imagekit.io/thewebdev/YDKJS/10/3_-E5dyOepk6.png)*this is Object itself*
 
 ### “this” with constructor function
 
 When a function is called with “new” keyword, it is know as constructor function. And the value of **this** refers to the *newly created instance*.
+
+<div className={styles.code__block}>
 
 ```
     function Person(fn, ln) {
@@ -84,9 +104,12 @@ When a function is called with “new” keyword, it is know as constructor func
     let person2 = new Person("Shikha", "Biswas");
     person2.displayName();
 ```
+
+</div>
+
 The newly created instance is nothing but an object, because everything in JS is a object.
 
-![this refers to newly created Object](https://cdn-images-1.medium.com/max/5760/1*Pllzrm00k8nSSJ9bCZw01w.png)*this refers to newly created Object*
+![this refers to newly created Object](https://ik.imagekit.io/thewebdev/YDKJS/10/4_iL40POrGfS.png)*this refers to newly created Object*
 
 ### “this” with call, apply and bind method
 
@@ -96,6 +119,8 @@ Almost everything in JavaScript is an object,including functions. Every function
 
 Let’s say that we have an object called **obj**. It only has one property called **num**, which has a value of 3. Let’s also make a function called **addNumbers**.
 
+<div className={styles.code__block}>
+
 ```
     let obj = {num: 3};
     let addNumbers = function(a, b, c){
@@ -103,13 +128,19 @@ Let’s say that we have an object called **obj**. It only has one property call
       return this.num + a + b + c;
     };
 ```
+
+</div>
+
 Now, in **addNumbers** we have this.num. But how do we pass the value obj.num to it. We need to pass it a context, which means the value of “this”. We will do this my call method by passing a first argument as obj, so the “this” is the obj now.
 
-![this is obj](https://cdn-images-1.medium.com/max/5760/1*1qTnpYtZMF6bzEJZuQOdHw.png)*this is obj*
+![this is obj](https://ik.imagekit.io/thewebdev/YDKJS/10/5_IYXcZkyXVD.png)*this is obj*
 
 ### apply
 
 It is totally similar to call, but the only difference is that we can pass array as the second argument. We will use the same code for apply also.
+
+<div className={styles.code__block}>
+
 ```
     let obj = {num: 3};
     let addNumbers = function(a, b, c){
@@ -117,13 +148,19 @@ It is totally similar to call, but the only difference is that we can pass array
       return this.num + a + b + c;
     };
 ```
+
+</div>
+
 But now we have an arr, to be passed as second argument.
 
-![arr as second argument](https://cdn-images-1.medium.com/max/5760/1*Ebpo1-BcGX1oRgJQDtSiOA.png)*arr as second argument*
+![arr as second argument](https://ik.imagekit.io/thewebdev/YDKJS/10/6_cEQ3IY6xN1.png)*arr as second argument*
 
 ### bind
 
 Bind works in a bit different way then call and apply. It works by returning a copy of the function. So, we will use the same code.
+
+<div className={styles.code__block}>
+
 ```
     let obj = {num: 3};
     let addNumbers = function(a, b, c){
@@ -131,13 +168,19 @@ Bind works in a bit different way then call and apply. It works by returning a c
       return this.num + a + b + c;
     };
 ```
+
+</div>
+
 We will take the returned function in **bindFunc** and then execute it in the next line.
 
-![bind explained](https://cdn-images-1.medium.com/max/5760/1*qLAkKXrRcYqWeiGXdAnvOg.png)*bind explained*
+![bind explained](https://ik.imagekit.io/thewebdev/YDKJS/10/7_-2aGgMSMsJ.png)*bind explained*
 
 ## Understanding “this” in React
 
 Anyone who have worked with React, must have used the bind function inside the constructor for a function which was called through an input event.
+
+<div className={styles.code__block}>
+
 ```
     class Foo extends React.Component{
       constructor( props ){
@@ -168,11 +211,23 @@ Anyone who have worked with React, must have used the bind function inside the c
       document.getElementById("app")
     );
 ```
+
+</div>
+
 If we don’t give the line **this.handleChange = this.handleChange.bind(this)**, then handleChange() will throw error that
+
+<div className={styles.code__block}>
+
 ```
     'this' is undefined
 ```
+
+</div>
+
 This issue occurs because of JavaScript and not React. Let’s recreate this issue in plain JavaScript. Running the code in Firefox scratchpad gives error.
+
+<div className={styles.code__block}>
+
 ```
     class Foo {
       constructor(name){
@@ -193,10 +248,16 @@ This issue occurs because of JavaScript and not React. Let’s recreate this iss
     [@Scratchpad](http://twitter.com/Scratchpad)/1:13:1
     */***
 ```
+
+</div>
+
 The assignment operation below simulates loss of context, similar to passing the handler as a callback in the actual React Component.
 This gives undefined because the bodies of classes are by default in **strict mode** and in strict mode the global object is undefined.
 
 To prevent this error we need to bind “this” value.
+
+<div className={styles.code__block}>
+
 ```
     class Foo {
       constructor(name){
@@ -213,11 +274,17 @@ To prevent this error we need to bind “this” value.
     var display = foo.display;
     display();  //Outputs Nabendu
 ```
+
+</div>
+
 The same thing happens in **React**. When we bind the “this” of the event handler to the component instance in the constructor, we can pass it as a callback without worrying about it losing its context.
 
 ### “arrow” function in the callback
 
 We can also avoid the bind statement by using arrow function in callback.
+
+<div className={styles.code__block}>
+
 ```
     class Foo extends React.Component{
       constructor( props ){
@@ -246,6 +313,9 @@ We can also avoid the bind statement by using arrow function in callback.
       document.getElementById("app")
     );
 ```
+
+</div>
+
 The reason is that in the case of arrow functions, “this” is bound **lexically**. This means that it uses the context of the enclosing function — or global — scope as its “this” value.
 
 Hoping this article demystify the “this” object.
