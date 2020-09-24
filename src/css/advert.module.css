@@ -8,8 +8,8 @@
     border-radius: 4px;
     outline: none;
     width: auto;
-    height: 400px;
-    margin-bottom: 2rem;
+    height: 350px;
+    margin-bottom: 0.5rem;
     background: var(--mainWhite);
     text-align: center;
 }
