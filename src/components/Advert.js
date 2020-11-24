@@ -22,7 +22,7 @@ const Advert = () => {
         <section className={styles.sponserAds}>
             <div className={styles.advert1}>
                 <Img fixed={response.file.childImageSharp.fixed} alt="the book cover" />
-                <a href="https://leanpub.com/gatsbycookbook" target="_blank" rel="noopener noreferrer">Coming October 2020</a>
+                <a href="https://leanpub.com/gatsbycookbook" target="_blank" rel="noopener noreferrer">Coming December 2020</a>
             </div>
         </section>
     )
