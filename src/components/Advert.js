@@ -5,9 +5,9 @@ import { graphql, useStaticQuery } from "gatsby";
 
 export const getImage = graphql`
 {
-    file(relativePath: { eq: "FoundationGatsby.jpg" }) {
+    file(relativePath: { eq: "Foundation_Gatsby.tif" }) {
         childImageSharp {
-            fixed(height: 450) {
+            fixed(height: 280) {
                 ...GatsbyImageSharpFixed_withWebp
             }
         }
@@ -22,7 +22,7 @@ const Advert = () => {
         <section className={styles.sponserAds}>
             <div className={styles.advert1}>
                 <Img fixed={response.file.childImageSharp.fixed} alt="the book cover" />
-                <a href="https://leanpub.com/gatsbycookbook" target="_blank" rel="noopener noreferrer">Coming December 2020</a>
+                <a href="https://www.apress.com/in/book/9781484265574" target="_blank" rel="noopener noreferrer">Buy Book</a>
             </div>
         </section>
     )
