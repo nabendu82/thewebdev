@@ -22,7 +22,10 @@ const Advert = () => {
         <section className={styles.sponserAds}>
             <div className={styles.advert1}>
                 <Img fixed={response.file.childImageSharp.fixed} alt="the book cover" />
-                <a href="https://www.apress.com/in/book/9781484265574" target="_blank" rel="noopener noreferrer">Buy Book</a>
+                <div className={styles.button__container}>
+                    <a href="https://www.apress.com/in/book/9781484265574" target="_blank" rel="noopener noreferrer" className={styles.apress__book}><span>Buy from</span><span>apress.com</span></a>
+                    <a href="https://www.amazon.in/Foundation-Gatsby-Projects-Production-Websites-ebook/dp/B08PCSBV9M" target="_blank" rel="noopener noreferrer" className={styles.amazon__book}><img src="https://www.niftybuttons.com/amazon/amazon-button2.png" alt="amazon button" /></a>
+                </div>
             </div>
         </section>
     )
