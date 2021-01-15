@@ -15,8 +15,6 @@ Welcome to part-3 of the series. This series have been inspired by [this](https:
 
 We have added two more authors and some of their books, by the mutations from part-2.
 
-![More Books](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590055950/CompleteAppReactGraphql/3/1_mo6bku.png)*More Books*
-
 We will now update our return statements, so that our Queries works again. Now, they contain mongodb methods to get the data. So, let’s edit our **schema.js**
 
 <div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
@@ -117,10 +115,6 @@ Now, there is a minor issue in our logic. We can add a new book or author, with 
 
 ![Junk Book](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590055948/CompleteAppReactGraphql/3/6_xxemzs.png)*Junk Book*
 
-We can verify in mongoDB also.
-
-![mongoDB verification.](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590055948/CompleteAppReactGraphql/3/7_odpacu.png)*mongoDB verification.*
-
 Now, to avoid this we add a new GraphQL property **GraphQLNonNull**
 
 So, open your **schema.js** and do the changes, marked in bold.
@@ -203,11 +197,16 @@ Also, keep the **index.js** simple as below.
     import App from './App';
 
     ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+</div>
 
 Now, the **App.js** to be changed like below.
 
-    import React from 'react';
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
 
+```
+    import React from 'react';
 
     function App() {
         return (
@@ -242,15 +241,14 @@ Now, create a new folder **components** inside **src** directory and add a file 
 
 ![BookList.js](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590055946/CompleteAppReactGraphql/3/13_u58fuk.png)*BookList.js*
 
-Next, we will add a class based component in **BookList.js**.
+Next, we will add a functional component in **BookList.js**.
 
 <div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
 
 ```
-    import React, { Component } from 'react'
+    import React from 'react'
 
-    class BookList extends Component {
-        render() {
+    const BookList = () => {
             return (
             <div>
                 <ul className="book-list">
@@ -258,7 +256,6 @@ Next, we will add a class based component in **BookList.js**.
                 </ul>
             </div>
             )
-        }
     }
 
     export default BookList;
@@ -296,23 +293,19 @@ Go ahead and stop your client and install the below packages needed for graphql 
 <div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
 
 ```
-    npm install apollo-boost react-apollo graphql --save
+    npm install @apollo/client graphql
 ```
 
 </div>
 
-![GraphQL client](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590055945/CompleteAppReactGraphql/3/14_p98zso.png)*GraphQL client*
 
-**Note:** Ran into an issue here, after **npm install apollo-boost react-apollo graphql — save**. Found the solution [online](https://github.com/facebook/create-react-app/issues/6398) and it was to delete **node_modules** folder inside **client** and do **yarn install**
-
-Now, let’s start using graphql. We will edit our BookList.js file to get data from graphql server.
+Now, let’s start using graphql. We will edit our **BookList.js** file to get data from graphql server.
 
 <div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
 
 ```
-    import React, { Component } from 'react';
-    import { gql } from 'apollo-boost';
-    import { graphql } from 'react-apollo';
+    import React from 'react';
+    import { useQuery } from '@apollo/client'
 
     const getBooksQuery = gql`
         {
@@ -323,9 +316,13 @@ Now, let’s start using graphql. We will edit our BookList.js file to get data 
         }
     `;
 
-    class BookList extends Component {
-        render() {
-            console.log(this.props);
+    const BookList = () => {
+            const { loading, error, data } = useQuery(getBooksQuery);
+
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error :(</p>;
+
+            console.log(data)
             return (
             <div>
                 <ul className="book-list">
@@ -333,10 +330,9 @@ Now, let’s start using graphql. We will edit our BookList.js file to get data 
                 </ul>
             </div>
             )
-        }
     }
 
-    export default graphql(getBooksQuery)(BookList);
+    export default BookList;
 ```
 
 </div>
@@ -355,18 +351,19 @@ Now, go to **app.js** inside **server** folder and add cors
 
 ```
     const express = require('express');
-    const graphqlHTTP = require('express-graphql');
+    const { graphqlHTTP } = require('express-graphql');
     const schema = require('./schema/schema');
     const mongoose = require('mongoose');
     const cors = require('cors');
     const app = express();
 
     app.use(cors());
-
-    mongoose.connect('mongodb://nabsNew:delete1@ds159546.mlab.com:59546/graphql-react');
-    mongoose.connection.once('open', () => {
-        console.log('Conneted to database');
-    });
+    const connection_url = 'mongodb+srv://admin:yourpassword@cluster0.91nul.mongodb.net/graphqLReactDB?retryWrites=true&w=majority'
+    mongoose.connect(connection_url, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    })
 
     app.use('/graphql', graphqlHTTP({
         schema,
@@ -389,9 +386,8 @@ Now, that we are getting our books correctly we will update our **BookList.js** 
 <div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
 
 ```
-    import React, { Component } from 'react';
-    import { gql } from 'apollo-boost';
-    import { graphql } from 'react-apollo';
+    import React from 'react';
+    import { useQuery, gql } from '@apollo/client'
 
     const getBooksQuery = gql`
         {
@@ -402,38 +398,28 @@ Now, that we are getting our books correctly we will update our **BookList.js** 
         }
     `;
 
-    class BookList extends Component {
-        displayBooks() {
-            var data = this.props.data;
-            if (data.loading) {
-                return (<div>Loading books...</div>);
-            } else {
-                return data.books.map(book => {
-                    return (
-                        <li key={book.id}>{book.name}</li>
-                    );
-                })
-            }
-        }
+    const BookList = () => {
+            const { loading, error, data } = useQuery(getBooksQuery);
 
-        render() {
-            console.log(this.props);
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error :(</p>;
+
+            console.log(data)
             return (
-                <div>
-                    <ul className="book-list">
-                        {this.displayBooks()}
-                    </ul>
-                </div>
+            <div>
+                <ul className="book-list">
+                    {data.books.map(book => <li key={book.id}>{book.name}</li>)}
+                </ul>
+            </div>
             )
-        }
     }
 
-    export default graphql(getBooksQuery)(BookList);
+    export default BookList;
 ```
 
 </div>
 
-Here, we added a method **displayBooks**() to display the books. If you have noticed the console.log in the earlier part, the first time an empty list is rendered when **loading** is true. We get out book list only on second part when **loading** is false.
+Here, we added a method **displayBooks**() to display the books. 
 
 ![The Loading](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590055945/CompleteAppReactGraphql/3/18_m6onsl.png)*The Loading*
 

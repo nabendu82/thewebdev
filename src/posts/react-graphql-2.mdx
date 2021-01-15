@@ -257,39 +257,61 @@ An authors query can also be done. We can also include the book.
 
 ![authors query](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/6_an1sgu.png)*authors query*
 
-Now, it’s time to store all our data into mongoDB. So, head over to [https://mlab.com/](https://mlab.com/) and login.
+Now, it’s time to store all our data into mongoDB. So, head over to [https://www.mongodb.com](https://www.mongodb.com) and login.
 
-Then Create New mongoDB deployment.
+After logging in, we will see the below. Since i already have a Project it will take me to that. We need to click on the project and click on **New Project** button.
 
-![Create New mongoDB](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/7_s5mmog.png)*Create New mongoDB*
+![New Project](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477685/tiktok-mern/46_h0oxoi.png)*New Project*
 
-Click on the Free plan.
+We need to give the Project a name like **graphql-react** and click on **Next** button. I had already created a project with same name, so giving me warning.
 
-![The free plan](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/8_djndf3.png)*The free plan*
 
-Select a Region and then click Continue.
+![database](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1610707196/CompleteAppReactGraphql/2/47_t0tzmw.jpg)*database*
 
-![Select a Region](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/9_clcnoy.png)*Select a Region*
+In the next screen, just click on the **Create Project** button.
 
-Give a name to your database and click continue.
+![Create Project](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477685/tiktok-mern/48_ovixox.png)*Create Project*
 
-![Database name](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/10_rznymu.png)*Database name*
+In the next screen click on **Build a Cluster** button.
 
-In the next page, Submit the order.
+![Cluster](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477684/tiktok-mern/49_vthjkp.png)*Cluster*
 
-![Submit Order](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/11_fh13ag.png)*Submit Order*
+In the next screen you can click on the Free tier.
 
-Next, click on your new database.
+![Free Tier](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477685/tiktok-mern/50_w9fm4w.png)*Free Tier*
 
-![The new DB](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044689/CompleteAppReactGraphql/2/12_fvcchn.png)*The new DB*
+In the next screen you need to choose the AWS region in which the database will be created. I changed it to Mumbai, as i live in India and it will give me low latency. After that we need to click on the **Create Cluster** button.
 
-In **Users** tab, click on Add database user. It will open a pop-up in which you need to provide a username and password.
+![Create Cluster](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477686/tiktok-mern/51_qaxaod.png)*Create Cluster*
 
-![username and password](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/13_oqcpzj.png)*username and password*
+The next screen will show that the Cluster is been created and it will take time. So, we can go back and create our first API endpoint.
 
-Now, to connect to our database we need to use the query string highlighted below.
+![Getting created](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477685/tiktok-mern/52_zkadtp.png)*Getting created*
 
-![Query string](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/14_vvvnhz.png)*Query string*
+
+Now, once the cluster is created click on the **Database Access** tab and then the **Add New Database User** button.
+
+![New database](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477687/tiktok-mern/57_ctvkwf.png)*New database*
+
+In the next screen, we need to give a username and password. We need to remember both of them. After that scroll a bit down and click on **Add User** button.
+
+![Add User](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477686/tiktok-mern/58_b5tw2s.png)*Add User*
+
+Now, we need to go to the **Network Access** tab and after that click on **Add IP Address** button.
+
+![IP Address](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477690/tiktok-mern/59_pbncvt.png)*IP Address*
+
+In the pop-up click on **ALLOW ACCESS FROM ANYWHERE** button first and then the **Confirm** button.
+
+![Confirm](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1608477686/tiktok-mern/60_eds4ce.png)*Confirm*
+
+Then go back to the **Cluster** tab and click on the **CONNECT** button. It will open the below pop-up. Here, you need to click on **Connect your application** tab.
+
+![Connect](https://ik.imagekit.io/thewebdev/Tiktok-Mern/61_ChNIS0EQXS.png)*Connect*
+
+Now, you will get the Connection url, which you need to Copy by clicking on **Copy** button.
+
+![Copy](https://ik.imagekit.io/thewebdev/Tiktok-Mern/62_qVhUR-UdC6.png)*Copy*
 
 Now, open your terminal and stop nodemon and install mongoose.
 
@@ -301,16 +323,18 @@ Next, we add the code in **App.js** to connect to our database.
 
 ```
     const express = require('express');
-    const graphqlHTTP = require('express-graphql');
+    const { graphqlHTTP } = require('express-graphql');
     const schema = require('./schema/schema');
     const mongoose = require('mongoose');
 
     const app = express();
 
-    mongoose.connect('mongodb://nabs:useyourown@ds159546.mlab.com:59546/graphql-react');
-    mongoose.connection.once('open', () => {
-        console.log('Conneted to database');
-    });
+    const connection_url = 'mongodb+srv://admin:yourpassword@cluster0.91nul.mongodb.net/graphqLReactDB?retryWrites=true&w=majority'
+    mongoose.connect(connection_url, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    })
 
     app.use('/graphql', graphqlHTTP({
         schema,
@@ -473,9 +497,7 @@ Next, head over to graphiql to add an author with mutation.
 
 ![Author added with mutation](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/17_ut1bo7.png)*Author added with mutation*
 
-Also, check in your mlab whether that author was added.
-
-![mlab checking](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/18_zwcksq.png)*mlab checking*
+Also, check in your mongoDB whether that author was added by clicking on **COLLECTIONS** in **Clusters** tab.
 
 Now, we will add mutation to add a book.
 
@@ -530,8 +552,8 @@ Next, head over to graphiql to add an **book** with mutation. Notice, that the *
 
 ![book mutation](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044687/CompleteAppReactGraphql/2/19_ttbv6v.png)*book mutation*
 
-Add some more book and then head over to mlab to verify your additions.
+Add some more book and then head over to mongoDB to verify your additions.
 
-![mlab checking](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1590044688/CompleteAppReactGraphql/2/20_z85z6q.png)*mlab checking*
+![mlab checking](https://res.cloudinary.com/dxkxvfo2o/image/upload/v1610707915/CompleteAppReactGraphql/2/20_gj8g5a.jpg)*mlab checking*
 
 This concludes part-2 of the series. You can find code till here in the github [link](https://github.com/nabendu82/react-graphql).
