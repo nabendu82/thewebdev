@@ -305,7 +305,7 @@ Now, let’s start using graphql. We will edit our **BookList.js** file to get d
 
 ```
     import React from 'react';
-    import { useQuery } from '@apollo/client'
+    import { useQuery, gql } from '@apollo/client'
 
     const getBooksQuery = gql`
         {
@@ -333,6 +333,37 @@ Now, let’s start using graphql. We will edit our **BookList.js** file to get d
     }
 
     export default BookList;
+```
+
+</div>
+
+Next, we need to go back to **App.js** and the code to use Apollo client in our Project. Here, we wrap everything with ApolloProvider and pass the client to it.
+
+<div style={{ padding: '10px 0', backgroundColor: '#F2F2F2', overflowX: 'auto' }}>
+
+```
+    import React from 'react';
+    import BookList from './components/BookList';
+    import { ApolloClient, InMemoryCache } from '@apollo/client'
+    import { ApolloProvider } from '@apollo/client'
+
+    const client = new ApolloClient({
+        uri: 'http://localhost:4000/graphql',
+        cache: new InMemoryCache()
+    })
+
+    function App() {
+        return (
+            <ApolloProvider client={client}>
+                <div className="main">
+                    <h1>Top books to Read</h1>
+                    <BookList />
+                </div>
+            </ApolloProvider>
+        );
+    }
+
+    export default App;
 ```
 
 </div>
