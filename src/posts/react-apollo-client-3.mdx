@@ -14,7 +14,7 @@ import styles from "../css/postTemplate.module.css"
 
 Welcome to part-3 of the series. Now, let’s send the data from our **Launches.js** file to a new component **LaunchItem.js**. We are just lopping through the data using map and then passing it to a new **LaunchItem** component.
 
-![Launches.js](https://ik.imagekit.io/thewebdev/SpaceX/3/1_j4m56-eq8.png)*Launches.js*
+![Launches.js](https://ik.imagekit.io/thewebdev/SpaceX/3/1_ZtX3gqQgR.jpg)*Launches.js*
 
 Next, we will create the **LaunchItem.js** file in the same **components** folder. We are just de-structuring the props and showing it through some use of bootstrap classes.
 
@@ -42,7 +42,7 @@ Now, our web-app will show as below.
 
 Now, the user show know what red and green means. So, we put a color description in **Launches.js**
 
-![Launches.js](https://ik.imagekit.io/thewebdev/SpaceX/3/8_JfWuEUDWHc.png)*Launches.js*
+![Launches.js](https://ik.imagekit.io/thewebdev/SpaceX/3/8_7iljCEES6.jpg)*Launches.js*
 
 It will show these in our web-page.
 
@@ -64,11 +64,28 @@ Next, we will use routes in our **App.js**. We are first doing import of Router 
 
 Then we are wrapping everything in Router and using two routes, one for **Launches** component an other for **Launch** component.
 
-![Routes in App.js](https://ik.imagekit.io/thewebdev/SpaceX/3/13_RzY7w8Iu8.png)*Routes in App.js*
+![Routes in App.js](https://ik.imagekit.io/thewebdev/SpaceX/3/13_Vbv0XV-cA1.jpg)*Routes in App.js*
 
 Next, we will create **Launch.js** inside the **components** folder and put the basic code in it. We will change the content later.
 
-![Launch.js](https://ik.imagekit.io/thewebdev/SpaceX/3/14_4hvDxroc97.png)*Launch.js*
+<div className={styles.code__block}>
+
+```
+import React from 'react'
+
+const Launch = () => {
+    return (
+        <div>
+            Launch Component
+        </div>
+    )
+}
+
+export default Launch
+
+```
+
+</div>
 
 We also need to change the simple button in our **LaunchItem.js** to use **Link** from react-router-dom.
 

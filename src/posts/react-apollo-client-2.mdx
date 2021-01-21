@@ -62,19 +62,88 @@ It will show the beautiful logo in the web-page.
 
 Then we will install some dependencies for using apollo client in our project to fetch data. Do the below npm installs in the **client** folder.
 
-![apollo client](https://ik.imagekit.io/thewebdev/SpaceX/2/13_XvngCdngx.png)*apollo client*
+<div className={styles.code__block}>
+
+```
+npm install @apollo/client graphql
+```
+
+</div>
 
 Now, it’s time to use Apollo client in our **App.js**. We first do our imports and then use a client variable, where we point to our graphql endpoint. After that we wrap our whole App with **ApolloProvider**.
 
-![App.js](https://ik.imagekit.io/thewebdev/SpaceX/2/14_jaB82clr0.png)*App.js*
+<div className={styles.code__block}>
 
-Then we will create a folder components and inside it a file **Launches.js**. Here we are using **gql** and then using the query we created in Graphiql. Next, we have to use Query inside our render() to get the data.
+```
+import React from 'react'
+import './App.css';
+import logo from './logo.png';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 
-![Launches.js](https://ik.imagekit.io/thewebdev/SpaceX/2/15_r1DO2a4X0.png)*Launches.js*
+const client = new ApolloClient({
+    uri: 'http://localhost:5000/graphql',
+    cache: new InMemoryCache()
+})
+
+function App() {
+    return (
+        <ApolloProvider client={client}>
+            <div className="container">
+                <img src={logo} alt="SpaceX FanClub" style={{ width: 300, display: 'block', margin: 'auto' }}/>
+            </div>
+        </ApolloProvider>
+    );
+}
+
+export default App;
+
+```
+
+</div>
+
+Then we will create a folder **components** and inside it a file **Launches.js**. Here we are using **gql** and then using the query we created in GraphQL. Next, we have to use useQuery hook from apollo client to get the data.
+
+<div className={styles.code__block}>
+
+```
+import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+
+const launchesQuery = gql`
+    {
+        launches {
+            flight_number
+            mission_name
+            launch_date_local
+            launch_success
+        }
+    }
+`;
+
+const Launches = () => {
+    const { loading, error, data } = useQuery(launchesQuery);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+
+    console.log(data)
+    return (
+        <div>
+            <h1>Test</h1>
+        </div>
+    )
+}
+
+export default Launches
+
+```
+
+</div>
 
 We also need to add this component to our **App.js** for it to render.
 
-![App.js](https://ik.imagekit.io/thewebdev/SpaceX/2/16_xt5NXCfLD_.png)*App.js*
+![App.js](https://ik.imagekit.io/thewebdev/SpaceX/2/16_usO9NtCvnr.jpg)*App.js*
 
 But, when we try to see the data in our console, we get the famous CORS error. This occurs because our client is at 3000 and server at 5000.
 
@@ -84,9 +153,9 @@ So, in our main folder let’s first install cors.
 
 ![cors installed](https://ik.imagekit.io/thewebdev/SpaceX/2/18_jUrqhIGUm.png)*cors installed*
 
-Next, in **server.js** inclue and use cors as below.
+Next, in **server.js** include and use cors as below.
 
-![server.js](https://ik.imagekit.io/thewebdev/SpaceX/2/19_-sII_d-Dl.png)*server.js*
+![server.js](https://ik.imagekit.io/thewebdev/SpaceX/2/19_Tw6hqtnZV.jpg)*server.js*
 
 Now, when we goto [http://localhost:3000/](http://localhost:3000/) we can see all the data coming from graphql
 

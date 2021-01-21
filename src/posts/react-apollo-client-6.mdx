@@ -22,15 +22,51 @@ I also forgot to add the **title** field in the schema. So, let’s add quickly 
 
 Then, we will change the route for **launches** to **histories** in **App.js** and also add the import for it.
 
-![Histories added](https://ik.imagekit.io/thewebdev/SpaceX/6/3_h-u0vxoI3.png)*Histories added*
+![Histories added](https://ik.imagekit.io/thewebdev/SpaceX/6/3_FoaGOy9HB.jpg)*Histories added*
 
 Next, in **Navbar.js** we will also change the **Launches** to **History**.
 
-![Navbar.js](https://ik.imagekit.io/thewebdev/SpaceX/6/4_DiKmMtwHEh.png)*Navbar.js*
+![Navbar.js](https://ik.imagekit.io/thewebdev/SpaceX/6/4_CCRmDF8w8.jpg)*Navbar.js*
 
 Then, we will create a new file **Histories.js** inside the **components** folder. It is almost similar to the **Launches.js** file and here we are creating a query and then passing it to the **HistoryItem** component.
 
-![Histories.js](https://ik.imagekit.io/thewebdev/SpaceX/6/5_WYkOGKli1.png)*Histories.js*
+<div className={styles.code__block}>
+
+```
+import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import HistoryItem from './HistoryItem';
+
+const HISTORIES_QUERY = gql`
+    query HistoriesQuery {
+        histories {
+            id
+            title
+            event_date_utc
+        }
+    }
+`;
+
+const Histories = () => {
+    const { loading, error, data } = useQuery(HISTORIES_QUERY);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+
+    return (
+        <d>
+            <h1 className="display-4 my-3">History</h1>
+            {data.histories.map(history => (
+                <HistoryItem key={history.id} history={history} />
+            ))}
+
+        </d>
+    )
+}
+
+export default Histories
+```
+
+</div>
 
 Let’s create the **HistoryItem.js** file next inside the **components** folder. Here, we are just using the props passed from the **Histories **component and using them, in displaying with help of bootstrap.
 
@@ -42,27 +78,101 @@ It will show our webpage as below once we click on **History**.
 
 Next, we will create the **History** component but first let’s add the route for it in **App.js**
 
-![App.js](https://ik.imagekit.io/thewebdev/SpaceX/6/8_7aNhWhalU.png)*App.js*
+![App.js](https://ik.imagekit.io/thewebdev/SpaceX/6/8_K9oPjjbR_.jpg)*App.js*
 
 Next, let’s change the button to a Link in the **HistoryItem.js** file.
 
 ![HistoryItem.js](https://ik.imagekit.io/thewebdev/SpaceX/6/9_1b4fQAaCuw.png)*HistoryItem.js*
 
-Now, it’s time to create our **History.js** file inside the **components** folder. It will be quite similar to **Launch.js** file.
+Now, it’s time to create our **History.js** file inside the **components** folder. 
 
-![History.js](https://ik.imagekit.io/thewebdev/SpaceX/6/10_EPOL3wUnh.png)*History.js*
-
-Next, we will show the items with help from bootstrap and a little help from our earlier created **Launch.js**. It is almost similar to **Launch.js**
-
-![History.js](https://ik.imagekit.io/thewebdev/SpaceX/6/11_ZD7tkDpKt.png)*History.js*
-
-Next, let’s add more fields to display with bootstrap.
-
-![History.js](https://ik.imagekit.io/thewebdev/SpaceX/6/12_1P2shTdy-.png)*History.js*
+We will show the items with help from bootstrap and a little help from our earlier created **Launch.js**. It is almost similar to **Launch.js**
 
 Let’s also add a button to go back to **History** page.
 
-![History.js](https://ik.imagekit.io/thewebdev/SpaceX/6/13_U2_NfBvAGV.png)*History.js*
+<div className={styles.code__block}>
+
+```
+import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+
+const HISTORY_QUERY = gql`
+    query HistoryQuery($id: Int!) {
+        history(id: $id) {
+            id
+            title
+            event_date_utc
+            details
+            links {
+                reddit
+                article
+                wikipedia
+            }
+        }
+    }
+`;
+
+
+const History = (props) => {
+    let { id } = props.match.params;
+    id = parseInt(id);
+
+    const { loading, error, data } = useQuery(HISTORY_QUERY, { variables: { id } });
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+    console.log(data)
+
+    const { title, event_date_utc, details, links: {reddit, article, wikipedia }} = data.history;
+
+    return (
+        <div>
+            <h1 className="display-4 my-3">
+                <span className="text-dark">Event:</span> {title}
+            </h1>
+            <h4 className="mb-3">Event Details</h4>
+            <ul className="list-group">
+                <li className="list-group-item">Details:{' '}
+                    <span className="text-success font-weight-bold">{details}</span>
+                </li>
+                <li className="list-group-item">Date:{' '}
+                    <span className="text-success font-weight-bold">
+                        <Moment format="dddd, MMMM Do YYYY, h:mm a">{event_date_utc}</Moment>
+                    </span>
+                </li>
+                {reddit &&
+                    <li className="list-group-item">Reddit: {' '}
+                        <a href={reddit} target="_blank" rel="noopener noreferrer">
+                            Read more on Reddit!
+                    </a>
+                    </li>
+                }
+                {article &&
+                    <li className="list-group-item">Article: {' '}
+                        <a href={article} target="_blank" rel="noopener noreferrer">
+                            Read more on article!
+                    </a>
+                    </li>
+                }
+                {wikipedia &&
+                    <li className="list-group-item">Wikipedia: {' '}
+                        <a href={wikipedia} target="_blank" rel="noopener noreferrer">
+                            Read more on Wikipedia!
+                    </a>
+                    </li>
+                }
+            </ul>
+            <hr />
+            <Link to="/histories" className="btn btn-secondary">Back</Link>
+        </div>
+    )
+}
+
+export default History
+```
+
+</div>
 
 And it will show our web-page for History as below.
 
@@ -72,7 +182,7 @@ We are done with the app. Now we will start our deployment process in heroku.
 
 First in the **App.js** remove the localhost:5000 from the uri and make it only **/graphql**
 
-![App.js](https://ik.imagekit.io/thewebdev/SpaceX/6/15_4FVTx3rcA.png)*App.js*
+![App.js](https://ik.imagekit.io/thewebdev/SpaceX/6/15_TC9141XDB.jpg)*App.js*
 
 Next, in **package.json** of client, update the proxy and the build script.
 

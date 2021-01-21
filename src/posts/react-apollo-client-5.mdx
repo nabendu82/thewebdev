@@ -16,11 +16,27 @@ Welcome to part-5 of the series. Next, it’s time to create our **Rocket** comp
 
 But first we will create a new Route to it in the **App.js** file.
 
-![App.js](https://ik.imagekit.io/thewebdev/SpaceX/5/1_IUOWTkgrKu.png)*App.js*
+![App.js](https://ik.imagekit.io/thewebdev/SpaceX/5/1_9duzrQwsb.jpg)*App.js*
 
 Next, we will create **Rocket.js** inside the **components** folder and put the basic code in it. We will change the content later.
 
-![Rocket.js](https://ik.imagekit.io/thewebdev/SpaceX/5/2_7IiRfDN7wI.png)*Rocket.js*
+<div className={styles.code__block}>
+
+```
+import React from 'react'
+
+const Rocket = () => {
+    return (
+        <div>
+            Rocket Component
+        </div>
+    )
+}
+
+export default Rocket
+```
+
+</div>
 
 We also need to change the simple button in our **RocketItem.js** to use **Link** from react-router-dom.
 
@@ -40,13 +56,49 @@ Next, we will create the query in Graphiql playground to get the details of one 
 
 We will now start importing the required packages and using our graphql query for the single rocket in our **Rocket** component.
 
-![Rocket.js](https://ik.imagekit.io/thewebdev/SpaceX/5/7_fMTa_HJbHo.png)*Rocket.js*
-
-Next, we will first get the **rocket_id** from the url. This we can do by **this.props.match.params** . Now this will return us String and we need string only to be passed to the query.
+Next, we will first get the **rocket_id** from the url. This we can do by **props.match.params** . Now this will return us String and we need string only to be passed to the query.
 
 Next, we will use the **ROCKET_QUERY** in our code by the same boiler plate as earlier in Launch component. We are also passing variables **rocket_id** to it. As usual we are first checking whether we are receiving the data from GraphQL by console logging it.
 
-![Rocket.js](https://ik.imagekit.io/thewebdev/SpaceX/5/8_mqA4aoUQGd.png)*Rocket.js*
+<div className={styles.code__block}>
+
+```
+import React from 'react'
+import { useQuery, gql } from '@apollo/client'
+import { Link } from 'react-router-dom';
+
+const ROCKET_QUERY = gql`
+    query rocket_query($rocket_id: String!){
+        rocket(rocket_id: $rocket_id){
+            rocket_id
+            rocket_name
+            rocket_type
+            wikipedia
+            description
+        }
+    }
+`;
+
+
+const Rocket = (props) => {
+    let { rocket_id } = props.match.params;
+
+    const { loading, error, data } = useQuery(ROCKET_QUERY, { variables: { rocket_id } });
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error :(</p>;
+    console.log(data)
+
+    return (
+        <h1>
+            Test Rocket
+        </h1>
+    )
+}
+
+export default Rocket
+```
+
+</div>
 
 Now, in our website it will show the Object of data which we received from GraphQL when we goto a **Rocket** page.
 
@@ -54,7 +106,7 @@ Now, in our website it will show the Object of data which we received from Graph
 
 Then we will de-structure the data and start showing it in the **Rocket** component with a little help from bootstrap 4 classes.
 
-![Rocket Component updated](https://ik.imagekit.io/thewebdev/SpaceX/5/10_tbqrMCqiP7.png)*Rocket Component updated*
+![Rocket Component updated](https://ik.imagekit.io/thewebdev/SpaceX/5/10_7Zla9riVX.jpg)*Rocket Component updated*
 
 It will start to show in our web-page.
 
