@@ -3,11 +3,14 @@ import addToMailchimp from "gatsby-plugin-mailchimp";
 import styles from '../css/subscribe.module.css';
 
 class Subscribe extends Component  {
-    state = {
-        email: "",
-        statusMsg: "",
-        statusMsgColor: "green",
-        subscribing: false,
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: "",
+            statusMsg: "",
+            statusMsgColor: "green",
+            subscribing: false,
+        }
     }
 
 handleSubmit = (e) => {
