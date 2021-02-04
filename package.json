@@ -14,6 +14,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@babel/plugin-transform-classes": "^7.12.13",
     "@babel/plugin-transform-spread": "^7.12.1",
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
