@@ -79,11 +79,24 @@ Ignore the next set of commands as of now and click on **Continue to console** b
 
 Now, in the next page you need to scroll down and click on the **Config** radio button and then copy the whole data for the **firebaseConfig**.
 
-![signal config](https://ik.imagekit.io/thewebdev/Signal-RN/14_TtTpp7zN4D.png)*signal config*
+![signal config](https://ik.imagekit.io/thewebdev/Signal-RN/14_New_RDUPAUkGuI.png)*signal config*
 
 Now, open code in VSCode and create a file **firebase.js** inside the **src** folder and paste the content from above there.
 
-![firebase.js](https://ik.imagekit.io/thewebdev/Signal-RN/15_bhrhhJQHO.png)*firebase.js*
+<div className={styles.code__block}>
+
+```
+const firebaseConfig = {
+    apiKey: "Axxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxw",
+    authDomain: "signal-xxxxxxxxxx.com",
+    projectId: "signal-xxxxx-expo",
+    storageBucket: "signal-xxxxxxxxxxxx.com",
+    messagingSenderId: "6xxxxxxxxx9",
+    appId: "1:6xxxxxxxxxxxxxxxxxxx72"
+};
+```
+
+</div>
 
 We need to run **npm start** to start the project, from the terminal.
 
@@ -315,7 +328,7 @@ We need to install it through expo from the terminal, with below command.
 
 Next, we will go back to **firebase.js** file and add the imports, initialisation and exports.
 
-![firebase.js](https://ik.imagekit.io/thewebdev/Signal-RN/52_5-9a7uIYS1.png)*firebase.js*
+![firebase.js](https://ik.imagekit.io/thewebdev/Signal-RN/52_New_wJCFxL-uSZ.png)*firebase.js*
 
 Now, in **RegisterScreen.js** file, we will use the auth to update the profile of the user with the values entered in the form.
 
@@ -499,7 +512,7 @@ Now, we will show these messages in **ChatScreen.js** file in the **ScrollView**
 
 Now, we will write the styles for the newly created styles in our **StyleSheet** in **ChatScreen.js** file.
 
-![ChatScreen.js](https://ik.imagekit.io/thewebdev/Signal-RN/88_YLOLzgcqp-.png)*ChatScreen.js*
+![ChatScreen.js](https://ik.imagekit.io/thewebdev/Signal-RN/88_new_NozWtT-FF.png)*ChatScreen.js*
 
 Now, our app is almost complete and i have logged in with other user and it’s is looking great.
 
