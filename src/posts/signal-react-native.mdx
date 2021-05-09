@@ -498,7 +498,17 @@ We also want to dismiss the keyboard, once the user send the message. For this w
 
 Now, we will add the code for sendMessage() in ChatScreen.js. Here, we are going to a specific chat and adding the message, displayName, email, photoURL and timestamp into firebase.
 
-Notice, that we are using global firebase function **serverTimestamp**() and storing the server time in our database
+Notice, that we are using global firebase function **serverTimestamp**() and storing the server time in our database. 
+
+The way to import firebase have changed, so please use this import, instead of the one mentioned in screenshot.
+
+<div className={styles.code__block}>
+
+```
+import firebase from "firebase/app"
+```
+
+</div>
 
 ![ChatScreen.js](https://ik.imagekit.io/thewebdev/Signal-RN/85_W2sbwkXKr0.png)*ChatScreen.js*
 
